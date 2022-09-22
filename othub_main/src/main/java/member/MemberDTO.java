@@ -5,7 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class MemberDTO {
 
 	String m_id; 
-	String m_password;
+	String m_pw;
 	String m_name;
 	String m_address; 
 	String m_phone; 
@@ -15,10 +15,10 @@ public class MemberDTO {
 	
 	public MemberDTO(){ }
 	
-	public MemberDTO(String m_id, String m_password, String m_name,String m_address, String m_phone, String m_email, String m_sex ,String m_regdate) {
+	public MemberDTO(String m_id, String m_pw, String m_name,String m_address, String m_phone, String m_email, String m_sex ,String m_regdate) {
 		super();
 		this.m_id = m_id;
-		this.m_password = m_password;
+		this.m_pw = m_pw;
 		this.m_name = m_name;
 		this.m_address = m_address;
 		this.m_phone = m_phone;
@@ -35,12 +35,12 @@ public class MemberDTO {
 		this.m_id = m_id;
 	}
 
-	public String getM_password() {
-		return m_password;
+	public String getM_pw() {
+		return m_pw;
 	}
 
-	public void setM_password(String m_password) {
-		this.m_password = m_password;
+	public void setM_pw(String m_pw) {
+		this.m_pw = m_pw;
 	}
 
 	public String getM_name() {
