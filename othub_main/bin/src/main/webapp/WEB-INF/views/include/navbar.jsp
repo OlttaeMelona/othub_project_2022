@@ -28,34 +28,17 @@
 			</div>
 			<div class="nav_bar1">
 				<div class="nav_logo">
-					<a href="/">OT-HUB</a>
+					<a href="">OT-HUB</a>
 				</div>
 				<ul class="nav_user_menu">
-					<li><% 
-					if(session.getAttribute("m_id") != null){
-						out.print(session.getAttribute("m_id")+"님 환영합니다.");
-					}else{
-						%><a href="login"><%out.print("login");%></a><%
-					}
-					%></li>
-					<li><% 
-					if(session.getAttribute("m_id") != null){
-						%><a href="mypage"><%out.print("mypage");%></a><%
-					}else{
-						%><a href="signin"><%out.print("sign up");%></a><%
-					}
-					%></li>
+					<li><a href="login">login</a></li>
+					<li><a href="signin">sign up</a></li>
 					<li><a href="">Customer Support</a></li>
-					<li><% 
-					if(session.getAttribute("m_id") != null){
-						%><a href="logout"><%out.print("logout");%></a><%
-					}
-					%></li>
 				</ul>
 			</div>
 			<div class="nav_bar2">
 				<div class="nav_main_menu">
-					<span><a href="community">룩북</a></span>
+					<span><a href="">룩북</a></span>
 					<span><a href="">쇼핑몰</a></span>
 					<span><a href="">쇼룸</a></span>
 				</div>
