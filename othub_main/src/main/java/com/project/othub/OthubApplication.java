@@ -11,6 +11,7 @@ import member.MemberDAO;
 @ComponentScan
 @ComponentScan(basePackages = "controller")
 @ComponentScan(basePackages = "member")
+@ComponentScan(basePackages = "community")
 
 @MapperScan(basePackageClasses = MemberDAO.class)
 public class OthubApplication {
