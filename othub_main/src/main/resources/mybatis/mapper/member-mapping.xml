@@ -5,12 +5,12 @@
 	
 <!-- 회원가입 -->
 <insert id="insertMember" parameterType="memberdto" >
- insert into member values (#{m_id},#{m_password},#{m_name},#{m_address},#{m_phone},#{m_email},#{m_sex},now()) 
+ insert into member values (#{m_id},#{m_pw},#{m_name},#{m_address},#{m_phone},#{m_email},#{m_sex},now()) 
 </insert>
 
 <!-- 회원가입확인 -->
 <select id="insertCheck" resultType="String">
-	select * from member where m_id=#{m_id}	and m_password=#{m_password}
+	select * from member where m_id=#{m_id}	and m_pw=#{m_pw}
 </select>
 
 <!-- 회원정보조회 -->

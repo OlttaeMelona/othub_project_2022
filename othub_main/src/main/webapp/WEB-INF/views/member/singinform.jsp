@@ -21,17 +21,16 @@
 <title>Insert title here</title>
 
 <script>
-debugger;
 $(document).ready(function(){
-	
 	function checkId(){
-		
 		var m_id = $('#m_id').val();
+		
 		
 		$.ajax({
 			url : '/idCheck',
 			type : 'post',
 			data : {m_id:m_id},
+			dataType : 'json',
 			success : function(cnt){
 				if(cnt == 0){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
 	                $('.id_ok').css("display","inline-block"); 
@@ -49,7 +48,7 @@ $(document).ready(function(){
 				
 		});
 	}
-	
+
 });//ready
 
 
@@ -67,11 +66,11 @@ $(document).ready(function(){
             <h1>Sign Up</h1>
             <form action="signin" method="post">
                 <label>아이디</label>
-                <input type="text" name="m_id" placeholder="ID" id="m_id" oninput = "checkId()">
+                <input type="text" name="m_id" placeholder="ID" id="m_id">
               	<span class="id_ok">사용 가능한 아이디입니다.</span>
 				<span class="id_already">이미 사용중인 아이디입니다.</span>
                 <label>비밀번호</label>
-                <input type="password" name="m_password" placeholder="Password">
+                <input type="password" name="m_pw" placeholder="Password">
                 <label>이름</label>
                 <input type="text" name="m_name" placeholder="이름">
                 <label>주소</label>

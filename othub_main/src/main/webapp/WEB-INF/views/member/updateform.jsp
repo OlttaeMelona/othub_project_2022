@@ -41,7 +41,7 @@ $(document).ready(function(){
                 <label>아이디</label>
                 <input type="text" id="id" name="m_id" placeholder="ID" value="${memberdto.m_id }">
                 <label>비밀번호</label>
-                <input type="password" name="m_password" placeholder="Password" value="${memberdto.m_password }" readonly>
+                <input type="password" name="m_pw" placeholder="Password" value="${memberdto.m_pw }" readonly>
                 <label>이름</label>
                 <input type="text" name="m_name" placeholder="Name" value="${memberdto.m_name }">
                 <label>주소</label>
