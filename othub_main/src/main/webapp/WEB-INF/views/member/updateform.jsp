@@ -17,7 +17,7 @@
     <link href="css/login/import.css" rel="stylesheet">
     <link href="css/login/common.css" rel="stylesheet">
     <script src="js/jquery-3.6.0.min.js"></script>
-<title>Insert title here</title>
+<title>OtHub</title>
 <script src="resources/js/jquery-3.6.0.min.js" ></script>
 <script>
 $(document).ready(function(){

@@ -9,7 +9,7 @@
     <link href="css/login/import.css" rel="stylesheet">
     <link href="css/login/common.css" rel="stylesheet">
     <script src="js/jquery-3.6.0.min.js"></script>
-<title>ot-hub</title>
+<title>MyPage | OtHub</title>
 <link href="css/style.css" rel="stylesheet">
 <script src="https://kit.fontawesome.com/95fa5ec673.js" crossorigin="anonymous"></script>
 <script src="js/jquery-3.6.0.min.js"></script>
