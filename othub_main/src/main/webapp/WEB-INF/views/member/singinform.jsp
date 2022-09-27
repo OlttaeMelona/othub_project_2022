@@ -18,7 +18,7 @@
     <link href="css/login/common.css" rel="stylesheet">
     <script src="js/jquery-3.6.0.min.js"></script>
     
-<title>Insert title here</title>
+<title>SignUp | OtHub</title>
 
 <script>
 $(document).ready(function(){

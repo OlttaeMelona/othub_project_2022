@@ -67,8 +67,8 @@
 <div id="container">
     <div class="inner">
         <ul class="nav2 clearfix">
-        	<li class="fl on" id="array"><a href="community">최신</a></li>
-            <li class="fl" id="array"><a href="communitylike">인기</a></li>
+        	<li class="fl" id="array"><a href="community">최신</a></li>
+            <li class="fl on" id="array"><a href="communitylike">인기</a></li>
             <li class="fl" id="array"><a href="#">팔로잉</a></li>
         </ul>
         <div class="flex">
@@ -98,9 +98,11 @@
 			</c:forEach>
         </div> 
         <div class="paging">
+        
         <% int totalPage = (Integer)request.getAttribute("totalPage");
 			for(int i = 1; i<totalPage; i++){ %>
-				<a href="community?page=<%=i%>" ><%=i%></a>
+				
+				<a href="community?page=<%=i%>"><%=i%></a>
 		<%}%>
 		</div>
 		<div>
