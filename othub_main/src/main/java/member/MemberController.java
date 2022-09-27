@@ -1,8 +1,5 @@
 package member;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -55,7 +52,7 @@ public class MemberController {
 			return "main/index";
 		}
 		
-	
+	 
 	//회원가입폼 이동
 		@GetMapping("/signin")
 		public String signin() {

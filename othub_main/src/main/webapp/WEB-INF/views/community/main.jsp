@@ -1,10 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>STYLE | OtHub</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="expire" content="-1" />
     <meta http-equiv="cache-control" content="no-cache" />
@@ -14,239 +16,99 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <meta name="robots" content="index,follow" />
     <!-- css, javascript -->
-	<link href="css/lookbook/import.css" rel="stylesheet">
-	<link href="css/lookbook/common.css" rel="stylesheet">
+	<link href="css/lookbook/main/import.css" rel="stylesheet">
+	<link href="css/lookbook/main/common.css" rel="stylesheet">
 	<script src="js/jquery-3.6.0.min.js"></script>
+	<script>
+	$(document).ready(function() {
+		// Í∏ÄÏì∞Í∏∞ Î°úÍ∑∏Ïù∏ ÌôïÏù∏
+		$("#writingbtn").on("click",function(e){
+			if(<%=session.getAttribute("m_id")%>==null){
+				alert("Î°úÍ∑∏Ïù∏ ÌõÑ Ïù¥Ïö©Ìï¥Ï£ºÏÑ∏Ïöî.");
+				e.preventDefault();
+			}
+		});//onclick end
+		
+		//Ï¢ãÏïÑÏöî 
+	$("#like_btn").click(function(){
+		var s_seq = $("#s_seq").val();
+		var m_id = "<%=session.getAttribute("m_id") %>";
+		
+		if(m_id == 'null'){
+			alert("Î°úÍ∑∏Ïù∏ ÌõÑ Ïù¥Ïö©Í∞ÄÎä•Ìï©ÎãàÎã§");
+		}
+		
+		$.ajax({
+			type : "POST",
+			url : "boardlike",
+			dataType : "json",
+			data : {'s_seq' : s_seq, 'm_id' : m_id},
+			
+			success : function(resp){
+				if(resp.result == 0){
+					
+				}
+				else if(resp.result == 1){
+					
+					
+				}
+				$("#likecnt").html(resp.result2);
+			}
+		});//ajax
+	});//onclick end
+			
+		
+	});//ready end
+	</script>
 </head>
 <body>
+<!-- navbar include -->
+	<%@include file="../include/navbar.jsp" %>
+	
 <div id="container">
     <div class="inner">
-        <ul class="nav clearfix">
-            <li class="fl on"><a href="#">¿Œ±‚</a></li>
-            <li class="fl"><a href="#">√÷Ω≈</a></li>
-            <li class="fl"><a href="#">∆»∑Œ¿◊</a></li>
+        <ul class="nav2 clearfix">
+        	<li class="fl on" id="array"><a href="community">ÏµúÏã†</a></li>
+            <li class="fl" id="array"><a href="communitylike">Ïù∏Í∏∞</a></li>
+            <li class="fl" id="array"><a href="#">ÌåîÎ°úÏûâ</a></li>
+            <%if(session.getAttribute("m_id") != null){%>
+            <li class="fl writing" id="writing"><a href="writingcommunity">Í∏ÄÏì∞Í∏∞</a></li><%} %>
         </ul>
         <div class="flex">
-
-            <div class="card">
-                <div class="img"><img src="static/img/sample.jpg"></div>
-                <div class="txt_box">
-                    <div class="profile clearfix">
-                        <div class="profile_img fl"><img src="static/img/profile_default.png"></div>
-                        <div class="profile_name fl">¥–≥◊¿”æÓ¬º±∏123</div>
-                    </div>
-                    <h2>¿Ã∞Õ¿∫ ¡¶∏Ò¿‘¥œ¥Ÿ.</h2>
-                    <ol class="clearfix">
-                        <li class="fl">
-                            <span id="like" class="like_on">999</span>
-                        </li>
-                        <li class="fl">
-                            <span class="comment">999</span>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img"><img src="static/img/sample.jpg"></div>
-                <div class="txt_box">
-                    <div class="profile clearfix">
-                        <div class="profile_img fl"><img src="static/img/profile_default.png"></div>
-                        <div class="profile_name fl">¥–≥◊¿”æÓ¬º±∏123</div>
-                    </div>
-                    <h2>¿Ã∞Õ¿∫ ¡¶∏Ò¿‘¥œ¥Ÿ.</h2>
-                    <ol class="clearfix">
-                        <li class="fl">
-                            <span id="like" class="like_off">999</span>
-                        </li>
-                        <li class="fl">
-                            <span class="comment">999</span>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img"><img src="static/img/sample.jpg"></div>
-                <div class="txt_box">
-                    <div class="profile clearfix">
-                        <div class="profile_img fl"><img src="static/img/profile_default.png"></div>
-                        <div class="profile_name fl">¥–≥◊¿”æÓ¬º±∏123</div>
-                    </div>
-                    <h2>¿Ã∞Õ¿∫ ¡¶∏Ò¿‘¥œ¥Ÿ.</h2>
-                    <ol class="clearfix">
-                        <li class="fl">
-                            <span id="like" class="like_off">999</span>
-                        </li>
-                        <li class="fl">
-                            <span class="comment">999</span>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img"><img src="static/img/sample.jpg"></div>
-                <div class="txt_box">
-                    <div class="profile clearfix">
-                        <div class="profile_img fl"><img src="static/img/profile_default.png"></div>
-                        <div class="profile_name fl">¥–≥◊¿”æÓ¬º±∏123</div>
-                    </div>
-                    <h2>¿Ã∞Õ¿∫ ¡¶∏Ò¿‘¥œ¥Ÿ.</h2>
-                    <ol class="clearfix">
-                        <li class="fl">
-                            <span id="like" class="like_off">999</span>
-                        </li>
-                        <li class="fl">
-                            <span class="comment">999</span>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img"><img src="static/img/sample.jpg"></div>
-                <div class="txt_box">
-                    <div class="profile clearfix">
-                        <div class="profile_img fl"><img src="static/img/profile_default.png"></div>
-                        <div class="profile_name fl">¥–≥◊¿”æÓ¬º±∏123</div>
-                    </div>
-                    <h2>¿Ã∞Õ¿∫ ¡¶∏Ò¿‘¥œ¥Ÿ.</h2>
-                    <ol class="clearfix">
-                        <li class="fl">
-                            <span id="like" class="like_off">999</span>
-                        </li>
-                        <li class="fl">
-                            <span class="comment">999</span>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img"><img src="static/img/sample.jpg"></div>
-                <div class="txt_box">
-                    <div class="profile clearfix">
-                        <div class="profile_img fl"><img src="static/img/profile_default.png"></div>
-                        <div class="profile_name fl">¥–≥◊¿”æÓ¬º±∏123</div>
-                    </div>
-                    <h2>¿Ã∞Õ¿∫ ¡¶∏Ò¿‘¥œ¥Ÿ.</h2>
-                    <ol class="clearfix">
-                        <li class="fl">
-                            <span id="like" class="like_off">999</span>
-                        </li>
-                        <li class="fl">
-                            <span class="comment">999</span>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img"><img src="static/img/sample.jpg"></div>
-                <div class="txt_box">
-                    <div class="profile clearfix">
-                        <div class="profile_img fl"><img src="static/img/profile_default.png"></div>
-                        <div class="profile_name fl">¥–≥◊¿”æÓ¬º±∏123</div>
-                    </div>
-                    <h2>¿Ã∞Õ¿∫ ¡¶∏Ò¿‘¥œ¥Ÿ.</h2>
-                    <ol class="clearfix">
-                        <li class="fl">
-                            <span id="like" class="like_off">999</span>
-                        </li>
-                        <li class="fl">
-                            <span class="comment">999</span>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img"><img src="static/img/sample.jpg"></div>
-                <div class="txt_box">
-                    <div class="profile clearfix">
-                        <div class="profile_img fl"><img src="static/img/profile_default.png"></div>
-                        <div class="profile_name fl">¥–≥◊¿”æÓ¬º±∏123</div>
-                    </div>
-                    <h2>¿Ã∞Õ¿∫ ¡¶∏Ò¿‘¥œ¥Ÿ.</h2>
-                    <ol class="clearfix">
-                        <li class="fl">
-                            <span id="like" class="like_off">999</span>
-                        </li>
-                        <li class="fl">
-                            <span class="comment">999</span>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img"><img src="static/img/sample.jpg"></div>
-                <div class="txt_box">
-                    <div class="profile clearfix">
-                        <div class="profile_img fl"><img src="static/img/profile_default.png"></div>
-                        <div class="profile_name fl">¥–≥◊¿”æÓ¬º±∏123</div>
-                    </div>
-                    <h2>¿Ã∞Õ¿∫ ¡¶∏Ò¿‘¥œ¥Ÿ.</h2>
-                    <ol class="clearfix">
-                        <li class="fl">
-                            <span id="like" class="like_off">999</span>
-                        </li>
-                        <li class="fl">
-                            <span class="comment">999</span>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img"><img src="static/img/sample.jpg"></div>
-                <div class="txt_box">
-                    <div class="profile clearfix">
-                        <div class="profile_img fl"><img src="static/img/profile_default.png"></div>
-                        <div class="profile_name fl">¥–≥◊¿”æÓ¬º±∏123</div>
-                    </div>
-                    <h2>¿Ã∞Õ¿∫ ¡¶∏Ò¿‘¥œ¥Ÿ.</h2>
-                    <ol class="clearfix">
-                        <li class="fl">
-                            <span id="like" class="like_off">999</span>
-                        </li>
-                        <li class="fl">
-                            <span class="comment">999</span>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img"><img src="static/img/sample.jpg"></div>
-                <div class="txt_box">
-                    <div class="profile clearfix">
-                        <div class="profile_img fl"><img src="static/img/profile_default.png"></div>
-                        <div class="profile_name fl">¥–≥◊¿”æÓ¬º±∏123</div>
-                    </div>
-                    <h2>¿Ã∞Õ¿∫ ¡¶∏Ò¿‘¥œ¥Ÿ.</h2>
-                    <ol class="clearfix">
-                        <li class="fl">
-                            <span id="like" class="like_off">999</span>
-                        </li>
-                        <li class="fl">
-                            <span class="comment">999</span>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img"><img src="static/img/sample.jpg"></div>
-                <div class="txt_box">
-                    <div class="profile clearfix">
-                        <div class="profile_img fl"><img src="static/img/profile_default.png"></div>
-                        <div class="profile_name fl">¥–≥◊¿”æÓ¬º±∏123</div>
-                    </div>
-                    <h2>¿Ã∞Õ¿∫ ¡¶∏Ò¿‘¥œ¥Ÿ.</h2>
-                    <ol class="clearfix">
-                        <li class="fl">
-                            <span id="like" class="like_off">999</span>
-                        </li>
-                        <li class="fl">
-                            <span class="comment">999</span>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-
-        </div>       
+			<c:forEach items="${boardlist}" var="board">
+	            <div class="card">
+	                <div class="img"><a href="oneCommunity?s_seq=${board.s_seq }"><img src="images/community/styleimg/${board.imagename1 }"></a></div>
+	                <div class="txt_box">
+	                    <div class="profile clearfix">
+	                        <div class="profile_name fl">${board.s_writer }</div>
+	                        <input type="hidden" value=${board.s_seq } id="s_seq">
+	                    </div>
+	                    <h2><a href="oneCommunity?s_seq=${board.s_seq }" style="color:black;">${board.s_title}</a></h2>
+	                    <ol class="clearfix">
+	                    <!-- Ï¢ãÏïÑÏöî -->
+	                        <li class="fl">	                                               
+		                        <button type="button" id="like_btn" >
+		                         <span class="like_off" id="likecnt">${board.s_like }</span>
+		                        </button>                       
+	                        </li>
+	                         <!-- Ï¢ãÏïÑÏöî -->
+	                        <li class="fl">
+	                            <span class="comment">${board.s_viewcount }</span> 
+	                        </li>
+	                    </ol>
+	                </div>
+	            </div>
+			</c:forEach>
+        </div> 
+        <div class="paging"> 
+        <% int totalPage = (Integer)request.getAttribute("totalPage");
+			for(int i = 1; i<totalPage; i++){ %>
+				<a href="community?page=<%=i%>" ><%=i%></a>
+		<%}%>
+		</div>
     </div>
 </div>
+<!-- footer include -->
+	<%@include file="../include/footer.jsp" %>
 </body>
 </html>
