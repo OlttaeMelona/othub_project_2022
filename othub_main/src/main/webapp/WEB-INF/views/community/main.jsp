@@ -16,8 +16,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <meta name="robots" content="index,follow" />
     <!-- css, javascript -->
-	<link href="css/lookbook/import.css" rel="stylesheet">
-	<link href="css/lookbook/common.css" rel="stylesheet">
+	<link href="css/lookbook/main/import.css" rel="stylesheet">
+	<link href="css/lookbook/main/common.css" rel="stylesheet">
 	<script src="js/jquery-3.6.0.min.js"></script>
 	<script>
 	$(document).ready(function() {
@@ -25,6 +25,7 @@
 		$("#writingbtn").on("click",function(e){
 			if(<%=session.getAttribute("m_id")%>==null){
 				alert("로그인 후 이용해주세요.");
+				e.preventDefault();
 			}
 		});//onclick end
 		
@@ -45,10 +46,10 @@
 			
 			success : function(resp){
 				if(resp.result == 0){
-					$(".like_off").attr("class","like_on");
+					
 				}
 				else if(resp.result == 1){
-					$(".on").attr("class","off");
+					
 					
 				}
 				$("#likecnt").html(resp.result2);
@@ -70,6 +71,8 @@
         	<li class="fl on" id="array"><a href="community">최신</a></li>
             <li class="fl" id="array"><a href="communitylike">인기</a></li>
             <li class="fl" id="array"><a href="#">팔로잉</a></li>
+            <%if(session.getAttribute("m_id") != null){%>
+            <li class="fl writing" id="writing"><a href="writingcommunity">글쓰기</a></li><%} %>
         </ul>
         <div class="flex">
 			<c:forEach items="${boardlist}" var="board">
@@ -80,12 +83,12 @@
 	                        <div class="profile_name fl">${board.s_writer }</div>
 	                        <input type="hidden" value=${board.s_seq } id="s_seq">
 	                    </div>
-	                    <h2>${board.s_title}</h2>
+	                    <h2><a href="oneCommunity?s_seq=${board.s_seq }" style="color:black;">${board.s_title}</a></h2>
 	                    <ol class="clearfix">
 	                    <!-- 좋아요 -->
 	                        <li class="fl">	                                               
 		                        <button type="button" id="like_btn" >
-		                           <span class="like_off" id="likecnt">${board.s_like }</span>
+		                         <span class="like_off" id="likecnt">${board.s_like }</span>
 		                        </button>                       
 	                        </li>
 	                         <!-- 좋아요 -->
@@ -97,16 +100,11 @@
 	            </div>
 			</c:forEach>
         </div> 
-        <div class="paging">
+        <div class="paging"> 
         <% int totalPage = (Integer)request.getAttribute("totalPage");
 			for(int i = 1; i<totalPage; i++){ %>
 				<a href="community?page=<%=i%>" ><%=i%></a>
 		<%}%>
-		</div>
-		<div>
-		<button  id="writingbtn" class="writing">
-			<a href='writingcommunity'>글쓰기</a>
-		</button>
 		</div>
     </div>
 </div>

@@ -18,21 +18,25 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <meta name="robots" content="index,follow" />
     <!-- css, javascript -->
-	<link href="css/lookbook/board/import.css" rel="stylesheet">
-	<link href="css/lookbook/board/common.css" rel="stylesheet">
+	<link href="css/lookbook/form/import.css" rel="stylesheet">
+	<link href="css/lookbook/form/common.css" rel="stylesheet">
 	<script src="js/jquery-3.6.0.min.js"></script>
 	<script>
 $(document).ready(function(){
-	
+
 
 });
 </script>
+
 <%
 Date nowTime = new Date();
 SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 %>
 </head>
 <body>
+<!-- navbar include -->
+	<%@include file="../include/navbar.jsp" %>
+
 <form action="writingcommunity" method="post" enctype="multipart/form-data" >
 <div id="container">
     <div class="inner">
@@ -51,12 +55,19 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type=file name="s_image1" ></td>
-                        <td><input type=file name="s_image2"></td>
-                        <td><input type=file name="s_image3"></td>
+                    <div class="filebox">
+                        <td><input type=file name="s_image1" onchange="readURL1(this)" required></td>
+                        <td><input type=file name="s_image2" onchange="readURL2(this)"></td>
+                        <td><input type=file name="s_image3" onchange="readURL3(this)"></td>
+                    </div>
+                    </tr>
+                     <tr>
+                        <td><img id="preview1" width="400px"></td>
+                        <td><img id="preview2" width="400px"></td>
+                        <td><img id="preview3" width="400px"></td>
                     </tr>
                     <tr>
-                        <td colspan="3"><textarea col="2000" rows="10" name="s_contents" placeholder="내용을 입력하세요."></textarea>
+                        <td colspan="3"><textarea col="2000" rows="10" name="s_contents" placeholder="내용을 입력하세요." ></textarea>
                     </tr>
                 </tbody>
             </table>
@@ -66,5 +77,44 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
     </div>
 </div>
 </form>
+<!-- footer include -->
+	<%@include file="../include/footer.jsp" %>
 </body>
+<script>
+function readURL1(input){
+	if(input.files && input.files[0]){
+		var reader = new FileReader();
+		reader.onload = function(e){
+		      document.getElementById('preview1').src = e.target.result;
+		};
+		reader.readAsDataURL(input.files[0]);
+	}else{
+		document.getElementById('preview1').src = "";
+	}
+}
+
+function readURL2(input){
+	if(input.files && input.files[0]){
+		var reader = new FileReader();
+		reader.onload = function(e){
+		      document.getElementById('preview2').src = e.target.result;
+		};
+		reader.readAsDataURL(input.files[0]);
+	}else{
+		document.getElementById('preview2').src = "";
+	}
+}
+
+function readURL3(input){
+	if(input.files && input.files[0]){
+		var reader = new FileReader();
+		reader.onload = function(e){
+		      document.getElementById('preview3').src = e.target.result;
+		};
+		reader.readAsDataURL(input.files[0]);
+	}else{
+		document.getElementById('preview3').src = "";
+	}
+}
+</script>
 </html>

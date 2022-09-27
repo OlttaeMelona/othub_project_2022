@@ -30,6 +30,9 @@ public interface CommunityDAO {
 	// 게시물 디테일
 		public CommunityDTO oneCommunity(int s_seq);
 		
+	// 게시물 수정
+		public int updateWriting(CommunityDTO dto);
+		
 	// 조회수 업데이트
 		public void viewCount(int s_seq);
 		
@@ -59,4 +62,7 @@ public interface CommunityDAO {
 		
 	// delete 좋아요
 		public void deleteLike(int s_seq,String m_id);
+	
+	// list like 가져오기
+		public int likeCheck_main(int s_seq,String m_id);
 }
