@@ -13,7 +13,7 @@ import showroom.ShowroomDAO;
 
 @SpringBootApplication
 @ComponentScan
-@ComponentScan(basePackages = "controller")
+@ComponentScan(basePackages = "controller") 
 @ComponentScan(basePackages = "member")
 @ComponentScan(basePackages = "community")
 @ComponentScan(basePackages = "comment")
