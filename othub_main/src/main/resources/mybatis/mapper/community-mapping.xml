@@ -42,8 +42,13 @@
 	<!-- 게시물 디테일 -->
 	<select id="oneCommunity" resultType="communitydto">
 		select s_seq,s_title,s_contents,s_writer,s_viewcount,s_writingtime,
-		 s_image1 as imagename1, s_image2 as imagename2, s_image2 as imagename2, s_like  from styletab where s_seq=#{s_seq}
+		 s_image1 as imagename1, s_image2 as imagename2, s_image3 as imagename3, s_like  from styletab where s_seq=#{s_seq}
 	</select>
+	
+	<!-- 게시물 수정(제목, 내용, 날짜만) -->
+	<update id="updateWriting">
+		update styletab set s_title = #{s_title}, s_contents=#{s_contents} where s_seq=#{s_seq}
+	</update>
 	
 	<!-- 조회수 업데이트 -->
 	<update id="viewCount" parameterType="int">
@@ -101,5 +106,10 @@
 	<delete id="deleteLike">
 	delete from boardlike where s_seq = #{s_seq} and m_id = #{m_id}
 	</delete>
+	
+	<!-- 상세페이지 좋아요 고정 -->
+	<select id="likeCheck_main" resultType="int">
+	select count(*) from boardlike where m_id = #{m_id} and s_seq = #{s_seq}
+	</select>
 </mapper>
 

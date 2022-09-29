@@ -1,4 +1,6 @@
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@page import="community.CommunityDTO"%>
 <%@page import="javax.xml.crypto.Data"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -131,6 +133,7 @@ $(document).ready(function() {
         });
     }//commentCount end
 	
+
 	
 });//ready end
 </script>
@@ -157,30 +160,29 @@ $(document).ready(function() {
                     </tr>
                 </thead>
                 <tbody>
-               
-                
+
                    <tr class="stylenone">
                    <td colspan="1">작성자 ${oneCommu.s_writer}</td>
                    <% if(request.getAttribute("writer").equals(session.getAttribute("m_id"))){ %>
                         <td colspan="5">
                             <a href="deleteCommunity?s_seq=${oneCommu.s_seq }" id="deletechk" class="delete_btn btns">삭제하기</a>
-                            <a href="#"  class="edit_btn btns">수정하기</a>                           
+                            <a href="updatecommuform?s_seq=${oneCommu.s_seq }" class="edit_btn btns">수정하기</a>                           
                    </td>
                    <% }else{} %>
                     </tr>
                  
                   
                     <tr>
-                        <td colspan="6"><img src="images/community/styleimg/${oneCommu.imagename1 }" alt="firstimage"></td>
+                        <td colspan="6"><img src="images/community/styleimg/${oneCommu.imagename1 }" alt="firstimage" style="width: 600px"></td>
                     </tr>
                     <% if(!request.getAttribute("image2").equals("")){ %>
                     <tr>
-                        <td colspan="6"><img src="images/community/styleimg/${oneCommu.imagename2 }" alt="secondimage"></td>
+                        <td colspan="6"><img src="images/community/styleimg/${oneCommu.imagename2 }" alt="secondimage"style="width: 600px"></td>
                     </tr>
                     <%} %>
-                      <% if(request.getAttribute("image3") != null){ %>
+                      <% if(!request.getAttribute("image3").equals("")){ %>
                     <tr>
-                        <td colspan="6"><img src="images/community/styleimg/${oneCommu.imagename3 }" alt="thirdimage"></td>
+                        <td colspan="6"><img src="images/community/styleimg/${oneCommu.imagename3 }" alt="thirdimage"style="width: 600px"></td>
                     </tr>
                     <%} %>
                     <tr class="lasttr" >
@@ -188,14 +190,17 @@ $(document).ready(function() {
                     </tr>
                 </tbody>
             </table>
-            
+            <script type="text/javascript">imgSize("img");</script>
             <!-- 댓글 -->
             <div class="comment_box">
                 <div class="clearfix">
                     <div class="comment_num fl" id="comment_num"></div>
-                    <div class="like fl">
-
-                        <a id="like_btn" class="off"><span class="heart"></span>좋아요 <span id="likecnt">${oneCommu.s_like }</span></a>
+  
+                    
+					<div class="like fl">
+						<%if(((Integer)request.getAttribute("result")).intValue()==1) {%>
+                        <a id="like_btn" class="on"><%} else{ %><a id="like_btn" class="off"><%} %>
+                        <span class="heart"></span>좋아요 <span id="likecnt">${oneCommu.s_like }</span></a>
                     </div>
                 </div>
                 

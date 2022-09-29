@@ -54,14 +54,15 @@ public class CommunityService {
 		return dao.insertCommunity(dto);
 	}
 	
-	//좋아요 중복 확인
-	public int likeCount(int s_seq) {
-		return dao.likeCount(s_seq);
-	}
 	
 	//게시물 디테일
 	public CommunityDTO oneCommunity(int s_seq){
 		return dao.oneCommunity(s_seq);
+	}
+	
+	//게시물 수정
+	public int updateWriting(CommunityDTO dto) {
+		return dao.updateWriting(dto);
 	}
 	
 	//게시물 조회수
@@ -71,6 +72,11 @@ public class CommunityService {
 	//게시물 삭제
 	public void deleteCommunity(int s_seq) {
 		dao.deleteCommunity(s_seq);
+	}
+	
+	//좋아요 중복 확인
+	public int likeCount(int s_seq) {
+		return dao.likeCount(s_seq);
 	}
 	
 	//좋아요 중복 체크
@@ -105,5 +111,9 @@ public class CommunityService {
 	//delete 좋아요
 	public void deleteLike(int s_seq, String m_id) {
 		dao.deleteLike(s_seq,m_id);
+	}
+	
+	public int likeCheck_main(int s_seq,String m_id){
+		return dao.likeCheck_main(s_seq,m_id);
 	}
 }

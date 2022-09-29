@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.annotation.SessionScope;
@@ -41,7 +42,7 @@ public class CommunityController {
 	
 	//전체 게시물 조회(페이징,조회순)
 	@GetMapping("/community")
-	public ModelAndView communityListPaging(@RequestParam(value="page",defaultValue = "1") int page) {
+	public ModelAndView communityListPaging(@RequestParam(value="page",defaultValue = "1") int page,HttpServletRequest request) {
 		int totalPage = commuserive.countCommunity(); //전체 게시물 수 조회
 		List<CommunityDTO> communityListPaging = commuserive.limitCommunity(page);
 		ModelAndView mv = new ModelAndView();
@@ -57,15 +58,13 @@ public class CommunityController {
 		int totalPage = commuserive.countCommunity(); //전체 게시물 수 조회
 		List<CommunityDTO> communityListPaging = commuserive.likeCommunity(page);
 		ModelAndView mv = new ModelAndView();
-		int like = 1;
 		mv.addObject("totalPage", totalPage);
 		mv.addObject("boardlist",communityListPaging);
-		mv.addObject("like",like);
 		mv.setViewName("community/main2");
 		return mv;
 	}
 	
-	//글쓰기(이건 다시)
+	//글쓰기
 	@GetMapping("/writingcommunity")
 	public ModelAndView wriringCommunity() {
 		int totalboard = commuserive.amountCommunity()+1; //전체 게시물 수 조회
@@ -78,7 +77,7 @@ public class CommunityController {
 	
 	//글 등록(upload)
 	@PostMapping("/writingcommunity")
-	String uploadprocess(@ModelAttribute("dto") CommunityDTO dto,@RequestParam(value="page",defaultValue = "1") int page,Model model)
+	public String uploadprocess(@ModelAttribute("dto") CommunityDTO dto,@RequestParam(value="page",defaultValue = "1") int page,Model model)
 	throws IOException {
 	 // dto 같은 이름 변수에 파라미터 매핑되어있다
 	// file1, file2 의 이름과 내용 서버 c:\\upload 폴더에 저장 	
@@ -86,7 +85,7 @@ public class CommunityController {
 		
 		String savePath ="C:\\othub\\othub_project_2022\\othub_main\\src\\main\\resources\\static\\images\\community\\styleimg\\";
 		
-		
+		//style 2번 이미지
 		MultipartFile mf1 = dto.getS_image1();
 		if(!mf1.isEmpty()) {
 			String originalname1 = mf1.getOriginalFilename(); //ex) a.txt
@@ -107,7 +106,7 @@ public class CommunityController {
 			String newname2 = beforeext2+"("+UUID.randomUUID().toString()+")"+ext2;
 			File servefile2 = new File(savePath+newname2); // a(012334434).txt
 			System.out.println(savePath+newname2);
-			mf1.transferTo(servefile2);
+			mf2.transferTo(servefile2);
 			dto.setImagename2(newname2);//서버 저장이름 
 		}else {
 			dto.setImagename2("");
@@ -126,36 +125,40 @@ public class CommunityController {
 		}else {
 			dto.setImagename3("");
 		}
+	
+		int result = commuserive.insertCommunity(dto);
+		System.out.println(result);
+
 		int totalPage = commuserive.countCommunity(); //전체 게시물 수 조회
 		List<CommunityDTO> communityListPaging = commuserive.limitCommunity(page); //List 다시 받아옴
 		model.addAttribute("totalPage",totalPage);
 		model.addAttribute("boardlist",communityListPaging);	
-		
-		
-		
-
-		int result = commuserive.insertCommunity(dto);
-		System.out.println(result);
-
-		
-		return "community/main";
+		return "redirect:/community";
 
 	}
 	
 	//게시물 상세보기
+	
+	//게시물 상세보기
 	@GetMapping("/oneCommunity")
-	public ModelAndView oneCommunity(@RequestParam(value="s_seq") int s_seq) {
+	public ModelAndView oneCommunity(@RequestParam(value="s_seq") int s_seq,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String m_id = (String)session.getAttribute("m_id");
+		int result = commuserive.likeCheck_main(s_seq,m_id);
+		
 		CommunityDTO oneCommu = commuserive.oneCommunity(s_seq);
 		ModelAndView mv = new ModelAndView();
 		String writer = oneCommu.getS_writer();
 		String image2 = oneCommu.getImagename2();
 		String image3 = oneCommu.getImagename3();
-
+		System.out.println(image2);
+		System.out.println(image3);
 		mv.addObject("oneCommu",oneCommu);
 		mv.addObject("commuSeq",s_seq);
 		mv.addObject("writer",writer);
 		mv.addObject("image2",image2);
 		mv.addObject("image3",image3);
+		mv.addObject("result",result);
 		commuserive.viewCount(s_seq);
 		mv.setViewName("community/detail");
 
@@ -163,15 +166,33 @@ public class CommunityController {
 		
 	}
 	
+	//게시물 수정 폼
+	@GetMapping("/updatecommuform")
+	public ModelAndView updateform(@RequestParam(value="s_seq") int s_seq,HttpServletRequest request) {
+		CommunityDTO oneCommu = commuserive.oneCommunity(s_seq);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("oneCommu",oneCommu);
+		mv.setViewName("community/updateform");
+		return mv;	
+	}
+	//게시물 수정
+	@PostMapping("/updatecommu")
+	public String editBoardProcess(CommunityDTO dto) {
+		int result = commuserive.updateWriting(dto);
+		return "redirect:/community";
+	}
+	
 	//게시물 삭제
 	@GetMapping("deleteCommunity") //컨트롤러에서 커뮤니티메인으로 total페이지를 다시 넘겨줘야함
-	public String deleteCommunity(@RequestParam(value="s_seq") int s_seq,Model model,@RequestParam(value="page",defaultValue = "1") int page) {
-		int totalPage = commuserive.countCommunity(); //전체 게시물 수 조회
-		List<CommunityDTO> communityListPaging = commuserive.limitCommunity(page); //List 다시 받아옴
-		model.addAttribute("totalPage",totalPage);
-		model.addAttribute("boardlist",communityListPaging);
+	public ModelAndView deleteCommunity(@RequestParam(value="s_seq") int s_seq,Model model,@RequestParam(value="page",defaultValue = "1") int page) {
 		commuserive.deleteCommunity(s_seq);
-		return "community/main";
+		int totalPage = commuserive.countCommunity(); //전체 게시물 수 조회
+		List<CommunityDTO> communityListPaging = commuserive.limitCommunity(page);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("totalPage", totalPage);
+		mv.addObject("boardlist",communityListPaging);
+		mv.setViewName("community/main");
+		return mv;
 	}
 
 	//추천 좋아요
@@ -191,6 +212,8 @@ public class CommunityController {
 		int likeNum = commuserive.likeCount(s_seq);
 		System.out.println(likeNum);
 		return "{\"result\" : \"" + likeCheck + "\", \"result2\" : \"" + likeNum + "\" }";
-		
 	}
+	
+	
+
 }
