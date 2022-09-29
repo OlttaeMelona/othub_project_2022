@@ -1,3 +1,4 @@
+<%@page import="admin.AdminDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -21,6 +22,13 @@
 </script>
 </head>
 <body>
+
+	<%//variable
+		String m_id = (String)session.getAttribute("m_id");
+		String a_id = (String)session.getAttribute("a_id");
+		String a_name = (String)session.getAttribute("a_name");
+	%>
+	
 	<header>
 		<nav class="nav">
 			<div href="" class="nav_toggleBtn">
@@ -31,24 +39,39 @@
 					<a href="/">OT-HUB</a>
 				</div>
 				<ul class="nav_user_menu">
+					<!-- 회원 | 관리자 | 로그인 -->
 					<li><% 
-					if(session.getAttribute("m_id") != null){
-						out.print(session.getAttribute("m_id")+"님 환영합니다.");
-					}else{
+					if(m_id != null){
+						out.print(m_id + "님 환영합니다.");
+					}
+					else if(a_id != null){
+						out.print(a_name + " 관리자님 접속되었습니다.");
+					}
+					else{
 						%><a href="login"><%out.print("login");%></a><%
 					}
 					%></li>
+					<!--마이페이지 | 관리자페이지 | 회원가입-->
 					<li><% 
-					if(session.getAttribute("m_id") != null){
+					if(m_id != null){
 						%><a href="mypage"><%out.print("mypage");%></a><%
-					}else{
+					}
+					else if(a_id != null){
+						%><a href="adminpage"><%out.print("AdminPage");%></a><%
+					}
+					else{
 						%><a href="signin"><%out.print("sign up");%></a><%
 					}
 					%></li>
+					<!-- 고객센터 -->
 					<li><a href="">Customer Support</a></li>
+					<!-- 회원로그아웃 | 관리자로그아웃 -->
 					<li><% 
-					if(session.getAttribute("m_id") != null){
+					if(m_id != null){
 						%><a href="logout"><%out.print("logout");%></a><%
+					}
+					else if(a_id != null){
+						%><a href="adminlogout"><%out.print("Logout");%></a><%
 					}
 					%></li>
 				</ul>
@@ -57,7 +80,7 @@
 				<div class="nav_main_menu">
 					<span><a href="community">룩북</a></span>
 					<span><a href="">쇼핑몰</a></span>
-					<span><a href="">쇼룸</a></span>
+					<span><a href="showroom">쇼룸</a></span>
 				</div>
 			</div>
 		</nav>
