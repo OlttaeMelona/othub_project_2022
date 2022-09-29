@@ -28,6 +28,14 @@
 <script>
 $(document).ready(function() {
 
+	//삭제 확인
+	$("#deletechk").on("click",function(e){
+		if(confirm("삭제하시겠습니까?")){
+			
+		}else{
+			return false;
+		}
+	})
 
 	//좋아요 
 	$("#like_btn").click(function(){
@@ -137,7 +145,39 @@ $(document).ready(function() {
 	
 });//ready end
 </script>
+<script>
+$(document).ready(function() {
+	var json = JSON.parse('${poseresult}');
+	//canvas 작업
+	var mycanvas = document.getElementById("mycanvas");
+	var mycontext = mycanvas.getContext("2d");
+	
+	var myimage = new Image();
+	myimage.src = "images/community/styleimg/${oneCommu.imagename1 }";
+	if(myimage.width > mycanvas.width){
+		mycanvas.width = myimage.width;
+	}	
+	if(myimage.height > mycanvas.height){
+		mycanvas.height = myimage.height;
+	}	
+	
+	myimage.onload = function(){//이미지 그릴 준비 대기
+		mycontext.drawImage(myimage, 0, 0, myimage.width, myimage.height);
+	//	bodyinforms 신체부위이름, 위치점 표시. colors 색상으로 각 신체부위별 다르게 표시
+		var x = json.predictions[0][2].x * myimage.width ;
+		var y = json.predictions[0][2].y * myimage.height;
 
+		
+		var imagedata = mycontext.getImageData(x,y,mycanvas.width,mycanvas.height)
+		var ss = imagedata[0];
+		$("#red").val(imagedata.data[0]);
+		$("#green").val(imagedata.data[1]);
+		$("#blue").val(imagedata.data[2]);
+
+
+	}//inload
+});//ready end
+</script>
 </head>
 
 <body>
@@ -190,7 +230,7 @@ $(document).ready(function() {
                     </tr>
                 </tbody>
             </table>
-            <script type="text/javascript">imgSize("img");</script>
+            
             <!-- 댓글 -->
             <div class="comment_box">
                 <div class="clearfix">
@@ -224,6 +264,14 @@ $(document).ready(function() {
         </div>
     </div>
 </div>
+
+<form action="color">
+<input type="hidden" id="red" value="" name="red">
+<input type="hidden" id="green" value="" name="green">
+<input type="hidden" id="blue" value="" name="blue">
+<input type="submit" value="비슷한 상품 조회">
+</form>
+<canvas id="mycanvas" width=500 height=500 style="border:2px solid green" hidden></canvas>
 <!-- footer include -->
 	<%@include file="../include/footer.jsp" %>
 </body>

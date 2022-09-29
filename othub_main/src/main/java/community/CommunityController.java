@@ -23,8 +23,12 @@ import org.springframework.web.context.annotation.SessionScope;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.othub.NaverInform;
+
 import comment.CommentService;
 import member.MemberService;
+import pose.ColorDTO;
+import pose.PoseService;
 
 @Controller
 public class CommunityController {
@@ -40,11 +44,16 @@ public class CommunityController {
 	@Qualifier("commentservice")
 	CommentService commentservice;
 	
+	@Autowired
+	@Qualifier("poseservice")
+	PoseService poseservice;
+	
 	//전체 게시물 조회(페이징,조회순)
 	@GetMapping("/community")
 	public ModelAndView communityListPaging(@RequestParam(value="page",defaultValue = "1") int page,HttpServletRequest request) {
 		int totalPage = commuserive.countCommunity(); //전체 게시물 수 조회
 		List<CommunityDTO> communityListPaging = commuserive.limitCommunity(page);
+		System.out.println(totalPage);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("totalPage", totalPage);
 		mv.addObject("boardlist",communityListPaging);
@@ -61,6 +70,19 @@ public class CommunityController {
 		mv.addObject("totalPage", totalPage);
 		mv.addObject("boardlist",communityListPaging);
 		mv.setViewName("community/main2");
+		return mv;
+	}
+	
+	//내 게시물 조회
+	@GetMapping("/mycommunity")
+	public ModelAndView mycommunityListPaging(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String s_writer = (String)session.getAttribute("m_id");
+
+		List<CommunityDTO> communityListPaging = commuserive.myCommunity(s_writer);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("boardlist",communityListPaging);
+		mv.setViewName("community/myboard");
 		return mv;
 	}
 	
@@ -91,7 +113,7 @@ public class CommunityController {
 			String originalname1 = mf1.getOriginalFilename(); //ex) a.txt
 			String beforeext1 = originalname1.substring(0, originalname1.indexOf(".")); //a
 			String ext1 = originalname1.substring(originalname1.indexOf(".")); // .txt
-			String newname1 = beforeext1+"("+UUID.randomUUID().toString()+")"+ext1;
+			String newname1 = beforeext1+ext1;
 			File servefile1 = new File(savePath+newname1); // a(012334434).txt
 			System.out.println(savePath+newname1);
 			mf1.transferTo(servefile1);
@@ -103,7 +125,7 @@ public class CommunityController {
 			String originalname2 = mf2.getOriginalFilename(); //ex) a.txt
 			String beforeext2 = originalname2.substring(0, originalname2.indexOf(".")); //a
 			String ext2 = originalname2.substring(originalname2.indexOf(".")); // .txt
-			String newname2 = beforeext2+"("+UUID.randomUUID().toString()+")"+ext2;
+			String newname2 = beforeext2+ext2;
 			File servefile2 = new File(savePath+newname2); // a(012334434).txt
 			System.out.println(savePath+newname2);
 			mf2.transferTo(servefile2);
@@ -117,7 +139,7 @@ public class CommunityController {
 			String originalname3 = mf3.getOriginalFilename(); //ex) a.txt
 			String beforeext3 = originalname3.substring(0, originalname3.indexOf(".")); //a
 			String ext3 = originalname3.substring(originalname3.indexOf(".")); // .txt
-			String newname3 = beforeext3+"("+UUID.randomUUID().toString()+")"+ext3;
+			String newname3 = beforeext3+ext3;
 			File servefile3 = new File(savePath+newname3); // a(012334434).txt
 			System.out.println(savePath+newname3);
 			mf3.transferTo(servefile3);
@@ -137,22 +159,27 @@ public class CommunityController {
 
 	}
 	
-	//게시물 상세보기
 	
 	//게시물 상세보기
 	@GetMapping("/oneCommunity")
-	public ModelAndView oneCommunity(@RequestParam(value="s_seq") int s_seq,HttpServletRequest request) {
+	public ModelAndView oneCommunity(@RequestParam(value="s_seq") int s_seq,HttpServletRequest request, String image) {
+		//좋아요 확인
 		HttpSession session = request.getSession();
 		String m_id = (String)session.getAttribute("m_id");
 		int result = commuserive.likeCheck_main(s_seq,m_id);
 		
+		//게시물 불러오기
 		CommunityDTO oneCommu = commuserive.oneCommunity(s_seq);
+		
+		//ai pose
+		String jsonresult = poseservice.test(image);
+		
 		ModelAndView mv = new ModelAndView();
+		
 		String writer = oneCommu.getS_writer();
 		String image2 = oneCommu.getImagename2();
 		String image3 = oneCommu.getImagename3();
-		System.out.println(image2);
-		System.out.println(image3);
+		mv.addObject("poseresult", jsonresult); //pose
 		mv.addObject("oneCommu",oneCommu);
 		mv.addObject("commuSeq",s_seq);
 		mv.addObject("writer",writer);
@@ -214,6 +241,38 @@ public class CommunityController {
 		return "{\"result\" : \"" + likeCheck + "\", \"result2\" : \"" + likeNum + "\" }";
 	}
 	
-	
+	//비슷한 색상 상품 조회
+	@RequestMapping("/color")
+	public ModelAndView color(ColorDTO dto) {
+		String color = "";
+		int rgbR = dto.getRed();
+		int rgbG = dto.getGreen();
+		int rgbB = dto.getBlue();
+		if(rgbR >=150 && rgbB <=120) {
+			color = "red";
+		}else if(rgbG >=150 && rgbR <=120) {
+			color = "green";
+		}else if(rgbB >=150 && rgbG <=120) {
+			color = "blue";
+		}else if(rgbR >= 200 && rgbB >= 200 && rgbG >= 200) {
+			color = "white";
+		}else if(rgbR <= 70 && rgbB <= 70 && rgbG <= 70) {
+			color = "black";
+		}else if(rgbG >= rgbR && rgbG >= rgbB) {
+			color = "green";
+		}else if(rgbR >= rgbB&& rgbR >= rgbG) {
+			color = "red";
+		}else if(rgbB >= rgbR&& rgbB >= rgbG) {
+			color = "blue";
+		}
+		System.out.println(color);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("red",rgbR);
+		mv.addObject("green",rgbG);
+		mv.addObject("blue",rgbB);
+		mv.addObject("color",color);
+		mv.setViewName("community/similarcolor");
+		return mv;
+	}
 
 }

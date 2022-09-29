@@ -48,6 +48,11 @@ public class CommunityService {
 		int limit = (page - 1) * 16;
 		return dao.likeCommunity(limit);
 	}
+	//페이징(내 게시물)
+	public List<CommunityDTO> myCommunity(String s_writer){
+
+		return dao.myCommunity(s_writer);
+	}
 	
 	//게시판 저장
 	public int insertCommunity(CommunityDTO dto) {

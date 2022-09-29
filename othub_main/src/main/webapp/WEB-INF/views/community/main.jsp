@@ -77,9 +77,10 @@
         <div class="flex">
 			<c:forEach items="${boardlist}" var="board">
 	            <div class="card">
-	                <div class="img"><a href="oneCommunity?s_seq=${board.s_seq }"><img src="images/community/styleimg/${board.imagename1 }"></a></div>
+	                <div class="img"><a href="oneCommunity?s_seq=${board.s_seq }&image=${board.imagename1 }"><img src="images/community/styleimg/${board.imagename1 }"></a></div>
 	                <div class="txt_box">
 	                    <div class="profile clearfix">
+	                    	<div class="profile_img fl"><img src="images/community/profile_default.png"></div>
 	                        <div class="profile_name fl">${board.s_writer }</div>
 	                        <input type="hidden" value=${board.s_seq } id="s_seq">
 	                    </div>
@@ -102,7 +103,7 @@
         </div> 
         <div class="paging"> 
         <% int totalPage = (Integer)request.getAttribute("totalPage");
-			for(int i = 1; i<totalPage; i++){ %>
+			for(int i = 1; i<=totalPage; i++){ %>
 				<a href="community?page=<%=i%>" ><%=i%></a>
 		<%}%>
 		</div>

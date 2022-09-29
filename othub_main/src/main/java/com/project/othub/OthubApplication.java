@@ -15,6 +15,7 @@ import member.MemberDAO;
 @ComponentScan(basePackages = "member")
 @ComponentScan(basePackages = "community")
 @ComponentScan(basePackages = "comment")
+@ComponentScan(basePackages = "pose")
 
 @MapperScan(basePackageClasses = MemberDAO.class)
 @MapperScan(basePackageClasses = CommunityDAO.class)

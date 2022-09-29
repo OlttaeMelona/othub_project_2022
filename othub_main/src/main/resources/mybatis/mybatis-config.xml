@@ -9,7 +9,6 @@
 	<typeAlias type="community.CommunityDTO" alias="communitydto"/>
 	<typeAlias type="community.LikeDTO" alias="likedto"/>
 	<typeAlias type="comment.CommentDTO" alias="commentdto"/>
-	
 </typeAliases>
 
 
