@@ -26,7 +26,7 @@ public class AdminController {
 	@RequestMapping("/adminpage")
 	public String adminPage() {
 		return "admin/adminpage";
-	}
+	} 
 	
 	//관리자 로그인
 	@PostMapping("/adminloginprocess")
