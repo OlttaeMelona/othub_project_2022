@@ -93,8 +93,6 @@ else{%>
 		<div> 수량선택 <input type=text id="amount" name="amount" ></div>
 		<div> 구매하기 <input type=button id="orderbtn"> </div>
 		<div> 장바구니 </div>
-	 	<% String m_id ="";
-		m_id = (String)session.getAttribute("m_id"); %>
 	</div>
 	<div id="div"></div>
 	<!-- footer include -->
