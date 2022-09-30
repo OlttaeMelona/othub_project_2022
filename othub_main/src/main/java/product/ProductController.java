@@ -11,9 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/product/*")
 public class ProductController {
 
 	@Inject
@@ -26,36 +26,49 @@ public class ProductController {
 	
 	 //전체
 	 @RequestMapping(value = "/list", method = RequestMethod.GET)
-	 public void getList(@RequestParam("c") int category_id, Model model) throws Exception {
+	 public ModelAndView getList(@RequestParam("c") int category_id, Model model) throws Exception {
 	  logger.info("get llist");
 	  
 	  List<ProductDTO> list = null;
 		list = productService.list(category_id);
 	 
 	  model.addAttribute("list", list);
+	  
+	  ModelAndView mv = new ModelAndView();
+		mv.setViewName("product/list");
+		return mv;
+	  
 	 }
 	 
 	 
 	 //좋아요순
 	 @RequestMapping(value = "/listlike", method = RequestMethod.GET)
-	 public void getListLike(@RequestParam("c") int category_id, Model model) throws Exception {
+	 public ModelAndView getListLike(@RequestParam("c") int category_id, Model model) throws Exception {
 	  logger.info("get llike");
 	  
 	  List<ProductDTO> like = null;
 		like = productService.orderByLike(category_id);
 	 
 	  model.addAttribute("like", like);
+	  
+	    ModelAndView mv = new ModelAndView();
+		mv.setViewName("product/listlike");
+		return mv;
 	 }
 	 
 	 //최신순
 		 @RequestMapping(value = "/listrecent", method = RequestMethod.GET)
-		 public void getListRecent(@RequestParam("c") int category_id, Model model) throws Exception {
+		 public ModelAndView getListRecent(@RequestParam("c") int category_id, Model model) throws Exception {
 		  logger.info("get lrecent");
 		  
 		  List<ProductDTO> recent = null;
 		  recent = productService.orderByRecent(category_id);
 		 
 		  model.addAttribute("recent", recent);
+		  
+		  ModelAndView mv = new ModelAndView();
+			mv.setViewName("product/listrecent");
+			return mv;
 		 }
 	 
 	 

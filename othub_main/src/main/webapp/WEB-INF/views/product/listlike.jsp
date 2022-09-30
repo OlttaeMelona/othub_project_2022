@@ -31,8 +31,8 @@ $(document).ready(function() {
 
 <c:forEach items="${like}" var="like" end="0" >
 <div id="productlist">
- <a href="/othub/product/listrecent?c=${like.category_id}"> 최신순 </a> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
- <a href="/othub/product/listlike?c=${like.category_id}"> 인기순 </a>
+ <a href="/listrecent?c=${like.category_id}"> 최신순 </a> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
+ <a href="/listlike?c=${like.category_id}"> 인기순 </a>
 </div>
 </c:forEach>
 
@@ -42,7 +42,7 @@ $(document).ready(function() {
      <img src="${like.p_image1}">
     </div>   
     <div class="p_name">
-     <a href="/product/view?n=${like.p_name}">${like.p_name}</a>
+     <a href="/view?n=${like.p_name}">${like.p_name}</a>
     </div>
     <div class="p_brand">
      📍 ${like.p_brand}

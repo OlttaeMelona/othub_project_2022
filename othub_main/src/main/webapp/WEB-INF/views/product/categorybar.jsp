@@ -31,11 +31,11 @@ width:200px;} */
 			</div>-->
 			
 				<ul class="nav_category">
-					<li><a href="/othub/product/list?c=1">상의</a></li>
-					<li><a href="/othub/product/list?c=2">하의</a></li>
-					<li><a href="/othub/product/list?c=3">아우터</a></li>
-					<li><a href="/othub/product/list?c=4">신발</a></li>
-					<li><a href="/othub/product/list?c=5">가방</a></li>
+					<li><a href="/list?c=1">상의</a></li>
+					<li><a href="/list?c=2">하의</a></li>
+					<li><a href="/list?c=3">아우터</a></li>
+					<li><a href="/list?c=4">신발</a></li>
+					<li><a href="/list?c=5">가방</a></li>
 				</ul>
 			
 		</nav>

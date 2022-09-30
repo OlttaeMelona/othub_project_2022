@@ -31,8 +31,8 @@ $(document).ready(function() {
 
 <c:forEach items="${recent}" var="recent" end="0" >
 <div id="productlist">
- <a href="/othub/product/listrecent?c=${recent.category_id}"> 최신순 </a> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
- <a href="/othub/product/listlike?c=${recent.category_id}"> 인기순 </a>
+ <a href="/listrecent?c=${recent.category_id}"> 최신순 </a> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
+ <a href="/listlike?c=${recent.category_id}"> 인기순 </a>
 </div>
 </c:forEach>
 
