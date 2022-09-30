@@ -19,6 +19,7 @@ import showroom.ShowroomDAO;
 @ComponentScan(basePackages = "comment")
 @ComponentScan(basePackages = "admin")
 @ComponentScan(basePackages = "showroom")
+@ComponentScan(basePackages = "product")
 
 @MapperScan(basePackageClasses = MemberDAO.class)
 @MapperScan(basePackageClasses = CommunityDAO.class)

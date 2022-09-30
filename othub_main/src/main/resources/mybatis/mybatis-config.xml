@@ -11,6 +11,7 @@
 	<typeAlias type="comment.CommentDTO" alias="commentdto"/>
 	<typeAlias type="admin.AdminDTO" alias="admindto"/>
 	<typeAlias type="showroom.ShowroomDTO" alias="showroomdto"/>
+	<typeAlias type="product.ProductDTO" alias="productdto"/>
 	
 </typeAliases>
 
