@@ -12,6 +12,9 @@
 	<typeAlias type="admin.AdminDTO" alias="admindto"/>
 	<typeAlias type="showroom.ShowroomDTO" alias="showroomdto"/>
 	<typeAlias type="product.ProductDTO" alias="productdto"/>
+	<typeAlias type="shop.ShopDTO" alias="shopdto"/>
+	<typeAlias type="productdetail.ProductdetailDTO" alias="productdetaildto"/>
+	<typeAlias type="order.OrderDTO" alias="orderdto"/>
 	
 </typeAliases>
 
