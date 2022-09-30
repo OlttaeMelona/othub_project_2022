@@ -43,7 +43,7 @@ public class AdminController {
 		}
 		else { //로그인 실패
 			mv.setViewName("admin/adminlogin");
-			mv.addObject("message", "error");
+			mv.addObject("message", "error"); 
 		}
 		return mv;
 	}
