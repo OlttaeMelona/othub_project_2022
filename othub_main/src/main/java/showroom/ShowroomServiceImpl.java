@@ -44,8 +44,8 @@ public class ShowroomServiceImpl implements ShowroomService {
 	
 	//게시글 등록
 	@Override
-	public ShowroomDTO insertShowroom(ShowroomDTO dto) throws Exception {
-		return dao.insertShowroom(dto);
+	public void insertShowroom(ShowroomDTO dto) throws Exception {
+		dao.insertShowroom(dto);
 	}
 	
 	//게시글 수정

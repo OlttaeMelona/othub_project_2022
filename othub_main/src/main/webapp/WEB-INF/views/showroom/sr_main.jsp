@@ -8,6 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>ShowRoom | OtHub</title>
 	<!-- css, javascript -->
+	<link href="css/showroom/common.css" rel="stylesheet">
 	<script src="js/jquery-3.6.0.min.js"></script>
 	<script>
 		$(document).ready(function() {
@@ -23,17 +24,17 @@
 	<main>
 		<section class="main showroom">
 			<ul class="lookup">
-				<li><a herf="">최신</a></li>
-				<li><a herf="">조회순</a></li>
+				<li><a href="">쇼룸 둘러보기</a></li>
+				<li><a href="">조회순</a></li>
 			</ul>
 			<%if(a_id != null){%> 
-			<div class="writeBtn"><a herf="">글쓰기</a></div>
+			<div class="writeBtn"><a href="sr_writing">글쓰기</a></div>
 			<%}%>
 			<article class="card">
 			</article>
 		</section>
 	</main>
- 
+
 	<!-- footer include -->
 	<%@include file="../include/footer.jsp"%>
 </body>
