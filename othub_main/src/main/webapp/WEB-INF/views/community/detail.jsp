@@ -23,7 +23,6 @@
     <!-- css, javascript -->
 	<link href="css/lookbook/board/import.css" rel="stylesheet">
 	<link href="css/lookbook/board/common.css" rel="stylesheet">
-	<link href="css/lookbook/board/comment.css" rel="stylesheet">
 	<script src="js/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {

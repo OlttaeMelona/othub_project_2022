@@ -1,5 +1,7 @@
 package member;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -111,6 +113,35 @@ public class MemberController {
 			return "main/index";
 		}
 		
+	//회원 리스트 불러오기(가입일자 순)
+		@RequestMapping("/memberlist")
+		public ModelAndView memberlist() throws Exception {
+			List<MemberDTO> memberlist = service.selectMemberList();
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("memberlist",memberlist);
+			mv.setViewName("admin/memberlist");
+			return mv;
+		}
+		
+	//회원 리스트 불러오기(id 순)
+		@RequestMapping("/memberlistid")
+		public ModelAndView memberlistId() throws Exception {
+			List<MemberDTO> memberlist = service.selectMemberListId();
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("memberlist",memberlist);
+			mv.setViewName("admin/memberlist");
+			return mv;
+		}
+		
+	//회원 리스트 불러오기(이름 순)
+		@RequestMapping("/memberlistname")
+		public ModelAndView memberlistName() throws Exception {
+			List<MemberDTO> memberlist = service.selectMemberListName();
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("memberlist",memberlist);
+			mv.setViewName("admin/memberlist");
+			return mv;
+		}
 }
 
 

@@ -32,5 +32,24 @@
 <delete id="deleteMember" parameterType="String">
 delete from member where m_id=#{m_id}
 </delete>
+
+<!-- 모든 회원정보 조회 -->
+<!-- 회원리스트 조회(가입일순) -->
+<select id="selectMemberList" resultType="memberdto">
+	select m_id,m_pw,m_name,m_email,m_phone,m_sex,m_address,m_regdate from member order by m_regdate desc
+</select>
+
+<!-- 회원리스트 조회(id순) -->
+<select id="selectMemberListId" resultType="memberdto">
+	select m_id,m_pw,m_name,m_email,m_phone,m_sex,m_address,m_regdate from member order by m_id
+</select>
+
+<!-- 회원리스트 조회(이름) -->
+<select id="selectMemberListName" resultType="memberdto">
+	select m_id,m_pw,m_name,m_email,m_phone,m_sex,m_address,m_regdate from member order by m_name
+</select>
+
+
+
 </mapper>
 

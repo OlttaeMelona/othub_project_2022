@@ -53,7 +53,8 @@ public class CommunityController {
 	public ModelAndView communityListPaging(@RequestParam(value="page",defaultValue = "1") int page,HttpServletRequest request) {
 		int totalPage = commuserive.countCommunity(); //전체 게시물 수 조회
 		List<CommunityDTO> communityListPaging = commuserive.limitCommunity(page);
-		System.out.println(totalPage);
+
+		System.out.println(communityListPaging.get(0).imagename1);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("totalPage", totalPage);
 		mv.addObject("boardlist",communityListPaging);

@@ -5,21 +5,29 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
+import admin.AdminDAO;
 import comment.CommentDAO;
 import community.CommunityDAO;
 import member.MemberDAO;
+import showroom.ShowroomDAO;
 
 @SpringBootApplication
 @ComponentScan
-@ComponentScan(basePackages = "controller")
+@ComponentScan(basePackages = "controller") 
 @ComponentScan(basePackages = "member")
 @ComponentScan(basePackages = "community")
 @ComponentScan(basePackages = "comment")
 @ComponentScan(basePackages = "pose")
 
+@ComponentScan(basePackages = "admin")
+@ComponentScan(basePackages = "showroom")
+
+
 @MapperScan(basePackageClasses = MemberDAO.class)
 @MapperScan(basePackageClasses = CommunityDAO.class)
 @MapperScan(basePackageClasses = CommentDAO.class)
+@MapperScan(basePackageClasses = AdminDAO.class)
+@MapperScan(basePackageClasses = ShowroomDAO.class)
 public class OthubApplication {
 
 	public static void main(String[] args) {
