@@ -35,11 +35,7 @@ public class AdminServiceImpl implements AdminService {
 	public void deleteAdmin(String a_id) throws Exception{
 		dao.deleteAdmin(a_id);
 	}
-	@Override
-	public List<MemberDTO> selectMemberList() throws Exception {
-		return dao.selectMemberList();
-		
-	}
+
 	
 	
 
