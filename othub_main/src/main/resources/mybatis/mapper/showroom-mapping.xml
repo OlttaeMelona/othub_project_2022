@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- <mapper namespace="showroom.ShowroomDTO">
+ <mapper namespace="showroom.ShowroomDAO">
  
  	<!-- 전체 게시물 조회 -->
 	<select id="showroomList" resultType="showroomdto">
@@ -10,12 +10,12 @@
 	
 	<!-- 최신순 -->
  	<select id="newList" resultType="showroomdto" parameterType="int">
- 		select * from showroom order writingtime desc
+ 		select * from showroom order by sr_writingtime desc
  	</select>
  	
  	<!-- 조회순 -->
  	<select id="viewCountList" resultType="showroomdto" parameterType="int">
- 		select * from showroom order viewcount desc
+ 		select * from showroom order by sr_viewcount desc
  	</select>
  
  	<!-- 전체 게시물 총 갯수 -->
@@ -31,9 +31,9 @@
  	<!-- 게시물 등록 -->
  	<insert id="insertShowroom" parameterType="showroomdto">
  		insert into showroom
- 		(sr_writer, sr_title, sr_contents, sr_image1, sr_image1, sr_image1, sr_image1, sr_image1)
+ 		(sr_writer, sr_title, sr_contents, sr_image1, sr_image2, sr_image3, sr_image4, sr_image5)
  		values
- 		(#{sr_writer},#{sr_title},#{sr_content},#{sr_imgname1},#{sr_imgname2},#{sr_imgname3},#{sr_imgname4},#{sr_imgname5})
+ 		(#{sr_writer},#{sr_title},#{sr_contents},#{sr_imgname1},#{sr_imgname2},#{sr_imgname3},#{sr_imgname4},#{sr_imgname5})
  	</insert>
  	
  	<!-- 게시물 수정 -->

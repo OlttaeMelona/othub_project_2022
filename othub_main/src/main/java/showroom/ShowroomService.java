@@ -19,7 +19,7 @@ public interface ShowroomService {
 	public void viewCount(int sr_num) throws Exception;
 	
 	//게시물 등록
-	public ShowroomDTO insertShowroom(ShowroomDTO dto) throws Exception;
+	public void insertShowroom(ShowroomDTO dto) throws Exception;
 	
 	//게시물 수정
 	public void updateShowroom(ShowroomDTO dto) throws Exception;
