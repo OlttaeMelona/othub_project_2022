@@ -1,7 +1,11 @@
 package admin;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import member.MemberDTO;
 
 @Mapper
 @Repository("admindao")
@@ -17,5 +21,8 @@ public interface AdminDAO {
 	
 	//관리자 탈퇴
 	public void deleteAdmin(String a_id) throws Exception;
+	
+	//회원 리스트 조회
+	public List<MemberDTO> selectMemberList() throws Exception;
 
 }
