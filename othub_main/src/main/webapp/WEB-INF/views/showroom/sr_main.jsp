@@ -23,14 +23,48 @@
 	<!-- main container -->
 	<main>
 		<section class="main showroom">
-			<ul class="lookup">
-				<li><a href="">쇼룸 둘러보기</a></li>
-				<li><a href="">조회순</a></li>
-			</ul>
-			<%if(a_id != null){%> 
-			<div class="writeBtn"><a href="sr_writing">글쓰기</a></div>
-			<%}%>
-			<article class="card">
+			<div class="sub_sr_menu">
+				<ul class="lookup">
+					<li><a href="">전체</a></li>
+					<li><a href="">스튜디오</a></li>
+					<li><a href="">사진관</a></li>
+					<li><a href="">사진작가</a></li> 
+				</ul>
+				<%if(a_id != null){%> 
+					<a href="sr_writing"><div class="writeBtn">게시글 등록하기</div></a>
+				<%}%>
+			</div>
+			<hr class="hr">
+			<article class="sr_card_box">
+				<c:forEach items="${sr_newList }" var="showroom">
+					<div class="sr_card">
+						<div class="sr_card_img">
+							<a href="">
+								<img src="images/showroom/user_img/${showroom.sr_imgname1 }">
+							</a> 
+						</div>
+						<div class="sr_card_info">
+							<h3>${showroom.sr_title }</h3>
+							<div class="location">
+								<i class="fa-solid fa-location-dot"></i>
+								<span>${showroom.sr_region }</span>
+							</div>
+							<div class="price">
+								<span class="price_val">${showroom.sr_price } </span>
+								<span class="price_unit">원/시간</span>
+								<%if(a_id != null){ %>
+								<span class="editBtn"><a href="">수정</a></span>
+								<%} %>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+				<div class="sr_paging">
+					<% int totalPage = (Integer)request.getAttribute("sr_totalPage");
+						for(int i = 1; i<= totalPage; i++){ %>
+							<a href="showroom?page=<%=i%>"><%=i%></a> 
+					<%}%>
+				</div>
 			</article>
 		</section>
 	</main>

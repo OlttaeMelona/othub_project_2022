@@ -1,7 +1,10 @@
 package showroom;
 
 import java.io.File;
+import java.util.List;
 import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -10,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
@@ -20,10 +24,14 @@ public class ShowroomController {
 	ShowroomServiceImpl sr_service;
 	
 	
-	//쇼룸 메인페이지
+	//쇼룸 메인페이지(페이징-최신순)
 	@RequestMapping("/showroom")
-	public String main() {
-		return "showroom/sr_main";
+	public String sr_main(@RequestParam(value="page", defaultValue="1") int page, Model model,HttpServletRequest request) throws Exception {
+		List<ShowroomDTO> sr_newList= sr_service.newList(page);
+		int totalPage = sr_service.countPage();
+		model.addAttribute("sr_newList", sr_newList);
+		model.addAttribute("sr_totalPage", totalPage);
+		return "showroom/sr_main"; 
 	}
 	
 	//글쓰기 폼
@@ -33,8 +41,6 @@ public class ShowroomController {
 		model.addAttribute("totalpost", totalpost);
 		return "showroom/sr_writingform";
 	}
-	
-	//
 	
 	//게시글 등록(파일업로드)
 	@PostMapping("/uploadpost")
@@ -77,7 +83,7 @@ public class ShowroomController {
 		}
 		//mysql insert
 		sr_service.insertShowroom(dto);
-		return "showroom/sr_main"; 
+		return "redirect:/showroom"; 
 	}
 	
 	

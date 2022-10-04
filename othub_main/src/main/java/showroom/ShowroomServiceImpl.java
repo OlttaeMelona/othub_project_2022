@@ -1,4 +1,4 @@
-package showroom;
+ package showroom;
 
 import java.util.List;
 
@@ -12,6 +12,7 @@ public class ShowroomServiceImpl implements ShowroomService {
 	@Qualifier("showroomdao")
 	ShowroomDAO dao;
 	
+	
 	//전체 게시물 조회
 	@Override
 	public List<ShowroomDTO> showroomList() throws Exception {
@@ -20,22 +21,38 @@ public class ShowroomServiceImpl implements ShowroomService {
 	
 	//조회순
 	@Override
-	public List<ShowroomDTO> newList(int seq) throws Exception {
-		return dao.newList(seq);
+	public List<ShowroomDTO> newList(int page) throws Exception {
+		int countpage = (page - 1) * 12;
+		return dao.newList(countpage);
 	}
 	
 	//최신순
 	@Override
-	public List<ShowroomDTO> viewCountList(int seq) throws Exception {
-		return dao.viewCountList(seq);
+	public List<ShowroomDTO> viewCountList(int page) throws Exception {
+		int countpage = (page - 1) * 12;
+		return dao.viewCountList(countpage);
 	}
-	
+
 	//게시물 총 갯수
 	@Override
 	public int TotalCountShowroom() throws Exception {
 		return dao.TotalCountShowroom();
 	}
 	
+	//페이지 수
+	@Override
+	public int countPage() throws Exception {
+		int totalPost = dao.TotalCountShowroom();
+		int countPage = 0;
+		if(totalPost % 12 == 0) {
+			countPage = totalPost/12;
+		}
+		else {
+			countPage = totalPost/12 + 1;
+		}
+		return countPage;
+	}
+
 	//조회수 업데이트
 	@Override
 	public void viewCount(int sr_num) throws Exception {

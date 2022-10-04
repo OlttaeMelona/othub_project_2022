@@ -28,12 +28,45 @@
 		<section class="writingform">
 			<form action="uploadpost" method="post" enctype="multipart/form-data">
 				<h3 class="h3">Showroom Editor</h3>
-				<div class="wrt_info">
+				<span class="wrt_info">
 					<span>⭐ No.${totalpost } </span>
 					<span>✒️ ${a_name } 관리자</span>
-					<span>⏱️ <%=Date %></span><br>
+					<span>⏱️ <%=Date %></span>
+				</span>
+				<span class="sr_select_box">
+					<select name="sr_kind" id="sr_kind"  required>
+						<option selected value="">== 유형 선택 ==</option>
+						<option value="스튜디오">스튜디오</option>
+						<option value="사진관">사진관</option>
+						<option value="사진작가">프리랜서 사진작가</option>
+					</select>
+					<select name="sr_region" id="sr_region"  required>
+						<option selected value="">== 지역 선택 ==</option>
+						<option value="서울">서울</option>
+						<option value="인천">인천</option>
+						<option value="경기도">경기도</option>
+						<option value="강원도">강원도</option>
+						<option value="충청북도">충청북도</option>
+						<option value="충청남도">충청남도</option>
+						<option value="경상북도">경상북도</option>
+						<option value="경상남도">경상남도</option>
+						<option value="전라북도">전라북도</option>
+						<option value="전라남도">전라남도</option>
+						<option value="대전">대전</option>
+						<option value="대구">대구</option>
+						<option value="광주">광주</option>
+						<option value="울산">울산</option>
+						<option value="부산">부산</option>
+						<option value="제주도">제주도</option>
+					</select>
+				</span>
+				<div class="sr_input">
+					<input id="sr_title" type="text" name="sr_title" placeholder="제목을 입력해주세요.(상호명)" required>
+					<input id="sr_price" type="number" name="sr_price" placeholder="시간당 가격을 기입해주세요." required>
+					<input id="sr_operatingtime" type="text" name="sr_operatingtime" placeholder="운영시간을 입력해주세요." required>
+					<input id="sr_closed" type="text" name="sr_closed" placeholder="휴무일을 입력해주세요." required>
+					<input id="sr_number" type="text" name="sr_number" placeholder="연락처를 입력해주세요. 02-000-0000" required>
 				</div>
-				<input id="sr_title" type="text" name="sr_title" placeholder="제목을 입력해주세요.">
 				<textarea id="ckeditor" name="sr_contents" placeholder="내용을 입력하세요."></textarea>
 				<div class="file">
 					<span>
@@ -81,13 +114,26 @@
 	        console.error( error );
 	 });
 	
-	//글쓰기폼 미입력,미선택 경고창
+	//미입력,미선택 경고창
+	var kindCheck = document.getElementById("sr_kind");
+	var regionCheck = document.getElementById("sr_region");
 	var titleCheck = document.getElementById("sr_title");
 	var fileCheck = document.getElementById("sr_image1");
 	function sr_fileCheck(){
-		if(titleCheck.value == ''){
+		if(kindCheck.value == ''){
+			kindCheck.focus();
+			alert("유형을 선택해주세요.");
+			return false;
+		}
+		else if(regionCheck.value == ''){
+			regionCheck.focus();
+			alert("지역을 선택해주세요.");
+			return false;
+		}
+		else if(titleCheck.value == ''){
 			titleCheck.focus();
 			alert("제목 및 내용을 입력해 주세요.");
+			return false;
 		}
 		else if(!fileCheck.value){
 			alert("이미지 파일을 첨부해 주세요.");

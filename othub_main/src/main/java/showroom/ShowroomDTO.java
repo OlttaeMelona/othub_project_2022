@@ -8,8 +8,16 @@ public class ShowroomDTO {
 	String sr_writer, sr_title, sr_contents, sr_writingtime;
 	String sr_imgname1,sr_imgname2,sr_imgname3,sr_imgname4,sr_imgname5;
 	
+	int sr_price;
+	String sr_kind, sr_operatingtime, sr_closed, sr_region, sr_number;
 	
 	
+	
+	
+	public String[] getImgNamePath() {
+		String[] imgnames = {sr_imgname1,sr_imgname2,sr_imgname3,sr_imgname4,sr_imgname5};
+		return imgnames;
+	}
 	public void setImgNamePath(String sr_imgname1,String sr_imgname2,String sr_imgname3,String sr_imgname4, String sr_imgname5) {
 		this.sr_imgname1 = sr_imgname1;
 		this.sr_imgname2 = sr_imgname2;
@@ -115,12 +123,45 @@ public class ShowroomDTO {
 	public void setSr_imgname5(String sr_imgname5) {
 		this.sr_imgname5 = sr_imgname5;
 	}
-	@Override
-	public String toString() {
-		return "ShowroomDTO [sr_num=" + sr_num + ", viewcount=" + sr_viewcount + ", sr_image1=" + sr_image1
-				+ ", sr_writer=" + sr_writer + ", sr_title=" + sr_title + ", sr_contents=" + sr_contents
-				+ ", sr_writingtime=" + sr_writingtime + "]";
+	public int getSr_price() {
+		return sr_price;
 	}
+	public void setSr_price(int sr_price) {
+		this.sr_price = sr_price;
+	}
+	public String getSr_kind() {
+		return sr_kind;
+	}
+	public void setSr_kind(String sr_kind) {
+		this.sr_kind = sr_kind;
+	}
+	public String getSr_operatingtime() {
+		return sr_operatingtime;
+	}
+	public void setSr_operatingtime(String sr_operatingtime) {
+		this.sr_operatingtime = sr_operatingtime;
+	}
+	public String getSr_closed() {
+		return sr_closed;
+	}
+	public void setSr_closed(String sr_closed) {
+		this.sr_closed = sr_closed;
+	}
+	public String getSr_region() {
+		return sr_region;
+	}
+	public void setSr_region(String sr_region) {
+		this.sr_region = sr_region;
+	}
+	public String getSr_number() {
+		return sr_number;
+	}
+	public void setSr_number(String sr_number) {
+		this.sr_number = sr_number;
+	}
+
+
+	
 	
 	
 	

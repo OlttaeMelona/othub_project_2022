@@ -62,8 +62,10 @@ $(document).ready(function() {
 			}
 		});//ajax
 	});//onclick end
-	
-	
+});//ready end
+</script>
+<script>
+$(document).ready(function() {
 	//댓글등록
 	$("#replyRegist").click(function(){
 		var b_seq = ${oneCommu.s_seq} ;//글번호
