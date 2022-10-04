@@ -30,7 +30,7 @@
 					<li><a href="">사진관</a></li>
 					<li><a href="">사진작가</a></li> 
 				</ul>
-				<%if(a_id != null){%> 
+				<%if(role.equals("admin")){%> 
 					<a href="sr_writing"><div class="writeBtn">게시글 등록하기</div></a>
 				<%}%>
 			</div>
@@ -52,7 +52,7 @@
 							<div class="price">
 								<span class="price_val">${showroom.sr_price } </span>
 								<span class="price_unit">원/시간</span>
-								<%if(a_id != null){ %>
+								<%if(role.equals("admin")){ %>
 								<span class="editBtn"><a href="">수정</a></span>
 								<%} %>
 							</div>

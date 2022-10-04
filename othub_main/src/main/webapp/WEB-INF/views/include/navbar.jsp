@@ -25,8 +25,7 @@
 
 	<%//variable
 		String m_id = (String)session.getAttribute("m_id");
-		String a_id = (String)session.getAttribute("a_id");
-		String a_name = (String)session.getAttribute("a_name");
+		String role = (String)session.getAttribute("role");
 	%>
 	
 	<header>
@@ -41,39 +40,36 @@
 				<ul class="nav_user_menu">
 					<!-- 회원 | 관리자 | 로그인 -->
 					<li><% 
-					if(m_id != null){
-						out.print(m_id + "님 환영합니다.");
-					}
-					else if(a_id != null){
-						out.print(a_name + " 관리자님 접속되었습니다.");
-					}
-					else{
+					if(m_id == null){
 						%><a href="login"><%out.print("login");%></a><%
+					}
+					else if(role.equals("admin")){
+						out.print(m_id + " 관리자님 접속되었습니다.");
+					}
+					else if(role.equals("user")){
+						out.print(m_id + "님 환영합니다.");
 					}
 					%></li>
 					<!--마이페이지 | 관리자페이지 | 회원가입-->
 					<li><% 
-					if(m_id != null){
+					if(m_id == null){
+						%><a href="signin"><%out.print("sign up");%></a><%
+					}
+					else if(role.equals("user")){
 						%><a href="mypage"><%out.print("mypage");%></a><%
 					}
-					else if(a_id != null){
+					else if(role.equals("admin")){
 						%><a href="adminpage"><%out.print("AdminPage");%></a><%
-					}
-					else{
-						%><a href="signin"><%out.print("sign up");%></a><%
 					}
 					%></li>
 					<!-- 고객센터 -->
 					<li><a href="">Customer Support</a></li>
 					<!-- 회원로그아웃 | 관리자로그아웃 -->
 					<li><% 
-					if(m_id != null){
+					if(m_id !=null){
 						%><a href="logout"><%out.print("logout");%></a><%
-					}
-					else if(a_id != null){
-						%><a href="adminlogout"><%out.print("Logout");%></a><%
-					}
-					%></li>
+					}%>
+					</li>
 				</ul>
 			</div>
 			<div class="nav_bar2">

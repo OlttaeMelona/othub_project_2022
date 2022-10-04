@@ -66,4 +66,9 @@ public class MemberService  {
 	public List<MemberDTO> selectMemberListName(){
 		return dao.selectMemberListName();
 	}
+	
+	//관리자 회원정보 수정
+	public void updateMemberByAdmin(MemberDTO dto) {
+		dao.updateMemberByAdmin(dto);
+	}
 }

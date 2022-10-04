@@ -25,9 +25,9 @@ public class CommunityService {
 		int countCommunity = dao.countCommunity();
 		int limitPage = 0;
 		if(countCommunity % 16 ==0) {
-			limitPage = countCommunity/10;
+			limitPage = countCommunity/16;
 		}else {
-			limitPage = countCommunity/10 + 1;
+			limitPage = countCommunity/16 + 1;
 		}
 		return limitPage;
 	};

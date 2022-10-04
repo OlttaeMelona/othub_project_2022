@@ -33,11 +33,13 @@ public class MemberController {
 		@PostMapping("/loginprocess")
 		public ModelAndView login_check(@ModelAttribute MemberDTO dto, HttpSession session, HttpServletRequest request) {
 			String name = service.insertCheck(dto);
+			MemberDTO m_dto = service.selectOneMember(dto.getM_id());
 			ModelAndView mv = new ModelAndView();
 			session = request.getSession();
-			
+			System.out.println(m_dto.role);
 			if (name != null) { // 로그인 성공 시
 				session.setAttribute("m_id", dto.getM_id());
+				session.setAttribute("role", m_dto.role);
 				mv.setViewName("member/main");
 			} else { // 로그인 실패 시
 				mv.setViewName("member/login");
@@ -142,18 +144,12 @@ public class MemberController {
 			mv.setViewName("admin/memberlist");
 			return mv;
 		}
+		
+	// 관리자 회원 수정
+		@PostMapping("/updateMemberByAdmin")
+		public String updateMemberByAdmin(MemberDTO dto) {
+			service.updateMemberByAdmin(dto);
+			return "redirect:/memberlist";
+		}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
