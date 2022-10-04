@@ -1,6 +1,6 @@
-package order;
+package cart;
 
-public class OrderDTO {
+public class CartDTO {
 	int p_id;
 	String p_name;
 	String p_sex;
@@ -10,48 +10,6 @@ public class OrderDTO {
 	String p_contents;
 	String p_regdate;
 	String p_image1;
-	public String getM_pw() {
-		return m_pw;
-	}
-	public void setM_pw(String m_pw) {
-		this.m_pw = m_pw;
-	}
-	public String getM_name() {
-		return m_name;
-	}
-	public void setM_name(String m_name) {
-		this.m_name = m_name;
-	}
-	public String getM_address() {
-		return m_address;
-	}
-	public void setM_address(String m_address) {
-		this.m_address = m_address;
-	}
-	public String getM_phone() {
-		return m_phone;
-	}
-	public void setM_phone(String m_phone) {
-		this.m_phone = m_phone;
-	}
-	public String getM_email() {
-		return m_email;
-	}
-	public void setM_email(String m_email) {
-		this.m_email = m_email;
-	}
-	public String getM_sex() {
-		return m_sex;
-	}
-	public void setM_sex(String m_sex) {
-		this.m_sex = m_sex;
-	}
-	public String getM_regdate() {
-		return m_regdate;
-	}
-	public void setM_regdate(String m_regdate) {
-		this.m_regdate = m_regdate;
-	}
 	String p_image2;
 	String p_image3;
 	int p_like;
@@ -70,37 +28,7 @@ public class OrderDTO {
 	String m_email;
 	String m_sex;
 	String m_regdate;
-	
-	public int getTests() {
-		return tests;
-	}
-	public void setTests(int tests) {
-		this.tests = tests;
-	}
-	public int getOrder_id() {
-		return order_id;
-	}
-	public void setOrder_id(int order_id) {
-		this.order_id = order_id;
-	}
-	public String getM_id() {
-		return m_id;
-	}
-	public void setM_id(String m_id) {
-		this.m_id = m_id;
-	}
-	public String getOrderdate() {
-		return orderdate;
-	}
-	public void setOrderdate(String orderdate) {
-		this.orderdate = orderdate;
-	}
-	public int getAmount() {
-		return amount;
-	}
-	public void setAmount(int amount) {
-		this.amount = amount;
-	}
+	int cart_id;
 	public int getP_id() {
 		return p_id;
 	}
@@ -191,4 +119,85 @@ public class OrderDTO {
 	public void setCart_qty(int cart_qty) {
 		this.cart_qty = cart_qty;
 	}
+	public int getOrder_id() {
+		return order_id;
+	}
+	public void setOrder_id(int order_id) {
+		this.order_id = order_id;
+	}
+	public String getM_id() {
+		return m_id;
+	}
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
+	}
+	public String getOrderdate() {
+		return orderdate;
+	}
+	public void setOrderdate(String orderdate) {
+		this.orderdate = orderdate;
+	}
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	public int getTests() {
+		return tests;
+	}
+	public void setTests(int tests) {
+		this.tests = tests;
+	}
+	public String getM_pw() {
+		return m_pw;
+	}
+	public void setM_pw(String m_pw) {
+		this.m_pw = m_pw;
+	}
+	public String getM_name() {
+		return m_name;
+	}
+	public void setM_name(String m_name) {
+		this.m_name = m_name;
+	}
+	public String getM_address() {
+		return m_address;
+	}
+	public void setM_address(String m_address) {
+		this.m_address = m_address;
+	}
+	public String getM_phone() {
+		return m_phone;
+	}
+	public void setM_phone(String m_phone) {
+		this.m_phone = m_phone;
+	}
+	public String getM_email() {
+		return m_email;
+	}
+	public void setM_email(String m_email) {
+		this.m_email = m_email;
+	}
+	public String getM_sex() {
+		return m_sex;
+	}
+	public void setM_sex(String m_sex) {
+		this.m_sex = m_sex;
+	}
+	public String getM_regdate() {
+		return m_regdate;
+	}
+	public void setM_regdate(String m_regdate) {
+		this.m_regdate = m_regdate;
+	}
+	public int getCart_id() {
+		return cart_id;
+	}
+	public void setCart_id(int cart_id) {
+		this.cart_id = cart_id;
+	}
+	
+	
 }
+	

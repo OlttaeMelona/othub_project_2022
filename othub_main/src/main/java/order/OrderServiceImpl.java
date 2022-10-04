@@ -24,4 +24,29 @@ public class OrderServiceImpl implements OrderService {
 	public int getOrderid() {
 		return dao.getOrderid();
 	}
+	
+	@Override
+	public int getProductid(int o_id) {
+		return dao.getProductid(o_id);
+	}
+	
+	@Override
+	public OrderDTO getOrders(int o_id) {
+		return dao.getOrders(o_id);
+	}
+	
+	@Override
+	public OrderDTO getMember(String m_id) {
+		return dao.getMember(m_id);
+	}
+	
+	@Override
+	public void doOrder(int order_id) {
+		dao.doOrder(order_id);
+	}
+	
+	@Override
+	public void cancleOrder(int order_id) {
+		dao.cancleOrder(order_id);
+	}
 }

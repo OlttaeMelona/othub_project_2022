@@ -2,6 +2,9 @@ package productdetail;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -23,12 +26,14 @@ public class ProductdetailController {
 	
 	@ResponseBody
 	@RequestMapping(value="/productdetail", produces = {"application/json;charset=utf-8"})
-	public ModelAndView productdetail(int p_id) {
+	public ModelAndView productdetail(int p_id, HttpServletRequest request) {
 		ProductdetailDTO productdetail = service.getProductdetail(p_id);
-		
+		HttpSession session = request.getSession();
+		String mid = (String)session.getAttribute("m_id");
 		//컨트롤러 - 결전달(model) 출력 - view
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("productdetail", productdetail );
+		mv.addObject("mid", mid);
 		mv.setViewName("productdetail/productdetailmain");
 		
 		return mv;
