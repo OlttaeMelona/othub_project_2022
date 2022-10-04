@@ -36,6 +36,9 @@ public interface MemberDAO {
 	
 	//회원 리스트 조회(이름 순)
 	public List<MemberDTO> selectMemberListName();
+	
+	//관리자 회원정보수정
+	public void updateMemberByAdmin(MemberDTO dto);
 }
 
 

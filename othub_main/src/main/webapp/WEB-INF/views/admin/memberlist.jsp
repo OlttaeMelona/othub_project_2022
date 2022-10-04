@@ -1,32 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MemberList | Othub</title>
     <link href="css/admin/import.css" rel="stylesheet">
     <link href="css/admin/common.css" rel="stylesheet">
-    <script src="js/jquery-3.6.0.min.js"></script>
-
-
-<script src="https://kit.fontawesome.com/95fa5ec673.js" crossorigin="anonymous"></script>
-
-<title>MemberList | Othub</title>
-<script src="js/jquery-3.6.0.min.js"></script>
-<script>
-$(document).ready(function() {
-	
-	
-	});//ready end
-</script>
+	<script src="js/jquery-3.6.0.min.js"></script>
+	<script>
+	$(document).ready(function() {
+		
+		
+		});//ready end
+	</script>
 </head>
 <body>
-
+<!-- navbar include -->
+	<%@include file="../include/navbar.jsp"%>
+	
 <div id="container">
 	<div class="inner">
-	<h1>°¡ÀÔ È¸¿ø Á¤º¸</h1>
+	<h1>ê°€ì… íšŒì› ì •ë³´</h1>
 		<div class= "table">
 			<table id="inventory">
 				<colgroup>
@@ -35,29 +32,60 @@ $(document).ready(function() {
 				</colgroup>
 				<thead>
 					<tr>
-						<th>¾ÆÀÌµğ</th>
-						<th>ºñ¹Ğ¹øÈ£</th>
-						<th>ÀÌ¸§</th>
-						<th>ÁÖ¼Ò</th>
-						<th>Æù</th>
-						<th>ÀÌ¸ŞÀÏ</th>
-						<th>¼ºº°</th>
-						<th>°¡ÀÔÀÏÀÚ</th>
+						<th>ì•„ì´ë””</th>
+						<th>ë¹„ë°€ë²ˆí˜¸</th>
+						<th>ì´ë¦„</th>
+						<th>ì£¼ì†Œ</th>
+						<th>í°</th>
+						<th>ì´ë©”ì¼</th>
+						<th>ì„±ë³„</th>
+						<th>ê°€ì…ì¼ì</th>
+						<th>ë“±ê¸‰</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${memberlist }" var="member">
 					<tr class="styleone">
 						<div>
+						<form action ="updateMemberByAdmin" method="post">
 						<td><input type="text" value="${member.m_id}" name="m_id"></td>
-						<td><input type="text" value="${member.m_pw }" name="m_pw"></td>
-						<td><input type="text" value="${member.m_name }" name="m_name"></td>
-						<td><input type="text" value="${member.m_address }" name="m_address"></td>
-						<td><input type="text" value="${member.m_phone}" name="m_phone" class="phone"></td>
-						<td><input type="text" value="${member.m_email }" name="m_email" class="email"></td>
-						<td><input type="text" value="${member.m_sex}" name="m_sex"></td>
+						<td>${member.m_pw }</td>
+						<td>${member.m_name }</td>
+						<td>${member.m_address }</td>
+						<td>${member.m_phone}</td>
+						<td>${member.m_email }</td>
+						<td>${member.m_sex}</td>
 						<td>${member.m_regdate }</td>
-						<td class="deletemember"><button>È¸¿øÅ»Åğ</button></td>
+						<td>
+							<select name="role">
+								<c:if test="${member.role.equals('admin') }">
+								    <option value="${member.role}">${member.role}</option>
+								    <option value="user">user</option>
+								</c:if>
+								<c:choose>
+									<c:when test="${member.role.equals('user')}">
+									<option value="${member.role}">${member.role}</option>
+								    <option value="general">general</option>
+								    <option value="vip">vip</option>
+								    <option value="admin">admin</option>
+								    </c:when>
+								    <c:when test="${member.role.equals('general')}">
+									<option value="${member.role}">${member.role}</option>
+								    <option value="user">user</option>
+								    <option value="vip">vip</option>
+								    <option value="admin">admin</option>
+								    </c:when>
+								    <c:when test="${member.role.equals('vip')}">
+									<option value="${member.role}">${member.role}</option>
+								    <option value="user">user</option>
+								    <option value="general">general</option>
+								    <option value="admin">admin</option>
+								    </c:when>
+								</c:choose>>    
+							</select>
+						</td>
+						<td class="deletemember"><button type="submit">ìˆ˜ì •</button></td>
+						</form>
 						</div>
 					</tr>
 					</c:forEach>
@@ -66,5 +94,7 @@ $(document).ready(function() {
 		</div>
 	</div>
 </div>
+	<!-- footer include -->
+	<%@include file="../include/footer.jsp" %>
 </body>
 </html>
