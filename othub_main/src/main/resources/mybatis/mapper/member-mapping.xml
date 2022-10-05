@@ -5,7 +5,8 @@
 	
 <!-- 회원가입 -->
 <insert id="insertMember" parameterType="memberdto" >
- insert into member values (#{m_id},#{m_pw},#{m_name},#{m_address},#{m_phone},#{m_email},#{m_sex},now()) 
+ insert into member(m_id,m_pw,m_name,m_address,m_phone,m_email,m_sex) 
+ values (#{m_id},#{m_pw},#{m_name},#{m_address},#{m_phone},#{m_email},#{m_sex}) 
 </insert>
 
 <!-- 회원가입확인 -->
@@ -32,5 +33,18 @@
 <delete id="deleteMember" parameterType="String">
 delete from member where m_id=#{m_id}
 </delete>
+
+<!-- 모든 회원정보 조회 -->
+<!-- 회원리스트 조회 -->
+<select id="selectMemberList" resultType="memberdto">
+	select m_id,m_pw,m_name,m_email,m_phone,m_sex,m_address,m_regdate,role from member order by role
+</select>
+
+<!-- 관리자 회원정보 수정 -->
+<update id="updateMemberByAdmin" parameterType="memberdto" >
+	update member set role=#{role} where m_id=#{m_id}
+</update>
+
+
 </mapper>
 

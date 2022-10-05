@@ -110,7 +110,11 @@ else{%>
 		<div> 가격 ${productdetail.p_price } </div>
 		<div> 수량선택 <input type=text id="amount" name="amount" ></div>
 		<div> 구매하기 <input type=button id="orderbtn"> </div>
+<<<<<<< HEAD
 		<div> 장바구니 <input type=button id="cartbtn"> </div>
+=======
+		<div> 장바구니 </div>
+>>>>>>> branch 'project1' of https://github.com/kdh9413/othub_project_2022.git
 	</div>
 	
 	<!-- footer include -->

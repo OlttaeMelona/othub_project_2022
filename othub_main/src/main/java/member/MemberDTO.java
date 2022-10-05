@@ -1,7 +1,5 @@
 package member;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class MemberDTO {
 
 	String m_id; 
@@ -12,6 +10,7 @@ public class MemberDTO {
 	String m_email; 
 	String m_sex;
 	String m_regdate;
+	String role;
 	
 	public MemberDTO(){ }
 	
@@ -41,6 +40,14 @@ public class MemberDTO {
 
 	public void setM_pw(String m_pw) {
 		this.m_pw = m_pw;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public String getM_name() {
@@ -90,6 +97,9 @@ public class MemberDTO {
 	public void setM_regdate(String m_regdate) {
 		this.m_regdate = m_regdate;
 	}
+
+
+	
 
 	
 	

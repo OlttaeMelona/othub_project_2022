@@ -11,10 +11,10 @@ public interface ShowroomDAO {
 	public List<ShowroomDTO> showroomList() throws Exception;
 	
 	//최신순
-	public List<ShowroomDTO> newList(int seq) throws Exception;
+	public List<ShowroomDTO> newList(int page) throws Exception;
 	
 	//조회순
-	public List<ShowroomDTO> viewCountList(int seq) throws Exception;
+	public List<ShowroomDTO> viewCountList(int page) throws Exception;
 	
 	//게시물 총 갯수
 	public int TotalCountShowroom() throws Exception;
@@ -23,7 +23,7 @@ public interface ShowroomDAO {
 	public void viewCount(int sr_num) throws Exception;
 	
 	//게시물 등록
-	public ShowroomDTO insertShowroom(ShowroomDTO dto) throws Exception;
+	public void insertShowroom(ShowroomDTO dto) throws Exception;
 	
 	//게시물 수정
 	public void updateShowroom(ShowroomDTO dto) throws Exception;

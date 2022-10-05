@@ -1,8 +1,12 @@
 package admin;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
+import member.MemberDTO;
 
 @Service("adminservice")
 public class AdminServiceImpl implements AdminService {
@@ -31,5 +35,8 @@ public class AdminServiceImpl implements AdminService {
 	public void deleteAdmin(String a_id) throws Exception{
 		dao.deleteAdmin(a_id);
 	}
+
+	
+	
 
 }

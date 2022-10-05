@@ -1,5 +1,7 @@
 package member;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -25,6 +27,18 @@ public interface MemberDAO {
 
 	//회원탈퇴
 	public void deleteMember(String m_id);
+	
+	//회원 리스트 조회(가입일자 순)
+	public List<MemberDTO> selectMemberList();
+	
+	//회원 리스트 조회(아이디 순)
+	public List<MemberDTO> selectMemberListId();
+	
+	//회원 리스트 조회(이름 순)
+	public List<MemberDTO> selectMemberListName();
+	
+	//관리자 회원정보수정
+	public void updateMemberByAdmin(MemberDTO dto);
 }
 
 

@@ -1,5 +1,9 @@
 package admin;
 
+import java.util.List;
+
+import member.MemberDTO;
+
 public interface AdminService {
 	//관리자 로그인
 	public AdminDTO adminLogin(AdminDTO dto) throws Exception;
@@ -12,5 +16,7 @@ public interface AdminService {
 	
 	//관리자 탈퇴
 	public void deleteAdmin(String a_id) throws Exception;
+	
+
 	
 }

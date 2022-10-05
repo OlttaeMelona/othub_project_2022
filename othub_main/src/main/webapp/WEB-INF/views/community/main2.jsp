@@ -102,7 +102,7 @@
         </div> 
         <div class="paging"> 
         <% int totalPage = (Integer)request.getAttribute("totalPage");
-			for(int i = 1; i<totalPage; i++){ %>
+			for(int i = 1; i<=totalPage; i++){ %>
 				<a href="community?page=<%=i%>" ><%=i%></a>
 		<%}%>
 		</div>
