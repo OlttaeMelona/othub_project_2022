@@ -75,7 +75,7 @@
 			<div class="nav_bar2">
 				<div class="nav_main_menu">
 					<span><a href="community">룩북</a></span>
-					<span><a href="/list?c=1">쇼핑몰</a></span>
+					<span><a href="/listrecom?c=1">쇼핑몰</a></span>
 					<span><a href="showroom">쇼룸</a></span>
 				</div>
 			</div>
