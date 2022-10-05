@@ -36,23 +36,40 @@ a:hover{text-decoration: none;}
 	font-size: 18px;
 	color: #333;
 }
+
+.nav2 li a:hover{
+	background-color:  #E9E4F0;
+	border :1px solid #E9E4F0;
+	color :  rgb(27, 27, 27);
+	font-weight : 400;
+}
+
 .nav2 li.on a{
 	color: #ffffff;
 	background: #744eff;
 }
 
 .nav2 li.writing a{
-	padding: 4px 14px;
+	padding: 0.8em 2em 0.5em;
 	border-radius: 10px;
 	float :none;
 	margin-left : 830px;
 	margin-top: 5px;
 	font-size: 16px;
 	color: black;
-
-	border : 1px solid #2f53ff;
+	text-align : center;
+	border : 1px solid  rgb(192, 192, 192);
+	border-radius : 0.2em;
 
 }
+
+.nav2 li.writing a:hover {
+	background-color:  #E9E4F0;
+	border :1px solid #E9E4F0;
+	color :  rgb(27, 27, 27);
+	font-weight : 400;
+}
+
 .flex{
 	display: flex;
 	flex-wrap: wrap;
@@ -160,5 +177,28 @@ display: block;
 .pagingnation li{
 	float: left;
 }
+span {
+	display: inline-block;
+}
 	
+.file span label {
+	margin-top: 5px;
+	padding: 8px 15px;;
+	border: 1px solid rgb(236, 236, 236);
+	background-color:  rgb(236, 236, 236);
+	display: inline-block;
+	color: #888;
+	font-size: inherit;
+	vertical-align: middle;
+	cursor: pointer;
+}
 	
+.file span input[type="file"] {
+	position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    clip:rect(0,0,0,0);
+    border: 0;
+}

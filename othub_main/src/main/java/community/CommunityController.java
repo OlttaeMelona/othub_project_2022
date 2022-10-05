@@ -2,6 +2,7 @@ package community;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,6 +13,7 @@ import javax.websocket.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -54,7 +56,6 @@ public class CommunityController {
 		int totalPage = commuserive.countCommunity(); //전체 게시물 수 조회
 		List<CommunityDTO> communityListPaging = commuserive.limitCommunity(page);
 
-		System.out.println(communityListPaging.get(0).imagename1);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("totalPage", totalPage);
 		mv.addObject("boardlist",communityListPaging);
@@ -62,7 +63,7 @@ public class CommunityController {
 		return mv;
 	}
 	
-	//전체 게시물 조회(페이징,인기순) -- 안댐
+	//전체 게시물 조회(페이징,인기순)
 	@GetMapping("/communitylike")
 	public ModelAndView communityListPaginglike(@RequestParam(value="page",defaultValue = "1") int page) {
 		int totalPage = commuserive.countCommunity(); //전체 게시물 수 조회
@@ -79,13 +80,27 @@ public class CommunityController {
 	public ModelAndView mycommunityListPaging(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String s_writer = (String)session.getAttribute("m_id");
-
+		
 		List<CommunityDTO> communityListPaging = commuserive.myCommunity(s_writer);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("boardlist",communityListPaging);
 		mv.setViewName("community/myboard");
 		return mv;
 	}
+	
+	//내 게시물 조회
+	@GetMapping("/mylikecommunity")
+	public ModelAndView mylikecommunityListPaging(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String m_id = (String)session.getAttribute("m_id");
+		
+		List<CommunityDTO> communityListPaging = commuserive.myLikeCommunity(m_id);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("boardlist",communityListPaging);
+		mv.setViewName("community/mylike");
+		return mv;
+	}
+	
 	
 	//글쓰기
 	@GetMapping("/writingcommunity")

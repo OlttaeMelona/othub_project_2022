@@ -30,7 +30,7 @@
 					<li><a href="">사진관</a></li>
 					<li><a href="">사진작가</a></li> 
 				</ul>
-				<%if(role.equals("admin")){%> 
+				<%if(role != null && role.equals("admin")){%> 
 					<a href="sr_writing"><div class="writeBtn">게시글 등록하기</div></a>
 				<%}%>
 			</div>

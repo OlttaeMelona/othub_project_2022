@@ -47,7 +47,7 @@ public class ShowroomController {
 	public String writingprocsee(@ModelAttribute("dto") ShowroomDTO dto) throws Exception{
 		
 		//저장경로-각자 pc에 맞는 경로로 변경
-		String savePath ="C:\\ai_platfrom\\workspace_boot\\othub_space\\src\\main\\resources\\static\\images\\showroom\\user_img\\";
+		String savePath ="C:\\othub\\othub_project_2022\\othub_main\\src\\main\\resources\\static\\images\\showroom\\user_img\\";
 		//파일업로드
 		MultipartFile[] mf = {dto.getSr_image1(),dto.getSr_image2(),dto.getSr_image3(),dto.getSr_image4(),dto.getSr_image5()};
 		String[] originalnames = new String[5];

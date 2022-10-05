@@ -70,7 +70,7 @@
         <ul class="nav2 clearfix">
         	<li class="fl" id="array"><a href="community">최신</a></li>
             <li class="fl on" id="array"><a href="communitylike">인기</a></li>
-            <li class="fl" id="array"><a href="#">팔로잉</a></li>
+            <li class="fl" id="array"><a href="mylikecommunity">좋아요</a></li>
             <%if(session.getAttribute("m_id") != null){%>
             <li class="fl writing" id="writing"><a href="writingcommunity">글쓰기</a></li><%} %>
         </ul>
