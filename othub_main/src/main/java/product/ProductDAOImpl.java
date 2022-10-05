@@ -29,7 +29,7 @@ public class ProductDAOImpl implements ProductDAO {
 		return null;
 	}
 
-
+	private static String namespace = "product";
 
 	@Override
 	public List<ProductDTO> orderByLike(int category_id) {
@@ -42,8 +42,16 @@ public class ProductDAOImpl implements ProductDAO {
 	public List<ProductDTO> orderByRecent(int category_id) {
 		return sqlSession.selectList(namespace + ".recent", category_id);
 	}
+	
+	
+	
 
-	private static String namespace = "product";
+	@Override
+	public List<ProductDTO> orderByRecom(int category_id) {
+		return sqlSession.selectList(namespace + ".recom", category_id);
+	}
+
+
 
 	@Override
 	public List<ProductDTO> list(int category_id) throws Exception {

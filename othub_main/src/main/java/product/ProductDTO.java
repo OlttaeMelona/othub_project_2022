@@ -11,6 +11,7 @@ public class ProductDTO {
 	private String p_stock;
 	private String p_contents;
 	private String p_regdate;
+	private String p_thumb;
 	private String p_image1;
 	private String p_image2;
 	private String p_image3;
@@ -26,7 +27,7 @@ public class ProductDTO {
 	//매개변수 있는 생성자
 	public ProductDTO(String p_id, String p_name, String p_sex,
 			String p_brand, int p_price, String p_stock, String p_contents,
-			String p_regdate, String p_image1, String p_image2, String p_image3,
+			String p_regdate, String p_tumb, String p_image1, String p_image2, String p_image3,
 			String p_like, String p_viewcount, String category_id) {
 		this.p_id = p_id;
 		this.p_name = p_name;
@@ -36,6 +37,7 @@ public class ProductDTO {
 		this.p_stock = p_stock;
 		this.p_contents = p_contents;
 		this.p_regdate = p_regdate;
+		this.p_thumb = p_thumb;
 		this.p_image1 = p_image1;
 		this.p_image2 = p_image2;
 		this.p_image3 = p_image3;
@@ -156,14 +158,26 @@ public class ProductDTO {
 	public void setCategory_id(String category_id) {
 		this.category_id = category_id;
 	}
+	
+	
+
+	public String getP_thumb() {
+		return p_thumb;
+	}
+
+	public void setP_thumb(String p_thumb) {
+		this.p_thumb = p_thumb;
+	}
 
 	@Override
 	public String toString() {
 		return "ProductDTO [p_id=" + p_id + ", p_name=" + p_name + ", p_sex=" + p_sex + ", p_brand=" + p_brand
 				+ ", p_price=" + p_price + ", p_stock=" + p_stock + ", p_contents=" + p_contents + ", p_regdate="
-				+ p_regdate + ", p_image1=" + p_image1 + ", p_image2=" + p_image2 + ", p_image3=" + p_image3
-				+ ", p_like=" + p_like + ", p_viewcount=" + p_viewcount + ", category_id=" + category_id + "]";
+				+ p_regdate + ", p_thumb=" + p_thumb + ", p_image1=" + p_image1 + ", p_image2=" + p_image2
+				+ ", p_image3=" + p_image3 + ", p_like=" + p_like + ", p_viewcount=" + p_viewcount + ", category_id="
+				+ category_id + "]";
 	}
+
 	
 	
 	

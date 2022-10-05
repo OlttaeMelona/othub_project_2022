@@ -37,6 +37,13 @@ public class ProductServiceImpl implements ProductService {
 	public List<ProductDTO> orderByRecent(int category_id) {
 		return productDao.orderByRecent(category_id);
 	}
+	
+
+
+	@Override
+	public List<ProductDTO> orderByRecom(int category_id) {
+		return productDao.orderByRecom(category_id);
+	}
 
 
 	@Override
