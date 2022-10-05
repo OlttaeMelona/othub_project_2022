@@ -28,12 +28,20 @@
 		order by s_like desc limit #{limit}, 16
 	</select>
 	
-	<!-- 내 게시물 조회-->
+	<!-- 페이징 내 게시물 조회-->
 	<select id="myCommunity" resultType="communitydto" parameterType="String">
 		select s_seq,s_title,s_contents,s_writer,s_viewcount,s_writingtime,
 		s_image1 as imagename1, s_image2 as imagename2, s_image2 as imagename2, s_like from styletab
 		where s_writer = #{s_writer}
 	</select>
+	
+	<!-- 좋아요한 게시물 번호 조회-->
+	<select id="myLikeCommunity" resultType="communitydto" parameterType="String">
+		select styletab.s_seq,s_title,s_contents,s_writer,s_viewcount,s_writingtime,
+		s_image1 as imagename1, s_image2 as imagename2, s_image2 as imagename2, s_like 
+		from boardlike inner join styletab on boardlike.s_seq = styletab.s_seq where boardlike.m_id = #{m_id};
+	</select>
+	
 	
 	<!-- 게시물 저장 -->
 	<insert id="insertCommunity" parameterType="communitydto" >

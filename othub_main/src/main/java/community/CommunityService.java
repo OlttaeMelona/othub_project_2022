@@ -50,8 +50,12 @@ public class CommunityService {
 	}
 	//페이징(내 게시물)
 	public List<CommunityDTO> myCommunity(String s_writer){
-
 		return dao.myCommunity(s_writer);
+	}
+	
+	//페이징(좋아요한 게시물)
+	public List<CommunityDTO> myLikeCommunity(String m_id) {
+		return dao.myLikeCommunity(m_id);
 	}
 	
 	//게시판 저장
