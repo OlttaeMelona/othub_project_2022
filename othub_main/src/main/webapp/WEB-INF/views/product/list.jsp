@@ -45,7 +45,7 @@ $(document).ready(function() {
       <img src="${list.p_image1}">
     </div>   
     <div class="p_name">
-     <a href="/view?n=${list.p_name}">${list.p_name}</a>
+     <a href="productdetail?p_id=${list.p_id }">${list.p_name }
     </div>
     <div class="p_brand">
      📍 ${list.p_brand}

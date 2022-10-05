@@ -14,23 +14,41 @@
 
 <script>
 $(document).ready(function() {
-	var m_id = m_id;
 	$("#orderbtn").on("click", function(){
 		$.ajax({
 			url: 'ordermain',
-			data: {amount:$("#amount").val(),p_id:${productdetail.p_id},m_id:m_id},
+			data: {amount:$("#amount").val(),p_id:${productdetail.p_id},m_id:"${mid}"},
 			type: 'post',
 			//datatype: 'json',
 			success: function(a){
-				alert('success');
-				$('#div').html("<form action='/ordermain2'>");
-				$('#div').append("<input type=hidden id='order' value=" + a.orderid);
+				alert('order success');
+				let url ="/ordermain2";
+				location.replace(url);
 			},
 			error: function(){
 				alert('error!!');
 			}
 		});//ajax
-	});//onclick
+	});//order click
+	$("#cartbtn").on("click", function(){
+		$.ajax({
+			url: 'insertCart',
+			data: {cart_qty:$("#amount").val(),p_id:${productdetail.p_id},m_id:"${mid}"},
+			type: 'post',
+			success: function(){
+				var result = confirm("장바구니에 상품이 담겼습니다. 장바구니로 이동하시겠습니까?");
+				if(result){
+					location.replace("/goCart?p_id=2");
+				}
+				else{
+					location.replace("/")
+				}
+			},
+			error: function(){
+				alert('cart error!!');
+			}
+		});//ajax
+	});
 });//ready
 
 </script>
@@ -92,13 +110,17 @@ else{%>
 		<div> 가격 ${productdetail.p_price } </div>
 		<div> 수량선택 <input type=text id="amount" name="amount" ></div>
 		<div> 구매하기 <input type=button id="orderbtn"> </div>
+<<<<<<< HEAD
+		<div> 장바구니 <input type=button id="cartbtn"> </div>
+=======
 		<div> 장바구니 </div>
+>>>>>>> branch 'project1' of https://github.com/kdh9413/othub_project_2022.git
 	</div>
-	<div id="div"></div>
+	
 	<!-- footer include -->
 	<%@include file="../include/footer.jsp" %>
 	
-
+	
 	
 </body>
 

@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+<c:forEach var="${cart_list }" items="${cart_list }">
+	${cart_list.m_id }<br>
+</c:forEach>
 
 </body>
 </html>

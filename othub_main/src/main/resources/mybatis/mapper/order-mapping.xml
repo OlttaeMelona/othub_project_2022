@@ -6,7 +6,8 @@
 <!-- 주문입력 호출 -->
 <insert id="insertOrder" parameterType="orderdto">
 	insert into orders (m_id, p_id, amount, orderdate)
-	values(#{m_id}, #{p_id}, #{amount}, now())
+	<!-- values("kdh", #{p_id}, #{amount}, now())  -->
+	values(#{m_id}, #{p_id}, #{amount}, now()) 	
 </insert>
 
 <!-- 이용자 정보 호출 -->
@@ -20,8 +21,27 @@
 </select>
 
 <!-- orderid 호출 -->
-<select id="getOrderid" parameterType="string" resultType="orderdto">
+<select id="getOrderid" resultType="int">
 	select order_id from orders order by orderdate desc limit 1
 </select>
+
+<!-- p_id 호출 -->
+<select id="getProductid" parameterType="int" resultType="int">
+	select p_id from orders where order_id=#{order_id}
+</select>
+
+<!-- orders table 호출 -->
+<select id="getOrders" parameterType="int" resultType="orderdto">
+	select * from orders where order_id=#{o_id}
+</select>
+
+<!-- 주문완료 -->
+<insert id="doOrder" parameterType="int">
+	update orders set order_check = 1 where order_id=${order_id}
+</insert>
+<!-- 주문취소 -->
+<delete id="cancleOrder" parameterType="int">
+	delete from orders where order_id=${order_id}
+</delete>
 </mapper>
 
