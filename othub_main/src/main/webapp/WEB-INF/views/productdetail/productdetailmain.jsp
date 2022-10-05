@@ -38,8 +38,8 @@ $(document).ready(function() {
 			success: function(){
 				var result = confirm("장바구니에 상품이 담겼습니다. 장바구니로 이동하시겠습니까?");
 				if(result){
-					location.replace("/goCart");
-				}?
+					location.replace("/goCart?p_id=2");
+				}
 				else{
 					location.replace("/")
 				}

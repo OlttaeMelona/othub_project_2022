@@ -21,13 +21,13 @@ public class ProductdetailController {
 
 	@Autowired
 	@Qualifier("productdetailservice")
-	ProductdetailService service;
+	ProductdetailService productdetailservice;
 	
 	
 	@ResponseBody
 	@RequestMapping(value="/productdetail", produces = {"application/json;charset=utf-8"})
 	public ModelAndView productdetail(int p_id, HttpServletRequest request) {
-		ProductdetailDTO productdetail = service.getProductdetail(p_id);
+		ProductdetailDTO productdetail = productdetailservice.getProductdetail(p_id);
 		HttpSession session = request.getSession();
 		String mid = (String)session.getAttribute("m_id");
 		//컨트롤러 - 결전달(model) 출력 - view
