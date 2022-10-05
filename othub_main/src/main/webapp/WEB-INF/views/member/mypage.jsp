@@ -35,7 +35,7 @@
 	<ul>
 		<li><a href="updateform">프로필 정보/수정</a></li>
 		<li><a href="">장바구니</a></li>
-		<li><a href="">내 게시글</a></li>
+		<li><a href="mycommunity">내 게시글</a></li>
 		<li></li>
 	</ul>
 </div>	

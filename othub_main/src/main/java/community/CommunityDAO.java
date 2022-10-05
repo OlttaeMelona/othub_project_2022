@@ -23,6 +23,9 @@ public interface CommunityDAO {
 		
 	// 페이징(좋아요)
 		public List<CommunityDTO> likeCommunity(int page);
+		
+	// 페이징(내 게시물)
+		public List<CommunityDTO> myCommunity(String s_writer);
 	
 	// 좋아요 중복 확인
 		public int likeCount(int seq);

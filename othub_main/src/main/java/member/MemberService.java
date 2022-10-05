@@ -47,7 +47,28 @@ public class MemberService  {
 		return cnt;
 	}
 	
+	//회원정보삭제
 	public void deleteMember(String m_id) {
 		 dao.deleteMember(m_id);
+	}
+	
+	//회원 리스트 조회(가입일자순)
+	public List<MemberDTO> selectMemberList(){
+		return dao.selectMemberList();
+	}
+	
+	//회원 리스트 조회(아이디 순)
+	public List<MemberDTO> selectMemberListId(){
+		return dao.selectMemberListId();
+	}
+	
+	//회원 리스트 조회(이름 순)
+	public List<MemberDTO> selectMemberListName(){
+		return dao.selectMemberListName();
+	}
+	
+	//관리자 회원정보 수정
+	public void updateMemberByAdmin(MemberDTO dto) {
+		dao.updateMemberByAdmin(dto);
 	}
 }

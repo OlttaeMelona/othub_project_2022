@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="order.OrderDAO" >
+	
+<!-- 주문입력 호출 -->
+<insert id="insertOrder" parameterType="orderdto">
+	insert into orders (m_id, p_id, amount, orderdate)
+	values(#{m_id}, #{p_id}, #{amount}, now())
+</insert>
+
+<!-- 이용자 정보 호출 -->
+<select id="getMember" parameterType="string" resultType="orderdto">
+	select * from member where m_id=#{m_id}
+</select>
+
+<!-- product 호출 -->
+<select id="getProductdetail" parameterType="int" resultType="orderdto">
+	select * from product where p_id=#{p_id}
+</select>
+
+<!-- orderid 호출 -->
+<select id="getOrderid" parameterType="string" resultType="orderdto">
+	select order_id from orders order by orderdate desc limit 1
+</select>
+</mapper>
+

@@ -1,5 +1,7 @@
 package member;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -31,11 +33,13 @@ public class MemberController {
 		@PostMapping("/loginprocess")
 		public ModelAndView login_check(@ModelAttribute MemberDTO dto, HttpSession session, HttpServletRequest request) {
 			String name = service.insertCheck(dto);
+			MemberDTO m_dto = service.selectOneMember(dto.getM_id());
 			ModelAndView mv = new ModelAndView();
 			session = request.getSession();
-			
+			System.out.println(m_dto.role);
 			if (name != null) { // 로그인 성공 시
 				session.setAttribute("m_id", dto.getM_id());
+				session.setAttribute("role", m_dto.role);
 				mv.setViewName("member/main");
 			} else { // 로그인 실패 시
 				mv.setViewName("member/login");
@@ -111,18 +115,41 @@ public class MemberController {
 			return "main/index";
 		}
 		
+	//회원 리스트 불러오기(가입일자 순)
+		@RequestMapping("/memberlist")
+		public ModelAndView memberlist() throws Exception {
+			List<MemberDTO> memberlist = service.selectMemberList();
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("memberlist",memberlist);
+			mv.setViewName("admin/memberlist");
+			return mv;
+		}
+		
+	//회원 리스트 불러오기(id 순)
+		@RequestMapping("/memberlistid")
+		public ModelAndView memberlistId() throws Exception {
+			List<MemberDTO> memberlist = service.selectMemberListId();
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("memberlist",memberlist);
+			mv.setViewName("admin/memberlist");
+			return mv;
+		}
+		
+	//회원 리스트 불러오기(이름 순)
+		@RequestMapping("/memberlistname")
+		public ModelAndView memberlistName() throws Exception {
+			List<MemberDTO> memberlist = service.selectMemberListName();
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("memberlist",memberlist);
+			mv.setViewName("admin/memberlist");
+			return mv;
+		}
+		
+	// 관리자 회원 수정
+		@PostMapping("/updateMemberByAdmin")
+		public String updateMemberByAdmin(MemberDTO dto) {
+			service.updateMemberByAdmin(dto);
+			return "redirect:/memberlist";
+		}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 

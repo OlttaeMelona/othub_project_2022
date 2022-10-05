@@ -13,18 +13,28 @@ import showroom.ShowroomDAO;
 
 @SpringBootApplication
 @ComponentScan
-@ComponentScan(basePackages = "controller")
+@ComponentScan(basePackages = "controller") 
 @ComponentScan(basePackages = "member")
 @ComponentScan(basePackages = "community")
 @ComponentScan(basePackages = "comment")
+@ComponentScan(basePackages = "pose")
+
 @ComponentScan(basePackages = "admin")
 @ComponentScan(basePackages = "showroom")
+@ComponentScan(basePackages = "product")
+@ComponentScan(basePackages = "order")
+@ComponentScan(basePackages = "shop")
+@ComponentScan(basePackages = "productdetail")
+
 
 @MapperScan(basePackageClasses = MemberDAO.class)
 @MapperScan(basePackageClasses = CommunityDAO.class)
 @MapperScan(basePackageClasses = CommentDAO.class)
 @MapperScan(basePackageClasses = AdminDAO.class)
 @MapperScan(basePackageClasses = ShowroomDAO.class)
+@MapperScan(basePackages = "shop")
+@MapperScan(basePackages = "productdetail")
+@MapperScan(basePackages = "order")
 public class OthubApplication {
 
 	public static void main(String[] args) {

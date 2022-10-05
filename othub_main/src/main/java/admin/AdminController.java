@@ -1,5 +1,7 @@
 package admin;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,11 +13,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import member.MemberDTO;
+import member.MemberService;
+
 @Controller
 public class AdminController {
 	@Autowired
 	@Qualifier("adminservice")
 	AdminServiceImpl adminservice;
+	
+	@Autowired
+	@Qualifier("memberservice")
+	MemberService memberservice;
 	
 	//관리자 로그인화면
 	@RequestMapping("/admin_login")
@@ -43,7 +52,7 @@ public class AdminController {
 		}
 		else { //로그인 실패
 			mv.setViewName("admin/adminlogin");
-			mv.addObject("message", "error");
+			mv.addObject("message", "error"); 
 		}
 		return mv;
 	}
@@ -55,5 +64,7 @@ public class AdminController {
 		System.out.println("정상적으로 로그아웃 되었습니다");
 		return "main/index";
 	}
+	
+
 	
 }

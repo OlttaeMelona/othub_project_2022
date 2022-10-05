@@ -25,9 +25,9 @@ public class CommunityService {
 		int countCommunity = dao.countCommunity();
 		int limitPage = 0;
 		if(countCommunity % 16 ==0) {
-			limitPage = countCommunity/10;
+			limitPage = countCommunity/16;
 		}else {
-			limitPage = countCommunity/10 + 1;
+			limitPage = countCommunity/16 + 1;
 		}
 		return limitPage;
 	};
@@ -47,6 +47,11 @@ public class CommunityService {
 	public List<CommunityDTO> likeCommunity(int page){
 		int limit = (page - 1) * 16;
 		return dao.likeCommunity(limit);
+	}
+	//페이징(내 게시물)
+	public List<CommunityDTO> myCommunity(String s_writer){
+
+		return dao.myCommunity(s_writer);
 	}
 	
 	//게시판 저장
