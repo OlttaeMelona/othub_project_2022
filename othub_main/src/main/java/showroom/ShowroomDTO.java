@@ -8,8 +8,8 @@ public class ShowroomDTO {
 	String sr_writer, sr_title, sr_contents, sr_writingtime;
 	String sr_imgname1,sr_imgname2,sr_imgname3,sr_imgname4,sr_imgname5;
 	
-	int sr_price;
-	String sr_kind, sr_operatingtime, sr_closed, sr_region, sr_number;
+	int sr_price,sr_kind, sr_address1; 
+	String sr_operatingtime, sr_closed, sr_region, sr_number, sr_address2, sr_address3;
 	
 	
 	
@@ -129,10 +129,10 @@ public class ShowroomDTO {
 	public void setSr_price(int sr_price) {
 		this.sr_price = sr_price;
 	}
-	public String getSr_kind() {
+	public int getSr_kind() {
 		return sr_kind;
 	}
-	public void setSr_kind(String sr_kind) {
+	public void setSr_kind(int sr_kind) {
 		this.sr_kind = sr_kind;
 	}
 	public String getSr_operatingtime() {
@@ -158,6 +158,34 @@ public class ShowroomDTO {
 	}
 	public void setSr_number(String sr_number) {
 		this.sr_number = sr_number;
+	}
+	public int getSr_address1() {
+		return sr_address1;
+	}
+	public void setSr_address1(int sr_address1) {
+		this.sr_address1 = sr_address1;
+	}
+	public String getSr_address2() {
+		return sr_address2;
+	}
+	public void setSr_address2(String sr_address2) {
+		this.sr_address2 = sr_address2;
+	}
+	public String getSr_address3() {
+		return sr_address3;
+	}
+	public void setSr_address3(String sr_address3) {
+		this.sr_address3 = sr_address3;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "ShowroomDTO [sr_num=" + sr_num + ", sr_viewcount=" + sr_viewcount + ", sr_writer=" + sr_writer
+				+ ", sr_title=" + sr_title + ", sr_contents=" + sr_contents + ", sr_writingtime=" + sr_writingtime
+				+ ", sr_imgname1=" + sr_imgname1 + ", sr_price=" + sr_price + ", sr_kind=" + sr_kind
+				+ ", sr_operatingtime=" + sr_operatingtime + ", sr_closed=" + sr_closed + ", sr_region=" + sr_region
+				+ ", sr_number=" + sr_number + "]";
 	}
 
 
