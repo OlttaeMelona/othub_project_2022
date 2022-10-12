@@ -204,7 +204,7 @@ $(document).ready(function() {
 
                    <tr class="stylenone">
                    <td colspan="1">작성자 ${oneCommu.s_writer}</td>
-                   <% if(request.getAttribute("writer").equals(session.getAttribute("m_id"))){ %>
+                   <% if(request.getAttribute("writer").equals(session.getAttribute("m_id")) || session.getAttribute("role").equals("admin")){ %>
                         <td colspan="5">
                             <a href="deleteCommunity?s_seq=${oneCommu.s_seq }" id="deletechk" class="delete_btn btns">삭제하기</a>
                             <a href="updatecommuform?s_seq=${oneCommu.s_seq }" class="edit_btn btns">수정하기</a>                           

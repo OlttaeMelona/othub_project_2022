@@ -70,6 +70,21 @@ public class ProductController {
 			mv.setViewName("product/listrecent");
 			return mv;
 		 }
+		 
+		//추천순
+		 @RequestMapping(value = "/listrecom", method = RequestMethod.GET)
+		 public ModelAndView getListRecom(@RequestParam("c") int category_id, Model model) throws Exception {
+		  logger.info("get lrecom");
+		  
+		  List<ProductDTO> recom = null;
+		  recom = productService.orderByRecom(category_id);
+		 
+		  model.addAttribute("recom", recom);
+		  
+		  ModelAndView mv = new ModelAndView();
+			mv.setViewName("product/listrecom");
+			return mv;
+		 }
 	 
 	 
 	 

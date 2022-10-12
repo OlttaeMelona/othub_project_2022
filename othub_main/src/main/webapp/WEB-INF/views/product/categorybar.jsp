@@ -9,11 +9,39 @@
 <title> </title>
 
 <style>
+	
+nav.c_nav {
+	float:left;
+	text-align:center;
+	padding-left:50px;
+	margin-bottom:10px;
+	width:150px;
+	font-size:16px;
+}
 
-/* .nav {
-float: left;
-height:1000px;
-width:200px;} */
+ul.nav_category{
+	margin:0;
+	padding:0;
+}
+
+h3 { 
+	margin:0;
+	padding:0;
+	font-size:22px;
+	margin-bottom:20px;
+	text-align:center;
+}
+
+a#c_nav_d {
+	color:#000;
+	display:block;
+	padding:10px 0;
+}
+
+a#c_nav_d:hover {
+ 	text-decoration:none;
+ 	background:#eee;
+}
 
 </style>
 
@@ -25,17 +53,17 @@ width:200px;} */
 </head>
 <body>
 	<header>
-		<nav class="nav">
-			<!-- <div href="" class="nav_toggleBtn">
-				<i class="fa-solid fa-bars"></i> 
-			</div>-->
+	
+		<nav class="c_nav">
+		
+		<h3> 카테고리 </h3>
 			
 				<ul class="nav_category">
-					<li><a href="/list?c=1">상의</a></li>
-					<li><a href="/list?c=2">하의</a></li>
-					<li><a href="/list?c=3">아우터</a></li>
-					<li><a href="/list?c=4">신발</a></li>
-					<li><a href="/list?c=5">가방</a></li>
+					<li><a id="c_nav_d" href="/listrecom?c=1">상의</a></li>
+					<li><a id="c_nav_d" href="/listrecom?c=2">하의</a></li>
+					<li><a id="c_nav_d" href="/listrecom?c=3">아우터</a></li>
+					<li><a id="c_nav_d" href="/listrecom?c=4">신발</a></li>
+					<li><a id="c_nav_d" href="/listrecom?c=5">가방</a></li>
 				</ul>
 			
 		</nav>

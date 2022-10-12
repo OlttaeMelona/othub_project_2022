@@ -27,7 +27,6 @@ public class ShopController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("productlist", productlist );
 		mv.setViewName("shop/shopmain");
-		
 		return mv;
 	}
 	

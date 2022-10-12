@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>of-hub-product-detail</title>
+<link href="css/productdetail/productdetail.css" rel="stylesheet">
 <link href="css/productdetail/import.css" rel="stylesheet">
 <link href="css/productdetail/common.css" rel="stylesheet">
 </head>
@@ -14,23 +16,41 @@
 
 <script>
 $(document).ready(function() {
-	var m_id = m_id;
-	$("#orderbtn").on("click", function(){
+	$("#orderbtn").on("click", function(){		
 		$.ajax({
 			url: 'ordermain',
-			data: {amount:$("#amount").val(),p_id:${productdetail.p_id},m_id:m_id},
+			data: {amount:$("#amount").val(),p_id:${productdetail.p_id},m_id:"${mid}"},
 			type: 'post',
 			//datatype: 'json',
 			success: function(a){
-				alert('success');
-				$('#div').html("<form action='/ordermain2'>");
-				$('#div').append("<input type=hidden id='order' value=" + a.orderid);
+				alert('주문페이지로 이동합니다.');
+				let url ="/ordermain2";
+				location.replace(url);
 			},
 			error: function(){
-				alert('error!!');
+				alert('수량을 선택해주세요.');
 			}
 		});//ajax
-	});//onclick
+	});//order click
+	$("#cartbtn").on("click", function(){
+		$.ajax({
+			url: 'insertCart',
+			data: {amount:$("#amount").val(),p_id:${productdetail.p_id},m_id:"${mid}"},
+			type: 'post',
+			success: function(){
+				var result = confirm("장바구니에 상품이 담겼습니다. 장바구니로 이동하시겠습니까?");
+				if(result){
+					location.replace("/goCart");
+				}
+				else{
+					
+				}
+			},
+			error: function(){
+				alert('수량을 선택해주세요.');
+			}
+		});//ajax
+	});
 });//ready
 
 </script>
@@ -59,7 +79,6 @@ function changepic(){
 	<!-- navbar include -->
 	<%@include file="../include/navbar.jsp" %>
 	<!-- main container -->
-	${productdetail.p_name }
 	
 	<div id="images">
 		<div id="bigImages">
@@ -73,7 +92,8 @@ function changepic(){
 	</div>
 
 	<div class="information">
-		<div> 브랜드 ${productdetail.p_brand } </div>
+		<div> 상품명 : ${productdetail.p_name }</div>
+		<div> 브랜드 : ${productdetail.p_brand } </div>
 		<c:set var="p_sex" value="${productdetail.p_sex }" />
 
 <%
@@ -91,14 +111,18 @@ else{%>
 		<div> 좋아요 ${productdetail.p_like } </div>
 		<div> 가격 ${productdetail.p_price } </div>
 		<div> 수량선택 <input type=text id="amount" name="amount" ></div>
-		<div> 구매하기 <input type=button id="orderbtn"> </div>
-		<div> 장바구니 </div>
+		<div> <input type=button value="구매하기" id="orderbtn">
+		<input type=button value="장바구니" id="cartbtn"> 
+		</div>
+
+
+
 	</div>
-	<div id="div"></div>
+	
 	<!-- footer include -->
 	<%@include file="../include/footer.jsp" %>
 	
-
+	
 	
 </body>
 
