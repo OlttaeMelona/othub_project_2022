@@ -1,5 +1,7 @@
 package order;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.convert.DtoInstantiatingConverter;
 import org.springframework.stereotype.Service;
@@ -31,7 +33,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 	@Override
-	public OrderDTO getOrders(int o_id) {
+	public List<OrderDTO> getOrders(int o_id) {
 		return dao.getOrders(o_id);
 	}
 	
@@ -48,5 +50,30 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public void cancleOrder(int order_id) {
 		dao.cancleOrder(order_id);
+	}
+	
+	@Override
+	public List<OrderDTO> getOrdered(String m_id) {
+		return dao.getOrdered(m_id);
+	}
+	
+	@Override
+	public List<OrderDTO> cartToOrder(String m_id){
+		return dao.cartToOrder(m_id);
+	}
+	
+	@Override
+	public void doOrderC(String m_id) {
+		dao.doOrderC(m_id);
+	}
+	
+	@Override
+	public List<OrderDTO> getOrderid2(String m_id) {
+		return dao.getOrderid2(m_id);
+	}
+	
+	@Override
+	public void orderComplete(int p_id) {
+		dao.orderComplete(p_id);
 	}
 }

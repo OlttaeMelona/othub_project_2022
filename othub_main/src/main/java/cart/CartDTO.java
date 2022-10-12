@@ -29,6 +29,15 @@ public class CartDTO {
 	String m_sex;
 	String m_regdate;
 	int cart_id;
+	String p_color;
+	
+	
+	public String getP_color() {
+		return p_color;
+	}
+	public void setP_color(String p_color) {
+		this.p_color = p_color;
+	}
 	public int getP_id() {
 		return p_id;
 	}

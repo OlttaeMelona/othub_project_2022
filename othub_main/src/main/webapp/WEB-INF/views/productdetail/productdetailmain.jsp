@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>of-hub-product-detail</title>
+<link href="css/productdetail/productdetail.css" rel="stylesheet">
 <link href="css/productdetail/import.css" rel="stylesheet">
 <link href="css/productdetail/common.css" rel="stylesheet">
 </head>
@@ -14,38 +16,38 @@
 
 <script>
 $(document).ready(function() {
-	$("#orderbtn").on("click", function(){
+	$("#orderbtn").on("click", function(){		
 		$.ajax({
 			url: 'ordermain',
 			data: {amount:$("#amount").val(),p_id:${productdetail.p_id},m_id:"${mid}"},
 			type: 'post',
 			//datatype: 'json',
 			success: function(a){
-				alert('order success');
+				alert('주문페이지로 이동합니다.');
 				let url ="/ordermain2";
 				location.replace(url);
 			},
 			error: function(){
-				alert('error!!');
+				alert('수량을 선택해주세요.');
 			}
 		});//ajax
 	});//order click
 	$("#cartbtn").on("click", function(){
 		$.ajax({
 			url: 'insertCart',
-			data: {cart_qty:$("#amount").val(),p_id:${productdetail.p_id},m_id:"${mid}"},
+			data: {amount:$("#amount").val(),p_id:${productdetail.p_id},m_id:"${mid}"},
 			type: 'post',
 			success: function(){
 				var result = confirm("장바구니에 상품이 담겼습니다. 장바구니로 이동하시겠습니까?");
 				if(result){
-					location.replace("/goCart?p_id=2");
+					location.replace("/goCart");
 				}
 				else{
-					location.replace("/")
+					
 				}
 			},
 			error: function(){
-				alert('cart error!!');
+				alert('수량을 선택해주세요.');
 			}
 		});//ajax
 	});
@@ -77,7 +79,6 @@ function changepic(){
 	<!-- navbar include -->
 	<%@include file="../include/navbar.jsp" %>
 	<!-- main container -->
-	${productdetail.p_name }
 	
 	<div id="images">
 		<div id="bigImages">
@@ -91,7 +92,8 @@ function changepic(){
 	</div>
 
 	<div class="information">
-		<div> 브랜드 ${productdetail.p_brand } </div>
+		<div> 상품명 : ${productdetail.p_name }</div>
+		<div> 브랜드 : ${productdetail.p_brand } </div>
 		<c:set var="p_sex" value="${productdetail.p_sex }" />
 
 <%
@@ -109,12 +111,12 @@ else{%>
 		<div> 좋아요 ${productdetail.p_like } </div>
 		<div> 가격 ${productdetail.p_price } </div>
 		<div> 수량선택 <input type=text id="amount" name="amount" ></div>
-		<div> 구매하기 <input type=button id="orderbtn"> </div>
-<<<<<<< HEAD
-		<div> 장바구니 <input type=button id="cartbtn"> </div>
-=======
-		<div> 장바구니 </div>
->>>>>>> branch 'project1' of https://github.com/kdh9413/othub_project_2022.git
+		<div> <input type=button value="구매하기" id="orderbtn">
+		<input type=button value="장바구니" id="cartbtn"> 
+		</div>
+
+
+
 	</div>
 	
 	<!-- footer include -->
