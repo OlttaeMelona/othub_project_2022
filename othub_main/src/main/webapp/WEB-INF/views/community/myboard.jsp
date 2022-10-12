@@ -29,6 +29,13 @@
 			}
 		});//onclick end
 		
+		$("#like").on("click",function(e){
+			if(<%=session.getAttribute("m_id")%>==null){
+				alert("로그인 후 이용해주세요.");
+				e.preventDefault();
+			}
+		});//onclick end
+		
 		//좋아요 
 	$("#like_btn").click(function(){
 		var s_seq = $("#s_seq").val();
@@ -70,9 +77,8 @@
         <ul class="nav2 clearfix">
         	<li class="fl" id="array"><a href="community">최신</a></li>
             <li class="fl" id="array"><a href="communitylike">인기</a></li>
-            <li class="fl" id="array"><a href="mylikecommunity">좋아요</a></li>
-            <%if(session.getAttribute("m_id") != null){%>
-            <li class="fl writing" id="writing"><a href="writingcommunity">글쓰기</a></li><%} %>
+           	<li class="fl" id="array"><a href="mylikecommunity" onclick="logincheck" id="like">좋아요</a></li>
+            <li class="fl writing" id="writing"><a href="writingcommunity">글쓰기</a></li>
         </ul>
         <div class="flex">
 			<c:forEach items="${boardlist}" var="board">

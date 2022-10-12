@@ -126,5 +126,24 @@
 	<select id="likeCheck_main" resultType="int">
 	select count(*) from boardlike where m_id = #{m_id} and s_seq = #{s_seq}
 	</select>
+	
+	<!-- 비슷한 색상 찾기(상의)-->
+	<select id="similarcolor" resultType="product.ProductDTO" parameterType="String">
+		select * from product
+        inner join category
+        on category.category_id = product.category_id
+        where product.category_id = 1 and p_color = #{p_color}
+        order by p_regdate desc;
+	</select>
+	
+	<!-- 비슷한 색상 찾기(가방)-->
+	<select id="similarcolorbackpack" resultType="product.ProductDTO" parameterType="String">
+		select * from product
+        inner join category
+        on category.category_id = product.category_id
+        where product.category_id = 5 and p_color = #{p_color}
+        order by p_regdate desc;
+	</select>
+	
 </mapper>
 

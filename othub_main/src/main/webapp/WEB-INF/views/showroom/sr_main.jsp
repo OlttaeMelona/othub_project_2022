@@ -17,8 +17,10 @@
 	</script>
 </head>
 <body>
+		
 	<!-- navbar include -->
 	<%@include file="../include/navbar.jsp"%>
+	
 
 	<!-- main container -->
 	<main>
@@ -30,9 +32,9 @@
 					<li><a href="">사진관</a></li>
 					<li><a href="">사진작가</a></li> 
 				</ul>
-				<%if(role != null && role.equals("admin")){%> 
-					<a href="sr_writing"><div class="writeBtn">게시글 등록하기</div></a>
-				<%}%>
+				<% if(role != null){if(role.equals("admin")){ %>
+				<a href="sr_writing"><div class="writeBtn">게시글 등록하기</a>
+				<%} }%>
 			</div>
 			<hr class="hr">
 			<article class="sr_card_box">
@@ -52,9 +54,9 @@
 							<div class="price">
 								<span class="price_val">${showroom.sr_price } </span>
 								<span class="price_unit">원/시간</span>
-								<%if(role.equals("admin")){ %>
+								<% if(role != null){if(role.equals("admin")){ %>
 								<span class="editBtn"><a href="">수정</a></span>
-								<%} %>
+								<%} }%>
 							</div>
 						</div>
 					</div>

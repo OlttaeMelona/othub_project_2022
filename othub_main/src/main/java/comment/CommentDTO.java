@@ -8,8 +8,7 @@ public class CommentDTO {
 	String cm_contents;
 	String cm_writingtime;
 	
-	
-	
+
 	public int getB_seq() {
 		return b_seq;
 	}

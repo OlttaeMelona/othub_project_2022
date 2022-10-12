@@ -146,6 +146,8 @@ $(document).ready(function() {
 	
 });//ready end
 </script>
+
+<!-- pose -->
 <script>
 $(document).ready(function() {
 	var json = JSON.parse('${poseresult}');
@@ -154,7 +156,7 @@ $(document).ready(function() {
 	var mycontext = mycanvas.getContext("2d");
 	
 	var myimage = new Image();
-	myimage.src = "images/community/styleimg/${oneCommu.imagename1 }";
+	myimage.src = "images/community/styleimg/${param.image }";
 	if(myimage.width > mycanvas.width){
 		mycanvas.width = myimage.width;
 	}	
@@ -176,7 +178,66 @@ $(document).ready(function() {
 		$("#blue").val(imagedata.data[2]);
 
 
-	}//inload
+	}//onload
+});//ready end
+</script>
+
+<!-- object -->
+<script>
+$(document).ready(function() {
+	var json = JSON.parse('${objectresult}');
+
+
+	var mycanvas = document.getElementById("mycanvas2");
+	var mycontext = mycanvas.getContext("2d");
+	
+	var myimage = new Image();
+	myimage.src = "images/community/styleimg/${param.image }";
+	
+	myimage.onload = function(){
+		
+		mycontext.drawImage(myimage, 0, 0, myimage.width, myimage.height);
+			var y1 = json.predictions[0].detection_boxes[1][0] * myimage.height;
+			var x1 = json.predictions[0].detection_boxes[1][1] * myimage.width;
+			var y2 = json.predictions[0].detection_boxes[1][2] * myimage.height;
+			var x2 = json.predictions[0].detection_boxes[1][3] * myimage.width;		
+			// 사물 박스 그리기
+			var x = x1;
+			var y = y1;
+			var width = x2 - x1;
+			var height = y2 - y1;
+			var x3 = (x1+x2)/2;
+			var y3 = (y1+y2)/2;
+			
+			if(myimage.width > mycanvas.width){
+				mycanvas.width = myimage.width;
+			}	
+			if(myimage.height > mycanvas.height){
+				mycanvas.height = myimage.height;
+			}
+			
+			if(json.predictions[0].detection_names.includes("backpack") == true){
+			mycontext.fillStyle="red";
+			mycontext.fillRect(x3,y3-50,5,5);
+			
+			var imagedata = mycontext.getImageData(x,y,mycanvas.width,mycanvas.height)
+			$("#red2").val(imagedata.data[0]);
+			$("#green2").val(imagedata.data[1]);
+			$("#blue2").val(imagedata.data[2]);
+			//사물이름 출력
+			mycontext.fillStyle="red";
+			mycontext.font="12px batang";
+			mycontext.fillText(json.predictions[0].detection_names[1], x3, y3);
+			}
+		
+	
+	
+	if($("#red2").val() === null){
+		$("#back").attr("type",'hidden');
+	}
+	
+	}//onload
+	
 });//ready end
 </script>
 </head>
@@ -204,12 +265,17 @@ $(document).ready(function() {
 
                    <tr class="stylenone">
                    <td colspan="1">작성자 ${oneCommu.s_writer}</td>
-                   <% if(request.getAttribute("writer").equals(session.getAttribute("m_id")) || session.getAttribute("role").equals("admin")){ %>
+                   <% if(request.getAttribute("writer").equals(m_id)){ %>
                         <td colspan="5">
                             <a href="deleteCommunity?s_seq=${oneCommu.s_seq }" id="deletechk" class="delete_btn btns">삭제하기</a>
                             <a href="updatecommuform?s_seq=${oneCommu.s_seq }" class="edit_btn btns">수정하기</a>                           
-                   </td>
-                   <% }else{} %>
+                  		 </td>
+                   <% }else if(role != null){ if(role.equals("admin")){%>
+                   		<td colspan="5">
+                            <a href="deleteCommunity?s_seq=${oneCommu.s_seq }" id="deletechk" class="delete_btn btns">삭제하기</a>
+                            <a href="updatecommuform?s_seq=${oneCommu.s_seq }" class="edit_btn btns">수정하기</a>                           
+                  		 </td>
+                   <% } }%>
                     </tr>
                  
                   
@@ -265,14 +331,24 @@ $(document).ready(function() {
         </div>
     </div>
 </div>
-
+<div id="xx"></div>
 <form action="color">
-<input type="hidden" id="red" value="" name="red">
-<input type="hidden" id="green" value="" name="green">
-<input type="hidden" id="blue" value="" name="blue">
-<input type="submit" value="비슷한 상품 조회">
+<input type="hidden"  id="red" value="" name="red">
+<input type="hidden"  id="green" value="" name="green">
+<input type="hidden"  id="blue" value="" name="blue">
+<input type="submit" value="비슷한 상의 조회">
 </form>
+
+<form action="color2">
+<input type="hidden" id="red2" value="" name="red">
+<input type="hidden" id="green2" value="" name="green">
+<input type="hidden"  id="blue2" value="" name="blue">
+<input type="submit" value="비슷한 가방 조회" id="back">
+</form>
+
 <canvas id="mycanvas" width=500 height=500 style="border:2px solid green" hidden></canvas>
+<canvas id="mycanvas2" width=500 height=500 style="border:2px solid green" hidden></canvas>
+
 <!-- footer include -->
 	<%@include file="../include/footer.jsp" %>
 </body>
