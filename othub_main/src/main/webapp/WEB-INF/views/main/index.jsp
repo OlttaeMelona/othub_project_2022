@@ -21,6 +21,10 @@
 			</div>
 		</section>
 	</main>
+	
+	<!-- chatbot include -->
+		<%@include file="../chatbot/chatbot.jsp" %>
+	
 	<!-- footer include -->
 	<%@include file="../include/footer.jsp" %>
 </body>
