@@ -17,8 +17,10 @@
 	</script>
 </head>
 <body>
+		
 	<!-- navbar include -->
 	<%@include file="../include/navbar.jsp"%>
+	
 
 	<!-- main container -->
 	<main>
@@ -30,9 +32,11 @@
 					<li><a href="showroomlist?cate=2">사진관</a></li>
 					<li><a href="showroomlist?cate=3">사진작가</a></li> 
 				</ul>
+
 				<c:if test="${role.equals('admin') }">
 					<a href="sr_writing"><div class="writeBtn">게시글 등록하기</div></a>
 				</c:if>
+
 			</div>
 		</section>
 		<section class="showroom">
@@ -54,10 +58,12 @@
 							<div class="price">
 								<span class="price_val">${showroom.sr_price } </span>
 								<span class="price_unit">원/시간</span>
+
 								<c:if test="${role.equals('admin') }">
 									<span class="editBtn"><a href="/sr_update?no=${showroom.sr_num }">수정</a></span>
 									<span class="editBtn"><a href="/deletePost?no=${showroom.sr_num }">삭제</a></span>
 								</c:if>
+
 							</div>
 						</div>
 					</div>

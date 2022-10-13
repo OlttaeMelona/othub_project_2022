@@ -30,7 +30,10 @@ import com.project.othub.NaverInform;
 import comment.CommentService;
 import member.MemberService;
 import pose.ColorDTO;
+import pose.ObjectService;
 import pose.PoseService;
+import product.ProductDTO;
+import product.ProductServiceImpl;
 
 @Controller
 public class CommunityController {
@@ -49,6 +52,14 @@ public class CommunityController {
 	@Autowired
 	@Qualifier("poseservice")
 	PoseService poseservice;
+	
+	@Autowired
+	@Qualifier("productservice")
+	ProductServiceImpl productservice;
+	
+	@Autowired
+	@Qualifier("objectservice")
+	ObjectService objectservice;
 	
 	//전체 게시물 조회(페이징,조회순)
 	@GetMapping("/community")
@@ -80,7 +91,6 @@ public class CommunityController {
 	public ModelAndView mycommunityListPaging(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String s_writer = (String)session.getAttribute("m_id");
-		
 		List<CommunityDTO> communityListPaging = commuserive.myCommunity(s_writer);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("boardlist",communityListPaging);
@@ -107,9 +117,11 @@ public class CommunityController {
 	public ModelAndView wriringCommunity() {
 		int totalboard = commuserive.amountCommunity()+1; //전체 게시물 수 조회
 		System.out.println(totalboard);
+		List<ProductDTO> productTagList1 = commuserive.productTag1();
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("taglist1",productTagList1);
 		mv.addObject("totalboard", totalboard);
-		mv.setViewName("community/writingform");
+		mv.setViewName("community/srwritingform");
 		return mv;
 	}
 	
@@ -186,9 +198,15 @@ public class CommunityController {
 		
 		//게시물 불러오기
 		CommunityDTO oneCommu = commuserive.oneCommunity(s_seq);
+		System.out.println(oneCommu.p_name1);
+		
+		//상품 태그 불러오기
+		List<ProductDTO> taglist = commuserive.selectProductTag(oneCommu.p_name1);
 		
 		//ai pose
 		String jsonresult = poseservice.test(image);
+		String jsonresult2 = objectservice.test(image);
+		
 		
 		ModelAndView mv = new ModelAndView();
 		
@@ -196,7 +214,9 @@ public class CommunityController {
 		String image2 = oneCommu.getImagename2();
 		String image3 = oneCommu.getImagename3();
 		mv.addObject("poseresult", jsonresult); //pose
+		mv.addObject("objectresult",jsonresult2); // object
 		mv.addObject("oneCommu",oneCommu);
+		mv.addObject("taglist",taglist);
 		mv.addObject("commuSeq",s_seq);
 		mv.addObject("writer",writer);
 		mv.addObject("image2",image2);
@@ -257,37 +277,79 @@ public class CommunityController {
 		return "{\"result\" : \"" + likeCheck + "\", \"result2\" : \"" + likeNum + "\" }";
 	}
 	
-	//비슷한 색상 상품 조회
+	//비슷한 색상 상품 조회(상의)
 	@RequestMapping("/color")
 	public ModelAndView color(ColorDTO dto) {
-		String color = "";
+		String p_color = "";
 		int rgbR = dto.getRed();
 		int rgbG = dto.getGreen();
 		int rgbB = dto.getBlue();
 		if(rgbR >=150 && rgbB <=120) {
-			color = "red";
+			p_color = "red";
 		}else if(rgbG >=150 && rgbR <=120) {
-			color = "green";
+			p_color = "green";
 		}else if(rgbB >=150 && rgbG <=120) {
-			color = "blue";
+			p_color = "blue";
 		}else if(rgbR >= 200 && rgbB >= 200 && rgbG >= 200) {
-			color = "white";
+			p_color = "white";
 		}else if(rgbR <= 70 && rgbB <= 70 && rgbG <= 70) {
-			color = "black";
+			p_color = "black";
 		}else if(rgbG >= rgbR && rgbG >= rgbB) {
-			color = "green";
+			p_color = "green";
 		}else if(rgbR >= rgbB&& rgbR >= rgbG) {
-			color = "red";
+			p_color = "red";
 		}else if(rgbB >= rgbR&& rgbB >= rgbG) {
-			color = "blue";
+			p_color = "blue";
 		}
-		System.out.println(color);
+		List<ProductDTO> colorlist = commuserive.similarcolor(p_color);
+
+		System.out.println(p_color);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("red",rgbR);
 		mv.addObject("green",rgbG);
 		mv.addObject("blue",rgbB);
-		mv.addObject("color",color);
+		mv.addObject("color",p_color);
+		mv.addObject("list",colorlist);
+
 		mv.setViewName("community/similarcolor");
+		return mv;
+	}
+	
+	//비슷한 색상 상품 조회
+	@RequestMapping("/color2")
+	public ModelAndView color2(ColorDTO dto) {
+		String p_color = "";
+		int rgbR = dto.getRed2();
+		int rgbG = dto.getGreen2();
+		int rgbB = dto.getBlue2();
+		if(rgbR >=150 && rgbB <=120) {
+			p_color = "red";
+		}else if(rgbG >=150 && rgbR <=120) {
+			p_color = "green";
+		}else if(rgbB >=150 && rgbG <=120) {
+			p_color = "blue";
+		}else if(rgbR >= 200 && rgbB >= 200 && rgbG >= 200) {
+			p_color = "white";
+		}else if(rgbR <= 70 && rgbB <= 70 && rgbG <= 70) {
+			p_color = "black";
+		}else if(rgbG >= rgbR && rgbG >= rgbB) {
+			p_color = "green";
+		}else if(rgbR >= rgbB&& rgbR >= rgbG) {
+			p_color = "red";
+		}else if(rgbB >= rgbR&& rgbB >= rgbG) {
+			p_color = "blue";
+		}
+		List<ProductDTO> colorlist = commuserive.similarcolorbackpack(p_color);
+
+		System.out.println(p_color);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("red",rgbR);
+		mv.addObject("green",rgbG);
+		mv.addObject("blue",rgbB);
+		mv.addObject("color",p_color);
+		mv.addObject("list",colorlist);
+
+		mv.setViewName("community/similarcolorbackpack");
 		return mv;
 	}
 

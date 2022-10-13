@@ -22,7 +22,14 @@
 	<script>
 	$(document).ready(function() {
 		// 글쓰기 로그인 확인
-		$("#writingbtn").on("click",function(e){
+		$("#writing").on("click",function(e){
+			if(<%=session.getAttribute("m_id")%>==null){
+				alert("로그인 후 이용해주세요.");
+				e.preventDefault();
+			}
+		});//onclick end
+		
+		$("#like").on("click",function(e){
 			if(<%=session.getAttribute("m_id")%>==null){
 				alert("로그인 후 이용해주세요.");
 				e.preventDefault();
@@ -70,12 +77,11 @@
         <ul class="nav2 clearfix">
         	<li class="fl on" id="array"><a href="community">최신</a></li>
             <li class="fl" id="array"><a href="communitylike">인기</a></li>
-            <li class="fl" id="array"><a href="mylikecommunity">좋아요</a></li>
-            <%if(session.getAttribute("m_id") != null){%>
-            <li class="fl writing" id="writing"><a href="writingcommunity">글쓰기</a></li><%} %>
+            <li class="fl" id="array"><a href="mylikecommunity" onclick="logincheck" id="like">좋아요</a></li>
+            <li class="fl writing" id="writing"><a href="writingcommunity">글쓰기</a></li>
         </ul>
         <div class="flex">
-			<c:forEach items="${boardlist}" var="board">
+			<c:forEach  var="board" items="${boardlist}">
 	            <div class="card">
 	                <div class="img"><a href="oneCommunity?s_seq=${board.s_seq }&image=${board.imagename1 }"><img src="images/community/styleimg/${board.imagename1 }"></a></div>
 	                <div class="txt_box">
