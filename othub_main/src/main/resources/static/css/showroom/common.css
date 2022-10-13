@@ -169,6 +169,7 @@ form input::placeholder{
 }
 .file span {
 	display: inline-block;
+	vertical-align: top;
 }
 .file span label {
 	margin-top: 5px;

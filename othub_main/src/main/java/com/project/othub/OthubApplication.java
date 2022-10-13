@@ -17,6 +17,7 @@ import showroom.ShowroomDAO;
 @ComponentScan(basePackages = "community")
 @ComponentScan(basePackages = "comment")
 @ComponentScan(basePackages = "pose")
+@ComponentScan(basePackages = "object")
 
 @ComponentScan(basePackages = "admin")
 @ComponentScan(basePackages = "showroom")

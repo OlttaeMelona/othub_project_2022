@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+div.replyModal { 
+	position:relative; 
+	z-index:1; display:none;
+	}
+	
+div.modalBackground { 
+	position:fixed; 
+	top:0; left:0; 
+	width:100%; height:100%; 
+	background:rgba(0, 0, 0, 0.8); 
+	z-index:-1;
+	 }
+	 
+div.modalContent { 
+	position:fixed; 
+	top:20%; left:calc(50% - 250px); 
+	width:500px; height:250px; 
+	padding:20px 10px; 
+	background:#fff; 
+	border:2px solid #666;
+	 }
+	
+div.modalContent textarea { 
+	font-size:16px; 
+	padding:10px; 
+	width:500px; 
+	height:200px;
+	 }
+	 
+div.modalContent button { 
+	font-size:20px; 
+	padding:5px 10px; 
+	margin:10px 0; 
+	background:#fff; 
+	border:1px solid #ccc;
+	 }
+	 
+div.modalContent .modal_cancel { 
+	float:right;
+	position:relative;
+	top:-10px;
+	width:15px;
+	height:15px;
+	 }
+	 
+div.modalContent .modal_send { 
+	position:relative; 
+	left: -2px;
+	top: 5px;
+	width:20px;
+	height:20px;
+	z-index:-1;
+	 }
+	 
+div.modalContent .modal_send_button { 
+	position:relative; 
+	 }
+	 
+div.chat_main{
+	margin-top:30px;
+	width: 500; 
+	height: 500; 
+	border : 1px solid gray;
+}

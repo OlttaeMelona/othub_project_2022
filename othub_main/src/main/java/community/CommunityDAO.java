@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import product.ProductDTO;
+
 @Mapper
 @Repository("commu")
 public interface CommunityDAO {
@@ -71,4 +73,16 @@ public interface CommunityDAO {
 	
 	// list like 가져오기
 		public int likeCheck_main(int s_seq,String m_id);
+		
+	// 비슷한 색상 가져오기
+		public List<ProductDTO> similarcolor(String p_color);
+		
+	// 비슷한 색상 가져오기
+		public List<ProductDTO> similarcolorbackpack(String p_color);
+		
+	// 비슷한 색상 가져오기
+		public List<ProductDTO> productTag1();
+		
+	// 상품 태그 가져오기
+		public List<ProductDTO> selectProductTag(String p_name1);
 }

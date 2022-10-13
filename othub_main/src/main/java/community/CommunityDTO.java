@@ -8,6 +8,7 @@ public class CommunityDTO {
 	String s_title,s_contents,s_writer,s_writingtime;
 	String imagename1;
 	String imagename2, imagename3;
+	String p_name1;
 	
 	public CommunityDTO() {}
 	
@@ -70,6 +71,14 @@ public class CommunityDTO {
 	public String getS_contents() {
 		return s_contents;
 	}
+	public String getP_name1() {
+		return p_name1;
+	}
+
+	public void setP_name1(String p_name1) {
+		this.p_name1 = p_name1;
+	}
+
 	public void setS_contents(String s_contents) {
 		this.s_contents = s_contents;
 	}

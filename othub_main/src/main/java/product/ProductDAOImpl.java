@@ -22,7 +22,6 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 
-
 	@Override
 	public List<ProductDTO> findCategory(int category_id) {
 		// TODO Auto-generated method stub
@@ -65,6 +64,7 @@ public class ProductDAOImpl implements ProductDAO {
 		return sqlSession.selectOne("product.detailProduct", p_id);
 	}
 
+	
 	@Override
 	public int updateProduct(ProductDTO dto) {
 		// TODO Auto-generated method stub
@@ -88,6 +88,9 @@ public class ProductDAOImpl implements ProductDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
 	
 	
 	

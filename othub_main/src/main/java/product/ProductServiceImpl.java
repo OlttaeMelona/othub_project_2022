@@ -6,14 +6,12 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("productservice")
 public class ProductServiceImpl implements ProductService {
 	
 	@Inject
     private ProductDAO productDao;
 	
-	
-
 
 	@Override
 	public List<ProductDTO> findAll() {
@@ -52,6 +50,8 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.list(category_id);
 	}
 	
+
+
 
 	@Override
 	public ProductDTO detailProduct(int p_id) {

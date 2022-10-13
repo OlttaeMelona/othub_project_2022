@@ -17,6 +17,7 @@ public interface ProductDAO {
 	  List<ProductDTO> orderByLike(int category_id);
 	  List<ProductDTO> orderByRecent(int category_id);
 	  List<ProductDTO> orderByRecom(int category_id);
+	  
 	 
 
 }

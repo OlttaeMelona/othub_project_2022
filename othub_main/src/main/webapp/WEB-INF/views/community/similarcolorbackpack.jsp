@@ -22,43 +22,44 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
+
 <!-- navbar include -->
 	<%@include file="../include/navbar.jsp" %>
-		<%@include file="../product/categorybar.jsp" %>
-		
-	<section class="listcontent">
+	<%@include file="../product/categorybar.jsp" %>
 
-<c:forEach items="${list}" var="list" end="0" >
+<section class="listcontent">
+
+<c:forEach items="${list}" var="recom" end="0" >
 <div class="productlist">
- <a href="/listrecent?c=${list.category_id}"> 최신순 </a> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
- <a href="/listlike?c=${list.category_id}"> 인기순 </a> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
- <a href="/listrecom?c=${list.category_id}"> 추천순 </a>
+ <a href="/listrecent?c=${recom.category_id}"> 최신순 </a> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
+ <a href="/listlike?c=${recom.category_id}"> 인기순 </a> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
+ <a href="/listrecom?c=${recom.category_id}"> 추천순 </a>
 </div>
 </c:forEach>
 
 
-<ul id="product" class="item">
- <c:forEach items="${list}" var="list">
+ <ul id="product" class="item">
+  <c:forEach items="${list}" var="recom">
   
    <li id="listli">
     <div class="p_thumb">
-      <a href="productdetail?p_id=${list.p_id }"> <img src="images/${list.p_thumb}"> </a>
+      <a href="productdetail?p_id=${recom.p_id }"> <img src="images/${recom.p_thumb}"> </a>
     </div>
      
     <div class="p_name">
-     <a href="productdetail?p_id=${list.p_id }">${list.p_name}</a>
+     <a href="productdetail?p_id=${recom.p_id }">${recom.p_name}</a>
     </div>
     
     <div class="p_brand">
-     📍 ${list.p_brand}
+     📍 ${recom.p_brand}
      </div>
      
     <div class="p_price">
-     💰 <fmt:formatNumber value="${list.p_price}" pattern="#,###" />
+     💰 <fmt:formatNumber value="${recom.p_price}" pattern="#,###" />
     </div>
     
     <div class="p_like">
-     💗 ${list.p_like}
+     💗 ${recom.p_like}
     </div>
     
    </li>
@@ -70,10 +71,11 @@ $(document).ready(function() {
 
 
 
+
+
+
 <!-- footer include -->
 	<%@include file="../include/footer.jsp" %>
-
-
 
 </body>
 </html>
