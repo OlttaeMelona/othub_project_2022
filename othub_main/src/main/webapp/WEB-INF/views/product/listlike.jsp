@@ -68,6 +68,9 @@ $(document).ready(function() {
 
 </section>
 
+<!-- chatbot include -->
+		<%@include file="../chatbot/chatbot.jsp" %>
+
 <!-- footer include -->
 	<%@include file="../include/footer.jsp" %>
 

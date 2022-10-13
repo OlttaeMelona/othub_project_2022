@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 <script src="js/jquery-3.6.0.min.js"></script>
 <link href="css/chatbot/chatbot_button.css" rel="stylesheet">
@@ -21,14 +22,14 @@ $(document).ready(function() {
 			dataType:'json',
 			success:function(server){
 				//alert(server.bubbles[0].data.description);
-				$("#chat").append("<p><span id='question'> 나 : " + $("#request").val() +"</span></p>");
+				$("#chat").append("<p><span id='question'>" + $("#request").val() +"</span></p>");
 				
 				var bubbles = server.bubbles;
 				for(var i = 0; i < bubbles.length; i++){
 					if(bubbles[i].type == 'text'){
 						//텍스트답변
 					$("#chat").append
-					("<p><span id='answere'> 답변 : " + server.bubbles[0].data.description +"</p>");
+					("<p><span id='answere'>" + server.bubbles[0].data.description +"</p>");
 					$("#mp3").css("display", "inline");
 					
 					
@@ -41,7 +42,7 @@ $(document).ready(function() {
 						}//이미지답변
 						else if(bubbles[i].data.cover.type == "text"){
 							$("#chat").append
-							("<p><span id='answere' >답변 : " 
+							("<p><span id='answere'>" 
 									+ server.bubbles[0].data.cover.data.description +"</p>");
 							//contentTable변수 배열
 							for(var j = 0; j < bubbles[i].data.contentTable.length; j++){
@@ -53,27 +54,24 @@ $(document).ready(function() {
 								}
 							}
 						}//멀티링크답변
-
-					
 				}
 				
 				}//for 	
 			}//success
 		});//ajax
+		setTimeout("$('#request').val('')", 100);
+		 
 	});//on
 });//ready end
 </script>
 
-<script type="text/javascript">
+<script>
 	function openChatbot() {
 		 $(".replyModal").attr("style", "display:block;");
-	}
+	}	
 	
 </script>
 
-<style>
-   
-</style>
 
 </head>
 
@@ -88,35 +86,50 @@ $(document).ready(function() {
 
 <!-- modal -->
 <div class="replyModal">
-
+ 
    <div class="modalContent">
+   <span id="toptext"> Oh-Hub 챗봇 </span>
      <img class="modal_cancel" src="images/chatbot/close.png">
     
 	   <div class="chat_main" id="chat"> 
-		안녕하세요, Ot-Hub입니다. 무엇을 도와드릴까요? <br>
+		<span id="chat_main_text"> 안녕하세요, Ot-Hub입니다. 무엇을 도와드릴까요? </span>
 		</div>
 		
 		<div class="chat_input">
-		<input type=text id="request" name="request">
-		<input class="modal_send_button" type=button value="답변" >
-		<img class="modal_send" src="images/chatbot/send.png">
-		
+		<input class="request" type=text id="request" name="request" onkeyup="keyUpEvent(event.keyCode, this)">
+		<input class="modal_send_button" id=button type=button value="답변">
+		<img class="modal_send_icon" src="images/chatbot/send.png">
 		</div>
-	    
-	    <div>
-     
-    </div>
-    
-   </div>
+		</div>
+		
+		
+	
 
    <div class="modalBackground"></div>
-   
-</div>
+   </div>
+
 
 <script>
+
+
 $(".modal_cancel").click(function(){
    $(".replyModal").attr("style", "display:none;");
 });
+
+function keyUpEvent(keyCode, ta) {
+	if(keyCode == 13) {
+		//alert("엔터키 입력됨");
+		document.getElementById("button").click();
+	}
+	
+}
+
+
+
+
+$(".modalBackground").click(function(){
+	   $(".replyModal").attr("style", "display:none;");
+	});
 </script>
 
 </body>

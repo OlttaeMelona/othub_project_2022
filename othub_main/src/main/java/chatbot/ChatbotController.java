@@ -15,6 +15,7 @@ public class ChatbotController {
 	@Qualifier("chatbotservice")
 	NaverService service;
 
+	
 	@RequestMapping("/chatbotinput")
 	public String input() {
 		return "chatbot/chatbotinput";
@@ -55,9 +56,8 @@ public class ChatbotController {
 		return response;
 	}
 	//http://localhost:8082/chatbotresultajax?request=&event=aaa
-	
-}
 
+}
 
 
 

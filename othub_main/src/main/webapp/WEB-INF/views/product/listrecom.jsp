@@ -64,6 +64,9 @@ $(document).ready(function() {
     
    </li>
    </c:forEach>
+   
+   <!-- chatbot include -->
+		<%@include file="../chatbot/chatbot.jsp" %>
 
     
    </ul>
