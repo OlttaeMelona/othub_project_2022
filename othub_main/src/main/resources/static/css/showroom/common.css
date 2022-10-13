@@ -7,7 +7,7 @@
 
 /*==쇼룸 메인페이지==*/
 /*nav*/
-.showroom {
+.sub_sr_menu {
 	padding-top: 5em;
 }
 .lookup,.lookup li, .writeBtn{
@@ -49,6 +49,10 @@
 	flex-wrap: wrap;
 	justify-content: space-between;
 }
+/*
+.sr_card_box:nth-last-child(1) {
+	justify-content:flex-start;
+}*/
 .sr_card {
 	margin: 1% 0;
 	display: inline-block;
@@ -94,10 +98,11 @@
 .editBtn {
 	float: right;
 }
+/*페이징*/
 .sr_paging{
 	margin: 4em 0;
 	padding : 0 10%;
-	width: 100%;
+	width: 80%;
 	text-align:center;
 	justify-content:center;
 }
@@ -164,6 +169,7 @@ form input::placeholder{
 }
 .file span {
 	display: inline-block;
+	vertical-align: top;
 }
 .file span label {
 	margin-top: 5px;

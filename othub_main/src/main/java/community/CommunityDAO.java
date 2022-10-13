@@ -79,4 +79,10 @@ public interface CommunityDAO {
 		
 	// 비슷한 색상 가져오기
 		public List<ProductDTO> similarcolorbackpack(String p_color);
+		
+	// 비슷한 색상 가져오기
+		public List<ProductDTO> productTag1();
+		
+	// 상품 태그 가져오기
+		public List<ProductDTO> selectProductTag(String p_name1);
 }

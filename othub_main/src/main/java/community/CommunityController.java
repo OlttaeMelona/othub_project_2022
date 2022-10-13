@@ -117,9 +117,11 @@ public class CommunityController {
 	public ModelAndView wriringCommunity() {
 		int totalboard = commuserive.amountCommunity()+1; //전체 게시물 수 조회
 		System.out.println(totalboard);
+		List<ProductDTO> productTagList1 = commuserive.productTag1();
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("taglist1",productTagList1);
 		mv.addObject("totalboard", totalboard);
-		mv.setViewName("community/writingform");
+		mv.setViewName("community/srwritingform");
 		return mv;
 	}
 	
@@ -196,6 +198,10 @@ public class CommunityController {
 		
 		//게시물 불러오기
 		CommunityDTO oneCommu = commuserive.oneCommunity(s_seq);
+		System.out.println(oneCommu.p_name1);
+		
+		//상품 태그 불러오기
+		List<ProductDTO> taglist = commuserive.selectProductTag(oneCommu.p_name1);
 		
 		//ai pose
 		String jsonresult = poseservice.test(image);
@@ -210,6 +216,7 @@ public class CommunityController {
 		mv.addObject("poseresult", jsonresult); //pose
 		mv.addObject("objectresult",jsonresult2); // object
 		mv.addObject("oneCommu",oneCommu);
+		mv.addObject("taglist",taglist);
 		mv.addObject("commuSeq",s_seq);
 		mv.addObject("writer",writer);
 		mv.addObject("image2",image2);

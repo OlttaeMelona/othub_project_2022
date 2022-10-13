@@ -5,7 +5,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-import admin.AdminDAO;
 import comment.CommentDAO;
 import community.CommunityDAO;
 import member.MemberDAO;
@@ -32,7 +31,6 @@ import showroom.ShowroomDAO;
 @MapperScan(basePackageClasses = MemberDAO.class)
 @MapperScan(basePackageClasses = CommunityDAO.class)
 @MapperScan(basePackageClasses = CommentDAO.class)
-@MapperScan(basePackageClasses = AdminDAO.class)
 @MapperScan(basePackageClasses = ShowroomDAO.class)
 @MapperScan(basePackages = "shop")
 @MapperScan(basePackages = "productdetail")

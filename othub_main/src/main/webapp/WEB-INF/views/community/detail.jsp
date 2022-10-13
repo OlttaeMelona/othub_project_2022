@@ -229,8 +229,7 @@ $(document).ready(function() {
 			mycontext.font="12px batang";
 			mycontext.fillText(json.predictions[0].detection_names[1], x3, y3);
 			}
-		
-	
+
 	
 	if($("#red2").val() === null){
 		$("#back").attr("type",'hidden');
@@ -298,12 +297,31 @@ $(document).ready(function() {
                 </tbody>
             </table>
             
+            
+            <!-- 상품태그 -->
+            <div id="container">
+   			<div class="inner">
+   			<h2>상품 태그</h2>
+   			<div class="flex">
+            <c:forEach  var="list" items="${taglist}">
+            <div class="card">
+               <div class="img"> <a href="productdetail?p_id=${list.p_id }"><img src="images/${list.p_thumb}"></a></div>
+                <div class="txt_box">
+                    <h2>${list.p_name }</h2>
+                    <ol class="clearfix">
+                        <li class="fl">
+                           <p> ${list.p_price } 원</p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            </c:forEach>
+            </div>
+            </div>
             <!-- 댓글 -->
             <div class="comment_box">
                 <div class="clearfix">
                     <div class="comment_num fl" id="comment_num"></div>
-  
-                    
 					<div class="like fl">
 						<%if(((Integer)request.getAttribute("result")).intValue()==1) {%>
                         <a id="like_btn" class="on"><%} else{ %><a id="like_btn" class="off"><%} %>
@@ -326,8 +344,8 @@ $(document).ready(function() {
                     </div>
                 </div>
             </div>
-                    
-            <a href="/community" class="more" style="color:white">목록</a>
+           
+            <a href="/community" class="more" style="color:white;text-align: center" >목록</a>
         </div>
     </div>
 </div>

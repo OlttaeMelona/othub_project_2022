@@ -70,7 +70,20 @@ public class OrderDTO {
 	String m_email;
 	String m_sex;
 	String m_regdate;
-	
+	String p_color;
+	String p_thumb;
+	public String getP_thumb() {
+		return p_thumb;
+	}
+	public void setP_thumb(String p_thumb) {
+		this.p_thumb = p_thumb;
+	}
+	public String getP_color() {
+		return p_color;
+	}
+	public void setP_color(String p_color) {
+		this.p_color = p_color;
+	}
 	public int getTests() {
 		return tests;
 	}

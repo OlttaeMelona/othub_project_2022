@@ -22,7 +22,7 @@
 	<script>
 	$(document).ready(function() {
 		// 글쓰기 로그인 확인
-		$("#writingbtn").on("click",function(e){
+		$("#writing").on("click",function(e){
 			if(<%=session.getAttribute("m_id")%>==null){
 				alert("로그인 후 이용해주세요.");
 				e.preventDefault();
