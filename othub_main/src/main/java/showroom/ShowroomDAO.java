@@ -42,4 +42,8 @@ public interface ShowroomDAO {
 	
 	//게시물 삭제
 	public void deleteShowroom(int sr_num) throws Exception;
+	
+	//오늘의 추천 쇼룸
+	public List<ShowroomDTO> todayShowroom() throws Exception;
+	
 }

@@ -17,44 +17,13 @@
 	</script>
 </head>
 <body>
-		
 	<!-- navbar include -->
 	<%@include file="../include/navbar.jsp"%>
+	<!-- 이달의 추천 쇼룸 -->
+	<%@include file="sr_today.jsp"%>
 	
-
 	<!-- main container -->
 	<main>
-		<section>
-			<div>
-				<h3>⭐오늘의 추천 포토존</h3>
-			</div>
-			<article class="sr_card_box">
-				<c:forEach items="${today_sr }" var="showroom">
-					<div class="sr_card">
-						<div class="sr_card_img">
-							<a href="/showroompost?no=${showroom.sr_num }">
-								<img src="images/showroom/user_img/${showroom.sr_imgname1 }">
-							</a> 
-						</div>
-						<div class="sr_card_info">
-							<h3><a href="/showroompost?no=${showroom.sr_num }">${showroom.sr_title }</a></h3>
-							<div class="location">
-								<i class="fa-solid fa-location-dot"></i>
-								<span>${showroom.sr_region }</span>
-							</div>
-							<div class="price">
-								<span class="price_val">${showroom.sr_price } </span>
-								<span class="price_unit">원/시간</span>
-								<c:if test="${role.equals('admin') }">
-									<span class="editBtn"><a href="/sr_update?no=${showroom.sr_num }">수정</a></span>
-									<span class="editBtn"><a href="/deletePost?no=${showroom.sr_num }">삭제</a></span>
-								</c:if>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
-			</article>
-		</section>
 		<section>
 			<div class="sub_sr_menu">
 				<ul class="lookup">
@@ -63,11 +32,9 @@
 					<li><a href="showroomlist?cate=2">사진관</a></li>
 					<li><a href="showroomlist?cate=3">사진작가</a></li> 
 				</ul>
-
 				<c:if test="${role.equals('admin') }">
 					<a href="sr_writing"><div class="writeBtn">게시글 등록하기</div></a>
 				</c:if>
-
 			</div>
 		</section>
 		<section class="showroom">
@@ -89,12 +56,10 @@
 							<div class="price">
 								<span class="price_val">${showroom.sr_price } </span>
 								<span class="price_unit">원/시간</span>
-
 								<c:if test="${role.equals('admin') }">
 									<span class="editBtn"><a href="/sr_update?no=${showroom.sr_num }">수정</a></span>
 									<span class="editBtn"><a href="/deletePost?no=${showroom.sr_num }">삭제</a></span>
 								</c:if>
-
 							</div>
 						</div>
 					</div>

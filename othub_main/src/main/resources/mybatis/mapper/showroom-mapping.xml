@@ -98,6 +98,33 @@
  		select count(*) from showroom where sr_kind=#{sr_kind}
  	</select>
  	
+ 	<!-- 오늘의 추천 쇼룸 -->
+ 	<select id="todayShowroom" resultType="showroomdto">
+ 		select 
+ 			sr_num, 
+	 		sr_writer,
+			sr_title,
+			sr_contents,
+			sr_writingtime,
+			sr_viewcount,
+			sr_image1 as sr_imgname1,
+			sr_image2 as sr_imgname2, 
+			sr_image3 as sr_imgname3,
+			sr_image4 as sr_imgname4,
+			sr_image5 as sr_imgname5,
+			sr_price,
+			sr_kind,
+			sr_operatingtime,
+			sr_closed,
+			sr_region,
+			sr_number,
+	 		sr_address1,
+	 		sr_address2,
+	 		sr_address3
+ 		from showroom
+ 		where sr_num=1 or sr_num=7 or sr_num=12
+ 	</select>
+ 	
  	<!-- 게시물 조회수 업데이트 -->
  	<update id="viewCount" parameterType="int">
  		update showroom set sr_viewcount=sr_viewcount+1 where sr_num=#{sr_num}
