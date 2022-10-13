@@ -6,7 +6,8 @@
 <!-- 주문입력 호출 -->
 <insert id="insertOrder" parameterType="orderdto">
 	insert into orders (m_id, p_id, amount, orderdate)
-	values(#{m_id}, #{p_id}, #{amount}, now())
+	<!-- values("kdh", #{p_id}, #{amount}, now())  -->
+	values(#{m_id}, #{p_id}, #{amount}, now()) 	
 </insert>
 
 <!-- 이용자 정보 호출 -->
@@ -20,8 +21,52 @@
 </select>
 
 <!-- orderid 호출 -->
-<select id="getOrderid" parameterType="string" resultType="orderdto">
+<select id="getOrderid" parameterType="int" resultType="int">
 	select order_id from orders order by orderdate desc limit 1
 </select>
+
+<!-- orderid 호출2 -->
+<select id="getOrderid2" parameterType="String" resultType="orderdto">
+	select order_id from orders where m_id=#{m_id} and order_check is null;
+</select>
+
+
+<!-- p_id 호출 -->
+<select id="getProductid" parameterType="int" resultType="int">
+	select p_id from orders where order_id=#{order_id}
+</select>
+
+<!-- orders table 호출 -->
+<select id="getOrders" parameterType="int" resultType="orderdto">
+	select * from orders where order_id=#{o_id}
+</select>
+
+<!-- 주문완료 -->
+<insert id="doOrder" parameterType="int">
+	update orders set order_check = 1 where order_id=${order_id};
+	update orders set orderdate = now() where order_id=${order_id};
+</insert>
+
+
+<!-- 주문완료 cart-->
+<delete id="orderComplete" parameterType="int">
+	delete from cart where p_id=${p_id}
+</delete>
+
+<!-- 주문취소 -->
+<delete id="cancleOrder" parameterType="int">
+	delete from orders where order_id=${order_id}
+</delete>
+
+<!-- 주문내역 -->
+<select id="getOrdered" parameterType="String" resultType="orderdto">
+	select * from orders where m_id='kdh' and order_check=1;
+</select>
+
+<!-- 장바구니에서 주문하기 -->
+<select id="cartToOrder" parameterType="String" resultType="orderdto">
+	select * from cart where m_id=#{m_id}
+</select>
+
 </mapper>
 

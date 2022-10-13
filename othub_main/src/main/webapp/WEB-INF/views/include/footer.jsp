@@ -19,9 +19,6 @@
 			<span><a href="#">깃허브</a></span>
 			<span><a href="#">주소</a></span>
 			<span><a href="#">고객센터</a></span>
-			<%if(session.getAttribute("a_id") == null){ %>
-			<span><a href="admin_login">관리자</a></span>
-			<%} %>
 		</div>
 	</footer>
 </body>

@@ -5,7 +5,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-import admin.AdminDAO;
 import comment.CommentDAO;
 import community.CommunityDAO;
 import member.MemberDAO;
@@ -25,16 +24,17 @@ import showroom.ShowroomDAO;
 @ComponentScan(basePackages = "order")
 @ComponentScan(basePackages = "shop")
 @ComponentScan(basePackages = "productdetail")
+@ComponentScan(basePackages = "cart")
 
 
 @MapperScan(basePackageClasses = MemberDAO.class)
 @MapperScan(basePackageClasses = CommunityDAO.class)
 @MapperScan(basePackageClasses = CommentDAO.class)
-@MapperScan(basePackageClasses = AdminDAO.class)
 @MapperScan(basePackageClasses = ShowroomDAO.class)
 @MapperScan(basePackages = "shop")
 @MapperScan(basePackages = "productdetail")
 @MapperScan(basePackages = "order")
+@MapperScan(basePackages = "cart")
 public class OthubApplication {
 
 	public static void main(String[] args) {

@@ -55,8 +55,12 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
                 </thead>
                 <tbody>
                     <tr>
-                    <div class="filebox">
-                        <td><input type=file name="s_image1" onchange="readURL1(this)" required></td>
+                        <td class="td">
+                        <div class="file">
+
+                        	<input id="s_image1" type=file name="s_image1" onchange="readURL1(this)" required>
+
+                        </td>
                         <td><input type=file name="s_image2" onchange="readURL2(this)"></td>
                         <td><input type=file name="s_image3" onchange="readURL3(this)"></td>
                     </div>

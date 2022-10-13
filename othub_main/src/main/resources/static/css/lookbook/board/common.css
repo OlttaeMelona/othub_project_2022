@@ -14,7 +14,6 @@ a:hover{text-decoration: none;}
 	margin: 0; padding: 0;
 }
 #container .inner{
-	display: inline-block;
 	width: 1180px; height: auto;
 	margin: 80px auto;
 }
