@@ -27,7 +27,7 @@ public class ProductDTO {
 	//매개변수 있는 생성자
 	public ProductDTO(String p_id, String p_name, String p_sex,
 			String p_brand, int p_price, String p_stock, String p_contents,
-			String p_regdate, String p_tumb, String p_image1, String p_image2, String p_image3,
+			String p_regdate, String p_thumb, String p_image1, String p_image2, String p_image3,
 			String p_like, String p_viewcount, String category_id) {
 		this.p_id = p_id;
 		this.p_name = p_name;
