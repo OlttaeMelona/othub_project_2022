@@ -122,7 +122,7 @@
 	 		sr_address2,
 	 		sr_address3
  		from showroom
- 		where sr_num=1 or sr_num=7 or sr_num=12
+ 		where sr_num=5 or sr_num=6 or sr_num=9
  	</select>
  	
  	<!-- 게시물 조회수 업데이트 -->
