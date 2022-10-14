@@ -104,5 +104,12 @@ public class ShowroomServiceImpl implements ShowroomService {
 	public void deleteShowroom(int sr_num) throws Exception {
 		dao.deleteShowroom(sr_num);
 	}
+	
+	//오늘의 추천 쇼룸
+	@Override
+	public List<ShowroomDTO> todayShowroom() throws Exception {
+		return dao.todayShowroom();
+	}
+	
 
 }

@@ -17,19 +17,88 @@
 	<!-- navbar include -->
 	<%@include file="../include/navbar.jsp"%>
 	
-	<main>
-		<section class="detailPost">
-			<div class="postBox">
-				<h3 class="sr_title">${onePost.sr_title }</h3>
-				<img src="images/showroom/user_img/${onePost.sr_imgname1 }">
-				<div id="map" style="width:500px;height:400px;"></div>
-			</div>
+	<main class="postMain">
+		<header class="postHead">
+			<h3 class="postTitle">${onePost.sr_title }</h3>
+		</header>
+		<section class="PostImg">
+			<article class="postImgBox">
+				<div class="postBigImg">
+					<img class="bigImg" src="images/showroom/user_img/${onePost.sr_imgname1 }">
+				</div>
+				<div class="postSmallImg">
+					<img class="smallImg" src="images/showroom/user_img/${onePost.sr_imgname1 }">
+					<c:if test="${onePost.sr_imgname2 != '' }">
+						<img class="smallImg" src="images/showroom/user_img/${onePost.sr_imgname2 }">
+					</c:if>
+					<c:if test="${onePost.sr_imgname3 != '' }">
+						<img class="smallImg" src="images/showroom/user_img/${onePost.sr_imgname3 }">
+					</c:if>
+					<c:if test="${onePost.sr_imgname4 != '' }">
+						<img class="smallImg" src="images/showroom/user_img/${onePost.sr_imgname4 }">
+					</c:if>
+					<c:if test="${onePost.sr_imgname5 != '' }">
+						<img class="smallImg" src="images/showroom/user_img/${onePost.sr_imgname5 }">
+					</c:if>
+				</div>
+			</article>
+		</section>
+		<aside class="postAside">
+			<form action="" method="post">
+				<table>
+					<thead></thead>
+					<tbody>
+						<tr>
+							<td class="rowname">상품명</td>
+							<td class="col_p">${onePost.sr_title }</td>
+						</tr>
+						<tr>
+							<td class="rowname">유형</td>
+							<td class="col_p">
+								<c:if test="${onePost.sr_kind == 1}">
+									스튜디오
+								</c:if>
+								<c:if test="${onePost.sr_kind == 2}">
+									사진관
+								</c:if>
+								<c:if test="${onePost.sr_kind == 3}">
+									사진작가
+								</c:if>
+							</td>
+						</tr>
+						<tr>
+							<td class="rowname" colspan="2">
+								<label class="rowname" for="">예약인원</label><br>
+								<input type="number" neme="">
+							</td>
+						</tr>
+						<tr>
+							<td class="rowname" colspan="2">
+								<label class="rowname" for="">예약 날짜</label><br>
+								<input type="date" name="" min="" >
+							</td>
+						</tr>
+						<tr>
+							<td class="rowname" colspan="2">
+								<input type="submit" value="예약하기">
+								<input type="button" value="찜하기">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</aside>
+		<section class="postContents">
+			<div id="map" style="width:500px;height:400px;"></div>
 		</section>
 	</main>
 	
 	<!-- footer include -->
 	<%@include file="../include/footer.jsp"%>
 </body>
+
+
+<!-- kakao map -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=de99cf4145328e6411314ae05caa843b"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
@@ -70,6 +139,23 @@
 	    // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 	    map.setCenter(coords);
 	} 
-	});    
+	});  
+</script>
+<script>
+	window.onload = function(){
+		var bigImg = document.querySelector(".bigImg");
+		var smallImgs = document.querySelectorAll(".smallImg");
+		
+		
+		for(var i = 0; i < smallImgs.length; i++){
+			console.log(smallImgs[i].getAttribute("src"));
+			smallImgs[i].addEventListener("click", changeImg);
+		}
+		function changeImg(){
+			var smallPicAttribute = this.getAttribute("src");
+			bigImg.setAttribute("src", smallPicAttribute);
+		}
+	}
+	
 </script>
 </html>

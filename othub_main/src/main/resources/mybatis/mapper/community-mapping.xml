@@ -45,8 +45,8 @@
 	
 	<!-- 게시물 저장 -->
 	<insert id="insertCommunity" parameterType="communitydto" >
-		insert into styletab(s_title, s_contents, s_writer, s_image1, s_image2, s_image3)
-		values(#{s_title}, #{s_contents}, #{s_writer}, #{imagename1},#{imagename2},#{imagename3})
+		insert into styletab(s_title, s_contents, s_writer, s_image1, s_image2, s_image3, p_name1,p_name2, p_name3, p_name4)
+		values(#{s_title}, #{s_contents}, #{s_writer}, #{imagename1},#{imagename2},#{imagename3}, #{p_name1}, #{p_name2}, #{p_name3}, #{p_name4})
 	</insert>
 	
 	<!-- 좋아요 수 조회 -->
@@ -56,9 +56,36 @@
 	
 	<!-- 게시물 디테일 -->
 	<select id="oneCommunity" resultType="communitydto">
-		select s_seq,s_title,s_contents,s_writer,s_viewcount,s_writingtime,
+		select s_seq,s_title,s_contents,s_writer,s_viewcount,s_writingtime,p_name1,p_name2,p_name3,p_name4,
 		 s_image1 as imagename1, s_image2 as imagename2, s_image3 as imagename3, s_like  from styletab where s_seq=#{s_seq}
 	</select>
+	
+	<!-- 글상세보기 태그 가져오기-->
+	<select id="selectProductTag1" resultType="product.ProductDTO" parameterType="String">
+		select p_id,p_name,p_sex,p_brand,p_color,p_price,p_stock,p_contents,p_image1,p_image2,p_image3,p_like,p_thumb from product
+		inner join styletab
+		on  product.p_name = styletab.p_name1
+		where product.p_name = #{p_name1};
+	</select>
+	<select id="selectProductTag2" resultType="product.ProductDTO" parameterType="String">
+		select p_id,p_name,p_sex,p_brand,p_color,p_price,p_stock,p_contents,p_image1,p_image2,p_image3,p_like,p_thumb from product
+		inner join styletab
+		on  product.p_name = styletab.p_name2
+		where product.p_name = #{p_name2};
+	</select>
+	<select id="selectProductTag3" resultType="product.ProductDTO" parameterType="String">
+		select p_id,p_name,p_sex,p_brand,p_color,p_price,p_stock,p_contents,p_image1,p_image2,p_image3,p_like,p_thumb from product
+		inner join styletab
+		on  product.p_name = styletab.p_name3
+		where product.p_name = #{p_name3};
+	</select>
+	<select id="selectProductTag4" resultType="product.ProductDTO" parameterType="String">
+		select p_id,p_name,p_sex,p_brand,p_color,p_price,p_stock,p_contents,p_image1,p_image2,p_image3,p_like,p_thumb from product
+		inner join styletab
+		on  product.p_name = styletab.p_name4
+		where product.p_name = #{p_name4};
+	</select>
+	
 	
 	<!-- 게시물 수정(제목, 내용, 날짜만) -->
 	<update id="updateWriting">
@@ -126,5 +153,37 @@
 	<select id="likeCheck_main" resultType="int">
 	select count(*) from boardlike where m_id = #{m_id} and s_seq = #{s_seq}
 	</select>
+	
+	<!-- 비슷한 색상 찾기(상의)-->
+	<select id="similarcolor" resultType="product.ProductDTO" parameterType="String">
+		select * from product
+        inner join category
+        on category.category_id = product.category_id
+        where product.category_id = 1 and p_color = #{p_color}
+        order by p_regdate desc;
+	</select>
+	
+	<!-- 비슷한 색상 찾기(가방)-->
+	<select id="similarcolorbackpack" resultType="product.ProductDTO" parameterType="String">
+		select * from product
+        inner join category
+        on category.category_id = product.category_id
+        where product.category_id = 5 and p_color = #{p_color}
+        order by p_regdate desc;
+	</select>
+	
+	<!-- 글쓰기 폼 상품 태그(p_id = 1) -->
+	<select id="productTag1" resultType="product.ProductDTO" parameterType="String">
+		select * from product
+		inner join category
+		on category.category_id = product.category_id
+		where product.category_id = 1
+		order by p_name;
+	</select>
+	
+	<select id="counttag" resultType="int">
+		select count(tagn)
+	</select>
+
 </mapper>
 

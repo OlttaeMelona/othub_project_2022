@@ -27,6 +27,8 @@
 <body>
 	<!-- navbar include -->
 	<%@include file="../include/navbar.jsp"%>
+	<!-- 이달의 추천 쇼룸 -->
+	<%@include file="sr_today.jsp"%>
 
 	<!-- main container -->
 	<main>

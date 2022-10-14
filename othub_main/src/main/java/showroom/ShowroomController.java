@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ShowroomController {
@@ -31,7 +33,9 @@ public class ShowroomController {
 	public String sr_main(@RequestParam(value="page", defaultValue="1") int page,
 						Model model, HttpServletRequest request) throws Exception {
 		List<ShowroomDTO> sr_newList= sr_service.newList(page);
+		List<ShowroomDTO> today_sr = sr_service.todayShowroom();
 		int totalPage = sr_service.countPage();
+		model.addAttribute("today_sr", today_sr);
 		model.addAttribute("sr_newList", sr_newList);
 		model.addAttribute("sr_totalPage", totalPage);
 		return "showroom/sr_main"; 
@@ -45,16 +49,29 @@ public class ShowroomController {
 		int totalCatePage = sr_service.cateCount(sr_kind);
 		int countpage = (page - 1) * 12;
 		
+		//카테고리 조회,페이징
 		Map<String, Object> map = new HashMap<>();
 		map.put("page", countpage);
 		map.put("sr_kind", sr_kind);
 		List<ShowroomDTO> cateList = sr_service.cateList(map);
-		System.out.println(totalCatePage);
+		List<ShowroomDTO> today_sr = sr_service.todayShowroom();
 		
 		model.addAttribute("sr_kind", sr_kind);
+		model.addAttribute("today_sr", today_sr);
 		model.addAttribute("cateList", cateList);
 		model.addAttribute("sr_totalPage", totalCatePage);
 		return "showroom/sr_cate"; 
+	}
+	
+	//오늘의 추천
+	@ResponseBody
+	public ModelAndView todaySr() throws Exception{
+		List<ShowroomDTO> today_sr = sr_service.todayShowroom();
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("today_sr", today_sr);
+		mv.setViewName("showroom/sr_main");
+		mv.setViewName("showroom/sr_cate");
+		return mv;
 	}
 	
 	//상세페이지

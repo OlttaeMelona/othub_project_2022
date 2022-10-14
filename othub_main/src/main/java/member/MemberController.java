@@ -36,10 +36,10 @@ public class MemberController {
 			MemberDTO m_dto = service.selectOneMember(dto.getM_id());
 			ModelAndView mv = new ModelAndView();
 			session = request.getSession();
-			System.out.println(m_dto.role);
+			System.out.println(m_dto.getRole());
 			if (name != null) { // 로그인 성공 시
 				session.setAttribute("m_id", dto.getM_id());
-				session.setAttribute("role", m_dto.role);
+				session.setAttribute("role", m_dto.getRole());
 				mv.setViewName("member/main");
 			} else { // 로그인 실패 시
 				mv.setViewName("member/login");
