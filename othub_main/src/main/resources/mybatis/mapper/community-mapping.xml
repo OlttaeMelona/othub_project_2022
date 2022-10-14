@@ -181,6 +181,9 @@
 		order by p_name;
 	</select>
 	
+	<select id="counttag" resultType="int">
+		select count(tagn)
+	</select>
 
 </mapper>
 
