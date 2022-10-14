@@ -24,8 +24,8 @@ div.modalBackground {
 div.modalContent { 
 	display:block;
 	position:fixed; 
-	top:37%;
-	right:6%; 
+	bottom:20px;
+	right:110px; 
 	width:400px;
 	height:500px; 
 	padding:20px 10px; 

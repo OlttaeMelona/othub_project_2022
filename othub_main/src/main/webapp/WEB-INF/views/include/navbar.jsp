@@ -63,7 +63,7 @@
 					}
 					%></li>
 					<!-- 고객센터 -->
-					<li><a href="">Customer Support</a></li>
+					<li><a href="/cslistPage?csnum=1">Customer Support</a></li>
 					<!-- 회원로그아웃 | 관리자로그아웃 -->
 					<li><% 
 					if(m_id !=null){

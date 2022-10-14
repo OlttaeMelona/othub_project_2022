@@ -18,6 +18,7 @@
 	<typeAlias type="order.OrderDTO" alias="orderdto"/>
 
 	<typeAlias type="cart.CartDTO" alias="cartdto"/>
+	<typeAlias type="cs.CSDTO" alias="csdto"/>
 	
 
 </typeAliases>
