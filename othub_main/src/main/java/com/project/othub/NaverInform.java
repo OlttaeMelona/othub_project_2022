@@ -10,7 +10,7 @@ public class NaverInform {
  public final static String j_key = "NTPDCi19DhSVEJR3VxwnNTvQo5Ue451Cp9FXvCt9"; 
  public final static String j_path = "C:\\AI\\git_fork\\othub_project_2022_2"; 
  public final static String chatbot_url = "https://wwlpk2idmv.apigw.ntruss.com/custom/v1/8105/eb8ec8e1596aabeba63a386b12d4d18b62998d0f096a64fcb20cb806824150f3";
- public final static String chatbot_key = "dWhyRlF1eXJqcnNoZkhiRFpkd2VFV0h1d1phZ0dXS1o=";
+ public final static String chatbot_key = "R2VxY21RVk9XTk5LbkFGU2FPVGlGc3pyZU95VHRIVnY=";
  
  
 
