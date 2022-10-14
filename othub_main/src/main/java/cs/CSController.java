@@ -3,11 +3,7 @@ package cs;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,32 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import member.MemberService;
-
 @Controller
 public class CSController {
-	
-	@Autowired
-	@Qualifier("memberservice")
-	MemberService memberservice;
+
 	
 	@Inject
 	CSService service;
-	
-	//게시물 리스트
-	 @RequestMapping(value = "/cslist", method = RequestMethod.GET)
-	 public ModelAndView getCSList(Model model) throws Exception {
-		 
-		 List<CSDTO> cslist = null;
-		 cslist = service.cslist();
-		 
-		 model.addAttribute("cslist", cslist);
-		 
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("cs/cslist");
-		return mv;
-	   
-	 }
+
 	 
 	// 게시물 작성
 	 @RequestMapping(value = "/cswrite", method = RequestMethod.GET)
@@ -58,7 +35,7 @@ public class CSController {
 		service.cswrite(dto);
 		 
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:/cslist");
+		mv.setViewName("redirect:/cslistPage?csnum=1");
 		return mv;
 		
 	 }
@@ -109,7 +86,7 @@ public class CSController {
 		 service.csdelete(cs_seq);
 	
 		 ModelAndView mv = new ModelAndView();
-		 mv.setViewName("redirect:/cslist");
+		 mv.setViewName("redirect:/cslistPage?csnum=1");
 		 return mv;
 	}
 	
