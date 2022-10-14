@@ -60,7 +60,7 @@
 
 <!-- 주문내역 -->
 <select id="getOrdered" parameterType="String" resultType="orderdto">
-	select * from orders where m_id='kdh' and order_check=1;
+	select * from orders where m_id=#{m_id} and order_check=1;
 </select>
 
 <!-- 장바구니에서 주문하기 -->
