@@ -119,6 +119,7 @@ public class CommunityController {
 		System.out.println(totalboard);
 		List<ProductDTO> productTagList1 = commuserive.productTag1();
 		ModelAndView mv = new ModelAndView();
+		System.out.println(productTagList1);
 		mv.addObject("taglist1",productTagList1);
 		mv.addObject("totalboard", totalboard);
 		mv.setViewName("community/srwritingform");
@@ -192,23 +193,49 @@ public class CommunityController {
 	@GetMapping("/oneCommunity")
 	public ModelAndView oneCommunity(@RequestParam(value="s_seq") int s_seq,HttpServletRequest request, String image) {
 		//좋아요 확인
+		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 		String m_id = (String)session.getAttribute("m_id");
 		int result = commuserive.likeCheck_main(s_seq,m_id);
+		String p_name1,p_name2,p_name3,p_name4;
 		
 		//게시물 불러오기
 		CommunityDTO oneCommu = commuserive.oneCommunity(s_seq);
-		System.out.println(oneCommu.p_name1);
-		
+
 		//상품 태그 불러오기
-		List<ProductDTO> taglist = commuserive.selectProductTag(oneCommu.p_name1);
+		if(oneCommu.p_name1!=null) {
+		List<ProductDTO> tag1 = commuserive.selectProductTag1(oneCommu.p_name1);
+		p_name1 = oneCommu.p_name1;
+		mv.addObject("p_name1",p_name1);
+		mv.addObject("tag1",tag1);
+		}if(oneCommu.p_name2 != null){
+		List<ProductDTO> tag2 = commuserive.selectProductTag2(oneCommu.p_name2);
+		p_name2 = oneCommu.p_name2;
+		mv.addObject("tag2",tag2);
+		mv.addObject("p_name2",p_name2);
+
+		}if(oneCommu.p_name3 != null){
+		List<ProductDTO> tag3 = commuserive.selectProductTag3(oneCommu.p_name3);
+		p_name3 = oneCommu.p_name3;
+		mv.addObject("tag3",tag3);
+		mv.addObject("p_name3",p_name3);
+		}if(oneCommu.p_name4 != null){
+		List<ProductDTO> tag4 = commuserive.selectProductTag4(oneCommu.p_name4);
+		p_name4 = oneCommu.p_name4;
+		mv.addObject("tag4",tag4);
+		mv.addObject("p_name4",p_name4);
+		}
+		
+		
+		
 		
 		//ai pose
 		String jsonresult = poseservice.test(image);
 		String jsonresult2 = objectservice.test(image);
 		
 		
-		ModelAndView mv = new ModelAndView();
+		
+
 		
 		String writer = oneCommu.getS_writer();
 		String image2 = oneCommu.getImagename2();
@@ -216,7 +243,7 @@ public class CommunityController {
 		mv.addObject("poseresult", jsonresult); //pose
 		mv.addObject("objectresult",jsonresult2); // object
 		mv.addObject("oneCommu",oneCommu);
-		mv.addObject("taglist",taglist);
+		
 		mv.addObject("commuSeq",s_seq);
 		mv.addObject("writer",writer);
 		mv.addObject("image2",image2);

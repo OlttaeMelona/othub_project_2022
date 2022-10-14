@@ -1,4 +1,3 @@
-
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="community.CommunityDTO"%>
@@ -240,7 +239,10 @@ $(document).ready(function() {
 });//ready end
 </script>
 </head>
-
+<%String p_name1 = (String)request.getAttribute("p_name1");
+String p_name2 = (String)request.getAttribute("p_name2");
+String p_name3 = (String)request.getAttribute("p_name3");
+String p_name4 = (String)request.getAttribute("p_name4");%>
 <body>
 <!-- navbar include -->
 	<%@include file="../include/navbar.jsp" %>
@@ -299,25 +301,68 @@ $(document).ready(function() {
             
             
             <!-- 상품태그 -->
+ 
+            
             <div id="container">
    			<div class="inner">
    			<h2>상품 태그</h2>
    			<div class="flex">
-            <c:forEach  var="list" items="${taglist}">
+   			<% if(!p_name1.equals("")){ %>
             <div class="card">
-               <div class="img"> <a href="productdetail?p_id=${list.p_id }"><img src="images/${list.p_thumb}"></a></div>
+               <div class="img"> <a href="productdetail?p_id=${tag1.get(0).getP_id() }"><img src="images/${tag1.get(0).getP_thumb()}"></a></div>
                 <div class="txt_box">
-                    <h2>${list.p_name }</h2>
+                    <h2>${tag1.get(0).getP_name()}</h2>
                     <ol class="clearfix">
                         <li class="fl">
-                           <p> ${list.p_price } 원</p>
+                           <p> ${tag1.get(0).getP_price()} 원</p>
                         </li>
                     </ol>
                 </div>
             </div>
-            </c:forEach>
+             <%} %>
+            <% if(!p_name2.equals("")){ %>
+            <div class="card">
+               <div class="img"> <a href="productdetail?p_id=${tag2.get(0).getP_id() }"><img src="images/${tag2.get(0).getP_thumb()}"></a></div>
+                <div class="txt_box">
+                    <h2>${tag2.get(0).getP_name()}</h2>
+                    <ol class="clearfix">
+                        <li class="fl">
+                           <p> ${tag2.get(0).getP_price()} 원</p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+             <%} %>
+            <% if(!p_name3.equals("")){ %>
+            <div class="card">
+               <div class="img"> <a href="productdetail?p_id=${tag3.get(0).getP_id() }"><img src="images/${tag3.get(0).getP_thumb()}"></a></div>
+                <div class="txt_box">
+                    <h2>${tag3.get(0).getP_name()}</h2>
+                    <ol class="clearfix">
+                        <li class="fl">
+                           <p> ${tag3.get(0).getP_price()} 원</p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+             <%} %>
+            <% if(!p_name4.equals("")){ %>
+            <div class="card">
+               <div class="img"> <a href="productdetail?p_id=${tag4.get(0).getP_id() }"><img src="images/${tag4.get(0).getP_thumb()}"></a></div>
+                <div class="txt_box">
+                    <h2>${tag4.get(0).getP_name()}</h2>
+                    <ol class="clearfix">
+                        <li class="fl">
+                           <p> ${tag4.get(0).getP_price()} 원</p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+             <%} %>
             </div>
             </div>
+            </div>
+
             <!-- 댓글 -->
             <div class="comment_box">
                 <div class="clearfix">
