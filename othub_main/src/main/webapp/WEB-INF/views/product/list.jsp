@@ -71,7 +71,8 @@ $(document).ready(function() {
 
 
 
-
+<!-- chatbot include -->
+		<%@include file="../chatbot/chatbot.jsp" %>
 
 
 <!-- footer include -->
