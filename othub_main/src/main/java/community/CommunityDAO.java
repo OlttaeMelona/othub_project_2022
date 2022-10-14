@@ -84,5 +84,8 @@ public interface CommunityDAO {
 		public List<ProductDTO> productTag1();
 		
 	// 상품 태그 가져오기
-		public List<ProductDTO> selectProductTag(String p_name1);
+		public List<ProductDTO> selectProductTag1(String p_name1);
+		public List<ProductDTO> selectProductTag2(String p_name2);
+		public List<ProductDTO> selectProductTag3(String p_name3);
+		public List<ProductDTO> selectProductTag4(String p_name4);
 }
