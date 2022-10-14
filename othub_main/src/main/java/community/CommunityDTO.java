@@ -8,7 +8,7 @@ public class CommunityDTO {
 	String s_title,s_contents,s_writer,s_writingtime;
 	String imagename1;
 	String imagename2, imagename3;
-	String p_name1;
+	String p_name1,p_name2,p_name3,p_name4;
 	
 	public CommunityDTO() {}
 	
@@ -32,6 +32,30 @@ public class CommunityDTO {
 	public void setS_seq(int s_seq) {
 		this.s_seq = s_seq;
 	}
+	public String getP_name2() {
+		return p_name2;
+	}
+
+	public void setP_name2(String p_name2) {
+		this.p_name2 = p_name2;
+	}
+
+	public String getP_name3() {
+		return p_name3;
+	}
+
+	public void setP_name3(String p_name3) {
+		this.p_name3 = p_name3;
+	}
+
+	public String getP_name4() {
+		return p_name4;
+	}
+
+	public void setP_name4(String p_name4) {
+		this.p_name4 = p_name4;
+	}
+
 	public int getS_viewcount() {
 		return s_viewcount;
 	}

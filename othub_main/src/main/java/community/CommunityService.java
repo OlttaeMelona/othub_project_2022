@@ -143,7 +143,16 @@ public class CommunityService {
 			return dao.productTag1();
 		}
 	// 상품 태그 가져오기
-		public List<ProductDTO> selectProductTag(String p_name1){
-			return dao.selectProductTag(p_name1);
+		public List<ProductDTO> selectProductTag1(String p_name1){
+			return dao.selectProductTag1(p_name1);
+		}
+		public List<ProductDTO> selectProductTag2(String p_name2){
+			return dao.selectProductTag2(p_name2);
+		}
+		public List<ProductDTO> selectProductTag3(String p_name3){
+			return dao.selectProductTag3(p_name3);
+		}
+		public List<ProductDTO> selectProductTag4(String p_name4){
+			return dao.selectProductTag4(p_name4);
 		}
 }
