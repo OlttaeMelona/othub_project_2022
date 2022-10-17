@@ -41,4 +41,10 @@ public interface OrderService {
 	
 	//주문완료시 장바구니 삭제
 	public void orderComplete(int p_id);
+	
+	//선교 수정
+	//회원 등급 변경(gold)
+	public void updateRoleGold(String m_id);
+	
+	public void updateRoleVip(String m_id);
 }

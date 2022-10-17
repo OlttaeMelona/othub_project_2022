@@ -36,6 +36,7 @@
 	<h5>회원정보</h5>
 	<ul>
 		<li><a href="memberlist">전체 회원 조회</a></li>
+		<li><a href="userlist">일반 회원 조회</a></li>
 		<li><a href="">장바구니</a></li>
 		<li><a href="mycommunity">내 게시글</a></li>
 		<li><a href="mylikecommunity">좋아요한 게시물</a></li>

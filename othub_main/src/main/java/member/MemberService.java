@@ -71,4 +71,14 @@ public class MemberService  {
 	public void updateMemberByAdmin(MemberDTO dto) {
 		dao.updateMemberByAdmin(dto);
 	}
+	
+	//회원 리스트 조회(일반 회원 조회)
+	public List<MemberDTO> selectUserList(){
+		return dao.selectUserList();
+	}
+	
+	//일반 회원 등급 변경
+	public void updateUserRole(MemberDTO dto) {
+		dao.updateUserRole(dto);
+	}
 }
