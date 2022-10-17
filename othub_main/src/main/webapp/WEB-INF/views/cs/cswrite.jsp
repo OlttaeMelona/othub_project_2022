@@ -9,9 +9,8 @@
 <title>Insert title here</title>
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
-$(document).ready(function() {
-	
-});//ready end
+
+
 </script>
 </head>
 <body>
@@ -19,22 +18,29 @@ $(document).ready(function() {
 <!-- navbar include -->
 	<%@include file="../include/navbar.jsp" %>
 	<%@ include file="../cs/csnav.jsp" %>
-	
+
+
 	
 <form method="post">
 
 	<label>제목</label>
 	<input type="text" name="cs_title" /><br>
 	
-	<label>작성자</label>
-	<input type="text" name="cs_writer" /><br>
+	<label>작성자 </label>
+	<input type="text" name="cs_writer" value="${cs_writer}" readonly/><br>
 	
 	<label>문의 내용</label>
 	<textarea cols="50" rows="5" name="cs_question"></textarea><br>
 	
+	<label>비밀글</label>
+	<input type="radio" value="y" name="cs_open" checked/> 공개 
+	<input type="radio" value="n" name="cs_open" /> 비공개 <br>
+	
 	<button type="submit">작성</button>
 
 </form>
+
+
 
 </body>
 </html>

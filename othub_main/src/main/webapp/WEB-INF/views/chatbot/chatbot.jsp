@@ -59,7 +59,7 @@ $(document).ready(function() {
 				}//for 	
 			}//success
 		});//ajax
-		setTimeout("$('#request').val('')", 100);
+		setTimeout("$('#request').val('')", 200);
 		 
 	});//on
 });//ready end
@@ -88,7 +88,7 @@ $(document).ready(function() {
 <div class="replyModal">
  
    <div class="modalContent">
-   <span id="toptext"> Oh-Hub 챗봇 </span>
+   <span id="toptext"> Ot-Hub 챗봇 </span>
      <img class="modal_cancel" src="images/chatbot/close.png">
     
 	   <div class="chat_main" id="chat"> 
