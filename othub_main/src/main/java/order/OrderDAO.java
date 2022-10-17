@@ -44,4 +44,10 @@ public interface OrderDAO {
 	
 	//주문완료시 장바구니 삭제
 	public void orderComplete(int p_id);
+	
+	//선교 수정 회원 등급 변경(골드)
+	public void updateRoleGold(String m_id);
+	
+	//선교 수정 회원 등급 변경(골드)
+		public void updateRoleVip(String m_id);
 }

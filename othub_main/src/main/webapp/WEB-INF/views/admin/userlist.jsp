@@ -23,7 +23,7 @@
 	
 <div id="container">
 	<div class="inner">
-	<h1>가입 회원 정보</h1>
+	<h1>일반 회원 정보</h1>
 		<div class= "table">
 			<table id="inventory">
 				<colgroup>
@@ -47,7 +47,7 @@
 					<c:forEach items="${memberlist }" var="member">
 					<tr class="styleone">
 						<div>
-						<form action ="updateMemberByAdmin" method="post">
+						<form action ="updateUserRole" method="post">
 						<td><input type="text" value="${member.m_id}" name="m_id"></td>
 						<td>${member.m_pw }</td>
 						<td>${member.m_name }</td>
@@ -57,22 +57,23 @@
 						<td>${member.m_sex}</td>
 						<td>${member.m_regdate }</td>
 						<td>
-							<select name="role1">
-								<c:if test="${member.role1.equals('admin') }">
-								    <option value="${member.role1}">${member.role1}</option>
-								    <option value="user">user</option>
-								    <option value="partner">partner</option>
-								</c:if>
+							<select name="role2">
+								
 								<c:choose>
-									<c:when test="${member.role1.equals('partner')}">
-										<option value="${member.role1}">${member.role1}</option>
-									    <option value="user">user</option>
-									    <option value="admin">admin</option>
+									<c:when test="${member.role2.equals('silver')}">
+									<option value="${member.role2}">${member.role2}</option>
+								    <option value="gold">gold</option>
+								    <option value="vip">vip</option>
 								    </c:when>
-									<c:when test="${member.role1.equals('user')}">
-										<option value="${member.role1}">${member.role1}</option>
-									    <option value="admin">admin</option>
-									    <option value="partner">partner</option>
+								    <c:when test="${member.role2.equals('gold')}">
+									<option value="${member.role2}">${member.role2}</option>
+								    <option value="gold">silver</option>
+								    <option value="vip">gold</option>
+								    </c:when>
+								    <c:when test="${member.role2.equals('vip')}">
+									<option value="${member.role2}">${member.role2}</option>
+								    <option value="gold">silver</option>
+								    <option value="vip">gold</option>
 								    </c:when>
 								    
 								</c:choose>>    

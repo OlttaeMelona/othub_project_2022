@@ -76,4 +76,17 @@ public class OrderServiceImpl implements OrderService {
 	public void orderComplete(int p_id) {
 		dao.orderComplete(p_id);
 	}
+
+	// 선교 수정
+	@Override
+	public void updateRoleGold(String m_id) {
+		dao.updateRoleGold(m_id);
+	}
+	
+	@Override
+	public void updateRoleVip(String m_id) {
+		dao.updateRoleVip(m_id);
+	}
+	
+	
 }
