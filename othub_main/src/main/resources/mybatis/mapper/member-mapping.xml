@@ -37,14 +37,23 @@ delete from member where m_id=#{m_id}
 <!-- 모든 회원정보 조회 -->
 <!-- 회원리스트 조회 -->
 <select id="selectMemberList" resultType="memberdto">
-	select m_id,m_pw,m_name,m_email,m_phone,m_sex,m_address,m_regdate,role from member order by role
+	select m_id,m_pw,m_name,m_email,m_phone,m_sex,m_address,m_regdate,role1 from member order by role1
 </select>
 
 <!-- 관리자 회원정보 수정 -->
 <update id="updateMemberByAdmin" parameterType="memberdto" >
-	update member set role=#{role} where m_id=#{m_id}
+	update member set role1=#{role1} where m_id=#{m_id}
 </update>
 
+<!-- 일반 회원 조회 -->
+<select id="selectUserList" resultType="memberdto">
+	select m_id,m_pw,m_name,m_email,m_phone,m_sex,m_address,m_regdate,role1,role2 from member where role1 = 'user' order by role2 = 'vip' desc
+</select>
+
+<!-- 일반 회원 등급 변경 -->
+<update id="updateUserRole" parameterType="memberdto" >
+	update member set role2=#{role2} where m_id=#{m_id}
+</update>
 
 </mapper>
 
