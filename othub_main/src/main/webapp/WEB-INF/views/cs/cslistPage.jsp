@@ -64,7 +64,7 @@ $(document).ready(function() {
   <!-- 비밀글 -->
   <c:if test="${cslist.cs_open == 'n'}" >
   <c:choose>
-  	<c:when test="${cslist.cs_writer == m_id || role == 'admin'}">
+  	<c:when test="${cslist.cs_writer == m_id || role1 == 'admin'}">
 	  	<td><a href="/csview?cs_seq=${cslist.cs_seq}" id="cs_title_secret">
 	  	<img src="../images/cs/lock.png" style="width:15px; height:15px">
 	  	${cslist.cs_title} </a></td>

@@ -50,7 +50,7 @@
 	
 	<!-- 비밀글 확인 -->
 	<select id="csrole" resultType="member.MemberDTO">
-	 	select role from member
+	 	select role1 from member
 	</select>
 	
 	
