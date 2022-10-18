@@ -79,5 +79,7 @@
 	update member set role2 = "vip" where m_id=#{m_id}
 </update>
 
+
+
 </mapper>
 
