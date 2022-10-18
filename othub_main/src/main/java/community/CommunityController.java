@@ -379,5 +379,6 @@ public class CommunityController {
 		mv.setViewName("community/similarcolorbackpack");
 		return mv;
 	}
+	
 
 }
