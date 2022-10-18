@@ -12,8 +12,8 @@
 	
 	<!-- cswriting -->
 	<insert id="cswrite" parameterType="cs.CSDTO">
-	 	insert into cs (cs_writer, cs_title, cs_question)
-	 	values(#{cs_writer}, #{cs_title}, #{cs_question})
+	 	insert into cs (cs_writer, cs_title, cs_question, cs_open)
+	 	values(#{cs_writer}, #{cs_title}, #{cs_question}, #{cs_open})
 	</insert>
 	
 	<!-- csview-->
@@ -46,6 +46,11 @@
 		 select * from cs
 		 order by cs_seq desc
 		 limit #{displayPost}, #{postNum}
+	</select>
+	
+	<!-- 비밀글 확인 -->
+	<select id="csrole" resultType="member.MemberDTO">
+	 	select role1 from member
 	</select>
 	
 	

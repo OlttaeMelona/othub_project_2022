@@ -7,11 +7,12 @@ public class CSDTO {
 	//product table colums
 		private int cs_seq;
 		private String cs_writer;
-		private String cs_pw;
+		private String cs_open;
 		private String cs_title;
 		private String cs_question;
 		private String cs_answere;
 		private Date cs_regdate;
+		
 		
 		public CSDTO() {
 			
@@ -20,12 +21,12 @@ public class CSDTO {
 
 
 //매개변수 있는 생성자
-	public CSDTO(int cs_seq, String cs_writer, String cs_pw, String cs_title,
+	public CSDTO(int cs_seq, String cs_writer, String cs_open, String cs_title,
 			 String cs_question, String cs_answere, Date cs_regdate) {
 		
 		this.cs_seq = cs_seq;
 		this.cs_writer = cs_writer;
-		this.cs_pw = cs_pw;
+		this.cs_open = cs_open;
 		this.cs_title = cs_title;
 		this.cs_question = cs_question;
 		this.cs_answere = cs_answere;
@@ -59,14 +60,14 @@ public class CSDTO {
 
 
 
-	public String getCs_pw() {
-		return cs_pw;
+	public String getCs_open() {
+		return cs_open;
 	}
 
 
 
-	public void setCs_pw(String cs_pw) {
-		this.cs_pw = cs_pw;
+	public void setCs_open(String cs_open) {
+		this.cs_open = cs_open;
 	}
 
 
@@ -121,7 +122,7 @@ public class CSDTO {
 
 	@Override
 	public String toString() {
-		return "CSDTO [cs_seq=" + cs_seq + ", cs_writer=" + cs_writer + ", cs_pw=" + cs_pw + ", cs_title=" + cs_title
+		return "CSDTO [cs_seq=" + cs_seq + ", cs_writer=" + cs_writer + ", cs_open=" + cs_open + ", cs_title=" + cs_title
 				+ ", cs_question=" + cs_question + ", cs_answere=" + cs_answere + ", cs_regdate=" + cs_regdate + "]";
 	}
 	

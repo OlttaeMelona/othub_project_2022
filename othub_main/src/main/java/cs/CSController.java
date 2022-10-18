@@ -3,7 +3,11 @@ package cs;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,19 +15,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import csanswere.CSAnswereDTO;
+import csanswere.CSAnswereService;
+import member.MemberDTO;
+import member.MemberService;
+
 @Controller
 public class CSController {
 
 	
 	@Inject
-	CSService service;
+	private CSService service;
+	
+	@Inject
+	private CSAnswereService answereService;
+	
+	@Autowired
+	@Qualifier("memberservice")
+	MemberService memberservice;
 
 	 
 	// 게시물 작성
 	 @RequestMapping(value = "/cswrite", method = RequestMethod.GET)
-	 public ModelAndView getCSWirte() throws Exception {
+	 public ModelAndView getCSWirte(CSDTO dto, MemberDTO mdto, Model model,HttpServletRequest request, HttpSession cssession) throws Exception {
 		
+		HttpSession session = request.getSession();
+		String cs_writer = (String)session.getAttribute("m_id");
+		dto.setCs_writer(cs_writer);
+	
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("cs_writer", cs_writer);
 		mv.setViewName("cs/cswrite");
 		return mv;
 	    
@@ -32,6 +53,7 @@ public class CSController {
 	 //게시물 작성
 	 @RequestMapping(value = "/cswrite", method = RequestMethod.POST)
 	 public ModelAndView postCSWrite(CSDTO dto) throws Exception {
+		
 		service.cswrite(dto);
 		 
 		ModelAndView mv = new ModelAndView();
@@ -42,27 +64,41 @@ public class CSController {
 	 
 	// 게시물 조회
 	 @RequestMapping(value = "/csview", method = RequestMethod.GET)
-	 public ModelAndView getCSView(@RequestParam("cs_seq") int cs_seq, Model model) throws Exception {
+	 public ModelAndView getCSView(@RequestParam("cs_seq") int cs_seq, Model model, HttpServletRequest request) throws Exception {
+		 
+		// 댓글 조회
+		List<CSAnswereDTO> answere = null;
+		answere = answereService.answere(cs_seq);
+		model.addAttribute("answere", answere);
+		
+		//m_id값 불러오기
+		HttpSession session = request.getSession();
+		String cs_writer = (String)session.getAttribute("m_id");
 		
 		CSDTO dto = service.cswview(cs_seq);
 		
 		model.addAttribute("csview", dto);
 		 
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("cs_writer", cs_writer);
 		mv.setViewName("cs/csview");
 		return mv;
-
+			 
 	 }
 	 
 	// 게시물 수정
 	 @RequestMapping(value = "/csmodify", method = RequestMethod.GET)
-	 public ModelAndView getCSModify(@RequestParam("cs_seq") int cs_seq, Model model) throws Exception {
+	 public ModelAndView getCSModify(@RequestParam("cs_seq") int cs_seq, Model model, MemberDTO mdto, HttpServletRequest request) throws Exception {
+		 
+		HttpSession session = request.getSession();
+		String cs_writer = (String)session.getAttribute("m_id");
 		 
 		CSDTO dto = service.cswview(cs_seq);
 			
 		model.addAttribute("csview", dto);
 		 
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("cs_writer", cs_writer);
 		mv.setViewName("cs/csmodify");
 		return mv;
 
@@ -93,6 +129,7 @@ public class CSController {
 	//게시물 리스트 + 페이징
 		 @RequestMapping(value = "/cslistPage", method = RequestMethod.GET)
 		 public ModelAndView getCSListPage(Model model, @RequestParam("csnum") int csnum) throws Exception {
+			 
 			 
 			 // 게시물 총 갯수
 			 int cscount = service.cscount();
@@ -146,5 +183,5 @@ public class CSController {
 			return mv;
 		   
 		 }
-	 
+		 
 }

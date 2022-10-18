@@ -10,13 +10,14 @@
 <script>
 $(document).ready(function() {
 	// 글쓰기 로그인 확인
-	$("#scwrite").on("click",function(e){
+	$("#cswrite").on("click",function(e){
 		if(<%=session.getAttribute("m_id")%>==null){
 			alert("로그인 후 이용해주세요.");
 			e.preventDefault();
 		}
 	});//onclick end
-
+	
+});//ready end
 </script>
 </head>
 <body>
@@ -27,7 +28,7 @@ $(document).ready(function() {
  <a href="/cslistPage?csnum=1">글 목록</a> 
 </li>
  
- <li id="scwrite">
+ <li id="cswrite">
   <a href="/cswrite">글 작성</a> 
  </li> 
 </ul>

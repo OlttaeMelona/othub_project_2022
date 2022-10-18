@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,10 +33,15 @@ $(document).ready(function() {
 	<label>문의 내용</label>
 	${csview.cs_question}<br>
 	
+	
+	<c:if test="${m_id == csview.cs_writer }">
+	
 	<div>
 	<a href="/csmodify?cs_seq=${csview.cs_seq }">게시물 수정</a>
 	<a href="/csdelete?cs_seq=${csview.cs_seq}">게시물 삭제</a>
 	</div>
+	
+	</c:if>
 
 </form>
 
@@ -43,10 +49,28 @@ $(document).ready(function() {
 
 <hr>
 
-<div>
-답변 내용
-</div>
+	<label>답변 내용</label>
+	
+	<c:forEach items="${answere}" var="answere">
+<li>
+	<div>
+		<p>${answere.answere_contents }</p>
+		<p><fmt:formatDate value="${answere.answere_regdate}" pattern="yyyy-MM-dd"/></p>		
+	</div>
+</li>	
 
+</c:forEach>
+
+<c:if test="${role == 'admin' }">
+<form method="post" action="/answere">
+	<label>답변 입력</label>
+	<textarea cols="50" rows="5" name="answere_contents"></textarea><br>
+	<input type="hidden" name="cs_seq" value="${csview.cs_seq}">
+	
+	<button type="submit" id="add_question">작성</button>
+
+</form>
+</c:if>
 
 </body>
 </html>
