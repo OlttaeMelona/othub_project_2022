@@ -104,7 +104,7 @@
 	
 	<!-- 좋아요 중복방지 select -->
 	<select id="likeCheck" resultType="int">
-	select count(*) from boardlike where s_seq = #{s_seq} and m_id=#{m_id}
+		select count(*) from boardlike where s_seq = #{s_seq} and m_id=#{m_id}
 	</select>
 	
 	<!-- max -->

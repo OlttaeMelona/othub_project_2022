@@ -69,6 +69,10 @@ public class MemberController {
 	      @RequestMapping(value = "/signin", method = RequestMethod.POST)
 	      public String insertMember(MemberDTO dto) {
 	            service.insertMember(dto);
+	            int cpcheck = service.couponCheckSilver(dto.m_id);
+	            if(cpcheck == 0) {
+	            	service.insertCouponSilver(dto.m_id);
+	            }
 	            return "main/index";
 	      }
 		
@@ -166,6 +170,26 @@ public class MemberController {
 		public String updateUserRole(MemberDTO dto) {
 			service.updateUserRole(dto);
 			return "redirect:/userlist";
+		}
+		
+	// 쿠폰함
+		@RequestMapping("mycoupon")
+		public ModelAndView mycoupon(String m_id, HttpServletRequest request) {
+			HttpSession session = request.getSession();
+			m_id = (String)session.getAttribute("m_id");
+			List<couponDTO> couponlist = service.selectCoupon(m_id);
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("couponlist",couponlist);
+			mv.setViewName("member/mycoupon");
+			
+			for(int i = 0 ; i<couponlist.size();i++) {
+			System.out.println(couponlist.get(i).cp_m_id);
+			System.out.println(couponlist.get(i).cp_code);
+			System.out.println(couponlist.get(i).cp_discountValue);
+			System.out.println(couponlist.get(i).cp_createdAt);
+			}
+
+			return mv;
 		}
 }
 
