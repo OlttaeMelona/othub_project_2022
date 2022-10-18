@@ -28,6 +28,7 @@ import showroom.ShowroomDAO;
 @ComponentScan(basePackages = "cart")
 @ComponentScan(basePackages = "chatbot")
 @ComponentScan(basePackages = "cs")
+@ComponentScan(basePackages = "csanswere")
 
 
 @MapperScan(basePackageClasses = MemberDAO.class)

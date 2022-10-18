@@ -19,6 +19,7 @@
 
 	<typeAlias type="cart.CartDTO" alias="cartdto"/>
 	<typeAlias type="cs.CSDTO" alias="csdto"/>
+	<typeAlias type="csanswere.CSAnswereDTO" alias="csansweredto"/>
 	
 
 </typeAliases>

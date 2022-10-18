@@ -27,7 +27,7 @@ $(document).ready(function() {
 	<input type="text" name="cs_title" value="${csview.cs_title}" /><br>
 	
 	<label>작성자</label>
-	<input type="text" name="cs_writer" value="${csview.cs_writer}"/><br>
+	<input type="text" name="cs_writer" value="${cs_writer}" readonly/><br>
 	
 	<label>문의 내용</label>
 	<textarea cols="50" rows="5" name="cs_question">${csview.cs_question}</textarea><br>

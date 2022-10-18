@@ -10,7 +10,25 @@
 <title>Insert title here</title>
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
+	
 $(document).ready(function() {
+	// 일반글 로그인 확인
+	$("#cs_title").on("click",function(e){
+		if(<%=session.getAttribute("m_id")%> == null){
+			alert("로그인하셔야 확인 가능합니다.");
+			e.preventDefault();
+		}
+		
+	});//onclick end
+	
+	// 비밀글 열람 확인
+	$("#cs_title_secret").on("click",function(e){
+		if(<%=session.getAttribute("m_id")%> != null){
+			alert("작성자만 열람 가능합니다.");
+			e.preventDefault();
+		}
+		
+	});//onclick end
 	
 });//ready end
 </script>
@@ -36,7 +54,29 @@ $(document).ready(function() {
  <c:forEach items="${cslist}" var="cslist">
  <tr>
   <td>${cslist.cs_seq}</td>
-  <td><a href="/csview?cs_seq=${cslist.cs_seq}">${cslist.cs_title}</a></td>
+  
+  <!-- no 비밀글 -->
+  <c:if test="${cslist.cs_open == 'y'}" >
+  <td><a href="/csview?cs_seq=${cslist.cs_seq}" id="cs_title">
+  ${cslist.cs_title}</a></td>
+  </c:if>
+  
+  <!-- 비밀글 -->
+  <c:if test="${cslist.cs_open == 'n'}" >
+  <c:choose>
+  	<c:when test="${cslist.cs_writer == m_id || role1 == 'admin'}">
+	  	<td><a href="/csview?cs_seq=${cslist.cs_seq}" id="cs_title_secret">
+	  	<img src="../images/cs/lock.png" style="width:15px; height:15px">
+	  	${cslist.cs_title} </a></td>
+  	</c:when>
+  	<c:otherwise>
+  	<td>
+  	<img src="../images/cs/lock.png" style="width:15px; height:15px">
+  	비밀글입니다.</td>
+  	</c:otherwise>
+  	</c:choose>
+  </c:if>
+  
   <td>${cslist.cs_writer}</td>
   <td><fmt:formatDate value="${cslist.cs_regdate}" pattern="yyyy-MM-dd"/></td>
  </tr>
