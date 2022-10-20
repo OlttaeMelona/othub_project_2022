@@ -271,7 +271,7 @@ String p_name4 = (String)request.getAttribute("p_name4");%>
                             <a href="deleteCommunity?s_seq=${oneCommu.s_seq }" id="deletechk" class="delete_btn btns">삭제하기</a>
                             <a href="updatecommuform?s_seq=${oneCommu.s_seq }" class="edit_btn btns">수정하기</a>                           
                   		 </td>
-                   <% }else if(role != null){ if(role.equals("admin")){%>
+                   <% }else if(role1 != null){ if(role1.equals("admin")){%>
                    		<td colspan="5">
                             <a href="deleteCommunity?s_seq=${oneCommu.s_seq }" id="deletechk" class="delete_btn btns">삭제하기</a>
                             <a href="updatecommuform?s_seq=${oneCommu.s_seq }" class="edit_btn btns">수정하기</a>                           
