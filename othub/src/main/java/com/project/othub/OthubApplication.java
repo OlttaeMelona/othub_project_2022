@@ -10,8 +10,9 @@ import community.CommunityDAO;
 import member.MemberDAO;
 import showroom.ShowroomDAO;
 
+
 @SpringBootApplication
-@ComponentScan
+@ComponentScan 
 @ComponentScan(basePackages = "controller") 
 @ComponentScan(basePackages = "member")
 @ComponentScan(basePackages = "community")
@@ -46,6 +47,5 @@ public class OthubApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(OthubApplication.class, args);
 	}
-	
 
 }

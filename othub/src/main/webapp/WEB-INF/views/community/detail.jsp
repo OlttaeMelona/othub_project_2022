@@ -262,7 +262,7 @@ String p_name4 = (String)request.getAttribute("p_name4");%>
                         <th>조회수 ${oneCommu.s_viewcount }</th>
                     </tr>
                 </thead>
-                <tbody> 
+                <tbody>
 
                    <tr class="stylenone">
                    <td colspan="1">작성자 ${oneCommu.s_writer}</td>
