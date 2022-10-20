@@ -34,7 +34,7 @@
 			<scope>runtime</scope>
 		</dependency>
 		
-		<!-- 스프링부트 -->
+		<!-- 스타터-웹/톰캣/test -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -48,12 +48,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>com.vaadin.external.google</groupId>
-					<artifactId>android-json</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		
 		
@@ -77,6 +71,7 @@
 		</dependency>
 
 		<!-- file upload 라이브러리 없어도 됨 -->
+
 		<!-- org.json -->
 		<dependency>
 			<groupId>org.json</groupId>
@@ -90,6 +85,7 @@
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
+		
 		
 	</dependencies>
 
