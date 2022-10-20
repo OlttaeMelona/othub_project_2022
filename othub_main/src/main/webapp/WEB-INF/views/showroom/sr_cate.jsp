@@ -36,9 +36,9 @@
 			<div class="sub_sr_menu">
 				<ul class="lookup">
 					<li><a href="showroom">전체</a></li>
-					<li><a href="showroomlist?cate=1">스튜디오</a></li>
-					<li><a href="showroomlist?cate=2">사진관</a></li>
-					<li><a href="showroomlist?cate=3">사진작가</a></li> 
+					<li><a href="showroomlist?cate=1" class="s">스튜디오</a></li>
+					<li><a href="showroomlist?cate=2" class="s">사진관</a></li>
+					<li><a href="showroomlist?cate=3" class="s">사진작가</a></li> 
 				</ul>
 				<c:if test="${role.equals('admin') }">
 					<a href="sr_writing"><div class="writeBtn">게시글 등록하기</div></a>

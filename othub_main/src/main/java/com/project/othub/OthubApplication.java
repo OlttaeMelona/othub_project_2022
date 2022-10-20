@@ -28,6 +28,7 @@ import showroom.ShowroomDAO;
 @ComponentScan(basePackages = "cart")
 @ComponentScan(basePackages = "chatbot")
 @ComponentScan(basePackages = "cs")
+@ComponentScan(basePackages = "reserv")
 @ComponentScan(basePackages = "csanswere")
 
 
@@ -39,6 +40,7 @@ import showroom.ShowroomDAO;
 @MapperScan(basePackages = "productdetail")
 @MapperScan(basePackages = "order")
 @MapperScan(basePackages = "cart")
+@MapperScan(basePackages = "reserv")
 public class OthubApplication {
 
 	public static void main(String[] args) {

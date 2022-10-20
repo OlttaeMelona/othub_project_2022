@@ -44,9 +44,8 @@
 			</article>
 		</section>
 		<aside class="postAside">
-			<form action="" method="post">
+			<form method="post">
 				<table>
-					<thead></thead>
 					<tbody>
 						<tr>
 							<td class="rowname">상품명</td>
@@ -67,25 +66,31 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="rowname" colspan="2">
-								<label class="rowname" for="">예약인원</label><br>
-								<input type="number" neme="">
+							<td class="rowname2 r_num" colspan="2">
+								<label class="rowname" for="r_numOfPer">예약인원</label><br>
+								<input type="number" name="r_numOfPer" required>
 							</td>
 						</tr>
 						<tr>
-							<td class="rowname" colspan="2">
-								<label class="rowname" for="">예약 날짜</label><br>
-								<input type="date" name="" min="" >
+							<td class="rowname2" colspan="2">
+								<label class="rowname" for="r_date">예약 날짜</label><br>
+								<input type="date" name="r_date" min="" >
 							</td>
 						</tr>
 						<tr>
-							<td class="rowname" colspan="2">
-								<input type="submit" value="예약하기">
-								<input type="button" value="찜하기">
+							<td class="hidden" colspan="2">
+								<input type="hidden" name="m_id" value="${onePost.sr_writer }"><br>
+								<input type="hidden" name="sr_num" value="${onePost.sr_num }">
 							</td>
-						</tr>
+						</tr>	
 					</tbody>
 				</table>
+				<div class="d_btn">
+					<c:if test="${role != 'admin' }">
+						<button type="submit" onclick="javascript:form.action='/reserv'">예약 하기</button><br>
+						<button type="submit" onclick="javascript:form.action='/'">찜하기</button>
+					</c:if>
+				</div>
 			</form>
 		</aside>
 		<section class="postContents">

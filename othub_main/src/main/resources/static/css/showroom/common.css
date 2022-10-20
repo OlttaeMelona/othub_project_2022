@@ -18,12 +18,24 @@
 .lookup{
 	padding:0;
 }
-.lookup li:hover {
-	background-color:  #E9E4F0;
+.lookup li a{
+	padding: 0.9em 1em 0.6em;
+	border : 0.7px solid rgb(192, 192, 192);
+	border-radius : 0.2em;
+	font-weight: 600;
+}
+.lookup .all a {
+	border : 1px solid #87A2FB;
+	background-color: #87A2FB;
+	color:#fff;
+}
+.lookup li a:hover {
+	border : 1px solid #87A2FB;
+	background-color: #87A2FB;
+	color:#fff;
 }
 .writeBtn {
 	float: right;
-	margin-right : 1em;
 	padding: 0.8em 2em 0.5em;
 	border : 1px solid  rgb(192, 192, 192);
 	border-radius : 0.2em;
@@ -48,23 +60,26 @@
 /*card*/
 .sr_card_box{
 	display: flex;
+	flex-direction: colum;
 	flex-wrap: wrap;
-	justify-content: space-between;
 }
 /*
 .sr_card_box:nth-last-child(1) {
 	justify-content:flex-start;
 }*/
 .sr_card {
-	margin: 1% 0;
+	margin: 0 1.3rem 1.3rem 0;
 	display: inline-block;
 	border:1px solid rgb(240, 240, 240);
 	border-radius: 10px;
-	width: 31.8%;
+	width: calc((100% / 3) - 1.3rem);
+}
+.sr_card:nth-child(3n){
+	margin: 0 0 1.3rem 0;
 }
 .sr_card_img{
 	width: 100%;
-	height: 35vh;
+	height: 32vh;
 	overflow: hidden;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
@@ -232,6 +247,12 @@ form input::placeholder{
 
 
 /*==쇼룸 상세페이지==*/
+table {
+	width:100%;
+}
+.PostImg, .postAside{
+	border:1px solid  rgb(236, 236, 236);
+}
 .postMain {
 	display:flex;
 	margin-top: 5em;
@@ -246,7 +267,7 @@ form input::placeholder{
 	color: #373A40;
 }
 .PostImg {
-	flex-basis: 70%;
+	flex-basis: 60%;
 	aspect-ratio: 3 / 2;
 }
 .postImgBox {
@@ -283,7 +304,12 @@ form input::placeholder{
 .postAside {
 	flex-grow: 1;
 	align-self: stretch;
-	padding: 0 20px;
+	padding: 20px 20px;
+	overflow:hidden;
+}
+.postAside > form {
+	display:flex;
+	flex-direction: column;
 }
 .postContents{
 	flex-grow: 1;
@@ -292,13 +318,47 @@ form input::placeholder{
 	font-size:1.1em;
 	font-weight: 600;
 	color: #373A40;
-	width: 70px;
+	width: 5rem;
 }
+.rowname2{
+	font-size:1em;
+}
+.r_num label{
+	margin-top:10px;
+}
+.d_btn{
+	align-content: flex-end;
+}
+.d_btn button {
+	border:0;
+	outline:0;
+	white-space:nowrap;
+	background-color: #87A2FB;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:17px;
+	font-weight:600;
+	margin-bottom:10px; 
+	text-decoration:none;
+	padding:16px 0;
+	width:100%;
+}
+.d_btn button:nth-child(1){
+}
+
+
+
+
+
+
+
+
 
 
 /* 이달의 추천 쇼룸*/
 .todayTitle{
 	margin-top: 6em;
+	margin-bottom: 0.8em;
 }
 .todayTitle h3 {
 	display: inline-block;
@@ -310,6 +370,10 @@ form input::placeholder{
 	font-size: 0.8em;
 	color: rgb(95, 95, 95);
 }
+
+
+
+
 
 
 /* 반응형 */

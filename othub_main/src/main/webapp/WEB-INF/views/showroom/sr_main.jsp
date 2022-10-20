@@ -27,7 +27,7 @@
 		<section>
 			<div class="sub_sr_menu">
 				<ul class="lookup">
-					<li><a href="showroom">전체</a></li>
+					<li class="all"><a href="showroom">전체</a></li>
 					<li><a href="showroomlist?cate=1">스튜디오</a></li>
 					<li><a href="showroomlist?cate=2">사진관</a></li>
 					<li><a href="showroomlist?cate=3">사진작가</a></li> 
