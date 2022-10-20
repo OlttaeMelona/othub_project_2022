@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import cart.CartDTO;
+import member.MemberService;
 import productdetail.ProductdetailDTO;
 
 @Controller
@@ -26,6 +27,10 @@ public class OrderController {
 	@Autowired
 	@Qualifier("orderservice")
 	OrderService orderservice;
+	
+	@Autowired
+	@Qualifier("memberservice")
+	MemberService memberservice;
 	
 	OrderDAO dao;
 
@@ -46,6 +51,7 @@ public class OrderController {
 		int p_id = orderservice.getProductid(order_id);
 		OrderDTO productdetail = orderservice.getProductdetail(p_id);
 		List<OrderDTO> ordersdetail = orderservice.getOrders(order_id);
+		
 		ordersdetail.get(0).p_price = orderservice.getProductdetail(ordersdetail.get(0).p_id).p_price;
 		ordersdetail.get(0).p_name = orderservice.getProductdetail(ordersdetail.get(0).p_id).p_name;
 		OrderDTO memberdetail = orderservice.getMember(m_id);
@@ -98,6 +104,37 @@ public class OrderController {
 		 orderservice.doOrder(Integer.parseInt(order_id_list[i]));
 		 orderservice.orderComplete(Integer.parseInt(p_id_list[i]));
 		 } 
+		//선교 수정
+		//등급 수정
+		HttpSession session = request.getSession();
+		String m_id = (String)session.getAttribute("m_id");	
+		List<OrderDTO> ordered = orderservice.getOrdered(m_id);
+		int total_price = 0;
+		int goldCheck = memberservice.couponCheckGold(m_id);
+		int vipCheck = memberservice.couponCheckVip(m_id);
+		for(int i = 0; i < ordered.size(); i++) {
+			total_price = total_price + orderservice.getProductdetail(ordered.get(i).p_id).p_price * ordered.get(i).amount;
+		}
+		if(total_price >= 300000 && total_price < 1000000) {
+			orderservice.updateRoleGold(m_id);
+			if(goldCheck == 0) {
+				memberservice.insertCouponGold(m_id);
+			}
+		}
+		if(total_price >=1000000) {
+			orderservice.updateRoleVip(m_id);
+			if(vipCheck == 0) {
+				memberservice.insertCouponVip(m_id);
+			}
+		}
+		
+		//쿠폰
+		
+		
+		
+		
+		System.out.println(total_price);
+		//
 		return "main/index";
 	}
 	

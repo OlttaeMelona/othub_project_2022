@@ -25,7 +25,7 @@
 
 	<%//variable
 		String m_id = (String)session.getAttribute("m_id");
-		String role = (String)session.getAttribute("role");
+		String role1 = (String)session.getAttribute("role1");
 	%>
 	
 	<header>
@@ -43,10 +43,10 @@
 					if(m_id == null){
 						%><a href="login"><%out.print("login");%></a><%
 					}
-					else if(role.equals("admin")){
+					else if(role1.equals("admin")){
 						out.print(m_id + " 관리자님 접속되었습니다.");
 					}
-					else if(role.equals("user")){
+					else if(role1.equals("user")){
 						out.print(m_id + "님 환영합니다.");
 					}
 					%></li>
@@ -55,15 +55,15 @@
 					if(m_id == null){
 						%><a href="signin"><%out.print("sign up");%></a><%
 					}
-					else if(role.equals("user")){
+					else if(role1.equals("user")){
 						%><a href="mypage"><%out.print("mypage");%></a><%
 					}
-					else if(role.equals("admin")){
+					else if(role1.equals("admin")){
 						%><a href="adminpage"><%out.print("AdminPage");%></a><%
 					}
 					%></li>
 					<!-- 고객센터 -->
-					<li><a href="">Customer Support</a></li>
+					<li><a href="/cslistPage?csnum=1">Customer Support</a></li>
 					<!-- 회원로그아웃 | 관리자로그아웃 -->
 					<li><% 
 					if(m_id !=null){

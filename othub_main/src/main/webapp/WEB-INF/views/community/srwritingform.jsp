@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- css -->
-<link href="css/showroom/common.css" rel="stylesheet">
+<link href="css/lookbook/writing/common.css" rel="stylesheet">
 <!-- ckeditor / jquery 라이브러리 연결 -->
 <script src="js/ko.js"></script>
 <script src="js/ckeditor.js"></script>
@@ -19,8 +19,12 @@
 <script>
 $(document).ready(function() {
 	var i = 0;
+	var maxAppend = 1;
 	$("#tagbtn").click(function(){
-		$("#tag").append("<input type='text' value='"+$("#select2").val()+"' name = p_name"+(++i)+">")
+		if(maxAppend >=5) return;
+		$("#tag").append("<input type='hidden' value='"+$("#select2").val()+"' name = p_name"+(++i)+">")
+		$("#tagname").append("<li class='tagli'>#"+$("#select2").val()+"</li>");
+		maxAppend++;
 	})
 	
 
@@ -167,8 +171,11 @@ function itemChange(){ 
 						<input id="sr_image3" type=file name="s_image3" onchange="readURL3(this)" accept="image/jpg,jpeg,png,jifi">
 						<br><img id="preview3">
 					</span>
-					<div id=tagname1></div>
+					<span>
+					<ul id="tagname" class="tagul">
 					
+					</ul>
+					</span>
 				</div>
 				<div id='tag'>
 				</div>

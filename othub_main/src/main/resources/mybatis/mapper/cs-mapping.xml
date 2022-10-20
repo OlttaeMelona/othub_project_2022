@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+   <mapper namespace="cs">
+   
+    <!-- cslist -->
+    <select id="cslist" resultType="cs.CSDTO">
+		select * from cs
+        order by cs_seq desc
+	</select>
+	
+	<!-- cswriting -->
+	<insert id="cswrite" parameterType="cs.CSDTO">
+	 	insert into cs (cs_writer, cs_title, cs_question, cs_open)
+	 	values(#{cs_writer}, #{cs_title}, #{cs_question}, #{cs_open})
+	</insert>
+	
+	<!-- csview-->
+	<select id="csview" parameterType="int" resultType="cs.CSDTO">
+	 	select * from cs
+	 	where cs_seq = #{cs_seq}
+	</select>
+	
+	<!-- csmodify -->
+	<update id="csmodify" parameterType="cs.CSDTO" >
+		 update cs
+		 set cs_title = #{cs_title}, cs_writer = #{cs_writer},
+		 cs_question = #{cs_question}
+		 where cs_seq = #{cs_seq}
+	</update>
+	
+	<!-- csdelete -->
+	<delete id="csdelete" parameterType="int">
+		 delete from cs
+		 where cs_seq = #{cs_seq}
+	</delete>
+	
+	<!-- 게시물 총 갯수 -->
+	<select id="cscount" resultType="int">
+	 	select count(cs_seq) from cs
+	</select>
+	
+	<!-- 게시물 목록 + 페이징 -->
+	<select id="cslistPage" parameterType="hashMap" resultType="cs.CSDTO">
+		 select * from cs
+		 order by cs_seq desc
+		 limit #{displayPost}, #{postNum}
+	</select>
+	
+	<!-- 비밀글 확인 -->
+	<select id="csrole" resultType="member.MemberDTO">
+	 	select role1 from member
+	</select>
+	
+	
+   </mapper>

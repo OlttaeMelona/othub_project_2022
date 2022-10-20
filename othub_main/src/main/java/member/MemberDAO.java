@@ -39,6 +39,34 @@ public interface MemberDAO {
 	
 	//관리자 회원정보수정
 	public void updateMemberByAdmin(MemberDTO dto);
+	
+	//회원 리스트 조회(일반 회원 조회)
+	public List<MemberDTO> selectUserList();
+	
+	//일반 회원 등급 변경
+	public void updateUserRole(MemberDTO dto);
+	
+	//쿠폰 체크(실버)
+	public int couponCheckSilver(String m_id);
+	
+	//쿠폰 체크(실버)
+	public int couponCheckGold(String m_id);
+		
+	//쿠폰 체크(실버)
+	public int couponCheckVip(String m_id);
+	
+	//쿠폰 생성(실버)
+	public void insertCouponSilver(String m_id);
+	
+	//쿠폰 생성(골드)
+	public void insertCouponGold(String m_id);
+		
+	//쿠폰 생성(vip)
+	public void insertCouponVip(String m_id);
+	
+	//my쿠폰 리스트
+	public List<couponDTO> selectCoupon(String m_id);
+	
 }
 
 

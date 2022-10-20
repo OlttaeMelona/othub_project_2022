@@ -340,7 +340,7 @@ String p_name4 = (String)request.getAttribute("p_name4");%>
                     <h2>${tag3.get(0).getP_name()}</h2>
                     <ol class="clearfix">
                         <li class="fl">
-                           <p> ${tag3.get(0).getP_price()} 원</p>
+                           <p >가격 ${tag3.get(0).getP_price()} 원</p>
                         </li>
                     </ol>
                 </div>

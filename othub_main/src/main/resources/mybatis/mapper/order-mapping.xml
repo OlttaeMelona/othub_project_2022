@@ -68,5 +68,18 @@
 	select * from cart where m_id=#{m_id}
 </select>
 
+<!-- 선교 수정 -->
+<!-- 등급 변경(gold) -->
+<update id = "updateRoleGold" parameterType="String">
+	update member set role2 = "gold" where m_id=#{m_id}
+</update>
+
+<!-- 등급 변경(vip) -->
+<update id = "updateRoleVip" parameterType="String">
+	update member set role2 = "vip" where m_id=#{m_id}
+</update>
+
+
+
 </mapper>
 

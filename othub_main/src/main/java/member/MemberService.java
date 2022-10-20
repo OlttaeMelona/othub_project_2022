@@ -71,4 +71,49 @@ public class MemberService  {
 	public void updateMemberByAdmin(MemberDTO dto) {
 		dao.updateMemberByAdmin(dto);
 	}
+	
+	//회원 리스트 조회(일반 회원 조회)
+	public List<MemberDTO> selectUserList(){
+		return dao.selectUserList();
+	}
+	
+	//일반 회원 등급 변경
+	public void updateUserRole(MemberDTO dto) {
+		dao.updateUserRole(dto);
+	}
+	//쿠폰 체크(실버)
+	public int couponCheckSilver(String m_id) {
+		return dao.couponCheckSilver(m_id);
+	}
+	
+	//쿠폰 체크(실버)
+	public int couponCheckGold(String m_id) {
+		return dao.couponCheckGold(m_id);
+	}
+		
+	//쿠폰 체크(실버)
+	public int couponCheckVip(String m_id) {
+		return dao.couponCheckVip(m_id);
+	}
+	
+	//쿠폰 생성(실버)
+	public void insertCouponSilver(String m_id) {
+		dao.insertCouponSilver(m_id);
+	}
+	
+	//쿠폰 생성(실버)
+	public void insertCouponGold(String m_id) {
+			dao.insertCouponGold(m_id);
+	}
+		
+	//쿠폰 생성(실버)
+	public void insertCouponVip(String m_id) {
+			dao.insertCouponVip(m_id);
+	}
+	
+	//my쿠폰 리스트
+		public List<couponDTO> selectCoupon(String m_id){
+			return dao.selectCoupon(m_id);
+		}
+		
 }

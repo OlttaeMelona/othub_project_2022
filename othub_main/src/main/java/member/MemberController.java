@@ -36,10 +36,10 @@ public class MemberController {
 			MemberDTO m_dto = service.selectOneMember(dto.getM_id());
 			ModelAndView mv = new ModelAndView();
 			session = request.getSession();
-			System.out.println(m_dto.getRole());
+			System.out.println(m_dto.getRole1());
 			if (name != null) { // 로그인 성공 시
 				session.setAttribute("m_id", dto.getM_id());
-				session.setAttribute("role", m_dto.getRole());
+				session.setAttribute("role1", m_dto.getRole1());
 				mv.setViewName("member/main");
 			} else { // 로그인 실패 시
 				mv.setViewName("member/login");
@@ -69,6 +69,10 @@ public class MemberController {
 	      @RequestMapping(value = "/signin", method = RequestMethod.POST)
 	      public String insertMember(MemberDTO dto) {
 	            service.insertMember(dto);
+	            int cpcheck = service.couponCheckSilver(dto.m_id);
+	            if(cpcheck == 0) {
+	            	service.insertCouponSilver(dto.m_id);
+	            }
 	            return "main/index";
 	      }
 		
@@ -150,6 +154,42 @@ public class MemberController {
 		public String updateMemberByAdmin(MemberDTO dto) {
 			service.updateMemberByAdmin(dto);
 			return "redirect:/memberlist";
+		}
+		
+	//회원 리스트 불러오기(일반회원)
+		@RequestMapping("/userlist")
+		public ModelAndView userlistName() throws Exception {
+			List<MemberDTO> userlist = service.selectUserList();
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("memberlist",userlist);
+			mv.setViewName("admin/userlist");
+			return mv;
+		}
+	//일반 회원 등급 변경
+		@PostMapping("/updateUserRole")
+		public String updateUserRole(MemberDTO dto) {
+			service.updateUserRole(dto);
+			return "redirect:/userlist";
+		}
+		
+	// 쿠폰함
+		@RequestMapping("mycoupon")
+		public ModelAndView mycoupon(String m_id, HttpServletRequest request) {
+			HttpSession session = request.getSession();
+			m_id = (String)session.getAttribute("m_id");
+			List<couponDTO> couponlist = service.selectCoupon(m_id);
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("couponlist",couponlist);
+			mv.setViewName("member/mycoupon");
+			
+			for(int i = 0 ; i<couponlist.size();i++) {
+			System.out.println(couponlist.get(i).cp_m_id);
+			System.out.println(couponlist.get(i).cp_code);
+			System.out.println(couponlist.get(i).cp_discountValue);
+			System.out.println(couponlist.get(i).cp_createdAt);
+			}
+
+			return mv;
 		}
 }
 

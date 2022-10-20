@@ -10,7 +10,8 @@ public class MemberDTO {
 	String m_email; 
 	String m_sex;
 	String m_regdate;
-	String role;
+	String role1;
+	String role2;
 	
 	public MemberDTO(){ }
 	
@@ -42,12 +43,22 @@ public class MemberDTO {
 		this.m_pw = m_pw;
 	}
 
-	public String getRole() {
-		return role;
+
+
+	public String getRole1() {
+		return role1;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+	public void setRole1(String role1) {
+		this.role1 = role1;
+	}
+
+	public String getRole2() {
+		return role2;
+	}
+
+	public void setRole2(String role2) {
+		this.role2 = role2;
 	}
 
 	public String getM_name() {
