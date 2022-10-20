@@ -1,4 +1,4 @@
-package com.example.naverai;
+package com.project.othub;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
