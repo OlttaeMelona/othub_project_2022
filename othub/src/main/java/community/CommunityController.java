@@ -226,24 +226,18 @@ public class CommunityController {
 		mv.addObject("p_name4",p_name4);
 		}
 		
-		
-		
-		
 		//ai pose
 		String jsonresult = poseservice.test(image);
 		String jsonresult2 = objectservice.test(image);
 		
-		
-		
-
-		
 		String writer = oneCommu.getS_writer();
 		String image2 = oneCommu.getImagename2();
 		String image3 = oneCommu.getImagename3();
+		
+		
 		mv.addObject("poseresult", jsonresult); //pose
 		mv.addObject("objectresult",jsonresult2); // object
 		mv.addObject("oneCommu",oneCommu);
-		
 		mv.addObject("commuSeq",s_seq);
 		mv.addObject("writer",writer);
 		mv.addObject("image2",image2);
@@ -380,5 +374,4 @@ public class CommunityController {
 		return mv;
 	}
 	
-
 }

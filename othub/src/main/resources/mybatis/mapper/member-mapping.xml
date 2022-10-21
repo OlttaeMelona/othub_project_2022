@@ -91,10 +91,14 @@ delete from member where m_id=#{m_id}
 
 <!-- 쿠폰 전체 조회 -->
 <select id="selectCoupon" resultType="coupondto">
-	select * from coupon where cp_m_id = #{m_id}
+	select cp_seq,cp_m_id,cp_code,cp_discountValue,cp_status,
+	date_format(cp_createdAt,'%Y-%m-%d') as cp_createdAt, date_format(cp_endAt,'%Y-%m-%d') as cp_endAt,period from coupon where cp_m_id = #{m_id};
 </select>
 
-
+<!-- 쿠폰 유효기간 -->
+<update id="updateDate">
+	update coupon set period = #{period} where cp_m_id = #{m_id}; 
+</update>
 </mapper>
 
 

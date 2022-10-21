@@ -115,5 +115,8 @@ public class MemberService  {
 		public List<couponDTO> selectCoupon(String m_id){
 			return dao.selectCoupon(m_id);
 		}
-		
+	
+	public void updateDate(String m_id,String period) {
+		dao.updateDate(m_id, period);
+	}
 }

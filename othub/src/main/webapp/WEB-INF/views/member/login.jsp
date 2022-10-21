@@ -24,7 +24,6 @@
 <script>
 $(document).ready(function(){
 
-
 });
 </script>
 
@@ -41,6 +40,7 @@ $(document).ready(function(){
             <form action="loginprocess" method="post">
                 <fieldset>회원가입 폼</fieldset>
                 <input id="id" type="text" name="m_id" placeholder="Id">
+                
                 <input id="password" type="password" name="m_pw" placeholder="Password">
                 <a href="signin">Sign in</a>
                 <input id="btnLogin" type="submit" value="Log in" style="background-color: #2186db;">

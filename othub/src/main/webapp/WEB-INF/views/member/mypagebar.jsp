@@ -6,26 +6,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/login/import.css" rel="stylesheet">
-    <link href="css/login/common.css" rel="stylesheet">
-    <script src="js/jquery-3.6.0.min.js"></script>
-<title>MyPage | OtHub</title>
-<link href="css/style.css" rel="stylesheet">
+<title> </title>
 
-
-<script>
-	$(document).ready(function() {
+<style>
 	
-	});//ready end
+nav.c_nav {
+	float:left;
+	text-align:center;
+	padding-left:50px;
+	margin-bottom:10px;
+	margin-top : 10px;
+	width:150px;
+	font-size:16px;
+	height: 780px;
+
+}
+
+ul.nav_category{
+	margin:0;
+	padding:0;
+}
+
+h3 { 
+	margin:0;
+	padding:0;
+	font-size:22px;
+	margin-bottom:2px;
+	text-align:center;
+	margin-top: 10px;
+}
+
+a#c_nav_d {
+	color:#000;
+	display:block;
+	padding:10px 0;
+	
+}
+.nav_category last{
+	margin-bottom: 10px;
+}
+a#c_nav_d:hover {
+ 	text-decoration:none;
+ 	background:#eee;
+}
+
+</style>
+
+<script src="https://kit.fontawesome.com/95fa5ec673.js" crossorigin="anonymous"></script>
+<script src="js/jquery-3.6.0.min.js"></script>
+<script>
+
 </script>
 </head>
 <body>
-<!-- navbar include -->
-	<%@include file="../include/navbar.jsp" %>
-
-<div class=container">
-	<div class="container1" >
+	<header>
+	
+		<nav class="c_nav">
+		
 		<h3> 나의 쇼핑 </h3>
+			
 				<ul class="nav_category">
 					<li><a id="c_nav_d" href="ordered">주문내역</a></li>
 					<li><a id="c_nav_d" href="goCart">장바구니</a></li>
@@ -41,21 +80,10 @@
 					<li><a id="c_nav_d" href="mycommunity">내 게시글</a></li>
 					<li><a id="c_nav_d" href="mylikecommunity">좋아요한 게시글</a></li>
 				</ul>
-	</div>
-	
-    <div class="container2" >
-		   <h1>마이페이지</h1>
-	   	<div class="inner1">
-	   		<div class="x">회원등급</div>
-	   		<div class="y">${role2 }</div>
-	   	</div>
-		<div class="inner2">
-			<div class="x">사용가능쿠폰</div>
-	   		<div class="y">${couponcount }장</div>
-		</div>
-	</div>
-</div>
-	<!-- footer include -->
+			
+		</nav>
+	</header>
+<!-- footer include -->
 	<%@include file="../include/footer.jsp" %>
 </body>
 </html>
