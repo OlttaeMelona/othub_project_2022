@@ -8,6 +8,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import csanswere.CSAnswereDTO;
+
 @Repository
 public class CSDAOImpl implements CSDAO {
 	
@@ -51,12 +53,24 @@ public class CSDAOImpl implements CSDAO {
 
 	@Override
 	public List<CSDTO> cslistPage(int displayPost, int postNum) throws Exception {
-		HashMap data = new HashMap();
+		HashMap<String, Object> data = new HashMap<String, Object>();
 		  
 		data.put("displayPost", displayPost);
 		data.put("postNum", postNum);
 		  
 		return sql.selectList(namespace + ".cslistPage", data);
+	}
+
+	@Override
+	public void answerecheck(CSDTO dto) throws Exception {
+		sql.update(namespace + ".answerecheck", dto);
+		
+	}
+
+	@Override
+	public List<CSDTO> mycslist(String cs_writer) throws Exception {
+		
+		  return sql.selectList(namespace + ".mycslist");
 	}
 
 

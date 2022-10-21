@@ -15,7 +15,7 @@
 	    insert into cs_answere(cs_seq, answere_contents)
 	        value(#{cs_seq}, #{answere_contents})
 	</insert>
-	    
+	
 	<!-- 답변 수정 -->
 	<update id="answereModify" parameterType="csanswere.CSAnswereDTO">
 	    update cs_answere set
@@ -28,5 +28,11 @@
 	    delete from cs_answere
 	    where cs_seq = #{cs_seq}     
 	</delete>
+	
+	 <!-- 답변 확인 -->
+	<!--<update id="answereCheck" parameterType="cs.CSDTO">
+	    insert into cs(answere_check)
+	        value(#{answere_check})
+	</update> -->
 
 </mapper>

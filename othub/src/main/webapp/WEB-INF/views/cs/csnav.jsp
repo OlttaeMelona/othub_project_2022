@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="css/cs/csnav.css" rel="stylesheet">
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
@@ -22,16 +23,12 @@ $(document).ready(function() {
 </head>
 <body>
 
-<ul> 
+<div class="listnav"> 
 
-<li>
- <a href="/cslistPage?csnum=1">글 목록</a> 
-</li>
- 
- <li id="cswrite">
-  <a href="/cswrite">글 작성</a> 
- </li> 
-</ul>
+ <a href="/cslistPage?csnum=1" id="list_button">글 목록</a> 
+ <a href="/cswrite" id="cswrite">글 작성</a> 
+
+</div>
 
 </body>
 </html>

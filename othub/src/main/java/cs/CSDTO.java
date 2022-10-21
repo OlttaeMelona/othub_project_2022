@@ -2,6 +2,8 @@ package cs;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class CSDTO {
 	
 	//product table colums
@@ -12,6 +14,10 @@ public class CSDTO {
 		private String cs_question;
 		private String cs_answere;
 		private Date cs_regdate;
+		private String answere_check;
+		private MultipartFile cs_pic;
+		private String cs_pic_name;
+		private String pic_name;
 		
 		
 		public CSDTO() {
@@ -22,7 +28,8 @@ public class CSDTO {
 
 //매개변수 있는 생성자
 	public CSDTO(int cs_seq, String cs_writer, String cs_open, String cs_title,
-			 String cs_question, String cs_answere, Date cs_regdate) {
+			 String cs_question, String cs_answere, Date cs_regdate, String answere_check,
+			 MultipartFile cs_pic, String cs_pic_name, String pic_name) {
 		
 		this.cs_seq = cs_seq;
 		this.cs_writer = cs_writer;
@@ -31,7 +38,10 @@ public class CSDTO {
 		this.cs_question = cs_question;
 		this.cs_answere = cs_answere;
 		this.cs_regdate = cs_regdate;
-		
+		this.answere_check = answere_check;
+		this.cs_pic = cs_pic;
+		this.cs_pic_name = cs_pic_name;
+
 	}
 
 
@@ -120,12 +130,64 @@ public class CSDTO {
 
 
 
+	public String getAnswere_check() {
+		return answere_check;
+	}
+
+
+
+	public void setAnswere_check(String answere_check) {
+		this.answere_check = answere_check;
+	}
+
+
+
+	public MultipartFile getCs_pic() {
+		return cs_pic;
+	}
+
+
+
+	public void setCs_pic(MultipartFile cs_pic) {
+		this.cs_pic = cs_pic;
+	}
+
+
+
+	public String getCs_pic_name() {
+		return cs_pic_name;
+	}
+
+
+
+	public void setCs_pic_name(String cs_pic_name) {
+		this.cs_pic_name = cs_pic_name;
+	}
+
+
+
+	public String getPic_name() {
+		return pic_name;
+	}
+
+
+
+	public void setPic_name(String pic_name) {
+		this.pic_name = pic_name;
+	}
+
+
+
 	@Override
 	public String toString() {
-		return "CSDTO [cs_seq=" + cs_seq + ", cs_writer=" + cs_writer + ", cs_open=" + cs_open + ", cs_title=" + cs_title
-				+ ", cs_question=" + cs_question + ", cs_answere=" + cs_answere + ", cs_regdate=" + cs_regdate + "]";
+		return "CSDTO [cs_seq=" + cs_seq + ", cs_writer=" + cs_writer + ", cs_open=" + cs_open + ", cs_title="
+				+ cs_title + ", cs_question=" + cs_question + ", cs_answere=" + cs_answere + ", cs_regdate="
+				+ cs_regdate + ", answere_check=" + answere_check + ", cs_pic=" + cs_pic + ", cs_pic_name="
+				+ cs_pic_name + "]";
 	}
-	
-	
+
+
+
+
 	
 }
