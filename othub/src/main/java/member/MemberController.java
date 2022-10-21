@@ -1,5 +1,9 @@
 package member;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,6 +45,7 @@ public class MemberController {
 			if (name != null) { // 로그인 성공 시
 				session.setAttribute("m_id", dto.getM_id());
 				session.setAttribute("role1", m_dto.getRole1());
+				session.setAttribute("role2", m_dto.getRole2());
 				mv.setViewName("member/main");
 			} else { // 로그인 실패 시
 				mv.setViewName("member/login");
@@ -67,18 +73,63 @@ public class MemberController {
 		
 	//회원가입
 	      @RequestMapping(value = "/signin", method = RequestMethod.POST)
-	      public String insertMember(MemberDTO dto) {
+	      public String insertMember(MemberDTO dto) throws Exception{
 	            service.insertMember(dto);
 	            int cpcheck = service.couponCheckSilver(dto.m_id);
 	            if(cpcheck == 0) {
 	            	service.insertCouponSilver(dto.m_id);
 	            }
+	            
+	            couponDTO dto2 = new couponDTO();
+				LocalDate now = LocalDate.now();
+				String nowdate = now.getYear()+"-"+now.getMonthValue()+"-"+now.getDayOfMonth();
+				Date format2 = new SimpleDateFormat("yyyy-MM-dd").parse(nowdate); //지금시간
+				List<couponDTO> couponlist = service.selectCoupon(dto.m_id);
+				for(int i=0; i<couponlist.size(); i++) {
+					String enddate = couponlist.get(i).cp_endAt;
+					Date format1 = new SimpleDateFormat("yyyy-MM-dd").parse(enddate); //db시간
+					long diffSec = (format1.getTime() - format2.getTime()) / 1000; //초 차이
+					long diffDays = diffSec / (24*60*60); //일자수 차이
+					dto2.setPeriod(Long.toString(diffDays));
+					String period = dto2.getPeriod();
+					System.out.println(period);
+					service.updateDate(dto.m_id, period);
+				}
+				
 	            return "main/index";
 	      }
+	 //idcheck
 		
 	//마이페이지 접속
 		@RequestMapping("/mypage")
-		public String mypage() {
+		public String mypage(HttpServletRequest request,String m_id,Model model) throws Exception{
+			
+			couponDTO dto = new couponDTO();
+			HttpSession session = request.getSession();
+			m_id = (String)session.getAttribute("m_id");
+			List<couponDTO> couponlist = service.selectCoupon(m_id);
+			model.addAttribute("couponcount",couponlist.size());
+			
+			String role2 = (String)session.getAttribute("role2");
+			model.addAttribute("role2",role2);
+			if(couponlist.isEmpty()) {
+			LocalDate now = LocalDate.now();
+			String nowdate = now.getYear()+"-"+now.getMonthValue()+"-"+now.getDayOfMonth();
+			Date format2 = new SimpleDateFormat("yyyy-MM-dd").parse(nowdate); //지금시간
+			
+			for(int i=0; i<couponlist.size(); i++) {
+				String enddate = couponlist.get(i).cp_endAt;
+				Date format1 = new SimpleDateFormat("yyyy-MM-dd").parse(enddate); //db시간
+				long diffSec = (format1.getTime() - format2.getTime()) / 1000; //초 차이
+				long diffDays = diffSec / (24*60*60); //일자수 차이
+				dto.setPeriod(Long.toString(diffDays));
+				String period = dto.getPeriod();
+				System.out.println(period);
+				service.updateDate(m_id, period);
+				System.out.println(diffDays);
+			}
+			}
+			
 			return "member/mypage";
 		}
 		
@@ -88,7 +139,6 @@ public class MemberController {
 			HttpSession session = request.getSession();
 			m_id = (String)session.getAttribute("m_id");
 			MemberDTO dto = service.selectOneMember(m_id);
-			System.out.println(dto.getM_id()+"현재아이디");
 			ModelAndView mv = new ModelAndView();
 			mv.addObject("memberdto",dto);
 			mv.setViewName("member/updateform");
@@ -174,7 +224,8 @@ public class MemberController {
 		
 	// 쿠폰함
 		@RequestMapping("mycoupon")
-		public ModelAndView mycoupon(String m_id, HttpServletRequest request) {
+		public ModelAndView mycoupon(String m_id, HttpServletRequest request) throws Exception{
+			couponDTO dto = new couponDTO();
 			HttpSession session = request.getSession();
 			m_id = (String)session.getAttribute("m_id");
 			List<couponDTO> couponlist = service.selectCoupon(m_id);
@@ -182,12 +233,21 @@ public class MemberController {
 			mv.addObject("couponlist",couponlist);
 			mv.setViewName("member/mycoupon");
 			
-			for(int i = 0 ; i<couponlist.size();i++) {
-			System.out.println(couponlist.get(i).cp_m_id);
-			System.out.println(couponlist.get(i).cp_code);
-			System.out.println(couponlist.get(i).cp_discountValue);
-			System.out.println(couponlist.get(i).cp_createdAt);
+			LocalDate now = LocalDate.now();
+			String nowdate = now.getYear()+"-"+now.getMonthValue()+"-"+now.getDayOfMonth();
+			Date format2 = new SimpleDateFormat("yyyy-MM-dd").parse(nowdate); //지금시간
+			
+			for(int i=0; i<couponlist.size(); i++) {
+				String enddate = couponlist.get(i).cp_endAt;
+				Date format1 = new SimpleDateFormat("yyyy-MM-dd").parse(enddate); //db시간
+				long diffSec = (format1.getTime() - format2.getTime()) / 1000; //초 차이
+				long diffDays = diffSec / (24*60*60); //일자수 차이
+				dto.setPeriod(Long.toString(diffDays));
+				String period = dto.getPeriod();
+				System.out.println(period);
+				service.updateDate(m_id, period);
 			}
+			
 
 			return mv;
 		}

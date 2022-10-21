@@ -238,3 +238,134 @@ form label{
 .signup_wrap form input{
 	margin-bottom: 20px;
 }
+.check {
+	width : 600px;
+	height: none;
+}
+#idcheck{
+	margin : 10px;
+	height : 30px;
+	display: inline-block;
+	width: 80px;
+	font-size: 13px;
+}
+
+#signbtn { 
+	color: white;
+	background-color:#2186db;
+}
+.select {
+    padding: 20px 30px;
+}
+.select input[type=radio]{
+    display: none;
+}
+.select input[type=radio]+label{
+    display: inline-block;
+    cursor: pointer;
+    height: 30px;
+    width: 120px;
+    border: 1px solid #333;
+    line-height: 30px;
+    text-align: center;
+    font-weight:bold;
+    font-size:13px;
+}
+.select input[type=radio]+label{
+    background-color: #fff;
+    color: #333;
+}
+.select input[type=radio]:checked+label{
+    background-color: #333;
+    color: #fff;
+}
+.container{
+	width : 1200px;
+	height : auto;
+	padding: 50px;
+
+	}
+body{
+	heigh : 2000px;
+}
+
+
+.container1 {
+	width:200px; 
+	height:700px;
+	float:left;
+	margin-top : 100px;
+	margin-left: 80px;
+}
+.container2 {
+	width:1180px; 
+	height:300px;
+	float:left;
+	margin-top : 20px;
+	margin-left: 150px;
+	display: inherit;
+
+}
+
+.inner1{
+	width:500px; 
+	height:150px;
+	float:left;
+	border-right: 1px solid white;
+	display: inherit;
+	background-color:#2186db;
+}
+.x{
+	font-family: 'PreBold', sans-serif;
+	margin : 10px;
+	color: white;
+	font-size: 20px;
+	border-bottom: 1px solid white;
+	padding-bottom: 10px;
+	padding-top: 5px;
+
+}
+.y{
+	font-family: 'PreBold', sans-serif;
+	margin : 10px;
+	color: white;
+	font-size: 50px;
+	margin-bottom: 1px;
+
+
+}
+.inner2{
+	width:450px; 
+	height:150px;
+	float:left;
+	display: inherit;
+	background-color:#2186db;
+}
+#screen1{
+	width: 500px;
+	height: 180px;
+	padding : 20px;
+	margin : 10px;
+	border: 1px solid #d7d7d7;
+	float: left;
+}
+.container1 ul{
+	text-align: center;
+}
+.container2 h1{
+	font-family: 'PreBold', sans-serif;
+	font-size: 28px;
+	margin-bottom: 20px;
+	text-align: left;
+	margin-top: 20px;
+}
+.container1 h3{
+	text-align: center;
+	font-size: 25px;
+	margin-bottom: 5px;
+	margin-top: 30px;
+}
+.container1 li{
+	font-size: 15px;
+	padding: 5px;
+}

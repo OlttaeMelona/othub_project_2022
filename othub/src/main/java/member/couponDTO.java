@@ -8,11 +8,24 @@ public class couponDTO {
 	int cp_status;
 	String cp_createdAt;
 	String cp_endAt;
+	String period;
 	
 	public couponDTO(){ }
 
 	
 	
+	public String getPeriod() {
+		return period;
+	}
+
+
+
+	public void setPeriod(String period) {
+		this.period = period;
+	}
+
+
+
 	public String getCp_endAt() {
 		return cp_endAt;
 	}
@@ -64,9 +77,19 @@ public class couponDTO {
 	public void setCp_status(int cp_status) {
 		this.cp_status = cp_status;
 	}
-	
-	
 
+
+
+	@Override
+	public String toString() {
+		
+		return "cp_m_id ["+cp_m_id+"] cp_code ["+cp_code+"] cp_discountValue ["+cp_discountValue+
+				"] cp_status ["+cp_status+"] cp_createdAt [" + cp_createdAt + "] cp_endAt [ "+cp_endAt+"] period [ "+period+"] /" ;
+
+	}
+	
+	
+	
 
 
 	

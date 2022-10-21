@@ -320,7 +320,7 @@ String p_name4 = (String)request.getAttribute("p_name4");%>
                 </div>
             </div>
              <%} %>
-            <% if(!p_name2.equals("")){ %>
+            <% if(p_name2 != null){if(!p_name2.equals("")){ %>
             <div class="card">
                <div class="img"> <a href="productdetail?p_id=${tag2.get(0).getP_id() }"><img src="images/${tag2.get(0).getP_thumb()}"></a></div>
                 <div class="txt_box">
@@ -332,8 +332,8 @@ String p_name4 = (String)request.getAttribute("p_name4");%>
                     </ol>
                 </div>
             </div>
-             <%} %>
-            <% if(!p_name3.equals("")){ %>
+             <%} }%>
+            <%if(p_name3 != null){ if(!p_name3.equals("")){ %>
             <div class="card">
                <div class="img"> <a href="productdetail?p_id=${tag3.get(0).getP_id() }"><img src="images/${tag3.get(0).getP_thumb()}"></a></div>
                 <div class="txt_box">
@@ -345,8 +345,8 @@ String p_name4 = (String)request.getAttribute("p_name4");%>
                     </ol>
                 </div>
             </div>
-             <%} %>
-            <% if(!p_name4.equals("")){ %>
+             <%}} %>
+            <%if(p_name4 != null){ if(!p_name4.equals("")){ %>
             <div class="card">
                <div class="img"> <a href="productdetail?p_id=${tag4.get(0).getP_id() }"><img src="images/${tag4.get(0).getP_thumb()}"></a></div>
                 <div class="txt_box">
@@ -358,7 +358,7 @@ String p_name4 = (String)request.getAttribute("p_name4");%>
                     </ol>
                 </div>
             </div>
-             <%} %>
+             <%}} %>
             </div>
             </div>
             </div>

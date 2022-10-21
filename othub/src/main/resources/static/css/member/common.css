@@ -1,6 +1,6 @@
 .clearfix:after{
 	clear: both;
-	display: block;
+	display :none;
 	content: '';
 }
 .fl{
@@ -8,9 +8,12 @@
 }
 #container{
 	margin: 0; padding: 0;
+
+	position:relative;
+
 }
 #container .inner{
-	width: 1180px; height: auto;
+	width: 1180px; height: 200px;
 	margin: 80px auto;
 }
 h1{
@@ -20,7 +23,7 @@ h1{
 	text-align: left;
 }
 a.mypage{
-	position: absolute;
+	position:relative;
 	top: 20px; right: 40px;
 	display: inline-block;
 	padding: 4px 14px;
