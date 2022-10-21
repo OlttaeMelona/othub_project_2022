@@ -12,13 +12,14 @@
 	
 	<!-- cswriting -->
 	<insert id="cswrite" parameterType="cs.CSDTO">
-	 	insert into cs (cs_writer, cs_title, cs_question, cs_open)
-	 	values(#{cs_writer}, #{cs_title}, #{cs_question}, #{cs_open})
+	 	insert into cs (cs_writer, cs_title, cs_question, cs_open, cs_pic, pic_name)
+	 	values(#{cs_writer}, #{cs_title}, #{cs_question}, #{cs_open}, #{cs_pic_name}, #{pic_name})
 	</insert>
 	
 	<!-- csview-->
-	<select id="csview" parameterType="int" resultType="cs.CSDTO">
-	 	select * from cs
+	<select id="csview" resultType="cs.CSDTO">
+	 	select cs_seq, cs_writer, cs_open, cs_title, cs_question,
+	 	cs_pic as cs_pic_name, pic_name, cs_regdate, answere_check from cs
 	 	where cs_seq = #{cs_seq}
 	</select>
 	
@@ -26,7 +27,10 @@
 	<update id="csmodify" parameterType="cs.CSDTO" >
 		 update cs
 		 set cs_title = #{cs_title}, cs_writer = #{cs_writer},
-		 cs_question = #{cs_question}
+		 cs_question = #{cs_question},
+		 cs_open = #{cs_open},
+		 cs_pic = #{cs_pic_name},
+		 pic_name = #{pic_name}
 		 where cs_seq = #{cs_seq}
 	</update>
 	
@@ -53,5 +57,13 @@
 	 	select role1 from member
 	</select>
 	
+		<!-- 답변 확인 -->
+	<update id="answerecheck" parameterType="cs.CSDTO">
+	    update cs
+	    set answere_check = #{answere_check}
+	        where cs_seq = #{cs_seq}
+	</update>
+
+	    
 	
    </mapper>
