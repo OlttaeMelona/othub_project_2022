@@ -1,6 +1,52 @@
 @charset "UTF-8";
 
+#images{
+	float:left;
+	margin-left: 10px;
+	width : 700px;
+	height : 850px;
+}
 img.small{
-	width : 100px;
-	height : 100px;
+	width : 200px;
+	height : 200px;
+	margin-left : 0px;
+	padding : 0px;
+}
+
+img#big{
+	width : 600px;
+	height : 600px;
+	margin : 3px;
+}
+
+
+#qqq{
+	display : flex;
+	justify-content : center;
+}
+
+#information{
+	display : flex;
+	margin-top:100px;
+}
+
+#fixed{
+	font-size : 20px;
+}
+
+#dynamic{
+	font-size : 20px;
+	margin-left : 10px;
+}
+#orderss{
+	float : none;
+}
+
+#amount{
+	width: 3em;
+}
+
+#contents{
+	width : 1000px;
+	height : 4000px;	
 }

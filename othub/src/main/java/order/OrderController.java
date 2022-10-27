@@ -50,10 +50,12 @@ public class OrderController {
 		int order_id = orderservice.getOrderid();
 		int p_id = orderservice.getProductid(order_id);
 		OrderDTO productdetail = orderservice.getProductdetail(p_id);
-		List<OrderDTO> ordersdetail = orderservice.getOrders(order_id);
-		
+		List<OrderDTO> ordersdetail = orderservice.getOrders(order_id);		
 		ordersdetail.get(0).p_price = orderservice.getProductdetail(ordersdetail.get(0).p_id).p_price;
 		ordersdetail.get(0).p_name = orderservice.getProductdetail(ordersdetail.get(0).p_id).p_name;
+		ordersdetail.get(0).p_thumb = orderservice.getProductdetail(ordersdetail.get(0).p_id).p_thumb;
+		ordersdetail.get(0).p_brand = orderservice.getProductdetail(ordersdetail.get(0).p_id).p_brand;
+		ordersdetail.get(0).p_stock = orderservice.getProductdetail(ordersdetail.get(0).p_id).p_stock;
 		OrderDTO memberdetail = orderservice.getMember(m_id);
 		mv.setViewName("order/ordermain");
 		mv.addObject("ordersdetail", ordersdetail);
@@ -99,10 +101,15 @@ public class OrderController {
 	public String doOrder(HttpServletRequest request) {
 		String [] order_id_list = request.getParameterValues("order_ids") ;
 		String [] p_id_list = request.getParameterValues("p_ids") ;
+		String [] amount_list = request.getParameterValues("amounts");
 		for(int i = 0; i < order_id_list.length; i++) {	
 		System.out.println(Integer.parseInt(order_id_list[i]));
 		 orderservice.doOrder(Integer.parseInt(order_id_list[i]));
 		 orderservice.orderComplete(Integer.parseInt(p_id_list[i]));
+		 int stock_before = orderservice.getProductdetail(Integer.parseInt(p_id_list[i])).p_stock;
+		 int amount = Integer.parseInt(amount_list[i]);
+		 int stock_after = stock_before - amount;
+		 orderservice.orderStock(Integer.parseInt(p_id_list[i]), stock_after);
 		 } 
 		//선교 수정
 		//등급 수정

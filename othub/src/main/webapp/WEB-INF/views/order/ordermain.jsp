@@ -58,6 +58,7 @@ $(document).ready(function() {
 	<c:forEach items="${ordersdetail}" var="a">
 	<input type="hidden" name="order_ids" value="${a.order_id}">
 	<input type="hidden" name="p_ids" value="${a.p_id}">
+	<input type="hidden" name="amounts" value="${a.amount }">
 	</c:forEach>
 	<input type="submit" value="주문하기" onClick="alert('주문 완료되었습니다.')">
 </form>
