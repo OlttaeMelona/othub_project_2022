@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pose2.Pose2DAO" >
+	<!-- 포즈데이터 입력(상품) -->
+<insert id="insertPose" parameterType="int">
+	insert into posedata (p_id, pose_date) values (#{p_id}, now());
+</insert>
+
+
+<insert id="updatePose0" parameterType="int">
+	update posedata set
+	pose_0x = #{pose_x},
+	pose_0y = #{pose_y}
+	where posedata_id=#{posedata_id}
+</insert>
+
+<insert id="updatePose1" parameterType="int">
+	update posedata set
+	pose_1x = #{pose_x},
+	pose_1y = #{pose_y}
+	where posedata_id=#{posedata_id}
+</insert>
+
+<insert id="updatePose2" parameterType="int">
+	update posedata set
+	pose_2x = #{pose_x},
+	pose_2y = #{pose_y}
+	where posedata_id=#{posedata_id}
+</insert>
+
+<insert id="updatePose3" parameterType="int">
+	update posedata set
+	pose_3x = #{pose_x},
+	pose_3y = #{pose_y}
+	where posedata_id=#{posedata_id}
+</insert>
+
+<insert id="updatePose4" parameterType="int">
+	update posedata set
+	pose_4x = #{pose_x},
+	pose_4y = #{pose_y}
+	where posedata_id=#{posedata_id}
+</insert>
+
+<insert id="updatePose5" parameterType="int">
+	update posedata set
+	pose_5x = #{pose_x},
+	pose_5y = #{pose_y}
+	where posedata_id=#{posedata_id}
+</insert>
+
+<insert id="updatePose6" parameterType="int">
+	update posedata set
+	pose_6x = #{pose_x},
+	pose_6y = #{pose_y}
+	where posedata_id=#{posedata_id}
+</insert>
+
+<insert id="updatePose7" parameterType="int">
+	update posedata set
+	pose_7x = #{pose_x},
+	pose_7y = #{pose_y}
+	where posedata_id=#{posedata_id}
+</insert>
+
+<insert id="updatePose8" parameterType="int">
+	update posedata set
+	pose_8x = #{pose_x},
+	pose_8y = #{pose_y}
+	where posedata_id=#{posedata_id}
+</insert>
+
+<insert id="updatePose9" parameterType="int">
+	update posedata set
+	pose_9x = #{pose_x},
+	pose_9y = #{pose_y}
+	where posedata_id=#{posedata_id}
+</insert>
+
+<insert id="updatePose10" parameterType="int">
+	update posedata set
+	pose_10x = #{pose_x},
+	pose_10y = #{pose_y}
+	where posedata_id=#{posedata_id}
+</insert>
+
+<insert id="updatePose11" parameterType="int">
+	update posedata set
+	pose_11x = #{pose_x},
+	pose_11y = #{pose_y}
+	where posedata_id=#{posedata_id}
+</insert>
+
+<insert id="updatePose12" parameterType="int">
+	update posedata set
+	pose_12x = #{pose_x},
+	pose_12y = #{pose_y}
+	where posedata_id=#{posedata_id}
+</insert>
+
+<insert id="updatePose13" parameterType="int">
+	update posedata set
+	pose_13x = #{pose_x},
+	pose_13y = #{pose_y}
+	where posedata_id=#{posedata_id}
+</insert>
+
+<insert id="updatePose14" parameterType="int">
+	update posedata set
+	pose_14x = #{pose_x},
+	pose_14y = #{pose_y}
+	where posedata_id=#{posedata_id}
+</insert>
+
+<insert id="updatePose15" parameterType="int">
+	update posedata set
+	pose_15x = #{pose_x},
+	pose_15y = #{pose_y}
+	where posedata_id=#{posedata_id}
+</insert>
+
+<insert id="updatePose16" parameterType="int">
+	update posedata set
+	pose_16x = #{pose_x},
+	pose_16y = #{pose_y}
+	where posedata_id=#{posedata_id}
+</insert>
+
+<insert id="updatePose17" parameterType="int">
+	update posedata set
+	pose_17x = #{pose_x},
+	pose_17y = #{pose_y}
+	where posedata_id=#{posedata_id}
+</insert>
+
+<select id="findProduct" resultType="pose2dto">
+	select * from product where p_id=#{p_id};
+</select>
+
+<select id="countProduct" resultType="int">
+	select count(*) from product;
+</select>
+
+<select id="findPose" resultType="int">
+	select posedata_id from posedata order by pose_date desc limit 1
+</select>
+
+</mapper>
+

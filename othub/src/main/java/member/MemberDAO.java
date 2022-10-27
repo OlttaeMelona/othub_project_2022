@@ -67,6 +67,8 @@ public interface MemberDAO {
 	//my쿠폰 리스트
 	public List<couponDTO> selectCoupon(String m_id);
 	
+	public void updateDate(String m_id, String period);
+	
 }
 
 

@@ -43,8 +43,13 @@
 
 <!-- 주문완료 -->
 <insert id="doOrder" parameterType="int">
-	update orders set order_check = 1 where order_id=${order_id};
+<!-- update orders set order_check = 1 where order_id=${order_id};
 	update orders set orderdate = now() where order_id=${order_id};
+	-->
+	update orders set 
+  	order_check = 1,
+  	orderdate = now() 
+  	where order_id=#{order_id};
 </insert>
 
 
@@ -52,6 +57,13 @@
 <delete id="orderComplete" parameterType="int">
 	delete from cart where p_id=${p_id}
 </delete>
+
+<!--  주문완료시 재고 빼기 -->
+<insert id="orderStock" parameterType="orderdto">
+	update product set
+	p_stock = #{p_stock}
+	where p_id=#{p_id};
+</insert>
 
 <!-- 주문취소 -->
 <delete id="cancleOrder" parameterType="int">

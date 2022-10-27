@@ -13,7 +13,7 @@ public interface CSDAO {
 	// 게시물 조회
 	public CSDTO cswview(int cs_seq) throws Exception;
 	
-	// 게시물 작성
+	// 게시물 수정
 	public void csmodify(CSDTO dto) throws Exception;
 	
 	// 게시물 삭제
@@ -24,4 +24,11 @@ public interface CSDAO {
 	
 	// 게시물 목록 + 페이징
 	public List<CSDTO> cslistPage(int displayPost, int postNum) throws Exception;
+	
+	// 답변  확인
+	public void answerecheck(CSDTO dto) throws Exception;
+	
+	// my게시물 목록
+	 public List<CSDTO> mycslist(String cs_writer) throws Exception;
+	
 }

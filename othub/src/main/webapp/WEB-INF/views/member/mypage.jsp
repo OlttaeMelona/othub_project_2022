@@ -11,8 +11,8 @@
     <script src="js/jquery-3.6.0.min.js"></script>
 <title>MyPage | OtHub</title>
 <link href="css/style.css" rel="stylesheet">
-<script src="https://kit.fontawesome.com/95fa5ec673.js" crossorigin="anonymous"></script>
-<script src="js/jquery-3.6.0.min.js"></script>
+
+
 <script>
 	$(document).ready(function() {
 	
@@ -22,29 +22,41 @@
 <body>
 <!-- navbar include -->
 	<%@include file="../include/navbar.jsp" %>
-	
-<div>
-	<h3>마이 페이지</h3>
-	<h5>쇼핑정보</h5>
-	<ul>
-		<li><a href="ordered">주문내역</a></li>
-		<li><a href="goCart">장바구니</a></li>
-	</ul>
-	
-	<h5>쇼핑정보</h5>
-	<ul>
-		<li><a href="updateform">프로필 정보/수정</a></li>
-		<li><a href="ordered">장바구니</a></li>
-		<li><a href="mycoupon">my 쿠폰함</a></li>
-		<li><a href="mycommunity">내 게시글</a></li>
-		<li><a href="mylikecommunity">좋아요한 게시물</a></li>
-		<li></li>
-	</ul>
-</div>	
 
-<a href=""></a>
-
-<!-- footer include -->
+<div class=container">
+	<div class="container1" >
+		<h3> 나의 쇼핑 </h3>
+				<ul class="nav_category">
+					<li><a id="c_nav_d" href="ordered">주문내역</a></li>
+					<li><a id="c_nav_d" href="goCart">장바구니</a></li>
+					<li><a id="c_nav_d" href="myreserv?m_id=<%=session.getAttribute("m_id")%>">예약정보</a></li>
+				</ul>
+		<h3> 내 정보 </h3>
+				<ul class="nav_category">
+					<li><a id="c_nav_d" href="updateform">프로필 정보/수정</a></li>
+					<li><a id="c_nav_d" href="mycoupon">쿠폰함</a></li>
+				</ul>
+				
+		<h3> 커뮤니티 </h3>
+				<ul class="nav_category">
+					<li><a id="c_nav_d" href="mycommunity">내 게시글</a></li>
+					<li><a id="c_nav_d" href="mylikecommunity">좋아요한 게시글</a></li>
+				</ul>
+	</div>
+	
+    <div class="container2" >
+		   <h1>마이페이지</h1>
+	   	<div class="inner1">
+	   		<div class="x">회원등급</div>
+	   		<div class="y">${role2 }</div>
+	   	</div>
+		<div class="inner2">
+			<div class="x">사용가능쿠폰</div>
+	   		<div class="y">${couponcount }장</div>
+		</div>
+	</div>
+</div>
+	<!-- footer include -->
 	<%@include file="../include/footer.jsp" %>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package cs;
 
+import java.io.File;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -10,9 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import csanswere.CSAnswereDTO;
@@ -26,6 +29,8 @@ public class CSController {
 	
 	@Inject
 	private CSService service;
+	
+	
 	
 	@Inject
 	private CSAnswereService answereService;
@@ -52,8 +57,22 @@ public class CSController {
 	 
 	 //게시물 작성
 	 @RequestMapping(value = "/cswrite", method = RequestMethod.POST)
-	 public ModelAndView postCSWrite(CSDTO dto) throws Exception {
-		
+	 public ModelAndView postCSWrite(CSDTO dto, MultipartFile uploadfile) throws Exception {
+		 
+		 String savePath ="C:\\AI\\final\\cs_pic\\";
+		 
+		 MultipartFile cs_pic = dto.getCs_pic();
+			if(!cs_pic.isEmpty()) {
+				String originalname = cs_pic.getOriginalFilename();
+				String beforeext = originalname.substring(0, originalname.indexOf("."));
+				String ext = originalname.substring(originalname.indexOf("."));
+				String newname = beforeext+ext;
+				File servefile = new File(savePath+newname);
+				System.out.println(savePath+newname);
+				cs_pic.transferTo(servefile);
+				dto.setCs_pic_name(newname);
+			}
+		 
 		service.cswrite(dto);
 		 
 		ModelAndView mv = new ModelAndView();
@@ -90,6 +109,7 @@ public class CSController {
 	 @RequestMapping(value = "/csmodify", method = RequestMethod.GET)
 	 public ModelAndView getCSModify(@RequestParam("cs_seq") int cs_seq, Model model, MemberDTO mdto, HttpServletRequest request) throws Exception {
 		 
+		 
 		HttpSession session = request.getSession();
 		String cs_writer = (String)session.getAttribute("m_id");
 		 
@@ -106,7 +126,23 @@ public class CSController {
 	 
 	// 게시물 수정
 	@RequestMapping(value = "/csmodify", method = RequestMethod.POST)
-	public ModelAndView postCSModify(CSDTO dto) throws Exception {
+	public ModelAndView postCSModify(CSDTO dto, MultipartFile uploadfile) throws Exception {
+		
+		String savePath ="C:\\AI\\final\\cs_pic\\";
+		 
+		 MultipartFile cs_pic = dto.getCs_pic();
+			if(!cs_pic.isEmpty()) {
+				String originalname = cs_pic.getOriginalFilename();
+				String beforeext = originalname.substring(0, originalname.indexOf("."));
+				String ext = originalname.substring(originalname.indexOf("."));
+				String newname = beforeext+ext;
+				File servefile = new File(savePath+newname);
+				System.out.println(savePath+newname);
+				cs_pic.transferTo(servefile);
+				dto.setCs_pic_name(newname);
+			}
+		 
+		
 		service.csmodify(dto);
 			 
 		ModelAndView mv = new ModelAndView();
@@ -184,4 +220,19 @@ public class CSController {
 		   
 		 }
 		 
+		 //내 cs게시물
+		 @RequestMapping(value = "/mycslist", method = RequestMethod.GET)
+		 public ModelAndView getMyCSList(Model model, String cs_writer, HttpServletRequest request) throws Exception {
+		  
+			 
+			 
+			 List<CSDTO> mycslist = null;
+			 mycslist = service.mycslist(cs_writer);
+			 model.addAttribute("mycslist", mycslist);
+			 
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("cs/mycs");
+			return mv;
+		   
+		 }
 }

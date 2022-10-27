@@ -50,4 +50,15 @@ public class CSServiceImpl implements CSService {
 		return dao.cslistPage(displayPost, postNum);
 	}
 
+	@Override
+	public void answerecheck(CSDTO dto) throws Exception {
+		dao.answerecheck(dto);
+		
+	}
+
+	@Override
+	public List<CSDTO> mycslist(String cs_writer) throws Exception {
+		return dao.mycslist(cs_writer);
+	}
+
 }

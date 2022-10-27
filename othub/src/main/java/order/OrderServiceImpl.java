@@ -76,6 +76,11 @@ public class OrderServiceImpl implements OrderService {
 	public void orderComplete(int p_id) {
 		dao.orderComplete(p_id);
 	}
+	
+	@Override
+	public void orderStock(int p_id, int p_stock) {
+		dao.orderStock(p_id, p_stock);
+	}
 
 	// 선교 수정
 	@Override

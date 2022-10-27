@@ -25,6 +25,11 @@ public class ReservService {
 		dao.deleteTemporarily(r_id);
 	};
 	
+	//예약 취소2
+	public void deleteTemporarily2(String m_id) throws Exception{
+		dao.deleteTemporarily2(m_id);
+	};
+	
 	//예약
 	public void reservShowroom(ReservDTO dto) throws Exception{
 		dao.reservShowroom(dto);
