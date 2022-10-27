@@ -7,5 +7,10 @@
 <select id="getProductdetail" resultType="productdetaildto" parameterType="int">
 	select * from product where p_id=#{p_id}
 </select>
+
+<!-- 조회시 조회수 증가 -->
+<insert id="viewcountIncrement" parameterType="int">
+	update product set p_viewcount = p_viewcount + 1 where p_id=#{p_id};
+</insert>
 </mapper>
 

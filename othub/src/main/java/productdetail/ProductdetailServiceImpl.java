@@ -13,4 +13,8 @@ public class ProductdetailServiceImpl implements ProductdetailService {
 	public ProductdetailDTO getProductdetail(int p_id){
 		return dao.getProductdetail(p_id);
 	}
+	
+	public void viewcountIncrement(int p_id) {
+		dao.viewcountIncrement(p_id);
+	}
 }

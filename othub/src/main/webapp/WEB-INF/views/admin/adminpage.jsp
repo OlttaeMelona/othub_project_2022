@@ -31,6 +31,7 @@
 	<ul>
 		<li><a href="ordered">주문내역</a></li>
 		<li><a href="goCart">장바구니</a></li>
+		<li><a href="datacenter">포즈 데이터 입력</a></li>
 	</ul>
 	
 	<h5>회원정보</h5>

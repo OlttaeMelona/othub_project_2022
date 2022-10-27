@@ -18,8 +18,9 @@
 	<typeAlias type="shop.ShopDTO" alias="shopdto"/>
 	<typeAlias type="productdetail.ProductdetailDTO" alias="productdetaildto"/>
 	<typeAlias type="order.OrderDTO" alias="orderdto"/>
-
+	<typeAlias type="pose2.Pose2DTO" alias="pose2dto"/>
 	<typeAlias type="cart.CartDTO" alias="cartdto"/>
+	
 	<typeAlias type="cs.CSDTO" alias="csdto"/>
 
 

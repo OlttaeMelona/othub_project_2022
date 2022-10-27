@@ -31,6 +31,7 @@ public class ProductdetailController {
 		ProductdetailDTO productdetail = productdetailservice.getProductdetail(p_id);
 		HttpSession session = request.getSession();
 		String mid = (String)session.getAttribute("m_id");
+		productdetailservice.viewcountIncrement(p_id); //조회수 증가.
 		//컨트롤러 - 결전달(model) 출력 - view
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("productdetail", productdetail );
