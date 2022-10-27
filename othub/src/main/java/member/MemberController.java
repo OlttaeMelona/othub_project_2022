@@ -69,6 +69,11 @@ public class MemberController {
 			return "member/singinform";
 		}
 		
+	//회원가입폼 이동2
+		@PostMapping("/signup")
+		public String signup() {
+			return "member/singinform";
+		}
 
 		
 	//회원가입

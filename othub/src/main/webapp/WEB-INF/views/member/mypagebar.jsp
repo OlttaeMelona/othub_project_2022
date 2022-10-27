@@ -9,13 +9,16 @@
 <title> </title>
 
 <style>
-	
+.mybar {
+	display:inline-block;
+}
 nav.c_nav {
+	display:inline-block;
 	float:left;
 	text-align:center;
 	padding-left:50px;
 	margin-bottom:10px;
-	margin-top : 10px;
+	margin-top : 7em;
 	width:150px;
 	font-size:16px;
 	height: 780px;
@@ -58,32 +61,28 @@ a#c_nav_d:hover {
 
 </script>
 </head>
-<body>
-	<header>
+<body class="mybar">
 	
-		<nav class="c_nav">
-		
+
+	<nav class="c_nav">
 		<h3> 나의 쇼핑 </h3>
-			
-				<ul class="nav_category">
-					<li><a id="c_nav_d" href="ordered">주문내역</a></li>
-					<li><a id="c_nav_d" href="goCart">장바구니</a></li>
-				</ul>
+			<ul class="nav_category">
+				<li><a id="c_nav_d" href="ordered">주문내역</a></li>
+				<li><a id="c_nav_d" href="goCart">장바구니</a></li>
+				<li><a id="c_nav_d" href="myreserv?m_id=<%=session.getAttribute("m_id")%>">예약정보</a></li>
+			</ul>
 		<h3> 내 정보 </h3>
-				<ul class="nav_category">
-					<li><a id="c_nav_d" href="updateform">프로필 정보/수정</a></li>
-					<li><a id="c_nav_d" href="mycoupon">쿠폰함</a></li>
-				</ul>
+			<ul class="nav_category">
+				<li><a id="c_nav_d" href="updateform">프로필 정보/수정</a></li>
+				<li><a id="c_nav_d" href="mycoupon">쿠폰함</a></li>
+			</ul>
 				
 		<h3> 커뮤니티 </h3>
-				<ul class="nav_category">
-					<li><a id="c_nav_d" href="mycommunity">내 게시글</a></li>
-					<li><a id="c_nav_d" href="mylikecommunity">좋아요한 게시글</a></li>
-				</ul>
-			
-		</nav>
-	</header>
-<!-- footer include -->
-	<%@include file="../include/footer.jsp" %>
+			<ul class="nav_category">
+				<li><a id="c_nav_d" href="mycommunity">내 게시글</a></li>
+				<li><a id="c_nav_d" href="mylikecommunity">좋아요한 게시글</a></li>
+			</ul>
+	</nav>
+	
 </body>
 </html>

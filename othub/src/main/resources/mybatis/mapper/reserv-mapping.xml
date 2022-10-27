@@ -15,6 +15,11 @@
  		delete from reserv where r_id=#{r_id}
  	</delete>
  	
+ 	<!-- 예약 취소2 -->
+ 	<delete id="deleteTemporarily2" parameterType="String">
+ 		delete from reserv where m_id=#{m_id} and r_orderer is null
+ 	</delete>
+ 	
  	<!-- 예약 -->
  	<update id="reservShowroom" parameterType="reservdto">
  		update reserv 
@@ -40,7 +45,7 @@
  	
  	<!-- 내 예약 조회 -->
  	<select id="myReservList" resultType="reservdto" parameterType="String">
- 		select * from reserv where m_id=#{m_id} order by r_registTime desc
+ 		select * from reserv r inner join showroom as sr on r.sr_num=sr.sr_num where m_id=#{m_id} order by r_registTime desc
  	</select>
  	
  	<!-- 예약 전체 조회 /최신순/페이징 -->

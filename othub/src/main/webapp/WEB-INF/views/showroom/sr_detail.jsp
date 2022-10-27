@@ -65,36 +65,88 @@
 								</c:if>
 							</td>
 						</tr>
-						<tr>
+						<tr class="col">
 							<td class="rowname2 r_num" colspan="2">
 								<label class="rowname" for="r_numOfPer">예약인원</label><br>
-								<input type="number" name="r_numOfPer" required>
+								<input type='button' onclick='javascript:this.form.r_numOfPer.value--;' value='-'/>
+								<c:if test="${role1 == 'user'}">
+									<input type="text" name="r_numOfPer" value="1" required>
+								</c:if>
+								<c:if test="${role1 != 'user'}">
+									<input type="text" name="r_numOfPer" value="1">
+								</c:if>
+								<input type='button' onclick='javascript:this.form.r_numOfPer.value++;' value='+'/>
 							</td>
 						</tr>
 						<tr>
 							<td class="rowname2" colspan="2">
 								<label class="rowname" for="r_date">예약 날짜</label><br>
-								<input type="date" name="r_date" min="" >
+								<c:if test="${role1 == 'user'}">
+									<input type="date" name="r_date" id="date" required>
+								</c:if>
+								<c:if test="${role1 != 'user'}">
+									<input type="date" name="r_date" id="date">
+								</c:if>
 							</td>
 						</tr>
 						<tr>
 							<td class="hidden" colspan="2">
-								<input type="hidden" name="m_id" value="${onePost.sr_writer }"><br>
+								<input type="hidden" name="m_id" value="${member.m_id }"><br>
 								<input type="hidden" name="sr_num" value="${onePost.sr_num }">
 							</td>
 						</tr>	
 					</tbody>
 				</table>
 				<div class="d_btn">
-					<c:if test="${role != 'admin' }">
+					<c:if test="${role1 == 'user' }">
 						<button type="submit" onclick="javascript:form.action='/reserv'">예약 하기</button><br>
-						<button type="submit" onclick="javascript:form.action='/'">찜하기</button>
+					</c:if>
+					<c:if test="${role1 != 'user' && role1 !='admin' && role1 !='partner' }">
+						<button onclick="javascript:form.action='/login'">로그인 후 예약해주세요</button>
+						<button onclick="javascript:form.action='/signup'">회원가입 하러가기</button>
+					</c:if>
+					<c:if test="${role1 =='admin' || role1 =='partner' }">
+						<button>예약은 일반회원만 가능합니다</button>
 					</c:if>
 				</div>
 			</form>
 		</aside>
 		<section class="postContents">
-			<div id="map" style="width:500px;height:400px;"></div>
+			<div class="contentsInfo_box">
+				<div class="contentsInfo">
+					<span>▤공간유형</span>
+					<span>
+						<c:if test="${onePost.sr_kind == 1}">
+							스튜디오
+						</c:if>
+						<c:if test="${onePost.sr_kind == 2}">
+							사진관
+						</c:if>
+						<c:if test="${onePost.sr_kind == 3}">
+							사진작가
+						</c:if>
+					</span>
+				</div>
+				<div class="contentsInfo">
+					<span>▤이용시간</span>
+					<span>${onePost.sr_operatingtime}</span>
+				</div>
+				<div class="contentsInfo">
+					<span>▤휴무</span>
+					<span>${onePost.sr_closed}</span>
+				</div>
+			</div>
+			<div class="contentsMapInfo">
+				<h4>${onePost.sr_contents }</h4>
+				<span>${onePost.sr_address2 }</span>
+				<div>
+					<span>전화번호</span>
+					<span>${onePost.sr_number}</span>
+				</div>
+			</div>
+			<c:if test="${onePost.sr_address2 != '' && onePost.sr_address2 != null}">
+				<div id="map"></div>
+			</c:if>
 		</section>
 	</main>
 	
@@ -104,10 +156,7 @@
 
 
 <!-- kakao map -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=de99cf4145328e6411314ae05caa843b"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=de99cf4145328e6411314ae05caa843b&libraries=services"></script>
 <script>
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	mapOption = {
@@ -122,13 +171,15 @@
 	var geocoder = new kakao.maps.services.Geocoder();
 	
 	//주소로 좌표를 검색합니다
-	geocoder.addressSearch('제주특별자치도 제주시 첨단로 242', function(result, status) {
+	geocoder.addressSearch('<c:out value='${onePost.sr_address2}'/>', function(result, status) {
 	
 	// 정상적으로 검색이 완료됐으면 
 	 if (status === kakao.maps.services.Status.OK) {
 	
 	    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 	
+	    
+	    
 	    // 결과값으로 받은 위치를 마커로 표시합니다
 	    var marker = new kakao.maps.Marker({
 	        map: map,
@@ -137,7 +188,7 @@
 	
 	    // 인포윈도우로 장소에 대한 설명을 표시합니다
 	    var infowindow = new kakao.maps.InfoWindow({
-	        content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+	        content: '<div style="width:150px;text-align:center;padding:10px 0 5px;color:blue;font-weight:700;"><c:out value='${onePost.sr_contents}'/></div>'
 	    });
 	    infowindow.open(map, marker);
 	
@@ -147,6 +198,7 @@
 	});  
 </script>
 <script>
+	//이미지 전환
 	window.onload = function(){
 		var bigImg = document.querySelector(".bigImg");
 		var smallImgs = document.querySelectorAll(".smallImg");
@@ -162,5 +214,15 @@
 		}
 	}
 	
+	//input date 날짜범위 선택
+	var now_utc = Date.now()
+	var timeOff = new Date().getTimezoneOffset()*60000;
+	var today = new Date(now_utc-timeOff).toISOString().split("T")[0];
+	document.getElementById("date").setAttribute("min", today);
+	
+	var d = new Date();
+	var endDay1 = new Date(new Date().setDate(d.getDate() +14));
+	var endDay2 = new Date(+endDay1 + 3240 * 10000).toISOString().split("T")[0]
+	document.getElementById("date").setAttribute("max", endDay2);
 </script>
 </html>
