@@ -42,7 +42,7 @@ $(document).ready(function() {
 		if(m_id == 'null'){
 			alert("로그인 후 이용가능합니다");
 		}
-		
+
 		$.ajax({
 			type : "POST",
 			url : "boardlike",
@@ -146,10 +146,11 @@ $(document).ready(function() {
 });//ready end
 </script>
 
-<!-- pose -->
+<!-- pose1 -->
 <script>
 $(document).ready(function() {
 	var json = JSON.parse('${poseresult}');
+	
 	//canvas 작업
 	var mycanvas = document.getElementById("mycanvas");
 	var mycontext = mycanvas.getContext("2d");
@@ -169,24 +170,79 @@ $(document).ready(function() {
 		var x = json.predictions[0][2].x * myimage.width ;
 		var y = json.predictions[0][2].y * myimage.height;
 
+
 		
-		var imagedata = mycontext.getImageData(x,y,mycanvas.width,mycanvas.height)
-		var ss = imagedata[0];
-		$("#red").val(imagedata.data[0]);
-		$("#green").val(imagedata.data[1]);
-		$("#blue").val(imagedata.data[2]);
+		var imagedata1 = mycontext.getImageData(x,y,mycanvas.width,mycanvas.height)
+
+
+		$("#red").val(imagedata1.data[0]);
+		$("#green").val(imagedata1.data[1]);
+		$("#blue").val(imagedata1.data[2]);
 
 
 	}//onload
 });//ready end
 </script>
+<!-- pose2 하의 -->
+<script>
+$(document).ready(function() {
+	var json = JSON.parse('${poseresult}');
+	
 
+	if(json.predictions[0][12] == null){
+		$("#bottom").attr("type","hidden");
+	}
+	//canvas 작업
+	var mycanvas = document.getElementById("mycanvas3");
+	var mycontext = mycanvas.getContext("2d");
+		
+	
+	var myimage = new Image();
+	myimage.src = "images/community/styleimg/${param.image }";
+	if(myimage.width > mycanvas.width){
+		mycanvas.width = myimage.width;
+	}	
+	if(myimage.height > mycanvas.height){
+		mycanvas.height = myimage.height;
+	}	
+	
+	myimage.onload = function(){//이미지 그릴 준비 대기
+		mycontext.drawImage(myimage, 0, 0, myimage.width, myimage.height);
+	//	bodyinforms 신체부위이름, 위치점 표시. colors 색상으로 각 신체부위별 다르게 표시
+
+		var a = json.predictions[0][12].x * myimage.width ;
+		var b = json.predictions[0][12].y * myimage.height;
+
+
+		var imagedata2 = mycontext.getImageData(a,b,mycanvas.width,mycanvas.height)
+		$("#red3").val(imagedata2.data[0]);
+		$("#green3").val(imagedata2.data[1]);
+		$("#blue3").val(imagedata2.data[2]);
+
+
+
+	}//onload
+});//ready end
+</script>
 <!-- object -->
 <script>
 $(document).ready(function() {
 	var json = JSON.parse('${objectresult}');
+	
+	var result = false
+	for(var i = 0; i< json.predictions[0].num_detections ; i++){
+		if(json.predictions[0].detection_names[i] == "backpack"){
+			result = true;
+		}
+	}
+	if(result == false){
+		$("#back").attr("type","hidden");
+	}
 
-
+	
+	if(json == null){
+		$("#back").attr("type","hidden");
+	}
 	var mycanvas = document.getElementById("mycanvas2");
 	var mycontext = mycanvas.getContext("2d");
 	
@@ -230,10 +286,7 @@ $(document).ready(function() {
 			}
 
 	
-	if($("#red2").val() === null){
-		$("#back").attr("type",'hidden');
-	}
-	
+
 	}//onload
 	
 });//ready end
@@ -242,7 +295,9 @@ $(document).ready(function() {
 <%String p_name1 = (String)request.getAttribute("p_name1");
 String p_name2 = (String)request.getAttribute("p_name2");
 String p_name3 = (String)request.getAttribute("p_name3");
-String p_name4 = (String)request.getAttribute("p_name4");%>
+String p_name4 = (String)request.getAttribute("p_name4");
+String image2 = (String)request.getAttribute("image2");
+String image3 = (String)request.getAttribute("image3");%>
 <body>
 <!-- navbar include -->
 	<%@include file="../include/navbar.jsp" %>
@@ -283,16 +338,16 @@ String p_name4 = (String)request.getAttribute("p_name4");%>
                     <tr>
                         <td colspan="6"><img src="images/community/styleimg/${oneCommu.imagename1 }" alt="firstimage" style="width: 600px"></td>
                     </tr>
-                    <% if(!request.getAttribute("image2").equals("")){ %>
+                    <% if(image2!= null){if(!image2.equals("")){ %>
                     <tr>
                         <td colspan="6"><img src="images/community/styleimg/${oneCommu.imagename2 }" alt="secondimage"style="width: 600px"></td>
                     </tr>
-                    <%} %>
-                      <% if(!request.getAttribute("image3").equals("")){ %>
+                    <%}} %>
+                      <% if(image3!= null){if(!image3.equals("")){ %>
                     <tr>
                         <td colspan="6"><img src="images/community/styleimg/${oneCommu.imagename3 }" alt="thirdimage"style="width: 600px"></td>
                     </tr>
-                    <%} %>
+                    <%}} %>
                     <tr class="lasttr" >
                     	<td colspan="6" style="color:black; font-size: 22px">${oneCommu.s_contents}</td>
                     </tr>
@@ -409,10 +464,22 @@ String p_name4 = (String)request.getAttribute("p_name4");%>
 <input type="submit" value="비슷한 가방 조회" id="back">
 </form>
 
-<canvas id="mycanvas" width=500 height=500 style="border:2px solid green" hidden></canvas>
-<canvas id="mycanvas2" width=500 height=500 style="border:2px solid green" hidden></canvas>
+<form action="color3">
+<input type="hidden" id="red3" value="" name="red">
+<input type="hidden" id="green3" value="" name="green">
+<input type="hidden"  id="blue3" value="" name="blue">
+<input type="submit" value="비슷한 하의 조회" id="bottom">
+</form>
 
+<canvas id="mycanvas" width=500 height=500  hidden></canvas>
+<canvas id="mycanvas2" width=500 height=500  hidden></canvas>
+<canvas id="mycanvas3" width=500 height=500  hidden></canvas>
+<div id="x"></div>
 <!-- footer include -->
 	<%@include file="../include/footer.jsp" %>
 </body>
+<script type="text/javascript">
+
+
+</script>
 </html>
