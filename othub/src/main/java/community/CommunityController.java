@@ -134,7 +134,7 @@ public class CommunityController {
 	// file1, file2 의 이름과 내용 서버 c:\\upload 폴더에 저장 	
 	// 파일내용을 복사하여 c:\\upload 폴더에 파일명 붙여넣기
 		
-		String savePath ="C:\\othub\\othub_project_2022\\othub_main\\src\\main\\resources\\static\\images\\community\\styleimg\\";
+		String savePath ="C:\\git\\othub_project_2022\\othub_main\\src\\main\\resources\\static\\images\\community\\styleimg\\";
 		
 		//style 2번 이미지
 		MultipartFile mf1 = dto.getS_image1();
