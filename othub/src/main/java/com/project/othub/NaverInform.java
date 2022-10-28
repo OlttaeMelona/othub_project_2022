@@ -21,6 +21,7 @@ public class NaverInform {
  //public final static String j_path = "C:\\AI\\git_fork\\othub_project_2022_2"; 
  //은영 커스텀
  public final static String j_path = "C:\\git\\othub_project_2022"; 
+ public final static String j_path2 = "C:\\git\\othub_project_2022\\othub\\src\\main\\resources\\static\\images\\cs\\cs_pic\\";
  
  
  public final static String chatbot_url = "https://wwlpk2idmv.apigw.ntruss.com/custom/v1/8105/eb8ec8e1596aabeba63a386b12d4d18b62998d0f096a64fcb20cb806824150f3";

@@ -60,7 +60,7 @@ public class CSController {
 	 @RequestMapping(value = "/cswrite", method = RequestMethod.POST)
 	 public ModelAndView postCSWrite(CSDTO dto, MultipartFile uploadfile) throws Exception {
 		 
-		 String savePath =NaverInform.j_path;
+		 String savePath =NaverInform.j_path2;
 		 
 		 MultipartFile cs_pic = dto.getCs_pic();
 			if(!cs_pic.isEmpty()) {
@@ -129,7 +129,7 @@ public class CSController {
 	@RequestMapping(value = "/csmodify", method = RequestMethod.POST)
 	public ModelAndView postCSModify(CSDTO dto, MultipartFile uploadfile) throws Exception {
 		
-		String savePath = NaverInform.j_path;
+		String savePath = NaverInform.j_path2;
 		 
 		 MultipartFile cs_pic = dto.getCs_pic();
 			if(!cs_pic.isEmpty()) {
