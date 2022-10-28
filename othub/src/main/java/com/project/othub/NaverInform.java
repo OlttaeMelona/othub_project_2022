@@ -12,7 +12,7 @@ public class NaverInform {
  //기존
  //public final static String path2 = "/Users/dhk/GIT/othub_project_final/othub/src/main/resources/static/images";
  //은영 커스텀
- public final static String path2 = "C:\\git\\othub_project_2022\\othub\\src\\main\\resources\\static\\images";
+ public final static String path2 = "C:\\git\\othub_project_2022\\othub\\src\\main\\resources\\static\\images\\";
 
  //지호(five)
  public final static String j_id = "v8brt1eu6r";
