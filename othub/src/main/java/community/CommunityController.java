@@ -213,7 +213,6 @@ public class CommunityController {
 		p_name2 = oneCommu.p_name2;
 		mv.addObject("tag2",tag2);
 		mv.addObject("p_name2",p_name2);
-
 		}if(oneCommu.p_name3 != null){
 		List<ProductDTO> tag3 = commuserive.selectProductTag3(oneCommu.p_name3);
 		p_name3 = oneCommu.p_name3;
@@ -231,8 +230,18 @@ public class CommunityController {
 		String jsonresult2 = objectservice.test(image);
 		
 		String writer = oneCommu.getS_writer();
+		if(!oneCommu.imagename2.equals("")) {
 		String image2 = oneCommu.getImagename2();
+		mv.addObject("image2",image2);
+		System.out.println("a");
+		System.out.println(oneCommu.imagename2);
+		}
+		if(!oneCommu.imagename3.equals("")) {
 		String image3 = oneCommu.getImagename3();
+		mv.addObject("image3",image3);
+		System.out.println("b");
+		System.out.println(oneCommu.getImagename2());
+		}
 		
 		
 		mv.addObject("poseresult", jsonresult); //pose
@@ -240,8 +249,7 @@ public class CommunityController {
 		mv.addObject("oneCommu",oneCommu);
 		mv.addObject("commuSeq",s_seq);
 		mv.addObject("writer",writer);
-		mv.addObject("image2",image2);
-		mv.addObject("image3",image3);
+
 		mv.addObject("result",result);
 		commuserive.viewCount(s_seq);
 		mv.setViewName("community/detail");
@@ -373,5 +381,43 @@ public class CommunityController {
 		mv.setViewName("community/similarcolorbackpack");
 		return mv;
 	}
+	
+	//비슷한 하의 상품 조회
+		@RequestMapping("/color3")
+		public ModelAndView color3(ColorDTO dto) {
+			String p_color = "";
+			int rgbR = dto.getRed2();
+			int rgbG = dto.getGreen2();
+			int rgbB = dto.getBlue2();
+			if(rgbR >=150 && rgbB <=120) {
+				p_color = "red";
+			}else if(rgbG >=150 && rgbR <=120) {
+				p_color = "green";
+			}else if(rgbB >=150 && rgbG <=120) {
+				p_color = "blue";
+			}else if(rgbR >= 200 && rgbB >= 200 && rgbG >= 200) {
+				p_color = "white";
+			}else if(rgbR <= 70 && rgbB <= 70 && rgbG <= 70) {
+				p_color = "black";
+			}else if(rgbG >= rgbR && rgbG >= rgbB) {
+				p_color = "green";
+			}else if(rgbR >= rgbB&& rgbR >= rgbG) {
+				p_color = "red";
+			}else if(rgbB >= rgbR&& rgbB >= rgbG) {
+				p_color = "blue";
+			}
+			List<ProductDTO> colorlist = commuserive.similarcolorbottom(p_color);
+
+			System.out.println(p_color);
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("red",rgbR);
+			mv.addObject("green",rgbG);
+			mv.addObject("blue",rgbB);
+			mv.addObject("color",p_color);
+			mv.addObject("list",colorlist);
+
+			mv.setViewName("community/similarcolorbottom");
+			return mv;
+		}
 	
 }
