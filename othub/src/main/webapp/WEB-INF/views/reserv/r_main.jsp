@@ -27,7 +27,7 @@
 <body>
 	<!-- navbar include -->
 	<%@include file="../include/navbar.jsp" %>
-	
+	  
 	<!-- main container -->
 	<main>
 		<section class="r_main_sec1">
