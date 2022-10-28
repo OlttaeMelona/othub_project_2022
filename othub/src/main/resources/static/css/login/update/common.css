@@ -1,0 +1,149 @@
+.clearfix:after{
+	clear: both;
+	display: block;
+	content: '';
+}
+.fl{
+	float: left;
+}
+
+
+form{
+	width: 600px; margin: 0 auto;
+	text-align: center;
+}
+
+form input{
+	width: 350px; height: 50px;
+	border: 1px solid #d7d7d7;
+	margin-bottom: 10px;
+	box-sizing: border-box;
+	padding: 0 20px 0 20px;
+	font-family: 'PreRegular', sans-serif;
+	font-size: 16px;
+}
+
+
+form a{
+	display: block;
+	width: 200px; height: 30px;
+	line-height: 30px;
+	color: #aaaaaa;
+	font-family: 'PreRegular', sans-serif;
+	font-size: 14px;
+	margin: 10px auto;
+}
+.container2 input[type=submit]{
+	width: 350px; height: 50px;
+	border: none;
+	background-color: #2186db;
+	font-family: 'PreRegular', sans-serif;
+	font-size: 16px;
+	color: #ffffff;
+}
+.container2 input[type=submit]:hover{
+	opacity: 0.8;
+}
+
+#idcheck{
+	margin : 10px;
+	height : 30px;
+	display: inline-block;
+	width: 80px;
+	font-size: 13px;
+}
+
+
+.select input[type=radio]{
+    display: none;
+}
+.select input[type=radio]+label{
+    display: inline-block;
+    cursor: pointer;
+    height: 30px;
+    width: 120px;
+    border: 1px solid #333;
+    line-height: 30px;
+    text-align: center;
+    font-weight:bold;
+    font-size:13px;
+}
+.select input[type=radio]+label{
+    background-color: #fff;
+    color: #333;
+}
+.select input[type=radio]:checked+label{
+    background-color: #333;
+    color: #fff;
+}
+.container{
+	width : 1200px;
+	height : auto;
+	padding: 50px;
+
+	}
+body{
+	heigh : 2000px;
+}
+.container2 label{
+	display: block;
+	text-align: left;
+	width: 350px;
+	margin: 0 auto 3px auto;
+	font-family: 'PreBold', sans-serif;
+	font-size: 15px;
+}
+.container2 a{
+	text-align: center;
+}
+
+.container1 li :hover {
+ 	text-decoration:none;
+ 	background:#eee;
+}
+
+
+.container1 {
+	width:200px; 
+	height:700px;
+	float:left;
+	margin-top : 100px;
+	margin-left: 80px;
+}
+.container2 {
+	width:1180px; 
+	height:700px;
+	float:left;
+	margin-top : 20px;
+	margin-left: 150px;
+	display: inherit;
+}
+
+#screen1{
+	width: 500px;
+	height: 180px;
+	padding : 20px;
+	margin : 10px;
+	border: 1px solid #d7d7d7;
+	float: left;
+}
+.container1 ul{
+	text-align: center;
+}
+.container2 h1{
+	font-family: 'PreBold', sans-serif;
+	font-size: 28px;
+	margin-bottom: 20px;
+	text-align: left;
+	margin-top: 20px;
+}
+.container1 h3{
+	text-align: center;
+	font-size: 25px;
+	margin-bottom: 5px;
+	margin-top: 30px;
+}
+.container1 li{
+	font-size: 15px;
+	padding: 5px;
+}
