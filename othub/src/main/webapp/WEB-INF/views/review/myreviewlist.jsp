@@ -70,15 +70,11 @@ $(document).ready(function() {
  <td class="review_d"><fmt:formatDate value="${reviewlist.review_regdate}" pattern="yyyy-MM-dd"/></td>
  
  </c:if>
- 
  </tr>
- 
- </c:forEach>
- 
- 
+ </c:forEach> 
  </table>
-	
-<div class="listnumber">
+
+ <div class="listnumber">
 <c:if test="${reviewprev}">
  <span>[ <a href="/myreviewlist?csnum=${reviewstartPageNum - 1}">이전</a> ] 
   </span>
@@ -101,6 +97,7 @@ $(document).ready(function() {
  </span>
 </c:if>
 </div>	
+
 	
 	
 

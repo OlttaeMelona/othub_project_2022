@@ -48,6 +48,11 @@ public class ReviewServiceImpl implements ReviewService {
 	public int reviewcount() throws Exception {
 		return dao.reviewcount();
 	}
+	
+	@Override
+	public int myreviewcount(String m_id) throws Exception {
+		return dao.myreviewcount(m_id);
+	}
 
 	@Override
 	public ProductdetailDTO pcheck(int p_id) throws Exception {

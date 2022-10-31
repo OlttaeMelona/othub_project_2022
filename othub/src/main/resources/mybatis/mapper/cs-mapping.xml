@@ -45,6 +45,12 @@
 	 	select count(cs_seq) from cs
 	</select>
 	
+	<!-- my 게시물 총 갯수 -->
+	<select id="mycscount" resultType="int">
+	 	select count(cs_seq) from cs
+	 	where cs_writer = #{m_id}
+	</select>
+	
 	<!-- 게시물 목록 + 페이징 -->
 	<select id="cslistPage" parameterType="hashMap" resultType="cs.CSDTO">
 		 select * from cs

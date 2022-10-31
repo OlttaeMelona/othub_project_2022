@@ -49,6 +49,12 @@
 	 	select count(order_id) from review
 	</select>
 	
+	<!-- 내 게시물 총 갯수 -->
+	<select id="myreviewcount" resultType="int">
+	 	select count(order_id) from review
+	 	where review_writer = #{m_id}
+	</select>
+	
 	<!-- 상품 확인 -->
 	<select id="pcheck" resultType="int">
 	 	select p_id from product

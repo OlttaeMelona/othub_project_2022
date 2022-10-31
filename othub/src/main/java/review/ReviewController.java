@@ -99,16 +99,19 @@ public class ReviewController {
 	 
 	//my review list
 		 @RequestMapping(value = "/myreviewlist", method = RequestMethod.GET)
-		 public ModelAndView getMyReivewList(Model model, @RequestParam("reviewnum") int reviewnum) throws Exception {
+		 public ModelAndView getMyReivewList(Model model, @RequestParam("reviewnum") int reviewnum, HttpServletRequest request) throws Exception {
+			 
+			 HttpSession session = request.getSession();
+			 String m_id = (String)session.getAttribute("m_id");
 			 
 			 // 게시물 총 갯수
-			 int reviewcount = service.reviewcount();
+			 int myreviewcount = service.myreviewcount(m_id);
 			 
 			// 한 페이지에 출력할 게시물 갯수
 			 int reviewpostNum = 10;
 			 
 			// 하단 페이징 번호 ([ 게시물 총 갯수 ÷ 한 페이지에 출력할 갯수 ]의 올림)
-			 int reviewpageNum = (int)Math.ceil((double)reviewcount/reviewpostNum);
+			 int reviewpageNum = (int)Math.ceil((double)myreviewcount/reviewpostNum);
 			 
 			 // 출력할 게시물
 			 int reviewdisplayPost = (reviewnum - 1) * reviewpostNum;
@@ -123,14 +126,14 @@ public class ReviewController {
 			 int reviewstartPageNum = reviewendPageNum - (reviewpageNum_cnt - 1);
 			 
 			// 마지막 번호 재계산
-			 int reviewendPageNum_tmp = (int)(Math.ceil((double)reviewcount / (double)reviewpageNum_cnt));
+			 int reviewendPageNum_tmp = (int)(Math.ceil((double)myreviewcount / (double)reviewpageNum_cnt));
 			  
 			 if(reviewendPageNum > reviewendPageNum_tmp) {
 				 reviewendPageNum = reviewendPageNum_tmp;
 			 }
 			 
 			 boolean reviewprev = reviewstartPageNum == 1 ? false : true;
-			 boolean reviewnext = reviewendPageNum * reviewpageNum_cnt >= reviewcount ? false : true;
+			 boolean reviewnext = reviewendPageNum * reviewpageNum_cnt >= myreviewcount ? false : true;
 			 
 			// 시작 및 끝 번호
 			 model.addAttribute("reviewstartPageNum", reviewstartPageNum);
@@ -151,6 +154,7 @@ public class ReviewController {
 			 
 		  
 		  ModelAndView mv = new ModelAndView();
+		  mv.addObject("m_id", m_id);
 		  mv.setViewName("review/myreviewlist");
 		  return mv;
 		 }
