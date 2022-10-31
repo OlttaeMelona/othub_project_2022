@@ -25,25 +25,38 @@
 	<!-- navbar include -->
 	<%@include file="../include/navbar.jsp" %>
 	
-	<div>
-	<h3>관리자 페이지</h3>
-	<h5>쇼핑정보 조회</h5>
-	<ul>
-		<li><a href="ordered">주문내역</a></li>
-		<li><a href="goCart">장바구니</a></li>
-		<li><a href="datacenter">포즈 데이터 입력</a></li>
-	</ul>
+<div class=container">
+	<div class="container1" >
+		<h3> 나의 쇼핑 </h3>
+				<ul class="nav_category">
+					<li><a id="c_nav_d" href="ordered">주문내역</a></li>
+					<li><a id="c_nav_d" href="goCart">장바구니</a></li>
+					<li><a id="c_nav_d" href="myreserv?m_id=<%=session.getAttribute("m_id")%>">예약정보</a></li>
+				</ul>
+		<h3> 회원 정보 </h3>
+				<ul class="nav_category">
+					<li><a id="c_nav_d" href="memberlist">전체 회원 조회</a></li>
+					<li><a id="c_nav_d" href="userlist">일반 회원 조회</a></li>
+				</ul>
+				
+		<h3> 커뮤니티 </h3>
+				<ul class="nav_category">
+					<li><a id="c_nav_d" href="mycommunity">내 게시글</a></li>
+					<li><a id="c_nav_d" href="mylikecommunity">좋아요한 게시글</a></li>
+				</ul>
+	</div>
 	
-	<h5>회원정보</h5>
-	<ul>
-		<li><a href="memberlist">전체 회원 조회</a></li>
-		<li><a href="userlist">일반 회원 조회</a></li>
-		<li><a href="">장바구니</a></li>
-		<li><a href="mycommunity">내 게시글</a></li>
-		<li><a href="mylikecommunity">좋아요한 게시물</a></li>
-		<li></li>
-	</ul>
-</div>	
+    <div class="container2" >
+		   <h1>관리자페이지</h1>
+	   	<div class="inner1">
+	   		<div class="x">등급</div>
+	   		<div class="y">${role1}</div>
+	   	</div>
+		
+	</div>
+</div>
+	
+	
 
 	<!-- footer include -->
 	<%@include file="../include/footer.jsp" %>

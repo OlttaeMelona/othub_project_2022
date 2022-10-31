@@ -40,6 +40,9 @@ public interface MemberDAO {
 	//관리자 회원정보수정
 	public void updateMemberByAdmin(MemberDTO dto);
 	
+	//관리자 회원 탈퇴
+	public void deleteMemberByAdmin(String m_id);
+	
 	//회원 리스트 조회(일반 회원 조회)
 	public List<MemberDTO> selectUserList();
 	
