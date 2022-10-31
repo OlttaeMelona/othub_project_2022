@@ -111,7 +111,9 @@ public class MemberController {
 			List<couponDTO> couponlist = service.selectCoupon(m_id);
 			model.addAttribute("couponcount",couponlist.size());
 			
-
+			//지호
+			PointDTO pdto = service.countPoint(m_id);
+			model.addAttribute("countPoint", pdto); 
 
 			String role2 = mdto.role2;
 

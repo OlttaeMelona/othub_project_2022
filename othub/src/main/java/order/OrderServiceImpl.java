@@ -93,5 +93,17 @@ public class OrderServiceImpl implements OrderService {
 		dao.updateRoleVip(m_id);
 	}
 	
+	//지호
+	@Override
+	public int getOrderid3(int order_id) {
+		return dao.getOrderid3(order_id);
+	}
+	
+	//지호
+	@Override
+	public void reviewcheck(OrderDTO dto){
+		dao.reviewcheck(dto);
+		
+	}
 	
 }

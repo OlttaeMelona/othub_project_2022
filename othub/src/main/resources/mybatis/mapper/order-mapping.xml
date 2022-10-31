@@ -91,6 +91,20 @@
 	update member set role2 = "vip" where m_id=#{m_id}
 </update>
 
+<!-- 지호 -->
+<!-- order_id 호출 -->
+<select id="getOrderid3" parameterType="int" resultType="int">
+	select order_id from orders 
+	where order_id = #{order_id}
+</select>
+
+<!-- 리뷰 확인 -->
+<update id="reviewcheck" parameterType="orderdto">	
+	update orders 
+	set review_check = #{review_check} 
+	where order_id = #{order_id}
+</update>
+
 
 
 </mapper>

@@ -72,6 +72,13 @@ public interface MemberDAO {
 	
 	public void updateDate(String m_id, String period);
 	
+	//지호
+	//포인트 적립
+	public void updatePoint(PointDTO pdto) throws Exception;
+		
+	//포인트 조회
+	public PointDTO countPoint(String m_id);
+	
 }
 
 

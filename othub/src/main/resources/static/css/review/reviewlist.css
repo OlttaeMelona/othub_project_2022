@@ -1,82 +1,105 @@
 @charset "UTF-8";
 
-div.profile{
+div.top_review{
 	display: block;
 	position: relative;
 	float: left;
 	margin-left: 70px;
 	width: 500px;
+	top: -150px;
 }
 
-p.pro_con{
+#tape_top{
+	width: 140px;
+	top: 100px;
+	left: -5px;
+	z-index: 2;
+	position:relative;
+}
+
+#top_review_pic{
+	position:relative;
+	left: 40px;
+}
+
+p.top_reivew_con{
 	width: 400px;
 	line-height: 25px;
 	position: relative;
 	left: 30px;
+	text-align: center;
+}
+p.top_reivew_inform{
+	width: 400px;
+	line-height: 25px;
+	position: relative;
+	left: 30px;
+	top:-28px;
+	text-align: center;
+	font-size: 13px;
 }
 
-
-tr.cstr{
+tr.reviewtr{
 	text-align: center;
 	position: relative;
 	display: block;
 	left: 600px;
-	margin-bottom:20px;
+	margin-bottom:50px;
 	font-size: 16px;
-	top: -400px;
+	top: -774px;
 	width: 1000px;
 }
 
-th.cstr_n{
+th.reviewtr_w{
 	position: relative;
 	width: 100px;
 }
 
-th.cstr_t{
+th.reviewtr_p{
 	position: relative;
-	width: 600px;
+	width: 500px;
 }
 
-th.cstr_w{
-	position: relative;
-	width: 100px;
-}
-
-th.cstr_d{
+th.reviewtr_ev{
 	position: relative;
 	width: 200px;
 }
 
-tbody.tbody{
+th.reviewtr_d{
+	position: relative;
+	width: 200px;
+}
+
+tr.reviewtrbody{
 	display: block;
 	position: relative;
 	text-align: center;
-	margin-bottom: 50px;
+	margin-bottom: 10px;
 	left: 600px;
 	font-size: 14px;
-	top: -400px;
+	top: -800px;
 	width: 1000px;
 }
 
-td.con_n{
+td.review_w{
 	position: relative;
 	width: 100px;
 	padding-bottom: 15px;
 }
 
-td.con_t{
+td.review_p{
 	position: relative;
-	width: 600px;
+	width: 500px;
 	padding-bottom: 15px;
 }
 
-td.con_w{
+td.review_ev{
 	position: relative;
-	width: 100px;
+	width: 200px;
 	padding-bottom: 15px;
 }
 
-td.con_d{
+td.review_d{
 	position: relative;
 	width: 200px;
 	padding-bottom: 15px;
@@ -86,7 +109,7 @@ div.listnumber{
 	position: relative;
 	text-align: center;
 	left: 800px;
-	top: -400px;
+	top: -760px;
 	letter-spacing: 15px;
 	width: 600px;
 }

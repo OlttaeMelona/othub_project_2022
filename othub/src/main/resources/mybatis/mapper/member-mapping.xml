@@ -104,6 +104,21 @@ delete from member where m_id=#{m_id}
 <update id="updateDate">
 	update coupon set period = #{period} where cp_m_id = #{m_id}; 
 </update>
+
+
+<!-- 지호 -->
+<!-- 포인트 적립 -->
+<update id="updatePoint" parameterType="pointdto">
+	update member set m_point = m_point + #{m_point}
+	where m_id = #{m_id}
+</update>
+
+<!-- 포인트 조회 -->
+<select id="countPoint" resultType="pointdto">
+	select m_point from member 
+	where m_id = #{m_id}
+</select>
+
 </mapper>
 
 

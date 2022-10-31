@@ -22,10 +22,9 @@
 	<typeAlias type="cart.CartDTO" alias="cartdto"/>
 	
 	<typeAlias type="cs.CSDTO" alias="csdto"/>
-
-
 	<typeAlias type="csanswere.CSAnswereDTO" alias="csansweredto"/>
-	
+	<typeAlias type="review.ReviewDTO" alias="reviewdto"/>
+	<typeAlias type="member.PointDTO" alias="pointdto"/>
 </typeAliases>
 
 

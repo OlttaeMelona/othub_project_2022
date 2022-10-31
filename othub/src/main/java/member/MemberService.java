@@ -123,4 +123,15 @@ public class MemberService  {
 	public void updateDate(String m_id,String period) {
 		dao.updateDate(m_id, period);
 	}
+	
+	//지호
+	//포인트 적립
+	public void updatePoint(PointDTO pdto) throws Exception{
+	dao.updatePoint(pdto);
+	}
+		
+	//포인트 조회
+	public PointDTO countPoint(String m_id){
+	return dao.countPoint(m_id);
+	}
 }
