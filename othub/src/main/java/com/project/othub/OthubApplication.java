@@ -32,7 +32,7 @@ import showroom.ShowroomDAO;
 @ComponentScan(basePackages = "reserv")
 @ComponentScan(basePackages = "csanswere")
 @ComponentScan(basePackages = "review")
-
+@ComponentScan(basePackages = "partner")
 
 @MapperScan(basePackageClasses = MemberDAO.class)
 @MapperScan(basePackageClasses = CommunityDAO.class)
@@ -44,6 +44,7 @@ import showroom.ShowroomDAO;
 @MapperScan(basePackages = "cart")
 @MapperScan(basePackages = "reserv")
 @MapperScan(basePackages = "pose2")
+@MapperScan(basePackages = "partner")
 public class OthubApplication {
 
 	public static void main(String[] args) {

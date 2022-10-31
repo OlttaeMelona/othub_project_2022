@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,11 +8,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/admin/common2.css" rel="stylesheet">
-<script src="js/jquery-3.6.0.min.js"></script></head>
+<script src="js/jquery-3.6.0.min.js"></script>
+<script>
+	$(document).ready(function() {
+
+	});//ready end
+</script>
+</head>
 <body>
-	<!-- navbar include -->
-	<%@include file="../include/navbar.jsp" %>
-	<section class="adminBox">
+	<section class="adminNavBox">
 		<div class="admin_list_box">
 			<h2 class="h2">관리자 페이지</h2>
 			<h3>쇼핑정보 관리</h3>
@@ -36,7 +40,5 @@
 			</ul>
 		</div>
 	</section>
-	<!-- footer include -->
-	<%@include file="../include/footer.jsp" %>
 </body>
 </html>

@@ -21,47 +21,49 @@
 </head>
 <body>
 <!-- navbar include -->
-	<%@include file="../include/navbar.jsp" %>
+	<%@include file="../include/navbar.jsp"%>
 
-<div class=container">
-	<div class="container1" >
-		<h3> 나의 쇼핑 </h3>
-				<ul class="nav_category">
-					<li><a id="c_nav_d" href="ordered">주문내역</a></li>
-					<li><a id="c_nav_d" href="goCart">장바구니</a></li>
-					<li><a id="c_nav_d" href="myreserv?m_id=<%=session.getAttribute("m_id")%>">예약정보</a></li>
-					<li><a id="c_nav_d" href="myreviewlist?reviewnum=1">내 리뷰</a></li>
-				</ul>
-		<h3> 내 정보 </h3>
-				<ul class="nav_category">
-					<li><a id="c_nav_d" href="updateform">프로필 정보/수정</a></li>
-					<li><a id="c_nav_d" href="mycoupon">쿠폰함</a></li>
-				</ul>
-				
-		<h3> 커뮤니티 </h3>
-				<ul class="nav_category">
-					<li><a id="c_nav_d" href="mycommunity">내 게시글</a></li>
-					<li><a id="c_nav_d" href="mylikecommunity">좋아요한 게시글</a></li>
-				</ul>
-	</div>
+	<section class="mycontainer">
+		<div class="container1">
+			<a href="mypage"><h2 class="h2">마이페이지</h2></a>
+			<h3>나의 쇼핑</h3>
+			<ul class="nav_category">
+				<li><a id="c_nav_d" href="ordered">주문내역</a></li>
+				<li><a id="c_nav_d" href="goCart">장바구니</a></li>
+				<li><a id="c_nav_d" href="myreserv?m_id=<%=session.getAttribute("m_id")%>">예약정보</a></li>
+				<li><a id="c_nav_d" href="myreviewlist?reviewnum=1">내 리뷰</a></li>
+			</ul>
+			<h3>내 정보</h3>
+			<ul class="nav_category">
+				<li><a id="c_nav_d" href="updateform">프로필 정보/수정</a></li>
+				<li><a id="c_nav_d" href="mycoupon">쿠폰함</a></li>
+			</ul>
+
+			<h3>커뮤니티</h3>
+			<ul class="nav_category">
+				<li><a id="c_nav_d" href="mycommunity">내 게시글</a></li>
+				<li><a id="c_nav_d" href="mylikecommunity">좋아요한 게시글</a></li>
+			</ul>
+		</div>
+
+		<div class="container2">
+			<h1>회원 등급</h1>
+			<div class="inner1">
+				<div class="x">회원등급</div>
+				<div class="y">${role2 }</div>
+			</div>
+			<div class="inner2">
+				<div class="x">사용가능쿠폰</div>
+				<div class="y">${couponcount }장</div>
+			</div>
+			<div class="inner2">
+				<div class="x">내 포인트</div>
+		   		<div class="y">${countPoint.m_point }점</div>
+			</div>
+		</div>
+	</section>
 	
-    <div class="container2" >
-		   <h1>마이페이지</h1>
-	   	<div class="inner1">
-	   		<div class="x">회원등급</div>
-	   		<div class="y">${role2 }</div>
-	   	</div>
-		<div class="inner2">
-			<div class="x">사용가능쿠폰</div>
-	   		<div class="y">${couponcount }장</div>
-		</div>
-		<div class="inner2">
-			<div class="x">내 포인트</div>
-	   		<div class="y">${countPoint.m_point }점</div>
-		</div>
-	</div>
-</div>
 	<!-- footer include -->
-	<%@include file="../include/footer.jsp" %>
+	<%@include file="../include/footer.jsp"%>
 </body>
 </html>

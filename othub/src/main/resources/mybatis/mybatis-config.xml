@@ -13,6 +13,8 @@
 
 	<typeAlias type="showroom.ShowroomDTO" alias="showroomdto"/>
 	<typeAlias type="reserv.ReservDTO" alias="reservdto"/>
+	<typeAlias type="partner.PartnerDTO" alias="partnerdto"/>
+	<typeAlias type="partner.OCRDTO" alias="ocrdto"/>
 
 	<typeAlias type="product.ProductDTO" alias="productdto"/>
 	<typeAlias type="shop.ShopDTO" alias="shopdto"/>
