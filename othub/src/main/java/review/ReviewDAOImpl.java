@@ -24,7 +24,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 	public List<ReviewDTO> reviewlist() throws Exception {
 		return sql.selectList(namespace + ".reviewlist");
 	}
-
+	
 	@Override
 	public void reviewwrite(ReviewDTO dto) throws Exception {
 		sql.insert(namespace + ".reviewwrite", dto);
@@ -51,6 +51,11 @@ public class ReviewDAOImpl implements ReviewDAO {
 	@Override
 	public int reviewcount() throws Exception {
 		return sql.selectOne(namespace + ".reviewcount"); 
+	}
+	
+	@Override
+	public int myreviewcount(String m_id) throws Exception {
+		return sql.selectOne(namespace + ".myreviewcount", m_id); 
 	}
 
 	@Override

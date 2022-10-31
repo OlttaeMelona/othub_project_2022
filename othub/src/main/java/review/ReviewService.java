@@ -7,7 +7,7 @@ import productdetail.ProductdetailDTO;
 
 public interface ReviewService {
 	
-	//review list
+		//review list
 		public List<ReviewDTO> reviewlist() throws Exception; 
 		
 		// review 작성
@@ -24,6 +24,9 @@ public interface ReviewService {
 			
 		// review 총 갯수
 		public int reviewcount() throws Exception;
+		
+		// my review 총 갯수
+		public int myreviewcount(String m_id) throws Exception;
 		
 		// p_id 체크
 		public ProductdetailDTO pcheck(int p_id) throws Exception;

@@ -26,6 +26,7 @@ $(document).ready(function() {
 <div class="listnav"> 
 
  <a href="/cslistPage?csnum=1" id="list_button">글 목록</a> 
+ <a href="/mycslistPage?csnum=1" id="mylist_button">내 글 목록</a> 
  <a href="/cswrite" id="cswrite">글 작성</a> 
 
 </div>
