@@ -35,6 +35,7 @@
 					<li><a id="c_nav_d" href="ordered">주문내역</a></li>
 					<li><a id="c_nav_d" href="goCart">장바구니</a></li>
 					<li><a id="c_nav_d" href="myreserv?m_id=<%=session.getAttribute("m_id")%>">예약정보</a></li>
+					<li><a id="c_nav_d" href="myreviewlist?reviewnum=1">내 리뷰</a></li>
 				</ul>
 		<h3> 내 정보 </h3>
 				<ul class="nav_category">
@@ -64,6 +65,7 @@
 				<th>색상</th>
 				<th> 수량 </th>
 				<th> 금액 </th>
+				<th> 리뷰 </th>
                </tr>
             </thead>
             <tbody>
@@ -80,6 +82,14 @@
 					<td> ${a.p_color }</td>
 					<td> ${a.amount } </td>
 					<td> <fmt:formatNumber value='${a.p_price * a.amount}' pattern="#,###"/> 원</td>
+					<td> 
+					<c:if test="${a.review_check == 'n'}">
+					<a href="/reviewwrite?order_id=${a.order_id }" id="review_write">리뷰 작성 </a>
+					</c:if>
+					<c:if test="${a.review_check == 'y'}">
+					<a href="/reviewview?order_id=${a.order_id}" id="review_write">작성한 리뷰 보러 가기</a>
+					</c:if>
+					</td>
 				</tr>
 				</c:forEach>
             </tbody>

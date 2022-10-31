@@ -16,6 +16,8 @@ nav.c_nav {
 	padding-left:50px;
 	margin-bottom:10px;
 	width:150px;
+	position:relative;
+	top: 50px;
 	font-size:16px;
 }
 
@@ -64,6 +66,7 @@ a#c_nav_d:hover {
 					<li><a id="c_nav_d" href="/listrecom?c=3">아우터</a></li>
 					<li><a id="c_nav_d" href="/listrecom?c=4">신발</a></li>
 					<li><a id="c_nav_d" href="/listrecom?c=5">가방</a></li>
+					<li><a id="c_nav_d" href="/reviewlist?reviewnum=1" id="list_button">리뷰</a></li>
 				</ul>
 			
 		</nav>

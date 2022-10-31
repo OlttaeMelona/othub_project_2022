@@ -204,4 +204,23 @@ public class OrderDTO {
 	public void setCart_qty(int cart_qty) {
 		this.cart_qty = cart_qty;
 	}
+	
+	//지호 추가
+	
+	String review_check;
+		
+	public OrderDTO() {
+	
+	}
+		
+	public OrderDTO(String review_check) {
+	this.review_check = review_check;
+	}
+		
+	public String getReview_check() {
+	return review_check;
+	}
+	public void setReview_check(String review_check) {
+	this.review_check = review_check;
+	}
 }

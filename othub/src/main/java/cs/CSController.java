@@ -2,6 +2,7 @@ package cs;
 
 import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -59,14 +60,15 @@ public class CSController {
 	 @RequestMapping(value = "/cswrite", method = RequestMethod.POST)
 	 public ModelAndView postCSWrite(CSDTO dto, MultipartFile uploadfile) throws Exception {
 		 
-		 String savePath ="C:\\AI\\final\\cs_pic\\";
+		 String savePath ="C:\\Users\\지호\\git\\othub\\othub\\src\\main\\resources\\static\\images\\cs\\cs_pic\\";
 		 
 		 MultipartFile cs_pic = dto.getCs_pic();
 			if(!cs_pic.isEmpty()) {
+				UUID uuid = UUID.randomUUID();
 				String originalname = cs_pic.getOriginalFilename();
 				String beforeext = originalname.substring(0, originalname.indexOf("."));
 				String ext = originalname.substring(originalname.indexOf("."));
-				String newname = beforeext+ext;
+				String newname = uuid.toString()+"_"+beforeext+ext;
 				File servefile = new File(savePath+newname);
 				System.out.println(savePath+newname);
 				cs_pic.transferTo(servefile);
@@ -128,14 +130,15 @@ public class CSController {
 	@RequestMapping(value = "/csmodify", method = RequestMethod.POST)
 	public ModelAndView postCSModify(CSDTO dto, MultipartFile uploadfile) throws Exception {
 		
-		String savePath ="C:\\AI\\final\\cs_pic\\";
+		String savePath ="C:\\Users\\지호\\git\\othub\\othub\\src\\main\\resources\\static\\images\\cs\\cs_pic\\";
 		 
 		 MultipartFile cs_pic = dto.getCs_pic();
 			if(!cs_pic.isEmpty()) {
+				UUID uuid = UUID.randomUUID();
 				String originalname = cs_pic.getOriginalFilename();
 				String beforeext = originalname.substring(0, originalname.indexOf("."));
 				String ext = originalname.substring(originalname.indexOf("."));
-				String newname = beforeext+ext;
+				String newname = uuid.toString()+"_"+beforeext+ext;
 				File servefile = new File(savePath+newname);
 				System.out.println(savePath+newname);
 				cs_pic.transferTo(servefile);

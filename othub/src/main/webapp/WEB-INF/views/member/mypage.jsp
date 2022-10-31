@@ -30,6 +30,7 @@
 					<li><a id="c_nav_d" href="ordered">주문내역</a></li>
 					<li><a id="c_nav_d" href="goCart">장바구니</a></li>
 					<li><a id="c_nav_d" href="myreserv?m_id=<%=session.getAttribute("m_id")%>">예약정보</a></li>
+					<li><a id="c_nav_d" href="myreviewlist?reviewnum=1">내 리뷰</a></li>
 				</ul>
 		<h3> 내 정보 </h3>
 				<ul class="nav_category">
@@ -53,6 +54,10 @@
 		<div class="inner2">
 			<div class="x">사용가능쿠폰</div>
 	   		<div class="y">${couponcount }장</div>
+		</div>
+		<div class="inner2">
+			<div class="x">내 포인트</div>
+	   		<div class="y">${countPoint.m_point }점</div>
 		</div>
 	</div>
 </div>
