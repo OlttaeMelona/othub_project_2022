@@ -22,6 +22,9 @@ public interface CSDAO {
 	// 게시물 총 갯수
 	public int cscount() throws Exception;
 	
+	// my 게시물 총 갯수
+	public int mycscount(String m_id) throws Exception;
+	
 	// 게시물 목록 + 페이징
 	public List<CSDTO> cslistPage(int displayPost, int postNum) throws Exception;
 	

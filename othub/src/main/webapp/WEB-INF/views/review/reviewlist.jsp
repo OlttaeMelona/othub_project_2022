@@ -52,7 +52,7 @@ $(document).ready(function() {
  
  <c:forEach items="${reviewlist}" var="reviewlist">
  <tr class="reviewtrbody">
- <c:if test="${reviewlist.review_writer == m_id}">
+
  <td class="review_w">${reviewlist.review_writer}</td>
  
  <td class="review_p">
@@ -68,8 +68,6 @@ $(document).ready(function() {
  </c:if>
  </td>
  <td class="review_d"><fmt:formatDate value="${reviewlist.review_regdate}" pattern="yyyy-MM-dd"/></td>
- </c:if>
- 
  </tr>
  
  </c:forEach>
