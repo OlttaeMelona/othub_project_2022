@@ -4,47 +4,38 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>AdminPage | Othub</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/login/import.css" rel="stylesheet">
-    <link href="css/login/common.css" rel="stylesheet">
-    <script src="js/jquery-3.6.0.min.js"></script>
-
-<link href="css/style.css" rel="stylesheet">
-<script src="https://kit.fontawesome.com/95fa5ec673.js" crossorigin="anonymous"></script>
-
-<title>AdminPage | Othub</title>
-<script src="js/jquery-3.6.0.min.js"></script>
-<script>
-	$(document).ready(function() {
-			
-	});//ready end
-</script>
-</head>
+<link href="css/admin/common2.css" rel="stylesheet">
+<script src="js/jquery-3.6.0.min.js"></script></head>
 <body>
 	<!-- navbar include -->
 	<%@include file="../include/navbar.jsp" %>
-	
-	<div>
-	<h3>관리자 페이지</h3>
-	<h5>쇼핑정보 조회</h5>
-	<ul>
-		<li><a href="ordered">주문내역</a></li>
-		<li><a href="goCart">장바구니</a></li>
-		<li><a href="datacenter">포즈 데이터 입력</a></li>
-	</ul>
-	
-	<h5>회원정보</h5>
-	<ul>
-		<li><a href="memberlist">전체 회원 조회</a></li>
-		<li><a href="userlist">일반 회원 조회</a></li>
-		<li><a href="">장바구니</a></li>
-		<li><a href="mycommunity">내 게시글</a></li>
-		<li><a href="mylikecommunity">좋아요한 게시물</a></li>
-		<li></li>
-	</ul>
-</div>	
-
+	<section class="adminBox">
+		<div class="admin_list_box">
+			<h2 class="h2">관리자 페이지</h2>
+			<h3>쇼핑정보 관리</h3>
+			<ul>
+				<li><a href="ordered">주문내역</a></li>
+				<li><a href="goCart">장바구니</a></li>
+				<li><a href="datacenter">포즈 데이터 입력</a></li>
+			</ul>
+		</div><br>
+		<div class="admin_list_box">
+			<h3>회원 관리</h3>
+			<ul>
+				<li><a href="memberlist">전체 회원 조회</a></li>
+				<li><a href="userlist">일반 회원 조회</a></li>
+			</ul>
+		</div><br>
+		<div class="admin_list_box">
+			<h3>파트너 관리</h3>
+			<ul>
+				<li><a href="partnerlist">입점 신청 조회</a></li>
+			</ul>
+		</div>
+	</section>
 	<!-- footer include -->
 	<%@include file="../include/footer.jsp" %>
 </body>

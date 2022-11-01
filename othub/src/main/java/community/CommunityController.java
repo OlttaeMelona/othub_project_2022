@@ -119,7 +119,7 @@ public class CommunityController {
 		System.out.println(totalboard);
 		List<ProductDTO> productTagList1 = commuserive.productTag1();
 		ModelAndView mv = new ModelAndView();
-		System.out.println(productTagList1);
+
 		mv.addObject("taglist1",productTagList1);
 		mv.addObject("totalboard", totalboard);
 		mv.setViewName("community/srwritingform");

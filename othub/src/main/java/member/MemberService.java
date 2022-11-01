@@ -71,6 +71,10 @@ public class MemberService  {
 	public void updateMemberByAdmin(MemberDTO dto) {
 		dao.updateMemberByAdmin(dto);
 	}
+	//관리자 회원정보 수정
+	public void deleteMemberByAdmin(String m_id) {
+		dao.deleteMemberByAdmin(m_id);
+		}
 	
 	//회원 리스트 조회(일반 회원 조회)
 	public List<MemberDTO> selectUserList(){
@@ -118,5 +122,16 @@ public class MemberService  {
 	
 	public void updateDate(String m_id,String period) {
 		dao.updateDate(m_id, period);
+	}
+	
+	//지호
+	//포인트 적립
+	public void updatePoint(PointDTO pdto) throws Exception{
+	dao.updatePoint(pdto);
+	}
+		
+	//포인트 조회
+	public PointDTO countPoint(String m_id){
+	return dao.countPoint(m_id);
 	}
 }

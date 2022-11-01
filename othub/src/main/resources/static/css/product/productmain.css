@@ -3,7 +3,7 @@
 
 div.productlist{
 	float:right;
-	top:-220px;
+	top:-270px;
 	left: -240px;
 	position:relative;
 }
@@ -16,7 +16,7 @@ div.p_thumb img{
 
 ul.item{
 	display:block;
-	top:-180px;
+	top:-240px;
 	left:320px;
 	position:relative;
 	width:1400px;

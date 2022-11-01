@@ -1,9 +1,11 @@
 package reserv;
 
+import showroom.ShowroomDTO;
+
 public class ReservDTO {
 	int r_id, sr_num, r_price, r_numOfPer;
 	String m_id, r_orderer, r_date, r_registTime;
-	
+	private ShowroomDTO showroomdto;
 	
 	
 	public int getR_id() {
@@ -53,6 +55,12 @@ public class ReservDTO {
 	}
 	public void setR_registTime(String r_registTime) {
 		this.r_registTime = r_registTime;
+	}
+	public ShowroomDTO getShowroomdto() {
+		return showroomdto;
+	}
+	public void setShowroomdto(ShowroomDTO showroomdto) {
+		this.showroomdto = showroomdto;
 	}
 	
 	

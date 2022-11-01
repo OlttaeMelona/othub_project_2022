@@ -32,7 +32,21 @@ a#list_button{
 	display:block;
 	position:relative;
 	text-align: center;
+	left: -109px;
+	top: 30px;
+	border: 1px solid #00336a;
+}
+
+a#mylist_button{
+	padding:5px;
+	background-color: #68afff;
+	color: #fff;
+	width: 90px;
+	display:block;
+	position:relative;
+	text-align: center;
 	left: 20px;
+	top: 1px;
 	border: 1px solid #00336a;
 }
 

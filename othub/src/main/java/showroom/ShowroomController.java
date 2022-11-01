@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.othub.NaverInform;
+
 import member.MemberDTO;
 import member.MemberService;
 
@@ -109,7 +111,7 @@ public class ShowroomController {
 	public String writingprocsee(@ModelAttribute("dto") ShowroomDTO dto) throws Exception{
 		
 		//저장경로-각자 pc에 맞는 경로로 변경
-		String savePath ="C:\\git\\othub_project_2022\\othub_main\\src\\main\\resources\\static\\images\\showroom\\user_img\\";
+		String savePath =NaverInform.showroom_path;
 		//파일업로드
 		MultipartFile[] mf = {dto.getSr_image1(),dto.getSr_image2(),dto.getSr_image3(),dto.getSr_image4(),dto.getSr_image5()};
 		String[] originalnames = new String[5];
@@ -161,7 +163,7 @@ public class ShowroomController {
 	@PostMapping("updatepost")
 	public String updatePost(@ModelAttribute("dto") ShowroomDTO dto)  throws Exception{
 		//저장경로-각자 pc에 맞는 경로로 변경
-		String savePath ="C:\\git\\othub_project_2022\\othub_main\\src\\main\\resources\\static\\images\\showroom\\user_img\\";
+		String savePath =NaverInform.showroom_path;
 		//파일업로드
 		MultipartFile[] mf = {dto.getSr_image1(),dto.getSr_image2(),dto.getSr_image3(),dto.getSr_image4(),dto.getSr_image5()};
 		String[] originalnames = new String[5];
