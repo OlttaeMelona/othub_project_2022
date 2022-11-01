@@ -5,7 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class OCRDTO {
 	int ocr_id;
 	MultipartFile ocr_img;
-	String m_id, ocr_imgname, ocr_uploadtime;
+	String m_id, ocr_imgname, ocr_uploadtime, resultText1, resultText2;
 	
 	
 	public int getOcr_id() {
@@ -37,6 +37,18 @@ public class OCRDTO {
 	}
 	public void setOcr_uploadtime(String ocr_uploadtime) {
 		this.ocr_uploadtime = ocr_uploadtime;
+	}
+	public String getResultText1() {
+		return resultText1;
+	}
+	public void setResultText1(String resultText1) {
+		this.resultText1 = resultText1;
+	}
+	public String getResultText2() {
+		return resultText2;
+	}
+	public void setResultText2(String resultText2) {
+		this.resultText2 = resultText2;
 	}
 	
 	

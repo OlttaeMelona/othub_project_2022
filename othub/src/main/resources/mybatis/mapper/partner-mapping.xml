@@ -48,12 +48,30 @@
  		order by pt_uploadtime asc
  	</select>
  	
+ 	<select id="onePartner" resultType="partnerdto" parameterType="int">
+ 		select
+ 			pt_id,
+ 			m_id,
+ 			pt_kind,
+	 		pt_companyName,
+	 		pt_contectPerName,
+	 		pt_contectPerPosition,
+	 		pt_contectPerPhone,
+	 		pt_homePageURL,
+	 		pt_email,
+	 		pt_companyRegistNum,
+	 		pt_companyRegistNumImg as pt_Imgname1,
+	 		pt_uploadtime
+ 		from partner
+ 		where pt_id=#{pt_id}
+ 	</select>
+ 	
  	<!-- ocr test img 등록 -->
  	<insert id="insertTestOCRImg" parameterType="ocrdto">
  		insert into ocr
- 			(m_id, ocr_img)
+ 			(m_id, ocr_img, resultText1, resultText2)
  		values 
- 			(#{m_id},#{ocr_imgname})
+ 			(#{m_id},#{ocr_imgname}, #{resultText1},#{resultText2})
  	</insert>
  	
  	<!-- ocr test img 가져오기 -->
@@ -62,7 +80,9 @@
  			ocr_id,
  			m_id,
  			ocr_img as ocr_imgname,
- 			ocr_uploadtime
+ 			ocr_uploadtime,
+ 			resultText1,
+ 			resultText2
  		from ocr
  		where m_id=#{m_id}
  		order by ocr_uploadtime desc limit 0 , 1

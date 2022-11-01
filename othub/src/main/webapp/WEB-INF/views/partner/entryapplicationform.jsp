@@ -76,30 +76,6 @@
 					<!-- <input class="pt_btn" type="submit" value="입점 신청하기 Click!"> -->
 				</div>
 			</form>
-			<form method="post" enctype="multipart/form-data">
-				<div class="pt_Info file">
-					<label for="ocr_img">File Upload2</label>
-					<input id="ocr_img" type=file name="ocr_img" onchange="readURL2(this)" accept="image/jpg,jpeg,png,jifi" required>
-					<br><img id="preview2">
-				</div>
-				<input type="hidden" name="m_id" value="<%=session.getAttribute("m_id")%>">
-				<button class="pt_btn" id="fileBtn" onclick="javascript:form.action='/ocr'">파일검사</button>
-			</form>
-			<div>
-				<c:if test="${result != null }">  
-					<!-- 결과 출력 (텍스트) -->
-			        <h3>OCR : 텍스트 추출 결과</h3>
-			        	<div id="Condition1"></div>
-			        	<div id="Condition2"></div>
-			      	<div id ="text1"></div>
-					<h3 id="text" style ="border:1px solid navy"></h3>
-			        <br><br>
-			
-			        <!-- 이미지 출력 (새로운 방법으로 알려줄 것임)  -->
-			        <h3>OCR : 원본 이미지 파일</h3>
-			        <img src="${ocrpath}${ocrimg.ocr_imgname }">
-				</c:if>
-			</div>
 		</section>
 	</main>
 	<!-- footer include -->
@@ -116,17 +92,6 @@
 			reader.readAsDataURL(input.files[0]);
 		}else{
 			document.getElementById('preview1').src = "";
-		}
-	}
-	function readURL2(input) {
-		if(input.files &&input.files[0]){
-			var reader = new FileReader();
-			reader.onload = function(e){
-				document.getElementById('preview2').src = e.target.result;
-			};
-			reader.readAsDataURL(input.files[0]);
-		}else{
-			document.getElementById('preview2').src = "";
 		}
 	}
 	
@@ -159,34 +124,5 @@
 	    });
 	}
 	-->
-</script>
-
-<script>
-	$(document).ready(function() {
-		var json = JSON.parse('${result}');
-		var fieldlist = json.images[0].fields;
-			
-		$("#Condition1").append("inferText : "+fieldlist[1].inferText + "<br>");	
-		
-		//inferText
-		for(var i =0; i<fieldlist.length; i++){
-			$("#text1").append("inferText : "+fieldlist[i].inferText + "<br>");	
-		}
-		
-		for(var i =0; i<fieldlist.length; i++){
-			if(fieldlist[i].lineBreak == true){
-				$("#text").append(fieldlist[i].inferText + "<br>");	
-			}
-			else{
-				$("#text").append(fieldlist[i].inferText + "&nbsp;");	
-			}
-		}
-		
-		//var iftext = document.getElementById('#Condition1').value;
-		//$("#Condition2").append(iftext + "<br>");
-		
-		//숨기기
-		$("#text1").hide();
-	});//ready end
 </script>
 </html>

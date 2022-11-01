@@ -13,27 +13,6 @@
 <!-- js -->
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
-/*
-	$(document).ready(function() {
-		$('.ptlist_body').click(function(){ 
-			if($('.ptlist_imgbox').css('display') == 'none'){
-				$('.ptlist_imgbox').css('display', 'block');
-			}
-			else{
-				$('.ptlist_imgbox').css('display', 'none');
-			}
-		});
-	});//ready end
-
-	function listclick('${status.index}'){
-		var ptlist_bodys = document.querySelectorAll(".ptlist_body");
-		for(var i =0; i < ptlist_bodys.length; i++){
-			if(ptlist_bodys[i].css.style){
-				
-			}
-		}
-	}
-	*/
 </script>
 </head>
 <body>
@@ -44,7 +23,8 @@
 		<!-- navbar include -->
 		<%@include file="../admin/adminpagenav.jsp" %>
 		<section class="ptlist_sec1">
-			<h3 class="h3">입점 신청 조회</h3>
+			<h3 class="h3">입점 신청 상세 조회</h3> 
+			<button class="ptlist_btn" onclick="location.href='/partnerlist'">목록</button>
 			<div class="ptlist_box">
 				<div class="ptlist_head">
 					<span>no</span>
@@ -56,20 +36,27 @@
 					<span>연락처</span>
 					<span>신청일</span>
 				</div>
-				<c:forEach items="${ptlist }" var="list"  varStatus="status">
-					<div class="ptlist_body" id="ptlist_body" onclick="">
-						<a href="detailpartner?id=${list.pt_id }">
-							<span>${list.pt_id }</span>
-							<span>${list.m_id }</span>
-							<span>${list.pt_kind }</span>
-							<span>${list.pt_companyName }</span>
-							<span>${list.pt_contectPerName }</span>
-							<span>${list.pt_contectPerPosition }</span>
-							<span>${list.pt_contectPerPhone }</span>
-							<span>${list.pt_uploadtime }</span>
-						</a>
-					</div>
-				</c:forEach> 
+				<div class="ptlist_body" id="ptlist_body" onclick="">
+						<span>${pt.pt_id }</span>
+						<span>${pt.m_id }</span>
+						<span>${pt.pt_kind }</span>
+						<span>${pt.pt_companyName }</span>
+						<span>${pt.pt_contectPerName }</span>
+						<span>${pt.pt_contectPerPosition }</span>
+						<span>${pt.pt_contectPerPhone }</span>
+						<span>${pt.pt_uploadtime }</span>
+				</div>
+				<div class="ptlist_body2" id="ptlist_imgbox" >
+					<span>
+						<span>사업자등록 번호 : </span>
+						<span>${pt.pt_companyRegistNum }</span>
+					</span>
+					<span>
+						<span>홈페이지 url : </span>
+						<span>${pt.pt_homePageURL }</span>
+					</span>
+				</div>
+				<div class="ptlist_imgbox"><img src="images/partner/img1/user/${pt.pt_Imgname1}"/></div>
 			</div>
 		</section>
 	</main>

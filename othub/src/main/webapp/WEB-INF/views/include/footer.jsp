@@ -15,11 +15,11 @@
 		<div class="footer">
 			<span><a href="#">team.mandlejo</a></span>
 			<span><a href="https://github.com/OlttaeMelona/othub_project_2022">깃허브</a></span>
-			<c:if test="${role1 == '' }">
+			<c:if test="${role1 == null }">
 				<span><a href="/login">입점신청</a></span>
 			</c:if>
-			<c:if test="${role1 != '' }">
-				<span><a href="/partner">입점신청</a></span>
+			<c:if test="${role1 != null }">
+				<span><a href="/ocrpage">입점신청</a></span>
 			</c:if>
 			<span><a href="/cslistPage?csnum=1">고객센터</a></span>
 		</div>

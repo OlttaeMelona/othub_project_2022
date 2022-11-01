@@ -27,6 +27,10 @@ public class ShowroomDTO {
 	}
 	
 	
+	
+	
+	
+	
 	public int getSr_num() {
 		return sr_num;
 	}

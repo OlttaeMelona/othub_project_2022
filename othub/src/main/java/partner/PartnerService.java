@@ -20,6 +20,10 @@ public class PartnerService {
 	public List<PartnerDTO> partnerList() throws Exception{
 		return dao.PartnerList();
 	};
+	//하나 조회
+	public PartnerDTO onePartner(int pt_id) throws Exception{
+		return dao.onePartner(pt_id);
+	};
 	//ocr test img 등록
 	public void insertTestOCRImg(OCRDTO ocrdto) throws Exception{
 		dao.insertTestOCRImg(ocrdto);

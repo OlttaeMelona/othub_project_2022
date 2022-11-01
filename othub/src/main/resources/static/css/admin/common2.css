@@ -26,14 +26,24 @@ ul{
 	width:81%;
 }
 .h3{
+	display:inline-block;
 	margin:0 0 1.5em;
 	font-size: 2em;
+}
+.ptlist_btn{
+	float: right;
+	padding:0.7em 1em;
+	vertical-align: middle;
+	border: 0;
 }
 .ptlist_box{
 	width:100%;
 }
-.ptlist_head, .ptlist_body, .ptlist_imgbox{
-	padding: 1.2em 2% 0.7em;
+.ptlist_body2{
+	border-bottom: 1px solid #ececec;
+}
+.ptlist_head, .ptlist_body, .ptlist_body2{
+	padding: 1.5em 2% 1em;
 	width:96%;
 }
 .ptlist_head{
@@ -42,9 +52,13 @@ ul{
 .ptlist_body{
  	border-bottom: 1px solid #ececec;
 }
-.ptlist_head span, .ptlist_body span, .ptlist_imgbox span{
+.ptlist_head span, .ptlist_body span{
 	display: inline-block;
 	text-align: center;
+	vertical-align: middle;
+}
+.ptlist_body2 span{
+	display: inline-block;
 	vertical-align: middle;
 }
 .ptlist_head span{
@@ -74,15 +88,12 @@ ul{
 .ptlist_head span:nth-child(8),.ptlist_body span:nth-child(8){
 	width: 13%;
 }
-.ptlist_imgbox > span:nth-child(1){
-	width: 16%;
+.ptlist_body2 > span:nth-child(1){
+	width: 50%;
+}
+.ptlist_body2 > span:nth-child(2){
+	width: 48%;
 }
 .ptlist_imgbox img {
 	width: 100%;
-}
-.ptlist_imgbox > span:nth-child(2){
-	width: 30%;
-}
-.ptlist_imgbox > span:nth-child(3){
-	width: 50%;
 }

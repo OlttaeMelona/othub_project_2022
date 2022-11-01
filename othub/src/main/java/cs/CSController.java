@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.othub.NaverInform;
+
 import csanswere.CSAnswereDTO;
 import csanswere.CSAnswereService;
 import member.MemberDTO;
@@ -60,7 +62,7 @@ public class CSController {
 	 @RequestMapping(value = "/cswrite", method = RequestMethod.POST)
 	 public ModelAndView postCSWrite(CSDTO dto, MultipartFile uploadfile) throws Exception {
 		 
-		 String savePath ="C:\\Users\\지호\\git\\othub\\othub\\src\\main\\resources\\static\\images\\cs\\cs_pic\\";
+		 String savePath =NaverInform.j_path2;
 		 
 		 MultipartFile cs_pic = dto.getCs_pic();
 			if(!cs_pic.isEmpty()) {
@@ -130,7 +132,7 @@ public class CSController {
 	@RequestMapping(value = "/csmodify", method = RequestMethod.POST)
 	public ModelAndView postCSModify(CSDTO dto, MultipartFile uploadfile) throws Exception {
 		
-		String savePath ="C:\\Users\\지호\\git\\othub\\othub\\src\\main\\resources\\static\\images\\cs\\cs_pic\\";
+		String savePath =NaverInform.j_path2;
 		 
 		 MultipartFile cs_pic = dto.getCs_pic();
 			if(!cs_pic.isEmpty()) {
