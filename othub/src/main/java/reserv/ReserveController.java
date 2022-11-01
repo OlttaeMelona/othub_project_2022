@@ -57,6 +57,7 @@ public class ReserveController {
 		r_service.deleteTemporarily2(m_id);
 		List<ReservDTO> myr_list = r_service.myReservList(m_id);
 		model.addAttribute("myList", myr_list);
+		System.out.println();
 		return "reserv/myreserv";
 	}
 	
