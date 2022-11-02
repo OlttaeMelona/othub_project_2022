@@ -100,7 +100,7 @@ public class Pose2Controller {
 	
 	@RequestMapping("/pose2result3")
 	public ModelAndView poseresult2(String image, String p_id) {
-		String posePath = "/Users/dhk/GIT/othub_project_final/othub/src/main/resources/static/images/";
+		String posePath = NaverInform.pose_path1;
 		String jsonresult = pose2service.test(posePath, image);
 		ModelAndView mv = new ModelAndView();
 		JSONObject jsonObject = getJSONObjectFromSring(jsonresult);
@@ -250,7 +250,7 @@ public class Pose2Controller {
 	public ModelAndView pose2resultU(HttpServletRequest request, Pose2DTO dto) throws IOException{
 		
 		String user = request.getParameter("user");
-		String posePath = "/Users/dhk/GIT/othub_project_final/othub/src/main/resources/static/images/pose2/";
+		String posePath = NaverInform.pose_path2;
 		MultipartFile pose_image1 = dto.getPose_image();
 		String originalname1 = pose_image1.getOriginalFilename();
 		String beforeext1 = originalname1.substring(0, originalname1.indexOf("."));

@@ -9,10 +9,9 @@ public class NaverInform {
  
  
  //도형
- //public final static String path2 = "/Users/dhk/GIT/othub_project_final/othub/src/main/resources/static/images";
-
-
  //public final static String path2 = "/Users/dhk/GIT/othub_project_final/othub/src/main/resources/static/images/";
+ //public final static String pose_path1 = "/Users/dhk/GIT/othub_project_final/othub/src/main/resources/static/images/";
+ //public final static String pose_path2 = "/Users/dhk/GIT/othub_project_final/othub/src/main/resources/static/images/pose2/";
 
 
  //지호(five)
@@ -36,6 +35,8 @@ public class NaverInform {
  public final static String path2 = "C:\\git\\othub_project_2022\\othub\\src\\main\\resources\\static\\images\\";
  public final static String j_path = "C:\\git\\othub_project_2022"; 
  public final static String j_path2 = "C:\\git\\othub_project_2022\\othub\\src\\main\\resources\\static\\images\\cs\\cs_pic\\";
+ public final static String pose_path1 = "C:\\git\\othub_project_2022\\othub\\src\\main\\resources\\static\\images\\";
+ public final static String pose_path2 = "C:\\git\\othub_project_2022\\othub\\src\\main\\resources\\static\\images\\pose2\\";
 
 
 }
