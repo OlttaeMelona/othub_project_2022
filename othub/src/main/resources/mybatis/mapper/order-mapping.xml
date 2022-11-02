@@ -21,8 +21,8 @@
 </select>
 
 <!-- orderid 호출 -->
-<select id="getOrderid" parameterType="int" resultType="int">
-	select order_id from orders order by orderdate desc limit 1
+<select id="getOrderid" resultType="int">
+	select order_id from orders order by orderdate desc limit 1 ;
 </select>
 
 <!-- orderid 호출2 -->
@@ -76,8 +76,8 @@
 </select>
 
 <!-- 장바구니에서 주문하기 -->
-<select id="cartToOrder" parameterType="String" resultType="orderdto">
-	select * from cart where m_id=#{m_id}
+<select id="cartToOrder" parameterType="int" resultType="orderdto">
+	select * from cart where cart_id=#{cart_id}
 </select>
 
 <!-- 선교 수정 -->

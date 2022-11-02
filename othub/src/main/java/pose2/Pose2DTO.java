@@ -1,10 +1,74 @@
 package pose2;
 
+import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
+
+@Component
 public class Pose2DTO {
 	
 	
-	int p_id;
+	int p_id;	
+	int pose_x;
+	int pose_y;
+	int posedata_id;
+	String p_name;
+	String p_sex;
+	String p_brand;
+	String p_color;
+	int p_price;
+	int p_stock;
+	String p_contents;
+	String p_regdate;
+	String p_thumb;
+	String p_image1;
+	String p_image2;
+	String p_image3;
+	int p_like;
+	int p_viewcount;
+	int p_category_id;
+	double ratio;
 
+
+	String m_id;
+	double ratio_user;
+	
+	
+	
+	public String getM_id() {
+		return m_id;
+	}
+
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
+	}
+
+	public double getRatio_user() {
+		return ratio_user;
+	}
+
+	public void setRatio_user(double ratio_user) {
+		this.ratio_user = ratio_user;
+	}
+
+	public String getPose_imagename() {
+		return pose_imagename;
+	}
+
+	public void setPose_imagename(String pose_imagename) {
+		this.pose_imagename = pose_imagename;
+	}
+
+	public MultipartFile getPose_image() {
+		return pose_image;
+	}
+
+	public void setPose_image(MultipartFile pose_image) {
+		this.pose_image = pose_image;
+	}
+
+	String pose_imagename;
+	MultipartFile pose_image;
+	
 	public int getP_id() {
 		return p_id;
 	}
@@ -14,9 +78,8 @@ public class Pose2DTO {
 	}
 	
 	
-	int pose_x;
-	int pose_y;
-	int posedata_id;
+	
+	
 
 	public int getPose_x() {
 		return pose_x;
@@ -43,22 +106,7 @@ public class Pose2DTO {
 	}
 
 
-	String p_name;
-	String p_sex;
-	String p_brand;
-	String p_color;
-	int p_price;
-	int p_stock;
-	String p_contents;
-	String p_regdate;
-	String p_thumb;
-	String p_image1;
-	String p_image2;
-	String p_image3;
-	int p_like;
-	int p_viewcount;
-	int p_category_id;
-
+	
 	public String getP_name() {
 		return p_name;
 	}
@@ -181,6 +229,27 @@ public class Pose2DTO {
 	
 	
 
+	public double getRatio() {
+		return ratio;
+	}
+
+	public void setRatio(double ratio) {
+		this.ratio = ratio;
+	}
+
+	
+	
+	int category_id;
+
+
+
+	public int getCategory_id() {
+		return category_id;
+	}
+
+	public void setCategory_id(int category_id) {
+		this.category_id = category_id;
+	}
 	
 	
 }

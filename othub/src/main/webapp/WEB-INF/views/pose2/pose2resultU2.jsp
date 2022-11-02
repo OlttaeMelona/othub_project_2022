@@ -7,19 +7,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="js/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+
+	});
+</script>
 </head>
 <body>
 <!-- navbar include -->
 	<%@include file="../include/navbar.jsp" %>
-<c:forEach items="${data_list }" var="onefile">
-<h1>${onefile[1] }</h1>
-	<c:forEach items="${onefile }" var="twofile" begin="2" end="5">
-<h3> <a href="pose2result3?image=${twofile }&p_id=${onefile[0]}"> ${twofile } </a> </h3>
-<img src="/images/${twofile }">
-	</c:forEach>
-<hr>
-</c:forEach>
+${ratio}
 <!-- footer include -->
 	<%@include file="../include/footer.jsp" %>
+
 </body>
+
 </html>

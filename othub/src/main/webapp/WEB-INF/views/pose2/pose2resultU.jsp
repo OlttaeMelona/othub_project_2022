@@ -26,7 +26,7 @@ $(document).ready(function() {
 	   var colors = ["black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black"];
 	   var bodyinforms = ["코", "목", "오어깨", "오팔꿈치", "오손목", "왼어깨", "왼팔꿈치", "왼손목", "오엉덩이", "오무릎", "오발목", "왼엉덩이", "왼무릎", "왼발목", "오눈", "왼눈", "오귀", "왼귀"];
 	   var myimage = new Image();
-	   myimage.src = "images/${param.image }";
+	   myimage.src = "images/${jspPath}";
 	 
 	   myimage.onload = function(){
 		   if(myimage.width > mycanvas.width){
@@ -48,6 +48,7 @@ $(document).ready(function() {
 	         mycontext.fillRect(x, y, 5, 5);
 	      
 	   //양손목그리기
+	   /*
 	   if(bodyinforms[i].indexOf("왼손목")>=0){
 	      var leftx = json.predictions[0][i].x * myimage.width;
 	      var lefty = json.predictions[0][i].y * myimage.height;
@@ -62,7 +63,7 @@ $(document).ready(function() {
 	   mycontext.closePath();
 	   mycontext.strokeStyle = "red";
 	   mycontext.lineWidth = 5;
-	   
+	   */
 	   mycontext.stroke();
 	      }//for
 	      
@@ -71,21 +72,26 @@ $(document).ready(function() {
 	   
 	   var end = [];
 	   var arr = [];
-	   
+	   var bodies = [];
 	   for(var i = 0; i < keys2.length; i++){
 		   	arr = [keys2[i], json2[keys2[i]].x, json2[keys2[i]].y];
+		   	arr2 = bodyinforms[i];
+		   	bodies.push(arr2);
+			bodies.push(" ");
 		   	end.push(arr);
 	   }
-	  	
-	   $("#test1").html(end);
+	   
+
+	   $("#test1").html(bodies);
 	   var u = keys2.length;
 	   $.ajax({
 			type: "post",
-			url:  'pose2result2',
+			url:  'pose2resultU2',
 			data: {posejson:JSON.stringify(end), u:u},
 			//datatype: 'json',
 			success: function(a){
-				alert('ajax_success');
+				alert('분석완료');
+				location.replace("/pose2resultU3");
 			}//sucess
 	   });//ajax
 	});
@@ -94,12 +100,12 @@ $(document).ready(function() {
 <body>
 <!-- navbar include -->
 	<%@include file="../include/navbar.jsp" %>
-${param.image }
-<div id="result"></div>
-<div id="test1"></div>
-<div id="test2"></div>
+${jspPath}
 
-<img src="images/${param.image }">
+<div id="test1"></div>
+
+
+<img src="images/${jspPath}">
 <canvas id="mycanvas" width=500 height=500 style="border:2px solid green">
 </canvas>
 <!-- footer include -->
