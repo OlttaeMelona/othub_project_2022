@@ -37,7 +37,7 @@ public interface OrderService {
 	public List<OrderDTO> getOrdered(String m_id);
 	
 	//장바구니에서 주문
-	public List<OrderDTO> cartToOrder(String m_id);
+	public OrderDTO cartToOrder(int cart_id);
 	
 	//주문완료시 장바구니 삭제
 	public void orderComplete(int p_id);

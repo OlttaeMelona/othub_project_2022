@@ -25,7 +25,7 @@ ul.item{
 
 ul.like{
 	display:block;
-	top:-180px;
+	top:-240px;
 	left:320px;
 	position:relative;
 	width:1400px;
@@ -34,7 +34,7 @@ ul.like{
 
 ul.recent{
 	display:block;
-	top:-180px;
+	top:-240px;
 	left:320px;
 	position:relative;
 	width:1400px;

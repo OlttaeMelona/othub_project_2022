@@ -36,25 +36,10 @@ $(document).ready(function() {
 </head>
 <body>
 
-<form method="post" class="ten" style="display:none;">
-
-<input name="m_point" value="100" />
-<input name="m_id" value="${m_id}" /><br>
-
-<button type="submit" id="ten" >적립</button>
-
-</form>
-
-
-<form method="post" class="five" style="display:none;">
-
-<input name="m_point" value="50" />
-<input name="m_id" value="${m_id}" /><br>
-
-<button type="submit" id="five" >적립</button>
-
-</form>
-
+<div id="text">
+<p> 사진을 분석하지 못했습니다.
+보다 신체가 정확히 나온 사진으로 사진을 등록해 주세요.</p>
+</div>
 
 
 

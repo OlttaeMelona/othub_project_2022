@@ -79,13 +79,21 @@ public class CartController {
 	public String cartAmount (HttpServletRequest request) {
 		int amount = Integer.parseInt(request.getParameter("newamount"));
 		int cart_id = Integer.parseInt(request.getParameter("newcart_id"));
-		System.out.println(cart_id);
-		System.out.println(amount);
+		
+
 		if(amount == 0) {
 			cartservice.deleteOne(cart_id);
 			System.out.println(15);
 		}
 		else {cartservice.updateCartAmount(cart_id, amount);}
 		return("redirect:/goCart");
+	}
+	
+	@RequestMapping("/deleteFromCart")
+	public String delete(HttpServletRequest request) {
+		int cart_id = Integer.parseInt(request.getParameter("cart_idForDelete"));
+		cartservice.deleteOne(cart_id);
+		return("redirect:/goCart");
+		
 	}
 }
