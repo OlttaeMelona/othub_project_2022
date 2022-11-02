@@ -9,6 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<!-- navbar include -->
+	<%@include file="../include/navbar.jsp" %>
 <c:forEach items="${data_list }" var="onefile">
 <h1>${onefile[1] }</h1>
 	<c:forEach items="${onefile }" var="twofile" begin="2" end="5">
@@ -17,5 +19,7 @@
 	</c:forEach>
 <hr>
 </c:forEach>
+<!-- footer include -->
+	<%@include file="../include/footer.jsp" %>
 </body>
 </html>

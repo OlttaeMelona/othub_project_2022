@@ -9,9 +9,11 @@ public class NaverInform {
  
  
  //도형
- //public final static String path2 = "/Users/dhk/GIT/othub_project_final/othub/src/main/resources/static/images";
+ //public final static String path2 = "/Users/dhk/GIT/othub_project_final/othub/src/main/resources/static/images/";
+ //public final static String pose_path1 = "/Users/dhk/GIT/othub_project_final/othub/src/main/resources/static/images/";
+ //public final static String pose_path2 = "/Users/dhk/GIT/othub_project_final/othub/src/main/resources/static/images/pose2/";
 
- 
+
  //지호(five)
  public final static String chatbot_url = "https://wwlpk2idmv.apigw.ntruss.com/custom/v1/8105/eb8ec8e1596aabeba63a386b12d4d18b62998d0f096a64fcb20cb806824150f3";
  public final static String chatbot_key = "R2VxY21RVk9XTk5LbkFGU2FPVGlGc3pyZU95VHRIVnY=";
@@ -33,6 +35,8 @@ public class NaverInform {
  public final static String path2 = "C:\\git\\othub_project_2022\\othub\\src\\main\\resources\\static\\images\\";
  public final static String j_path = "C:\\git\\othub_project_2022"; 
  public final static String j_path2 = "C:\\git\\othub_project_2022\\othub\\src\\main\\resources\\static\\images\\cs\\cs_pic\\";
+ public final static String pose_path1 = "C:\\git\\othub_project_2022\\othub\\src\\main\\resources\\static\\images\\";
+ public final static String pose_path2 = "C:\\git\\othub_project_2022\\othub\\src\\main\\resources\\static\\images\\pose2\\";
 
 
 }

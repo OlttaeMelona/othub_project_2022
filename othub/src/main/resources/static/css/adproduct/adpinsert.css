@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+form.insert_box{
+	display: block;
+	text-align: center;
+	width: 1200px;
+	position: relative;
+	margin:auto;
+}
+
+p#p_name{
+	
+}
+
+input#p_name,#p_brand,#p_price,#p_stock{
+	border: 1px solid #00336a;
+	width : 350px;
+	height: 30px;
+	margin-bottom: 30px;
+	font-family: 'LeferiBaseType-RegularA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiBaseType-RegularA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+input[type=radio]{
+	appearance:none; 
+	width: 14px;
+	height: 14px;
+	border: 1px solid #d6d6d6;  
+	border-radius: 50%;    
+}
+
+input[type=radio]:checked{      
+width: 14px;
+height: 14px;
+border-radius: 50%;
+background-color: #68afff;
+border: 2px solid #fff; 
+outline: 1px solid #68afff;
+}
+
+select#p_color,#category_id{
+	margin-top: 30px;
+	margin-bottom: 30px;
+	font-family: 'LeferiBaseType-RegularA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiBaseType-RegularA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.inputpic label{
+	width: 135px;
+	height: 35px;
+	padding-bottom:4px;
+	display: inline-block;
+	color: #fff;
+	line-height: 45px;
+	vertical-align: middle;
+	background-color: #68afff;
+	cursor: pointer;
+	border: 1px solid #00336a;
+	text-align: center;
+	position: relative;
+}
+
+.inputpic input[type="file"]{
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+img#select_img1,#select_img2,#select_img3,#select_img4,#select_img5{
+	position: relative;
+}
+

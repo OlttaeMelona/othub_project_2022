@@ -77,6 +77,7 @@
 					<span><a href="community">룩북</a></span>
 					<span><a href="/listrecom?c=1">쇼핑몰</a></span>
 					<span><a href="showroom">포토룸</a></span>
+					<span><a href="pose2inputU">내 체형의 옷 찾기</a></span>
 				</div>
 			</div>
 		</nav>

@@ -92,6 +92,8 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
+<!-- navbar include -->
+	<%@include file="../include/navbar.jsp" %>
 ${param.image }
 <div id="result"></div>
 <div id="test1"></div>
@@ -100,5 +102,7 @@ ${param.image }
 <img src="images/${param.image }">
 <canvas id="mycanvas" width=500 height=500 style="border:2px solid green">
 </canvas>
+<!-- footer include -->
+	<%@include file="../include/footer.jsp" %>
 </body>
 </html>

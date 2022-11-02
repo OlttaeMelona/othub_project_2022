@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.List;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -25,7 +26,7 @@ public class Pose2ServiceImple implements Pose2Service {
 	Pose2DAO dao;
 	
 	@Override
-	public String test(String image) {
+	public String test(String posePath, String image) {
 		String result ="";
 		StringBuffer reqStr = new StringBuffer();
         String clientId = NaverInform.id;//애플리케이션 클라이언트 아이디값";
@@ -33,7 +34,7 @@ public class Pose2ServiceImple implements Pose2Service {
 
         try {
             String paramName = "image"; // 파라미터명은 image로 지정
-            String imgFile = NaverInform.path2+image;
+            String imgFile = posePath+image;
             
            // String imgFile = "/images/"+image;
             System.out.println(imgFile);
@@ -179,6 +180,11 @@ public class Pose2ServiceImple implements Pose2Service {
 	}
 	
 	@Override
+	public List<Pose2DTO> findProductId(){
+		return dao.findProductId();
+	}
+	
+	@Override
 	public int countProduct() {
 		return dao.countProduct();
 	}
@@ -186,5 +192,30 @@ public class Pose2ServiceImple implements Pose2Service {
 	@Override
 	public int findPose() {
 		return dao.findPose();
+	}
+	
+	@Override
+	public void updateRatio(Pose2DTO dto) {
+		dao.updateRatio(dto);
+	}
+	
+	@Override
+	public void insertUserRatio(Pose2DTO dto) {
+		dao.insertUserRatio(dto);
+	}
+	
+	@Override
+	public double findUserRatio(String m_id) {
+		return dao.findUserRatio(m_id);
+	}
+	
+	@Override
+	public List<Pose2DTO> findProductRatio(double min_ratio, double max_ratio){
+		return dao.findProductRatio(min_ratio, max_ratio);
+	}
+	
+	@Override
+	public Pose2DTO getProductdetail(int p_id){
+		return dao.getProductdetail(p_id);
 	}
 }

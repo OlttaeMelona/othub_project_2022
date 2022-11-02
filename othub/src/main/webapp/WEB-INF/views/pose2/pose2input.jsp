@@ -9,9 +9,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+<!-- navbar include -->
+	<%@include file="../include/navbar.jsp" %>
 <c:forEach items="${filelist }" var="onefile">
 <h3> <a href="pose2result?image=${onefile }"> ${onefile } </a> </h3>
 <img src="/images/${onefile }">
 </c:forEach>
+<!-- footer include -->
+	<%@include file="../include/footer.jsp" %>
 </body>
 </html>
