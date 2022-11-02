@@ -13,6 +13,8 @@
 
 	<typeAlias type="showroom.ShowroomDTO" alias="showroomdto"/>
 	<typeAlias type="reserv.ReservDTO" alias="reservdto"/>
+	<typeAlias type="partner.PartnerDTO" alias="partnerdto"/>
+	<typeAlias type="partner.OCRDTO" alias="ocrdto"/>
 
 	<typeAlias type="product.ProductDTO" alias="productdto"/>
 	<typeAlias type="shop.ShopDTO" alias="shopdto"/>
@@ -22,10 +24,11 @@
 	<typeAlias type="cart.CartDTO" alias="cartdto"/>
 	
 	<typeAlias type="cs.CSDTO" alias="csdto"/>
-
-
 	<typeAlias type="csanswere.CSAnswereDTO" alias="csansweredto"/>
-	
+	<typeAlias type="review.ReviewDTO" alias="reviewdto"/>
+	<typeAlias type="member.PointDTO" alias="pointdto"/>
+	<typeAlias type="adproduct.ADProductDTO" alias="adproductdto"/>
+	<typeAlias type="adproduct.ProductDTO2" alias="adproductdto2"/>
 </typeAliases>
 
 

@@ -50,6 +50,11 @@ public class CSDAOImpl implements CSDAO {
 	public int cscount() throws Exception {
 		return sql.selectOne(namespace + ".cscount"); 
 	}
+	
+	@Override
+	public int mycscount(String m_id) throws Exception {
+		return sql.selectOne(namespace + ".mycscount", m_id); 
+	}
 
 	@Override
 	public List<CSDTO> cslistPage(int displayPost, int postNum) throws Exception {

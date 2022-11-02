@@ -41,6 +41,7 @@ $(document).ready(function(){
 				<ul class="nav_category">
 					<li><a id="c_nav_d" href="ordered">주문내역</a></li>
 					<li><a id="c_nav_d" href="goCart">장바구니</a></li>
+					<li><a id="c_nav_d" href="myreserv?m_id=<%=session.getAttribute("m_id")%>">예약정보</a></li>
 				</ul>
 		<h3> 내 정보 </h3>
 				<ul class="nav_category">

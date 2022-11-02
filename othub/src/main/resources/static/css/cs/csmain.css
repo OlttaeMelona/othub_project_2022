@@ -29,22 +29,22 @@ tr.cstr{
 
 th.cstr_n{
 	position: relative;
-	width: 200px;
+	width: 100px;
 }
 
 th.cstr_t{
 	position: relative;
-	width: 400px;
+	width: 600px;
 }
 
 th.cstr_w{
 	position: relative;
-	width: 300px;
+	width: 100px;
 }
 
 th.cstr_d{
 	position: relative;
-	width: 300px;
+	width: 200px;
 }
 
 tbody.tbody{
@@ -60,25 +60,25 @@ tbody.tbody{
 
 td.con_n{
 	position: relative;
-	width: 200px;
+	width: 100px;
 	padding-bottom: 15px;
 }
 
 td.con_t{
 	position: relative;
-	width: 400px;
+	width: 600px;
 	padding-bottom: 15px;
 }
 
 td.con_w{
 	position: relative;
-	width: 300px;
+	width: 100px;
 	padding-bottom: 15px;
 }
 
 td.con_d{
 	position: relative;
-	width: 300px;
+	width: 200px;
 	padding-bottom: 15px;
 }
 

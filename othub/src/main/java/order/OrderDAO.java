@@ -53,4 +53,10 @@ public interface OrderDAO {
 	
 	//선교 수정 회원 등급 변경(골드)
 		public void updateRoleVip(String m_id);
+		
+	// 지호 order id 조회
+	public int getOrderid3(int order_id);
+			
+	// 지호 리뷰  확인
+	public void reviewcheck(OrderDTO dto);
 }

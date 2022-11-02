@@ -1,6 +1,7 @@
 package reserv;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,6 +24,11 @@ public class ReservService {
 	//예약 취소
 	public void deleteTemporarily(int r_id) throws Exception{
 		dao.deleteTemporarily(r_id);
+	};
+	
+	//예약 취소2
+	public void deleteTemporarily2(String m_id) throws Exception{
+		dao.deleteTemporarily2(m_id);
 	};
 	
 	//예약

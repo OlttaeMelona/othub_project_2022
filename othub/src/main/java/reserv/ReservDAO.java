@@ -1,6 +1,7 @@
 package reserv;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -16,6 +17,9 @@ public interface ReservDAO {
 	
 	//예약 취소
 	public void deleteTemporarily(int r_id) throws Exception;
+	
+	//예약 취소
+	public void deleteTemporarily2(String m_id) throws Exception;
 	
 	//예약
 	public void reservShowroom(ReservDTO dto) throws Exception;

@@ -9,47 +9,72 @@
 <title> </title>
 
 <style>
-	
-nav.c_nav {
+.mycontainer{
+	vertical-align: top;
+}
+ul li, ul{
+	padding:0;
+}
+.h2{
+	font-size: 2em;
+	margin:0 0 1.5em 0;
+	color:#111;
+}
+.mycontainer, .container1, .container2 {
+	display: inline-block;
+}
+.container2 {
+	vertical-align:top;
+	margin-left:3.5em;
+	width:81%; 
+	height:300px;
+
+}
+
+.inner1{
+	width:49%; 
+	height:150px;
 	float:left;
-	text-align:center;
-	padding-left:50px;
-	margin-bottom:10px;
-	margin-top : 10px;
-	width:150px;
-	font-size:16px;
-	height: 780px;
-
+	border-right: 1px solid white;
+	display: inherit;
+	background-color:#2186db;
 }
-
-ul.nav_category{
-	margin:0;
-	padding:0;
+.x{
+	font-family: 'PreBold', sans-serif;
+	margin : 10px;
+	color: white;
+	font-size: 20px;
+	border-bottom: 1px solid white;
+	padding-bottom: 10px;
+	padding-top: 5px;
 }
-
-h3 { 
-	margin:0;
-	padding:0;
-	font-size:22px;
-	margin-bottom:2px;
-	text-align:center;
-	margin-top: 10px;
+.y{
+	font-family: 'PreBold', sans-serif;
+	margin : 10px;
+	color: white;
+	font-size: 50px;
+	margin-bottom: 1px;
 }
-
-a#c_nav_d {
-	color:#000;
-	display:block;
-	padding:10px 0;
-	
+.inner2{
+	width:50%; 
+	height:150px;
+	float:left;
+	display: inherit;
+	background-color:#2186db;
 }
-.nav_category last{
-	margin-bottom: 10px;
+.container2 > h1{
+	font-size: 2.5em;
+	margin:0 0 20px 0;
 }
-a#c_nav_d:hover {
- 	text-decoration:none;
- 	background:#eee;
+.container1 h3{
+	font-size: 25px;
+	margin-bottom: 5px;
+	margin-top: 30px;
 }
-
+.container1 li{
+	font-size: 15px;
+	padding: 5px 0;
+}
 </style>
 
 <script src="https://kit.fontawesome.com/95fa5ec673.js" crossorigin="anonymous"></script>
@@ -58,32 +83,29 @@ a#c_nav_d:hover {
 
 </script>
 </head>
-<body>
-	<header>
-	
-		<nav class="c_nav">
-		
-		<h3> 나의 쇼핑 </h3>
-			
-				<ul class="nav_category">
-					<li><a id="c_nav_d" href="ordered">주문내역</a></li>
-					<li><a id="c_nav_d" href="goCart">장바구니</a></li>
-				</ul>
-		<h3> 내 정보 </h3>
-				<ul class="nav_category">
-					<li><a id="c_nav_d" href="updateform">프로필 정보/수정</a></li>
-					<li><a id="c_nav_d" href="mycoupon">쿠폰함</a></li>
-				</ul>
-				
-		<h3> 커뮤니티 </h3>
-				<ul class="nav_category">
-					<li><a id="c_nav_d" href="mycommunity">내 게시글</a></li>
-					<li><a id="c_nav_d" href="mylikecommunity">좋아요한 게시글</a></li>
-				</ul>
-			
-		</nav>
-	</header>
-<!-- footer include -->
-	<%@include file="../include/footer.jsp" %>
+<body class="mybar">
+	<section class="mycontainer">
+		<div class="container1">
+			<a href="mypage"><h2 class="h2">마이페이지</h2></a>
+			<h3>나의 쇼핑</h3>
+			<ul class="nav_category">
+				<li><a id="c_nav_d" href="ordered">주문내역</a></li>
+				<li><a id="c_nav_d" href="goCart">장바구니</a></li>
+				<li><a id="c_nav_d" href="myreserv?m_id=<%=session.getAttribute("m_id")%>">예약정보</a></li>
+				<li><a id="c_nav_d" href="myreviewlist?reviewnum=1">내 리뷰</a></li>
+			</ul>
+			<h3>내 정보</h3>
+			<ul class="nav_category">
+				<li><a id="c_nav_d" href="updateform">프로필 정보/수정</a></li>
+				<li><a id="c_nav_d" href="mycoupon">쿠폰함</a></li>
+			</ul>
+
+			<h3>커뮤니티</h3>
+			<ul class="nav_category">
+				<li><a id="c_nav_d" href="mycommunity">내 게시글</a></li>
+				<li><a id="c_nav_d" href="mylikecommunity">좋아요한 게시글</a></li>
+			</ul>
+		</div>
+	</section>
 </body>
 </html>

@@ -137,22 +137,26 @@ public class CommunityService {
 	public List<ProductDTO> similarcolorbackpack(String p_color){
 		return dao.similarcolorbackpack(p_color);
 	}
+	//비슷한 색상 가져오기(가방)
+	public List<ProductDTO> similarcolorbottom(String p_color){
+		return dao.similarcolorbottom(p_color);
+	}
 	
 	//비슷한 색상 가져오기(가방)
-		public List<ProductDTO> productTag1(){
+	public List<ProductDTO> productTag1(){
 			return dao.productTag1();
-		}
+	}
 	// 상품 태그 가져오기
-		public List<ProductDTO> selectProductTag1(String p_name1){
+	public List<ProductDTO> selectProductTag1(String p_name1){
 			return dao.selectProductTag1(p_name1);
-		}
-		public List<ProductDTO> selectProductTag2(String p_name2){
+	}
+	public List<ProductDTO> selectProductTag2(String p_name2){
 			return dao.selectProductTag2(p_name2);
-		}
-		public List<ProductDTO> selectProductTag3(String p_name3){
+	}
+	public List<ProductDTO> selectProductTag3(String p_name3){
 			return dao.selectProductTag3(p_name3);
-		}
-		public List<ProductDTO> selectProductTag4(String p_name4){
-			return dao.selectProductTag4(p_name4);
-		}
+	}
+	public List<ProductDTO> selectProductTag4(String p_name4){
+		return dao.selectProductTag4(p_name4);
+	}
 }

@@ -113,7 +113,7 @@ function submitCheck() {
 	m_address = $("#m_address").val();
 	m_phone = $("#m_phone").val();
 	m_email = $("#m_email").val();
-	m_sex =$("#m_sex").val();
+	m_sex = $(":input:radio[name=m_sex]:checked").val();
 	
 	if(m_id == "") {
 		alert("아이디를 입력해주세요");
@@ -139,7 +139,7 @@ function submitCheck() {
 		alert("이메일을 입력해주세요");
 		return false
 	}
-	if($('input:radio[name=이름]').is(':checked') == false)	{
+	if(m_sex == "")	{
 		alert("성별을 선택해주세요");
 		return false
 	}

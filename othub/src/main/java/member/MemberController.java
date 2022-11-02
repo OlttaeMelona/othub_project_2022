@@ -41,7 +41,7 @@ public class MemberController {
 			MemberDTO m_dto = service.selectOneMember(dto.getM_id());
 			ModelAndView mv = new ModelAndView();
 			session = request.getSession();
-			System.out.println(m_dto.getRole1());
+
 			if (name != null) { // 로그인 성공 시
 				session.setAttribute("m_id", dto.getM_id());
 				session.setAttribute("role1", m_dto.getRole1());
@@ -76,7 +76,7 @@ public class MemberController {
 	      public String insertMember(MemberDTO dto) throws Exception{
 	            service.insertMember(dto);
 	            int cpcheck = service.couponCheckSilver(dto.m_id);
-	            if(cpcheck == 0) {
+	            if(cpcheck == 0 ) {
 	            	service.insertCouponSilver(dto.m_id);
 	            }
 	            
@@ -107,10 +107,16 @@ public class MemberController {
 			couponDTO dto = new couponDTO();
 			HttpSession session = request.getSession();
 			m_id = (String)session.getAttribute("m_id");
+			MemberDTO mdto = service.selectOneMember(m_id);
 			List<couponDTO> couponlist = service.selectCoupon(m_id);
 			model.addAttribute("couponcount",couponlist.size());
 			
-			String role2 = (String)session.getAttribute("role2");
+			//지호
+			PointDTO pdto = service.countPoint(m_id);
+			model.addAttribute("countPoint", pdto); 
+
+			String role2 = mdto.role2;
+
 			model.addAttribute("role2",role2);
 			if(couponlist.isEmpty()) {
 			LocalDate now = LocalDate.now();
@@ -205,12 +211,19 @@ public class MemberController {
 			service.updateMemberByAdmin(dto);
 			return "redirect:/memberlist";
 		}
+	// 관리자 회원 탈퇴
+		@PostMapping("/deleteMemberByAdmin")
+		public String deleteMemberByAdmin(MemberDTO dto) {
+			service.deleteMemberByAdmin(dto.m_id);
+			return "redirect:/memberlist";
+		}
 		
 	//회원 리스트 불러오기(일반회원)
 		@RequestMapping("/userlist")
 		public ModelAndView userlistName() throws Exception {
 			List<MemberDTO> userlist = service.selectUserList();
 			ModelAndView mv = new ModelAndView();
+			
 			mv.addObject("memberlist",userlist);
 			mv.setViewName("admin/userlist");
 			return mv;
@@ -244,7 +257,6 @@ public class MemberController {
 				long diffDays = diffSec / (24*60*60); //일자수 차이
 				dto.setPeriod(Long.toString(diffDays));
 				String period = dto.getPeriod();
-				System.out.println(period);
 				service.updateDate(m_id, period);
 			}
 			

@@ -187,7 +187,7 @@ public class OrderController {
 			ordered.get(i).p_thumb = orderservice.getProductdetail(ordered.get(i).p_id).p_thumb;
 			total_price = total_price + orderservice.getProductdetail(ordered.get(i).p_id).p_price * ordered.get(i).amount;
 		}
-		System.out.println(ordered);
+
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("ordered", ordered);
 		mv.addObject("total_price", total_price);

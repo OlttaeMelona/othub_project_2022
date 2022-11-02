@@ -79,7 +79,7 @@
 }
 .sr_card_img{
 	width: 100%;
-	height: 32vh;
+	aspect-ratio: auto 5/3;
 	overflow: hidden;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
@@ -96,7 +96,7 @@
 }
 .sr_card_info {
 	padding : 0 1em;
-	height: 6em;
+	height: 6.2em;
 }
 .sr_card_info h3{
 	margin :20px 0 10px;
@@ -119,6 +119,9 @@
 }
 .editBtn {
 	float: right;
+	padding:4px 8px 1px 6px;
+	border:1px solid rgb(210, 210, 210);
+	border-radius:1em;
 }
 /*페이징*/
 .sr_paging{
@@ -314,23 +317,64 @@ table {
 .postContents{
 	flex-grow: 1;
 }
+.r_num {
+	padding:2em 0;
+}
 .rowname {
-	font-size:1.1em;
+	font-size:1.3em;
 	font-weight: 600;
-	color: #373A40;
+	color:  rgb(70, 70, 70);
 	width: 5rem;
+	vertical-align: middle;
 }
 .rowname2{
 	font-size:1em;
 }
+.col_p {
+	font-size:1.3em;
+	color:  rgb(40, 40, 40);
+}
 .r_num label{
 	margin-top:10px;
 }
+.r_num input[type=text]{
+	margin:0;
+	text-align: center;	
+	border:0;
+	width: 68%;
+	height: 40px;
+	font-size: 1.3em;
+	font-weight:600;
+	color: #87A2FB;
+}
+.r_num input[type=button]{
+	margin:0;
+	text-align: center;	
+	border:0;
+	border-radius: 0.5em;
+	width: 14%;
+	aspect-ratio: auto 9/10;
+	font-size: 1.3em;
+	font-weight:400;
+	cursor: pointer;
+}
+.r_num input[type=button]:hover {
+	background-color: #87A2FB;
+	color:#ffffff;
+}
+.rowname2 input[type=date]{
+	padding: 0 4%;
+	border:1px solid rgb(210, 210, 210);
+	border-radius: 0.5em;
+	width:92%;
+	height: 45px;
+}
 .d_btn{
-	align-content: flex-end;
+	margin-top:7em;
 }
 .d_btn button {
 	border:0;
+	border-radius: 0.5em;
 	outline:0;
 	white-space:nowrap;
 	background-color: #87A2FB;
@@ -343,9 +387,51 @@ table {
 	padding:16px 0;
 	width:100%;
 }
-.d_btn button:nth-child(1){
+.postContents {
+	padding:2em 0;
+	width:100%;
 }
-
+.contentsInfo_box{
+	display:flex;
+	justify-content: space-between;
+	padding: 2em 3%;
+	border:1px solid rgb(230,230,230);
+	width:54%;
+}
+.contentsInfo {
+	display:inline-block;
+	font-size: 1.1em;
+}
+.contentsInfo span:nth-child(1){
+	display:inline-block;
+	margin-right:0.6em;
+	font-weight: 600;
+	color: rgb(190, 190, 190);
+}
+.contentsInfo span:nth-child(2){
+	display:inline-block;
+}
+.contentsMapInfo{
+	margin-top:2em;
+	padding: 2em 3%;
+	width: 54%;
+	height:90px;
+	border:1px solid rgb(230,230,230);	
+}
+.contentsMapInfo > h4 {
+	margin:0;
+	margin-bottom: 0.7em;
+	font-size:1.7em;
+	color: rgb(40, 40, 40);
+}
+.contentsMapInfo span {
+	font-size:1.1em;
+	color: rgb(90, 90, 90);
+}
+#map {
+	width:60.15%;
+	height:400px;
+}
 
 
 
@@ -377,6 +463,19 @@ table {
 
 
 /* 반응형 */
+
+@media screen and (min-width: 1441px){
+	.sub_sr_menu, .sr_card_box, .postMain, .todayTitle{
+		padding : 0 30vh;
+	}
+	.sub_sr_menu {
+		padding-top: 6em;
+	}
+	.d_btn{
+		margin-top:11em;
+	}
+}
+
 @media screen and (max-width: 768px){
 	.sub_sr_menu, .sr_card_box{
 		padding : 0 30px;

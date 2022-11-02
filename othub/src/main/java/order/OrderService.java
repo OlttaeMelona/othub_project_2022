@@ -50,4 +50,10 @@ public interface OrderService {
 	public void updateRoleGold(String m_id);
 	
 	public void updateRoleVip(String m_id);
+	
+	// 지호 order id 조회
+	public int getOrderid3(int order_id);
+	
+	// 지호 리뷰  확인
+	public void reviewcheck(OrderDTO dto);
 }

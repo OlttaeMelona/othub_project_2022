@@ -1,11 +1,15 @@
 package reserv;
 
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import member.MemberDTO;
 import showroom.ShowroomDTO;
@@ -20,14 +24,7 @@ public class ReserveController {
 	@RequestMapping("/reserv")
 	public String reservMain(ReservDTO dto,String m_id, int sr_num,String r_date,  Model model) throws Exception{
 		//예약임시저장
-		if(r_service.reservView(m_id) == null) {
-			r_service.temporarilyReserv(dto);
-		}else {
-			ReservDTO r = r_service.reservView(m_id);
-			if(r.sr_num != sr_num && r.r_date != r_date ) {
-				r_service.temporarilyReserv(dto);
-			}
-		}
+		r_service.temporarilyReserv(dto);
 		//예약페이지
 		ReservDTO reservView = r_service.reservView(m_id);
 		MemberDTO memberInfo = r_service.sr_memberInfo(m_id);
@@ -40,16 +37,29 @@ public class ReserveController {
 	
 	//예약
 	@PostMapping("/reservprocess")
-	public String reservProcess(ReservDTO dto) throws Exception {
+	public String reservProcess(ReservDTO dto, String m_id) throws Exception {
 		r_service.reservShowroom(dto);
-		return "main/index";
+		r_service.deleteTemporarily2(m_id);
+		return "redirect:/showroom";
 	}
 	
 	//예약 취소
 	@RequestMapping("/cenclereserv")
-	public String cencleReserv(int r_id) throws Exception{
+	public String cencleReserv(int r_id, String m_id) throws Exception{
 		r_service.deleteTemporarily(r_id);
-		return "main/index";
+		r_service.deleteTemporarily2(m_id);
+		return "redirect:/showroom";
 	}
+	
+	//mypage My예약
+	@RequestMapping("/myreserv")
+	public String myReserv(String m_id, Model model) throws Exception{
+		r_service.deleteTemporarily2(m_id);
+		List<ReservDTO> myr_list = r_service.myReservList(m_id);
+		model.addAttribute("myList", myr_list);
+		System.out.println();
+		return "reserv/myreserv";
+	}
+	
 	
 }

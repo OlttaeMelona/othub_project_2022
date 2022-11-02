@@ -45,9 +45,14 @@ delete from member where m_id=#{m_id}
 	update member set role1=#{role1} where m_id=#{m_id}
 </update>
 
+<!-- 관리자 회원 탈퇴 -->
+<delete id="deleteMemberByAdmin"  parameterType="String">
+	delete from member where m_id=#{m_id}
+</delete>
+
 <!-- 일반 회원 조회 -->
 <select id="selectUserList" resultType="memberdto">
-	select m_id,m_pw,m_name,m_email,m_phone,m_sex,m_address,m_regdate,role1,role2 from member where role1 = 'user' order by role2 = 'vip' desc
+	select m_id,m_pw,m_name,m_email,m_phone,m_sex,m_address,m_regdate,role1,role2 from member where role1 = 'user' order by field(role2, 'vip','gold','silver')
 </select>
 
 <!-- 일반 회원 등급 변경 -->
@@ -99,6 +104,21 @@ delete from member where m_id=#{m_id}
 <update id="updateDate">
 	update coupon set period = #{period} where cp_m_id = #{m_id}; 
 </update>
+
+
+<!-- 지호 -->
+<!-- 포인트 적립 -->
+<update id="updatePoint" parameterType="pointdto">
+	update member set m_point = m_point + #{m_point}
+	where m_id = #{m_id}
+</update>
+
+<!-- 포인트 조회 -->
+<select id="countPoint" resultType="pointdto">
+	select m_point from member 
+	where m_id = #{m_id}
+</select>
+
 </mapper>
 
 

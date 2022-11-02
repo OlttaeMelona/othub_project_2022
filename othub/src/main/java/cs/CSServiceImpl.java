@@ -44,6 +44,11 @@ public class CSServiceImpl implements CSService {
 	public int cscount() throws Exception {
 		return dao.cscount();
 	}
+	
+	@Override
+	public int mycscount(String m_id) throws Exception {
+		return dao.mycscount(m_id);
+	}
 
 	@Override
 	public List<CSDTO> cslistPage(int displayPost, int postNum) throws Exception {

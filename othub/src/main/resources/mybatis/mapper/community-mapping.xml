@@ -172,6 +172,15 @@
         order by p_regdate desc;
 	</select>
 	
+	<!-- 비슷한 색상 찾기(하의)-->
+	<select id="similarcolorbottom" resultType="product.ProductDTO" parameterType="String">
+		select * from product
+        inner join category
+        on category.category_id = product.category_id
+        where product.category_id = 2 and p_color = #{p_color}
+        order by p_regdate desc;
+	</select>
+	
 	<!-- 글쓰기 폼 상품 태그(p_id = 1) -->
 	<select id="productTag1" resultType="product.ProductDTO" parameterType="String">
 		select * from product

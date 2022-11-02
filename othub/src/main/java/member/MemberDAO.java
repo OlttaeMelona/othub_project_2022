@@ -40,6 +40,9 @@ public interface MemberDAO {
 	//관리자 회원정보수정
 	public void updateMemberByAdmin(MemberDTO dto);
 	
+	//관리자 회원 탈퇴
+	public void deleteMemberByAdmin(String m_id);
+	
 	//회원 리스트 조회(일반 회원 조회)
 	public List<MemberDTO> selectUserList();
 	
@@ -68,6 +71,13 @@ public interface MemberDAO {
 	public List<couponDTO> selectCoupon(String m_id);
 	
 	public void updateDate(String m_id, String period);
+	
+	//지호
+	//포인트 적립
+	public void updatePoint(PointDTO pdto) throws Exception;
+		
+	//포인트 조회
+	public PointDTO countPoint(String m_id);
 	
 }
 
