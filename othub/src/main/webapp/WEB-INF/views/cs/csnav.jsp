@@ -18,6 +18,14 @@ $(document).ready(function() {
 		}
 	});//onclick end
 	
+	// 내 목록 확인
+	$("#mylist_button").on("click",function(e){
+		if(<%=session.getAttribute("m_id")%>==null){
+			alert("로그인 후 이용해주세요.");
+			e.preventDefault();
+		}
+	});//onclick end
+	
 });//ready end
 </script>
 </head>
