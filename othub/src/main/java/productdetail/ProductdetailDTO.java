@@ -1,5 +1,9 @@
 package productdetail;
 
+/**
+ * @author dhk
+ *
+ */
 public class ProductdetailDTO {
 	int p_id;
 	String p_name;
@@ -15,6 +19,7 @@ public class ProductdetailDTO {
 	int p_like;
 	int p_viewcount;
 	int category_id;
+	String p_color;
 	public int getP_id() {
 		return p_id;
 	}
@@ -99,4 +104,11 @@ public class ProductdetailDTO {
 	public void setCategory_id(int category_id) {
 		this.category_id = category_id;
 	}
+	public String getP_color() {
+		return p_color;
+	}
+	public void setP_color(String p_color) {
+		this.p_color = p_color;
+	}
+	
 }

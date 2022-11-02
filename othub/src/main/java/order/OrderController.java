@@ -1,10 +1,12 @@
 package order;
 
 import java.io.Console;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.Session;
@@ -57,10 +59,12 @@ public class OrderController {
 		ordersdetail.get(0).p_brand = orderservice.getProductdetail(ordersdetail.get(0).p_id).p_brand;
 		ordersdetail.get(0).p_stock = orderservice.getProductdetail(ordersdetail.get(0).p_id).p_stock;
 		OrderDTO memberdetail = orderservice.getMember(m_id);
+		int total_price = ordersdetail.get(0).p_price * ordersdetail.get(0).amount;
 		mv.setViewName("order/ordermain");
 		mv.addObject("ordersdetail", ordersdetail);
 		mv.addObject("memberdetail", memberdetail);
 		mv.addObject("order_id",order_id);
+		mv.addObject("total_price", total_price);
 		System.out.println(ordersdetail.get(0).p_name );
 		return mv;
 	}
@@ -72,7 +76,19 @@ public class OrderController {
 			String m_id = (String)session.getAttribute("m_id");	
 			int total_price = 0;
 			
-			List<OrderDTO> ordersdetail = orderservice.cartToOrder(m_id);
+			String orderlist2 [] = request.getParameter("ppp").split(",");
+			int orderlist [] = new int [orderlist2.length];
+			for(int i = 0; i < orderlist.length; i++) {
+				orderlist[i] = Integer.parseInt(orderlist2[i]);	
+			}
+			List<OrderDTO> ordersdetail = new ArrayList<>();
+
+			for(int i = 0; i < orderlist.length; i++) {
+				ordersdetail.add(orderservice.cartToOrder(orderlist[i]));
+	
+			}
+
+
 			for(int i = 0; i < ordersdetail.size(); i++) {
 				ordersdetail.get(i).p_price = orderservice.getProductdetail(ordersdetail.get(i).p_id).p_price;
 				ordersdetail.get(i).p_name = orderservice.getProductdetail(ordersdetail.get(i).p_id).p_name;
@@ -86,7 +102,8 @@ public class OrderController {
 			for(int i = 0; i < ordersdetail.size(); i++) {
 				orderservice.insertOrder(ordersdetail.get(i));
 				ordersdetail.get(i).order_id = orderservice.getOrderid2(m_id).get(i).order_id;
-			}			
+			}
+			
 			ModelAndView mv = new ModelAndView();
 			mv.addObject("total_price", total_price);
 			mv.addObject("ordersdetail", ordersdetail);
@@ -95,7 +112,8 @@ public class OrderController {
 			return mv;			
 		}
 		
-		
+	
+	
 	//주문완료
 	@RequestMapping("/doOrder")
 	public String doOrder(HttpServletRequest request) {
