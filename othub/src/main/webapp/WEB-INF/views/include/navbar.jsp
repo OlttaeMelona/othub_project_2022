@@ -46,7 +46,7 @@
 					else if(role1.equals("admin")){
 						out.print(m_id + " 관리자님 접속되었습니다.");
 					}
-					else if(role1.equals("user")){
+					else if(role1.equals("user") || role1.equals("partner")){
 						out.print(m_id + "님 환영합니다.");
 					}
 					%></li>
@@ -55,7 +55,7 @@
 					if(m_id == null){
 						%><a href="signin"><%out.print("sign up");%></a><%
 					}
-					else if(role1.equals("user")){
+					else if(role1.equals("user") || role1.equals("partner")){
 						%><a href="mypage"><%out.print("mypage");%></a><%
 					}
 					else if(role1.equals("admin")){

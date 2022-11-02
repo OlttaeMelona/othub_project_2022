@@ -23,6 +23,7 @@
 <!-- navbar include -->
 	<%@include file="../include/navbar.jsp"%>
 
+	
 	<section class="mycontainer">
 		<div class="container1">
 			<a href="mypage"><h2 class="h2">마이페이지</h2></a>
