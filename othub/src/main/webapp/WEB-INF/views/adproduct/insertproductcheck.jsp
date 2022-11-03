@@ -18,9 +18,15 @@
 $(document).ready(function() {
 	//등록
 	$("#datainsert").on("click", function(){
-		$("#datainsert2").trigger("click");
+		if(confirm("등록하시겠습니까? 쇼핑몰에 반영되니 주의하세요.") == true){
+			$("#datainsert2").trigger("click");
+	    	  alert("등록됐습니다");
+	      }else{
+	    	  return;
+	      }
+	
 	});
-	//삭제
+	//삭제 확인
 	$("#adpdelete").click(function(){
 	      if(confirm("정말 삭제하시겠습니까?") == true){
 	    	  alert("삭제됐습니다");
@@ -28,6 +34,11 @@ $(document).ready(function() {
 	    	  return;
 	      }
 	   }); 
+	
+	//등록 후 삭제
+	$("#datainsert2").on("click", function(){
+		location.href="adpdelete?p_id=${getproduct.p_id}";	
+	});
 	
 });//ready
 
@@ -66,29 +77,24 @@ function changepic(){
 <div id="qqq">
 	<div id="images">
 		<div id="bigImages">
-			<img id="big" src='images/product/${getproduct.p_image1_name }'>
+			<img id="big" src='images/${getproduct.p_image1_name }'>
 		</div>
 		<div id="smallImages">
-			<img class="small" src='images/product/${getproduct.p_image1_name }'>
-			<img class="small" src='images/product/${getproduct.p_image2_name }'>
-			<img class="small" src='images/product/${getproduct.p_image3_name }'>
+			<img class="small" src='images/${getproduct.p_image1_name }'>
+			<img class="small" src='images/${getproduct.p_image2_name }'>
+			<img class="small" src='images/${getproduct.p_image3_name }'>
 		</div>
 	</div>
 
 	<div id="information">
-		<div id="fixed"> 
+		<div id="head" > <div id="fixed"> 
 			카테고리<br>
 			상품명<br>
 			브랜드<br>
 			성별<br>
 			가격<br>
 			재고<br>
-			
-			<div id="orderss">
-			<p id="datainsert"> 등록하기 </p>
-			<a id="adpamodify" href="adpmodify?p_id=${getproduct.p_id}"> 수정하기 </a>
-			<a id="adpdelete" href="adpdelete?p_id=${getproduct.p_id}"> 삭제하기 </a>
-			</div>
+	
 		</div>
 		<div id="dynamic">
 		<c:if test="${getproduct.category_id == '1' }">
@@ -118,14 +124,18 @@ function changepic(){
 		<fmt:formatNumber value='${getproduct.p_price}' pattern="#,###"/><br>
 		${getproduct.p_stock }
 		
-		
+		<div id="buttons">
+			<p id="datainsert"> 등록하기 </p>
+			<a id="adpamodify" href="adpmodify?p_id=${getproduct.p_id}"> 수정하기 </a>
+			<a id="adpdelete" href="adpdelete?p_id=${getproduct.p_id}"> 삭제하기 </a>
+			</div>
 				
 		</div>
 
 	</div>
 	
 </div>
-<img id=contents src='images/${getproduct.p_contents }'/>
+<img id=contents src='images/${getproduct.p_contents_name }'/>
 
 <form method="post">
 <input type="hidden" name="p_id" value="${getproduct.p_id }">
