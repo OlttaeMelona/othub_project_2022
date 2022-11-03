@@ -18,6 +18,8 @@ $(document).ready(function() {
 <body>
 <!-- navbar include -->
 	<%@include file="../include/navbar.jsp" %>
+		<!-- chatbot include -->
+		<%@include file="../chatbot/chatbot.jsp" %>
 <div> 저희 분석 프로그램에 의하면 <span style="color:blue">${m_name }</span>회원님은 <span style="color:blue">${head}</span>등신이십니다. </div>
 
 <div> 회원님과 비슷한 체형의 모델이 입은 옷은 다음과 같습니다.</div>
