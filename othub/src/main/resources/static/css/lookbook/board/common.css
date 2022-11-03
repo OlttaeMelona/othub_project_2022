@@ -27,7 +27,7 @@ a.mypage{
 	position: absolute;
 	top: 20px; right: 40px;
 	display: inline-block;
-	padding: 4px 14px;
+	padding: 3.5px 14px;
 	font-family: 'PreRegular', sans-serif;
 	font-size: 14px;
 	color: #ffffff;
@@ -148,6 +148,9 @@ table.detail tbody tr:hover{
 }
 table.detail tbody td{
 	padding: 40px 0;
+}
+table{
+	padding-bottom: 100px;
 }
 .table a.more{
 	display: block;

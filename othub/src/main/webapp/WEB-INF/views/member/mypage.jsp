@@ -23,6 +23,7 @@
 <!-- navbar include -->
 	<%@include file="../include/navbar.jsp"%>
 
+	
 	<section class="mycontainer">
 		<div class="container1">
 			<a href="mypage"><h2 class="h2">마이페이지</h2></a>
@@ -35,7 +36,7 @@
 			</ul>
 			<h3>내 정보</h3>
 			<ul class="nav_category">
-				<li><a id="c_nav_d" href="updateform">프로필 정보/수정</a></li>
+				<li><a id="c_nav_d" href="updateform" class="agdsf">프로필 정보/수정</a></li>
 				<li><a id="c_nav_d" href="mycoupon">쿠폰함</a></li>
 			</ul>
 
