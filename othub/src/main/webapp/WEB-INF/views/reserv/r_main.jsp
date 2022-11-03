@@ -27,6 +27,8 @@
 <body>
 	<!-- navbar include -->
 	<%@include file="../include/navbar.jsp" %>
+		<!-- chatbot include -->
+		<%@include file="../chatbot/chatbot.jsp" %>
 	  
 	<!-- main container -->
 	<main>

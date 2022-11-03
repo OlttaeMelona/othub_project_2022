@@ -36,6 +36,8 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 <body>
 <!-- navbar include -->
 	<%@include file="../include/navbar.jsp" %>
+		<!-- chatbot include -->
+		<%@include file="../chatbot/chatbot.jsp" %>
 
 <form action="writingcommunity" method="post" enctype="multipart/form-data" >
 <div id="container">

@@ -24,6 +24,8 @@ $(document).ready(function() {
 <body>
 <!-- navbar include -->
 	<%@include file="../include/navbar.jsp" %>
+		<!-- chatbot include -->
+		<%@include file="../chatbot/chatbot.jsp" %>
 		<%@include file="../product/categorybar.jsp" %>
 		
 	<section class="listcontent">
