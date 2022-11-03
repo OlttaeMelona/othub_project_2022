@@ -126,7 +126,7 @@ public class PartnerController {
 		}
 		//mysql insert
 		pt_service.insertPartner(dto);
-		return "partner/entryapplicationform";
+		return "main/index";
 	}
 	
 	//관리자 입점신청 조회
