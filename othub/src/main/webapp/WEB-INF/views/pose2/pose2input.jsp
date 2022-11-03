@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="css/pose2/pose2.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -13,7 +14,7 @@
 	<%@include file="../include/navbar.jsp" %>
 <c:forEach items="${filelist }" var="onefile">
 <h3> <a href="pose2result?image=${onefile }"> ${onefile } </a> </h3>
-<img src="/images/${onefile }">
+<img src="/images/${onefile }" style="width:100px; height:100px;">
 </c:forEach>
 <!-- footer include -->
 	<%@include file="../include/footer.jsp" %>

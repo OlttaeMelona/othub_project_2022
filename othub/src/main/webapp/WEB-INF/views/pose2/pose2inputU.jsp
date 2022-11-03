@@ -7,12 +7,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="css/pose2/pose2.css" rel="stylesheet">
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
+	/*
+	var re = ${head};
 
-	
+	if(re == 0){
+		alert("인식에 실패하였습니다. 다른 사진을 이용해주세요.");
+	}
+	var re = 1;
+	*/
 });//ready end
+
 
 function readURL1(input){
 	if(input.files && input.files[0]){
@@ -25,6 +33,8 @@ function readURL1(input){
 		document.getElementById('preview1').src = "";
 	}
 }
+
+
 </script>
 </head>
 
@@ -36,7 +46,10 @@ function readURL1(input){
 <input id="pose_image" type=file name="pose_image" onchange="readURL1(this)" required>
 <img id="preview1" width="400px">
 <input type="hidden" name="user" value="<%=session.getAttribute("m_id")%>">
-<input id="poseUpload" type="submit" value="글 등록">
+<div class="bttn">
+	<input id="poseUpload" type="submit" value="사진 등록">
+</div>
+
 </form>
 <!-- footer include -->
 	<%@include file="../include/footer.jsp" %>

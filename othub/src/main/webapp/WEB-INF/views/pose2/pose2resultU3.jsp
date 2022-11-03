@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="css/pose2/pose2.css" rel="stylesheet">
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
@@ -17,11 +18,13 @@ $(document).ready(function() {
 <body>
 <!-- navbar include -->
 	<%@include file="../include/navbar.jsp" %>
-<div> 저희 분석 프로그램에 의하면 ${m_id }회원님은 ${head}등신이십니다. </div>
+<div> 저희 분석 프로그램에 의하면 <span style="color:blue">${m_name }</span>회원님은 <span style="color:blue">${head}</span>등신이십니다. </div>
 
-<div> 회원님과 비슷한 체형의 모델이 입은 옷은 다음과 같습니다. (사진을 클릭하면 제품 링크로 이동합니다)</div>
+<div> 회원님과 비슷한 체형의 모델이 입은 옷은 다음과 같습니다.</div>
 
+<div> 총 <span style="color:blue">${number }</span>개의 상품이 조회되었습니다.</div>
 
+<div class="four"> 사진을 클릭하면 제품 링크로 이동합니다. </div>
 <c:forEach items="${pid_list }" var="onefile">
 <h3> ${onefile.p_name } </h3>
 <h3> <a href="productdetail?p_id=${onefile.p_id }"> <img src="/images/${onefile.p_thumb }"> </a> </h3>
