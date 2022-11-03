@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -132,8 +131,8 @@ public class CSController {
 	@RequestMapping(value = "/csmodify", method = RequestMethod.POST)
 	public ModelAndView postCSModify(CSDTO dto, MultipartFile uploadfile) throws Exception {
 		
-		String savePath =NaverInform.j_path2;
-		 
+		String savePath = NaverInform.j_path2;	 
+		
 		 MultipartFile cs_pic = dto.getCs_pic();
 			if(!cs_pic.isEmpty()) {
 				UUID uuid = UUID.randomUUID();
