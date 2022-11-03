@@ -19,7 +19,7 @@
 	<!-- 상품 입력 확인 -->
 	<select id="getproduct" resultType="adproduct.ADProductDTO">
 		select p_id, p_name, p_sex, p_brand, p_color, p_price,
-		p_stock, p_contents as p_contents_name, p_thumb as p_thumb,
+		p_stock, p_contents as p_contents_name, p_thumb as p_thumb_name,
 		p_image1 as p_image1_name, p_image2 as p_image2_name,
 		p_image3 as p_image3_name, category_id
 		from adproduct where p_id=#{p_id}
