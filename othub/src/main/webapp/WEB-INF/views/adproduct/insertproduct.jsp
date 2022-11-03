@@ -69,11 +69,46 @@ $(document).ready(function() {
 
 
 <div class="inputpic">
+
+<div class="p_thumb">
    <label for="p_thumb">썸네일</label>
    <input type="file" id="p_thumb" name="p_thumb" onchange="readURL1(this)" required/>
-   <br><img id="select_img1" style="width:400px">
+   <br><img id="select_img1" style="width:200px">
+   
+   
+</div>
+
+<div class="p_image1">
+   <label for="p_image1">이미지1</label>
+   <input type="file" id="p_image1" name="p_image1" onchange="readURL2(this)" required/>
+   <br><img id="select_img2" style="width:200px">
+   
+</div>
+
+<div class="p_image2">
+   <label for="p_image2">이미지2</label>
+   <input type="file" id="p_image2" name="p_image2" onchange="readURL3(this)" required/>
+   <br><img id="select_img3" style="width:200px">
+
+   
+</div>
+
+<div class="p_image3">
+   <label for="p_image3">이미지3</label>
+   <input type="file" id="p_image3" name="p_image3" onchange="readURL4(this)" required/>
+   <br><img id="select_img4" style="width:200px">
+
+</div>
+
+<div class="p_contents">
+   <label for="p_contents">상세 이미지</label>
+   <input type="file" id="p_contents" name="p_contents" onchange="readURL5(this)" required/>
+   <br><img id="select_img5" style="width:200px">
+   
+   </div>
    
    <script>
+
    function readURL1(input) {
 		if(input.files &&input.files[0]){
 			var reader = new FileReader();
@@ -85,16 +120,7 @@ $(document).ready(function() {
 			document.getElementById('select_img1').src = "";
 		}
 	}
-   </script>
-   
-</div>
 
-<div class="inputpic">
-   <label for="p_image1">이미지1</label>
-   <input type="file" id="p_image1" name="p_image1" onchange="readURL2(this)" required/>
-   <br><img id="select_img2" style="width:400px">
-   
-   <script>
    function readURL2(input) {
 		if(input.files &&input.files[0]){
 			var reader = new FileReader();
@@ -106,16 +132,7 @@ $(document).ready(function() {
 			document.getElementById('select_img2').src = "";
 		}
 	}
-   </script>
    
-</div>
-
-<div class="inputpic">
-   <label for="p_image2">이미지2</label>
-   <input type="file" id="p_image2" name="p_image2" onchange="readURL3(this)" required/>
-   <br><img id="select_img3" style="width:400px">
-   
-   <script>
    function readURL3(input) {
 		if(input.files &&input.files[0]){
 			var reader = new FileReader();
@@ -127,16 +144,7 @@ $(document).ready(function() {
 			document.getElementById('select_img3').src = "";
 		}
 	}
-   </script>
    
-</div>
-
-<div class="inputpic">
-   <label for="p_image3">이미지3</label>
-   <input type="file" id="p_image3" name="p_image3" onchange="readURL4(this)" required/>
-   <br><img id="select_img4" style="width:400px">
-   
-   <script>
    function readURL4(input) {
 		if(input.files &&input.files[0]){
 			var reader = new FileReader();
@@ -148,16 +156,8 @@ $(document).ready(function() {
 			document.getElementById('select_img4').src = "";
 		}
 	}
-   </script>
-   
-</div>
 
-<div class="inputpic">
-   <label for="p_contents">상세 이미지</label>
-   <input type="file" id="p_contents" name="p_contents" onchange="readURL5(this)" required/>
-   <br><img id="select_img5" style="width:400px">
    
-   <script>
    function readURL5(input) {
 		if(input.files &&input.files[0]){
 			var reader = new FileReader();
@@ -171,8 +171,8 @@ $(document).ready(function() {
 	}
    </script>
    
-</div>
 
+</div>
 
 
 </form>

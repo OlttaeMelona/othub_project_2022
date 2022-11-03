@@ -7,10 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>of-hub-product-detail</title>
-<link href="css/productdetail/productdetail.css" rel="stylesheet">
-<link href="css/productdetail/import.css" rel="stylesheet">
-<link href="css/productdetail/common.css" rel="stylesheet">
+<title>othub</title>
+<link href="css/adproduct/adpview.css" rel="stylesheet">
 </head>
 <script src="js/jquery-3.6.0.min.js"></script>
 
@@ -74,7 +72,6 @@ function changepic(){
 	<!-- main container -->
 	
 
-<div id="qqq">
 	<div id="images">
 		<div id="bigImages">
 			<img id="big" src='images/${getproduct.p_image1_name }'>
@@ -86,23 +83,15 @@ function changepic(){
 		</div>
 	</div>
 
-	<div id="information">
-		<div id="head" > <div id="fixed"> 
-			카테고리<br>
-			상품명<br>
-			브랜드<br>
-			성별<br>
-			가격<br>
-			재고<br>
-	
-		</div>
-		<div id="dynamic">
+<div id="information">
+		
+		<div id="category">
 		<c:if test="${getproduct.category_id == '1' }">
 		상의
 		</c:if>
 		<c:if test="${getproduct.category_id == '2' }">
 		하의
-		</c:if>
+		</c:if>	
 		<c:if test="${getproduct.category_id == '3' }">
 		아우터
 		</c:if>
@@ -112,29 +101,45 @@ function changepic(){
 		<c:if test="${getproduct.category_id == '5' }">
 		가방
 		</c:if>
-		<br>
-		${getproduct.p_name }<br>
+		</div>
+		
+		<div id="p_name">
+		<B>${getproduct.p_name }</B><br>
+		</div>
+		
+		<div id="p_brand">
 		${getproduct.p_brand }<br>
+		</div>
+		
+		<hr>
+		
+		<div id="p_price">
+		<B><fmt:formatNumber value='${getproduct.p_price}' pattern="#,###"/>원</B><br>
+		</div>
+		
+		<div id="p_stock">
+		재고 ${getproduct.p_stock } 
+		</div>
+		
+		<div id="p_sex">
 		<c:if test="${getproduct.p_sex == 'male' }">
 		남성
 		</c:if>
 		<c:if test="${getproduct.p_sex == 'female' }">
 		여성
-		</c:if><br>
-		<fmt:formatNumber value='${getproduct.p_price}' pattern="#,###"/><br>
-		${getproduct.p_stock }
+		</c:if>
+		</div>
+		
 		
 		<div id="buttons">
 			<p id="datainsert"> 등록하기 </p>
-			<a id="adpamodify" href="adpmodify?p_id=${getproduct.p_id}"> 수정하기 </a>
+			<a id="adpamodify" href="adpmodify?p_id=${getproduct.p_id}"> 수정하기</a> |
 			<a id="adpdelete" href="adpdelete?p_id=${getproduct.p_id}"> 삭제하기 </a>
 			</div>
-				
-		</div>
-
-	</div>
-	
 </div>
+
+
+
 <img id=contents src='images/${getproduct.p_contents_name }'/>
 
 <form method="post">
@@ -151,7 +156,7 @@ function changepic(){
 <input type="hidden" name="p_image2_name" value="${getproduct.p_image2_name }">
 <input type="hidden" name="p_image3_name" value="${getproduct.p_image3_name }">
 <input type="hidden" name="p_contents_name" value="${getproduct.p_contents_name }">
-<input type="submit" value="등록하기" id="datainsert2">
+<input type="submit" value="등록하기" id="datainsert2" style="display:none;">
 
 </form>
 
