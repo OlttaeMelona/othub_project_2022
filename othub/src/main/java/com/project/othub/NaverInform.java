@@ -19,8 +19,8 @@ public class NaverInform {
  public final static String chatbot_key = "R2VxY21RVk9XTk5LbkFGU2FPVGlGc3pyZU95VHRIVnY=";
  public final static String j_id = "v8brt1eu6r";
  public final static String j_key = "NTPDCi19DhSVEJR3VxwnNTvQo5Ue451Cp9FXvCt9"; 
- //public final static String j_path = "C:\\Users\\지호\\git\\othub\\othub\\src\\main\\resources\\static\\images\\review\\review_pic\\"; 
- //public final static String j_path2 = "C:\\Users\\지호\\git\\othub\\othub\\src\\main\\resources\\static\\images\\cs\\cs_pic\\";
+ public final static String j_path = "C:\\Users\\지호\\git\\othub\\othub\\src\\main\\resources\\static\\images\\review\\review_pic\\"; 
+ public final static String j_path2 = "C:\\Users\\지호\\git\\othub\\othub\\src\\main\\resources\\static\\images\\cs\\cs_pic\\";
 
  
  //은영
@@ -33,8 +33,8 @@ public class NaverInform {
  //(배포 and test) 은영 커스텀 path
  public final static String path = "C:\\git\\othub_project_2022\\othub\\src\\main\\resources\\static\\images\\community\\styleimg\\"; 
  public final static String path2 = "C:\\git\\othub_project_2022\\othub\\src\\main\\resources\\static\\images\\";
- public final static String j_path = "C:\\git\\othub_project_2022"; 
- public final static String j_path2 = "C:\\git\\othub_project_2022\\othub\\src\\main\\resources\\static\\images\\cs\\cs_pic\\";
+ //public final static String j_path = "C:\\git\\othub_project_2022\\othub\\src\\main\\resources\\static\\images\\review\\review_pic\\";
+ //public final static String j_path2 = "C:\\git\\othub_project_2022\\othub\\src\\main\\resources\\static\\images\\cs\\cs_pic\\";
  public final static String pose_path1 = "C:\\git\\othub_project_2022\\othub\\src\\main\\resources\\static\\images\\";
  public final static String pose_path2 = "C:\\git\\othub_project_2022\\othub\\src\\main\\resources\\static\\images\\pose2\\";
 
