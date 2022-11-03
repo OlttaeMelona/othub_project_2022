@@ -8,45 +8,77 @@ form.insert_box{
 	margin:auto;
 }
 
-p#p_name{
-	
-}
 
-input#p_name,#p_brand,#p_price,#p_stock{
-	border: 1px solid #00336a;
-	width : 350px;
-	height: 30px;
+input#p_name,#p_brand{
+	border: 2px solid #68afff;
+	width : 500px;
+	height: 40px;
 	margin-bottom: 30px;
 	font-family: 'LeferiBaseType-RegularA';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiBaseType-RegularA.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+    border-radius: 30px;
+}
+
+input#p_price,#p_stock{
+	border: 2px solid #68afff;
+	width : 230px;
+	height: 40px;
+	margin-right:10px;
+	margin-left:10px;
+	margin-bottom: 30px;
+	font-family: 'LeferiBaseType-RegularA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiBaseType-RegularA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    border-radius: 30px;
+}
+
+div#select_sex{
+	margin-bottom: 30px;
+	font-size: 15px;
 }
 
 input[type=radio]{
 	appearance:none; 
-	width: 14px;
-	height: 14px;
+	width: 15px;
+	height: 15px;
 	border: 1px solid #d6d6d6;  
-	border-radius: 50%;    
+	border-radius: 50%; 
 }
 
 input[type=radio]:checked{      
-width: 14px;
-height: 14px;
+width: 15px;
+height: 15px;
 border-radius: 50%;
 background-color: #68afff;
 border: 2px solid #fff; 
 outline: 1px solid #68afff;
 }
 
-select#p_color,#category_id{
-	margin-top: 30px;
+select#p_color,#category_id,#p_sex{
+	border: 2px solid #68afff;
 	margin-bottom: 30px;
+	height: 40px;
+	width: 145px;
+	margin-right:10px;
+	margin-left:10px;
 	font-family: 'LeferiBaseType-RegularA';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiBaseType-RegularA.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+    border-radius: 20px;
+}
+
+select option{
+	background-color: #68afff;
+	color: #fff;
+}
+
+select option#first{
+	background-color: #00336a;
+	color: #ffff;
 }
 
 .inputpic label{

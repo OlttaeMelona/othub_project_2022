@@ -26,10 +26,13 @@ $(document).ready(function() {
 	$("#check").click(function(){
 		window.open("/pointresult?image=${reviewview.review_pic_name}");
 	});
-	
-	
 		
 });//ready end
+
+function offdisplay() {
+	document.getElementById("check").style.display = "none";
+	}
+
 
 </script>
 
@@ -80,11 +83,7 @@ $(document).ready(function() {
 		<input type="hidden" name="order_id" value="${reviewview.order_id}" />
 		<input type="hidden" name="point_check" value="y" />
 		
-		<script>
-		function offdisplay() {
-		document.getElementById("check").style.display = "none";
-		}
-		</script>
+		
 		
 		</c:if>
 		
