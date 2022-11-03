@@ -31,7 +31,7 @@
 		<!-- mypage nav -->
 		<%@include file="../member/mypagebar.jsp" %>
 		<div class="myorderBox">
-			<h3 class="orderTitle">주문내역</h3>
+			<h3 class="orderTitle">쿠폰함</h3>
 				<div class="inner">
 	<c:forEach items="${couponlist }" var="list">
             <div id="screen1">

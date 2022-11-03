@@ -27,7 +27,7 @@
 		String m_id = (String)session.getAttribute("m_id");
 		String role1 = (String)session.getAttribute("role1");
 	%>
-	
+	<!-- header -->
 	<header>
 		<nav class="nav">
 			<div href="" class="nav_toggleBtn">

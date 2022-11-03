@@ -34,7 +34,7 @@
 		<h3 class="orderTitle"><%=m_id %> 님의 정보</h3>
 		<div id="container">
    		<div class="inner">
-        <div class="form_content signup_wrap">
+        <div class="form_content signup_wrap" class="afgas">
             <form action="updatemember" method="post">
                 <label>아이디</label>
                 <input type="text" id="m_id" name="m_id" placeholder="ID" value="${memberdto.m_id }" readonly>

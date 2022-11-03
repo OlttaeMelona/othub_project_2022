@@ -24,6 +24,8 @@
 				<li><a href="ordered">주문내역</a></li>
 				<li><a href="goCart">장바구니</a></li>
 				<li><a href="datacenter">포즈 데이터 입력</a></li>
+				<li><a href="insertproduct">상품 등록</a></li>
+				<li><a href="adplistPage?adpnum=1">상품 등록 리스트</a></li>
 			</ul>
 		</div><br>
 		<div class="admin_list_box">

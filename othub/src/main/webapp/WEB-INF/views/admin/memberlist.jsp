@@ -62,7 +62,7 @@
                   <td>${member.m_sex}</td>
                   <td>${member.m_regdate }</td>
                   <td>
-                     <select name="role1" id="select">
+                     <select name="role1" id="select" class="dgfa">
                         <c:if test="${member.role1.equals('admin') }">
                             <option value="${member.role1}">${member.role1}</option>
                             <option value="user">user</option>

@@ -50,7 +50,7 @@
                <c:forEach items="${memberlist }" var="member">
                <tr class="styleone">
                   <div>
-                  <form method="post" name="form">
+                  <form method="post" name="form" class="asfg">
                   <td><input type="text" value="${member.m_id}" name="m_id"></td>
                   <td>${member.m_pw }</td>
                   <td>${member.m_name }</td>

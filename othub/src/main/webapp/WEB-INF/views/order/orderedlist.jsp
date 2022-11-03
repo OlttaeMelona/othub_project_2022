@@ -33,8 +33,8 @@
 		<div class="myorderBox">
 			<h3 class="orderTitle">주문내역</h3>
 				<div class="inner">
-      <div class= "table">
-         <table id="inventory">
+      <div class= "table" >
+         <table id="inventory" class="tablesd">
             <colgroup>
                <col width="150px"><col width="250px"><col width="200px"><col width="70px"><col width="70px"><col width="150px">
             </colgroup>
