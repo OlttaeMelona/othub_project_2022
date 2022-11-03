@@ -8,6 +8,24 @@ form.insert_box{
 	margin:auto;
 }
 
+.product_submit{
+	width: 100px;
+	height: 30px;
+	margin-bottom: 50px;
+	color: #fff;
+	background-color: #68afff;
+	border: 0px solid #00336a;
+	font-family: 'LeferiBaseType-RegularA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiBaseType-RegularA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    border-radius: 30px;
+}
+
+.product_submit:hover{
+	background-color: #00336a;
+}
+
 
 input#p_name,#p_brand{
 	border: 2px solid #68afff;
@@ -25,8 +43,8 @@ input#p_price,#p_stock{
 	border: 2px solid #68afff;
 	width : 230px;
 	height: 40px;
-	margin-right:10px;
-	margin-left:10px;
+	margin-right:12px;
+	margin-left:12px;
 	margin-bottom: 30px;
 	font-family: 'LeferiBaseType-RegularA';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiBaseType-RegularA.woff') format('woff');
@@ -35,35 +53,13 @@ input#p_price,#p_stock{
     border-radius: 30px;
 }
 
-div#select_sex{
-	margin-bottom: 30px;
-	font-size: 15px;
-}
-
-input[type=radio]{
-	appearance:none; 
-	width: 15px;
-	height: 15px;
-	border: 1px solid #d6d6d6;  
-	border-radius: 50%; 
-}
-
-input[type=radio]:checked{      
-width: 15px;
-height: 15px;
-border-radius: 50%;
-background-color: #68afff;
-border: 2px solid #fff; 
-outline: 1px solid #68afff;
-}
-
 select#p_color,#category_id,#p_sex{
 	border: 2px solid #68afff;
 	margin-bottom: 30px;
 	height: 40px;
 	width: 145px;
-	margin-right:10px;
-	margin-left:10px;
+	margin-right:13px;
+	margin-left:13px;
 	font-family: 'LeferiBaseType-RegularA';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiBaseType-RegularA.woff') format('woff');
     font-weight: normal;
@@ -91,9 +87,30 @@ select option#first{
 	vertical-align: middle;
 	background-color: #68afff;
 	cursor: pointer;
-	border: 1px solid #00336a;
+	border: 0px solid #00336a;
 	text-align: center;
-	position: relative;
+	border-radius: 30px;
+}
+
+div.p_thumb{
+	margin-top: 20px;
+}
+
+div.p_image1{
+
+}
+
+div.p_image2{
+
+
+}
+
+div.p_image3{
+
+}
+
+div.p_contents{
+
 }
 
 .inputpic input[type="file"]{
@@ -108,6 +125,7 @@ select option#first{
 }
 
 img#select_img1,#select_img2,#select_img3,#select_img4,#select_img5{
-	position: relative;
+	margin-top: 10px;
+	margin-bottom: 20px;
 }
 
