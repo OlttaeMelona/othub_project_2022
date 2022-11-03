@@ -218,4 +218,9 @@ public class Pose2ServiceImple implements Pose2Service {
 	public Pose2DTO getProductdetail(int p_id){
 		return dao.getProductdetail(p_id);
 	}
+	
+	@Override
+	public String getName(String m_id) {
+		return dao.getName(m_id);
+	}
 }

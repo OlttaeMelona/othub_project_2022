@@ -99,7 +99,7 @@ function setTotalInfo(){
 				상품가격 : <fmt:formatNumber value='${a.p_price}' pattern="#,###"/><br>
 				브랜드 : ${a.p_brand }
 			</td>
-			<td>  <a href="productdetail?p_id=${a.p_id }"> <img src='images/${a.p_image1 }' height="150" width="150"/> </a></td>
+			<td>  <a href="productdetail?p_id=${a.p_id }"> <img src='images/${a.p_thumb }' height="150" width="150"/> </a></td>
 			<td> ${a.p_color }</td>
 			<td>
 				<form action="cartAmount">
