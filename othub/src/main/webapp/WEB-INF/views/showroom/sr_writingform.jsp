@@ -100,7 +100,7 @@
 						<br><img id="preview5">
 					</span>
 				</div>
-				<input type="hidden" name="sr_writer" value="<%=session.getAttribute("a_id")%>">
+				<input type="hidden" name="sr_writer" value="<%=session.getAttribute("m_id")%>">
 				<input class="sr_write_btn" type="submit" onclick="sr_fileCheck(this)" value="작성하기">
 			</form>
 		</section>
