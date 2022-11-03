@@ -311,7 +311,7 @@ ul li{
 }
 
 .inner1{
-	width:49%; 
+	width:33%; 
 	height:150px;
 	float:left;
 	border-right: 1px solid white;
@@ -338,10 +338,11 @@ ul li{
 
 }
 .inner2{
-	width:50%; 
+	width:33%; 
 	height:150px;
 	float:left;
 	display: inherit;
+	border-right: 1px solid white;
 	background-color:#2186db;
 }
 #screen1{

@@ -37,7 +37,7 @@ public class ProductdetailController {
 		mv.addObject("productdetail", productdetail );
 		mv.addObject("mid", mid);
 		mv.setViewName("productdetail/productdetailmain");
-		
+		request.setAttribute("p_sex", productdetail.p_sex);
 		return mv;
 	}
 	

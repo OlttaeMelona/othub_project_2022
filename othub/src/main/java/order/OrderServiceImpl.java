@@ -58,8 +58,8 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 	@Override
-	public List<OrderDTO> cartToOrder(String m_id){
-		return dao.cartToOrder(m_id);
+	public OrderDTO cartToOrder(int cart_id){
+		return dao.cartToOrder(cart_id);
 	}
 	
 	@Override

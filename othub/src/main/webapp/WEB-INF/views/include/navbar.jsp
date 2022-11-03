@@ -27,7 +27,7 @@
 		String m_id = (String)session.getAttribute("m_id");
 		String role1 = (String)session.getAttribute("role1");
 	%>
-	
+	<!-- header -->
 	<header>
 		<nav class="nav">
 			<div href="" class="nav_toggleBtn">
@@ -46,7 +46,7 @@
 					else if(role1.equals("admin")){
 						out.print(m_id + " 관리자님 접속되었습니다.");
 					}
-					else if(role1.equals("user")){
+					else if(role1.equals("user") || role1.equals("partner")){
 						out.print(m_id + "님 환영합니다.");
 					}
 					%></li>
@@ -55,7 +55,7 @@
 					if(m_id == null){
 						%><a href="signin"><%out.print("sign up");%></a><%
 					}
-					else if(role1.equals("user")){
+					else if(role1.equals("user") || role1.equals("partner")){
 						%><a href="mypage"><%out.print("mypage");%></a><%
 					}
 					else if(role1.equals("admin")){
@@ -77,6 +77,7 @@
 					<span><a href="community">룩북</a></span>
 					<span><a href="/listrecom?c=1">쇼핑몰</a></span>
 					<span><a href="showroom">포토룸</a></span>
+					<span><a href="pose2inputU">내 체형의 옷 찾기</a></span>
 				</div>
 			</div>
 		</nav>

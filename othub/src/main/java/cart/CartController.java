@@ -65,7 +65,7 @@ public class CartController {
 			cart_list.get(i).p_name = cartservice.getProductdetail(cart_list.get(i).p_id).p_name;
 			cart_list.get(i).p_brand = cartservice.getProductdetail(cart_list.get(i).p_id).p_brand;
 			cart_list.get(i).p_color = cartservice.getProductdetail(cart_list.get(i).p_id).p_color;
-			cart_list.get(i).p_image1 = cartservice.getProductdetail(cart_list.get(i).p_id).p_image1;
+			cart_list.get(i).p_thumb = cartservice.getProductdetail(cart_list.get(i).p_id).p_thumb;
 		}
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("cart_list", cart_list);
@@ -79,13 +79,21 @@ public class CartController {
 	public String cartAmount (HttpServletRequest request) {
 		int amount = Integer.parseInt(request.getParameter("newamount"));
 		int cart_id = Integer.parseInt(request.getParameter("newcart_id"));
-		System.out.println(cart_id);
-		System.out.println(amount);
+		
+
 		if(amount == 0) {
 			cartservice.deleteOne(cart_id);
 			System.out.println(15);
 		}
 		else {cartservice.updateCartAmount(cart_id, amount);}
 		return("redirect:/goCart");
+	}
+	
+	@RequestMapping("/deleteFromCart")
+	public String delete(HttpServletRequest request) {
+		int cart_id = Integer.parseInt(request.getParameter("cart_idForDelete"));
+		cartservice.deleteOne(cart_id);
+		return("redirect:/goCart");
+		
 	}
 }

@@ -138,6 +138,10 @@
 	select * from product where p_id=#{p_id};
 </select>
 
+<select id="findProductId" resultType="pose2dto">
+	select p_id from product;
+</select>
+
 <select id="countProduct" resultType="int">
 	select count(*) from product;
 </select>
@@ -146,5 +150,32 @@
 	select posedata_id from posedata order by pose_date desc limit 1
 </select>
 
+
+<insert id="updateRatio" parameterType="pose2dto">
+	update posedata set
+	ratio = #{ratio}
+	where posedata_id=#{posedata_id}
+</insert>
+
+<insert id="insertUserRatio" parameterType="pose2dto">
+	insert posedataU (m_id, pose_user_date, ratio_user)
+	values (#{m_id}, now(), #{ratio_user});
+</insert>
+
+<select id="findUserRatio" parameterType="String" resultType="double">
+	select ratio_user from posedataU where m_id="${m_id}" order by pose_user_date desc limit 1;
+</select>
+
+<select id="findProductRatio" parameterType="double" resultType="pose2dto">
+	 select p_id from posedata where ratio between #{min_ratio} and #{max_ratio};
+</select>
+
+<select id="getProductdetail" resultType="pose2dto" parameterType="int">
+	select * from product where p_id=#{p_id}
+</select>
+
+<select id="getName" resultType="String" parameterType="String">
+	select m_name from member where m_id=#{m_id};
+</select>
 </mapper>
 

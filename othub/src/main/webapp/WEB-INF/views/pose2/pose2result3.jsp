@@ -48,6 +48,7 @@ $(document).ready(function() {
 	         mycontext.fillRect(x, y, 5, 5);
 	      
 	   //양손목그리기
+	   /*
 	   if(bodyinforms[i].indexOf("왼손목")>=0){
 	      var leftx = json.predictions[0][i].x * myimage.width;
 	      var lefty = json.predictions[0][i].y * myimage.height;
@@ -62,7 +63,7 @@ $(document).ready(function() {
 	   mycontext.closePath();
 	   mycontext.strokeStyle = "red";
 	   mycontext.lineWidth = 5;
-	   
+	   */
 	   mycontext.stroke();
 	      }//for
 	      
@@ -71,14 +72,17 @@ $(document).ready(function() {
 	   
 	   var end = [];
 	   var arr = [];
-	   
+	   var bodies = [];
 	   for(var i = 0; i < keys2.length; i++){
 		   	arr = [keys2[i], json2[keys2[i]].x, json2[keys2[i]].y];
+		   	arr2 = bodyinforms[i];
+		   	bodies.push(arr2);
+			bodies.push(" ");
 		   	end.push(arr);
 	   }
 	   var p_id = ${p_id};
 
-	   $("#test1").html(end);
+	   $("#test1").html(bodies);
 	   var u = keys2.length;
 	   $.ajax({
 			type: "post",
@@ -86,20 +90,23 @@ $(document).ready(function() {
 			data: {posejson:JSON.stringify(end), u:u, p_id:p_id},
 			//datatype: 'json',
 			success: function(a){
-				alert('ajax_success');
+				alert('분석완료');
 			}//sucess
 	   });//ajax
 	});
 </script>
 </head>
 <body>
-${param.image }
-<div id="result"></div>
+<!-- navbar include -->
+	<%@include file="../include/navbar.jsp" %>
+
 <div id="test1"></div>
 <div id="test2"></div>
 <div> </div>
 <img src="images/${param.image }">
 <canvas id="mycanvas" width=500 height=500 style="border:2px solid green">
 </canvas>
+<!-- footer include -->
+	<%@include file="../include/footer.jsp" %>
 </body>
 </html>

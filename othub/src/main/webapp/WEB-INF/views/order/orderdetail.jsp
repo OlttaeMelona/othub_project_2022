@@ -7,8 +7,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>MemberList | Othub</title>
-   <link href="css/admin/list/import.css" rel="stylesheet">
-    <link href="css/admin/list/common.css" rel="stylesheet">
+   <link href="css/order/orderdetail/import.css" rel="stylesheet">
+    <link href="css/order/orderdetail/common.css" rel="stylesheet">
 	<script src="js/jquery-3.6.0.min.js"></script>
 	<script>
 	$(document).ready(function() {
@@ -25,6 +25,8 @@
 <body>
 <!-- navbar include -->
 	<%@include file="../include/navbar.jsp"%>
+		<!-- chatbot include -->
+		<%@include file="../chatbot/chatbot.jsp" %>
 	
 
 <div class="wrapper">

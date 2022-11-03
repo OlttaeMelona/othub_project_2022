@@ -30,8 +30,14 @@ public class CartDTO {
 	String m_regdate;
 	int cart_id;
 	String p_color;
+	String p_thumb;
 	
-	
+	public String getP_thumb() {
+		return p_thumb;
+	}
+	public void setP_thumb(String p_thumb) {
+		this.p_thumb = p_thumb;
+	}
 	public String getP_color() {
 		return p_color;
 	}

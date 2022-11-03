@@ -9,12 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import member.MemberDTO;
 import showroom.ShowroomDTO;
 
-@Controller
+@Controller 
 public class ReserveController {
 	@Autowired
 	@Qualifier("reservservice")
@@ -57,7 +56,6 @@ public class ReserveController {
 		r_service.deleteTemporarily2(m_id);
 		List<ReservDTO> myr_list = r_service.myReservList(m_id);
 		model.addAttribute("myList", myr_list);
-		System.out.println();
 		return "reserv/myreserv";
 	}
 	
