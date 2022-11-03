@@ -100,13 +100,15 @@ public class Pose2Controller {
 	
 	@RequestMapping("/pose2result3")
 	public ModelAndView poseresult2(String image, String p_id) {
-		String posePath = NaverInform.pose_path1;
+		//String posePath = NaverInform.pose_path2;
+		String posePath = "/Users/dhk/GIT/othub_project_final/othub/src/main/resources/static/images/";
 		String jsonresult = pose2service.test(posePath, image);
 		ModelAndView mv = new ModelAndView();
 		JSONObject jsonObject = getJSONObjectFromSring(jsonresult);
 		JSONArray a = (JSONArray)jsonObject.get("predictions");
 		int q_id = Integer.parseInt(p_id);
 		mv.addObject("pose2result", jsonresult);
+		System.out.println(a.get(0));
 		mv.addObject("testtest", a.get(0));
 		mv.addObject("p_id", q_id);
 		mv.setViewName("pose2/pose2result3");//  var a = ${pose2result};
@@ -250,7 +252,8 @@ public class Pose2Controller {
 	public ModelAndView pose2resultU(HttpServletRequest request, Pose2DTO dto) throws IOException{
 		
 		String user = request.getParameter("user");
-		String posePath = NaverInform.pose_path2;
+		//String posePath = NaverInform.pose_path2;
+		String posePath = "/Users/dhk/GIT/othub_project_final/othub/src/main/resources/static/images/pose2/";
 		MultipartFile pose_image1 = dto.getPose_image();
 		String originalname1 = pose_image1.getOriginalFilename();
 		String beforeext1 = originalname1.substring(0, originalname1.indexOf("."));
@@ -388,26 +391,27 @@ public class Pose2Controller {
 		if(fail) {
 			ratio = body/h;
 		}
-		
+		else {
+			ratio = 0;
+		}
 		HttpSession session = request.getSession();
 		String m_id = (String)session.getAttribute("m_id");
-		System.out.println(m_id);
-		System.out.println(fail);
-		System.out.println(ratio);
+
 		
 		
-		if(fail) {
+
 			//2개변수set ㅇdto객
 			dto.ratio_user = ratio;
 			dto.m_id = m_id;
 			pose2service.insertUserRatio(dto);
-		}
+
 		
 	}
 		@RequestMapping("/pose2resultU3")
 		public ModelAndView findc(HttpServletRequest request) {
 			HttpSession session = request.getSession();
 			String m_id = (String)session.getAttribute("m_id");
+			String m_name = pose2service.getName(m_id);
 			double user_ratio = pose2service.findUserRatio(m_id);
 			double min_ratio = user_ratio - 0.3;
 			double max_ratio = user_ratio + 0.3;		
@@ -420,13 +424,22 @@ public class Pose2Controller {
 				pid_list.get(i).p_thumb = productdetail.p_thumb;
 				pid_list.get(i).p_name = productdetail.p_name;
 				}
-
+			
 			double head = Math.round(user_ratio*10)/10.0;
+
 			ModelAndView mv = new ModelAndView();
 			mv.addObject("m_id", m_id);
 			mv.addObject("head", head);
 			mv.addObject("pid_list", pid_list);
-			mv.setViewName("/pose2/pose2resultU3");
+			mv.addObject("number", pid_list.size());
+			mv.addObject("m_name", m_name);
+	
+			if(head == 0) {
+				mv.setViewName("/pose2/pose2inputU");
+			}
+			else {
+				mv.setViewName("/pose2/pose2resultU3");
+			}
 			return mv;
 		}
 		

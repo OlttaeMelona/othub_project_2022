@@ -120,7 +120,7 @@ function changepic(){
 					<div id="top"> 성별 </div>
 					<div id="bottom"> <%
 					String sex = "male";
-					String p_sex = (String)pageContext.getAttribute("p_sex");
+					String p_sex = (String)request.getAttribute("p_sex");
 					if(sex.equals( p_sex  )){
 					%>
 					남성 <br>		

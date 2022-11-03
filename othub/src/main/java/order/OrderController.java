@@ -58,6 +58,7 @@ public class OrderController {
 		ordersdetail.get(0).p_thumb = orderservice.getProductdetail(ordersdetail.get(0).p_id).p_thumb;
 		ordersdetail.get(0).p_brand = orderservice.getProductdetail(ordersdetail.get(0).p_id).p_brand;
 		ordersdetail.get(0).p_stock = orderservice.getProductdetail(ordersdetail.get(0).p_id).p_stock;
+		ordersdetail.get(0).p_color = orderservice.getProductdetail(ordersdetail.get(0).p_id).p_color;
 		OrderDTO memberdetail = orderservice.getMember(m_id);
 		int total_price = ordersdetail.get(0).p_price * ordersdetail.get(0).amount;
 		mv.setViewName("order/ordermain");

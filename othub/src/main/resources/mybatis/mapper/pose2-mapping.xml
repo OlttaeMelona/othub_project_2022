@@ -167,12 +167,15 @@
 </select>
 
 <select id="findProductRatio" parameterType="double" resultType="pose2dto">
-	 select p_id from posedata where ratio between 9 and 9.5;
+	 select p_id from posedata where ratio between #{min_ratio} and #{max_ratio};
 </select>
 
 <select id="getProductdetail" resultType="pose2dto" parameterType="int">
 	select * from product where p_id=#{p_id}
 </select>
 
+<select id="getName" resultType="String" parameterType="String">
+	select m_name from member where m_id=#{m_id};
+</select>
 </mapper>
 

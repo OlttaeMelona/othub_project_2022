@@ -65,7 +65,7 @@ public class CartController {
 			cart_list.get(i).p_name = cartservice.getProductdetail(cart_list.get(i).p_id).p_name;
 			cart_list.get(i).p_brand = cartservice.getProductdetail(cart_list.get(i).p_id).p_brand;
 			cart_list.get(i).p_color = cartservice.getProductdetail(cart_list.get(i).p_id).p_color;
-			cart_list.get(i).p_image1 = cartservice.getProductdetail(cart_list.get(i).p_id).p_image1;
+			cart_list.get(i).p_thumb = cartservice.getProductdetail(cart_list.get(i).p_id).p_thumb;
 		}
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("cart_list", cart_list);

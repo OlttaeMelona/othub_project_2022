@@ -29,5 +29,7 @@ public interface Pose2Service {
 	
 	public List<Pose2DTO> findProductRatio(double min_ratio, double max_ratio);
 	
-	public Pose2DTO getProductdetail(int p_id);
+	public Pose2DTO getProductdetail(int p_id);	
+
+	public String getName(String m_id);
 }
