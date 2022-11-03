@@ -48,14 +48,14 @@ public class ADProductController {
 	 @RequestMapping(value = "/insertproduct", method = RequestMethod.POST)
 	 public ModelAndView postInsertproduct(ADProductDTO dto, MultipartFile uploadfile) throws Exception {
 		 
-		 String savePath ="C:\\Users\\지호\\git\\othub\\othub\\src\\main\\resources\\static\\images\\product\\";
+		 String savePath ="C:\\Users\\지호\\git\\othub\\othub\\src\\main\\resources\\static\\images\\";
 		 
 		 MultipartFile p_thumb = dto.getP_thumb();
 			if(!p_thumb.isEmpty()) {
 				String originalname = p_thumb.getOriginalFilename();
 				String beforeext = originalname.substring(0, originalname.indexOf("."));
 				String ext = originalname.substring(originalname.indexOf("."));
-				String newname = beforeext+ext;
+				String newname = "product/new/" + beforeext+ext;
 				File servefile = new File(savePath+newname);
 				System.out.println(savePath+newname);
 				p_thumb.transferTo(servefile);
@@ -67,7 +67,7 @@ public class ADProductController {
 					String originalname = p_image1.getOriginalFilename();
 					String beforeext = originalname.substring(0, originalname.indexOf("."));
 					String ext = originalname.substring(originalname.indexOf("."));
-					String newname = beforeext+ext;
+					String newname = "product/new/" + beforeext+ext;
 					File servefile = new File(savePath+newname);
 					System.out.println(savePath+newname);
 					p_image1.transferTo(servefile);
@@ -81,7 +81,7 @@ public class ADProductController {
 						String originalname = p_image2.getOriginalFilename();
 						String beforeext = originalname.substring(0, originalname.indexOf("."));
 						String ext = originalname.substring(originalname.indexOf("."));
-						String newname = beforeext+ext;
+						String newname = "product/new/" + beforeext+ext;
 						File servefile = new File(savePath+newname);
 						System.out.println(savePath+newname);
 						p_image2.transferTo(servefile);
@@ -95,7 +95,7 @@ public class ADProductController {
 							String originalname = p_image3.getOriginalFilename();
 							String beforeext = originalname.substring(0, originalname.indexOf("."));
 							String ext = originalname.substring(originalname.indexOf("."));
-							String newname = beforeext+ext;
+							String newname = "product/new/" + beforeext+ext;
 							File servefile = new File(savePath+newname);
 							System.out.println(savePath+newname);
 							p_image3.transferTo(servefile);
@@ -109,7 +109,7 @@ public class ADProductController {
 								String originalname = p_contents.getOriginalFilename();
 								String beforeext = originalname.substring(0, originalname.indexOf("."));
 								String ext = originalname.substring(originalname.indexOf("."));
-								String newname = beforeext+ext;
+								String newname = "product/new/" + beforeext+ext;
 								File servefile = new File(savePath+newname);
 								System.out.println(savePath+newname);
 								p_contents.transferTo(servefile);
@@ -121,7 +121,7 @@ public class ADProductController {
 		service.insertproduct(dto);
 		 
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:/cslistPage?csnum=1");
+		mv.setViewName("redirect:/adplistPage?adpnum=1");
 		return mv;
 		
 	 }
@@ -216,14 +216,14 @@ public class ADProductController {
 	@RequestMapping(value = "/adpmodify", method = RequestMethod.POST)
 	public ModelAndView postAdpModify(ADProductDTO dto, MultipartFile uploadfile) throws Exception {
 		
-		 String savePath ="C:\\Users\\지호\\git\\othub\\othub\\src\\main\\resources\\static\\images\\product\\";
+		 String savePath ="C:\\Users\\지호\\git\\othub\\othub\\src\\main\\resources\\static\\images\\";
 		 
 		 MultipartFile p_thumb = dto.getP_thumb();
 			if(!p_thumb.isEmpty()) {
 				String originalname = p_thumb.getOriginalFilename();
 				String beforeext = originalname.substring(0, originalname.indexOf("."));
 				String ext = originalname.substring(originalname.indexOf("."));
-				String newname = beforeext+ext;
+				String newname = "product/new/" + beforeext+ext;
 				File servefile = new File(savePath+newname);
 				System.out.println(savePath+newname);
 				p_thumb.transferTo(servefile);
@@ -235,7 +235,7 @@ public class ADProductController {
 					String originalname = p_image1.getOriginalFilename();
 					String beforeext = originalname.substring(0, originalname.indexOf("."));
 					String ext = originalname.substring(originalname.indexOf("."));
-					String newname = beforeext+ext;
+					String newname = "product/new/" + beforeext+ext;
 					File servefile = new File(savePath+newname);
 					System.out.println(savePath+newname);
 					p_image1.transferTo(servefile);
@@ -249,7 +249,7 @@ public class ADProductController {
 						String originalname = p_image2.getOriginalFilename();
 						String beforeext = originalname.substring(0, originalname.indexOf("."));
 						String ext = originalname.substring(originalname.indexOf("."));
-						String newname = beforeext+ext;
+						String newname = "product/new/" + beforeext+ext;
 						File servefile = new File(savePath+newname);
 						System.out.println(savePath+newname);
 						p_image2.transferTo(servefile);
@@ -263,7 +263,7 @@ public class ADProductController {
 							String originalname = p_image3.getOriginalFilename();
 							String beforeext = originalname.substring(0, originalname.indexOf("."));
 							String ext = originalname.substring(originalname.indexOf("."));
-							String newname = beforeext+ext;
+							String newname = "product/new/" + beforeext+ext;
 							File servefile = new File(savePath+newname);
 							System.out.println(savePath+newname);
 							p_image3.transferTo(servefile);
@@ -277,7 +277,7 @@ public class ADProductController {
 								String originalname = p_contents.getOriginalFilename();
 								String beforeext = originalname.substring(0, originalname.indexOf("."));
 								String ext = originalname.substring(originalname.indexOf("."));
-								String newname = beforeext+ext;
+								String newname = "product/new/" + beforeext+ext;
 								File servefile = new File(savePath+newname);
 								System.out.println(savePath+newname);
 								p_contents.transferTo(servefile);
