@@ -195,7 +195,7 @@ public class ReviewController {
 		 public ModelAndView postReviewWrite(int order_id, String image, ReviewDTO dto, OrderDTO odto, MultipartFile uploadfile, HttpServletRequest request) throws Exception {
 			
 			 //사진등록
-			 String savePath ="C:\\Users\\지호\\git\\othub\\othub\\src\\main\\resources\\static\\images\\review\\review_pic\\";
+			 String savePath =NaverInform.j_path;
 			 
 			 MultipartFile review_pic = dto.getReview_pic();
 				if(!review_pic.isEmpty()) {
@@ -387,7 +387,7 @@ public class ReviewController {
 			@RequestMapping(value = "/reviewmodify", method = RequestMethod.POST)
 			public ModelAndView postReviewModify(ReviewDTO dto, MultipartFile uploadfile) throws Exception {
 				
-				String savePath = "C:\\Users\\지호\\git\\othub\\othub\\src\\main\\resources\\static\\images\\review\\review_pic\\";
+				String savePath = NaverInform.j_path;
 				 
 				 MultipartFile review_pic = dto.getReview_pic();
 					if(!review_pic.isEmpty()) {

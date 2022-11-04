@@ -48,7 +48,7 @@ public class ADProductController {
 	 @RequestMapping(value = "/insertproduct", method = RequestMethod.POST)
 	 public ModelAndView postInsertproduct(ADProductDTO dto, MultipartFile uploadfile) throws Exception {
 		 
-		 String savePath ="C:\\Users\\지호\\git\\othub\\othub\\src\\main\\resources\\static\\images\\";
+		 String savePath =NaverInform.path2;
 		 
 		 MultipartFile p_thumb = dto.getP_thumb();
 			if(!p_thumb.isEmpty()) {
@@ -216,7 +216,7 @@ public class ADProductController {
 	@RequestMapping(value = "/adpmodify", method = RequestMethod.POST)
 	public ModelAndView postAdpModify(ADProductDTO dto, MultipartFile uploadfile) throws Exception {
 		
-		 String savePath ="C:\\Users\\지호\\git\\othub\\othub\\src\\main\\resources\\static\\images\\";
+		 String savePath =NaverInform.path2;
 		 
 		 MultipartFile p_thumb = dto.getP_thumb();
 			if(!p_thumb.isEmpty()) {
