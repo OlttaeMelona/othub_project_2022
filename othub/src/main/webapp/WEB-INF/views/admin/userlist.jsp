@@ -70,7 +70,7 @@
                             </c:when>
                             <c:when test="${member.role2.equals('gold')}">
                            <option value="${member.role2}">${member.role2}</option>
-                            <option value="gole">gold</option>
+                            <option value="silver">silver</option>
                             <option value="vip">vip</option>
                             </c:when>
                             <c:when test="${member.role2.equals('vip')}">

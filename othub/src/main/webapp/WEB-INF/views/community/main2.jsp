@@ -85,7 +85,7 @@
         <div class="flex">
 			<c:forEach items="${boardlist}" var="board">
 	            <div class="card">
-	                <div class="img"><a href="oneCommunity?s_seq=${board.s_seq }"><img src="images/community/styleimg/${board.imagename1 }"></a></div>
+	                <div class="img"><a href="oneCommunity?s_seq=${board.s_seq }&image=${board.imagename1 }"><img src="images/community/styleimg/${board.imagename1 }"></a></div>
 	                <div class="txt_box">
 	                    <div class="profile clearfix">
 	                        <div class="profile_name fl">${board.s_writer }</div>
